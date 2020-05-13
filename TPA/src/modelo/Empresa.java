@@ -1,5 +1,6 @@
 package modelo;
 
-public class Empresa extends Juridica {
-
+public class Empresa implements Proveedor {
+	String razonSocial;
+	String cuit;
 }

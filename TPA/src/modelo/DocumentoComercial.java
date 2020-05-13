@@ -1,5 +1,5 @@
 package modelo;
 
-public class DocumentoComercial {
+public interface DocumentoComercial {
 
 }

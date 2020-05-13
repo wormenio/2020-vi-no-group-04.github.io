@@ -3,7 +3,8 @@ package modelo;
 import java.util.ArrayList;
 
 public class Organizacion {
-	ArrayList<Entidad> entidades = new ArrayList<Entidad>();
+	TipoOrganizacion tipo;
+	ArrayList<Organizacion> entidades = new ArrayList<Organizacion>();
 	ArrayList<Usuario> usuarios= new ArrayList<Usuario>();
 
 	public void registrarse() {

@@ -1,7 +1,7 @@
 package modelo;
 
 public class TarjetaDeDebito implements MediosDeCobroYPago {
-
+	int numeroTarjeta;
 	@Override
 	public int pagarMonto(int monto) {
 		// TODO Auto-generated method stub
