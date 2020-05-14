@@ -3,8 +3,9 @@ package modelo;
 import java.util.Date;
 
 public class Egreso implements Operacion {
-	ReferenciaDeEgreso referenciaDeEgreso;
+	ReferenciaEgreso referenciaDeEgreso;
 	MediosDeCobroYPago pago;
+	DocumentoComercial documentoComercial;
 	Date fecha;
 	float total;
 	
