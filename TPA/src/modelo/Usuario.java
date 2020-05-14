@@ -1,8 +1,16 @@
 package modelo;
 
-public class Usuario {
+public class Usuario{
 	 RolUsuario rol;
 	 String nombre;
-	 String contraseña;
+	 public String nombre() {
+		 return nombre;
+	 }
+	 public Usuario(String nuevoNombre, RolUsuario nuevoRol){
+		 nombre = nuevoNombre;
+         rol = nuevoRol;
+     }
+	 
+	
 
 }
