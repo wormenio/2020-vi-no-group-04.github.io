@@ -1,31 +1,34 @@
 package modelo;
 
 import java.util.ArrayList;
+
 import java.util.HashMap;
 
 public class Organizacion {
 	TipoOrganizacion tipo;
 	ArrayList<Organizacion> entidades = new ArrayList<Organizacion>();
+	static ContraseniaSegura contraseniasSeguras = new ContraseniaSegura();
 	static ArrayList<Usuario> usuarios= new ArrayList<Usuario>();
 	static HashMap<String, String> contrasenias = new HashMap<String, String>();
 
 
 	public void registrarse(String usuario , String contrasenia, RolUsuario rol) {
-		Usuario nuevoUsuario = new Usuario(usuario,rol);
-		if( Organizacion.chequearUsuario(usuario,contrasenia)) {
+		if( Organizacion.usuarioValido(usuario,contrasenia)) {
+			Usuario nuevoUsuario = new Usuario(usuario,rol);
 			usuarios.add(nuevoUsuario);
 			contrasenias.put(usuario, contrasenia);
+			return;
 		}
 		System.out.println("fail");
 	}
 	
-	private static boolean chequearUsuario(String usuario, String contrasenia) {
+	private static boolean usuarioValido(String usuario, String contrasenia) {
 		return( Organizacion.nombreValido(usuario) && Organizacion.contraseniaValida(contrasenia));
 	}
 	
 	
 	private static boolean contraseniaValida(String contrasenia) {
-		return true;
+		return (contraseniasSeguras.esSegura(contrasenia)) ;
 	}
 	
 	private static boolean nombreValido(String usuario) {
