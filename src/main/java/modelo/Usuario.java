@@ -37,6 +37,7 @@ public class Usuario{
 	 * @throws UsuarioException
 	 */
 	 public boolean politicasContrasenia(String contrasenia) throws UsuarioException {
+//		 return true;
 	 	//Mas de 8 digitos
 		 if (contrasenia.length() < 8 ){
 			 throw new UsuarioException("La clave debe contenerar mas de 8 caracteres");
@@ -44,12 +45,12 @@ public class Usuario{
 		 // Al menos un digito y una clave
 		 String regla1 = "^(?:[0-9]+[a-zA-Z]|[a-zA-Z]+[0-9])[a-zA-Z0-9]*$";
 		 //No se repitan lo caracteres
-		 String regla2 = "([a-zA-Z])\\1{2,}";
+		 String regla2 = "([a-zA-Z0-9])\1{2,}";
 		 if( !validarEr(contrasenia,regla1) ){
 			 throw new UsuarioException("La clave debe tener al menos un número y una letra");
 		 }
 		 
-		 if( !validarEr(contrasenia,regla2) ){
+		 if( validarEr(contrasenia,regla2) ){
 			 // System.out.println("regla2 fail");
 			 throw new UsuarioException("La clave: "+contrasenia+" no debe repetir tres letras de forma consecutiva, ejemplo aaa");
 		 }
@@ -72,6 +73,7 @@ public class Usuario{
 	 }
 
 	 public boolean nombreValido(String usuario) {
+		 
 		 return contrasenias.containsKey(usuario);
 	 }
 	 public static void registrarContrasenia( String usuario, String contrasenia )
