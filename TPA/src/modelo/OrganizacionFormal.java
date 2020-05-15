@@ -7,5 +7,10 @@ public class OrganizacionFormal implements TipoOrganizacion {
 	int codigoIGJ;
 	CategoriaEntidadJuridica categoria;
 	String nombreFicticio;
-
+	
+	@Override
+	public String nombreFicticio()
+	{
+		return this.nombreFicticio;
+	}
 }

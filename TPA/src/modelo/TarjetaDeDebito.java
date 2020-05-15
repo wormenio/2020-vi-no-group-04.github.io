@@ -1,6 +1,6 @@
 package modelo;
 
-public class TarjetaDeDebito implements MediosDeCobroYPago {
+public class TarjetaDeDebito implements MedioDePago {
 	int numeroTarjeta;
 	@Override
 	public int pagarMonto(int monto) {

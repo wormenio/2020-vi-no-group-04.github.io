@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class Egreso implements Operacion {
 	ReferenciaEgreso referenciaDeEgreso;
-	MediosDeCobroYPago pago;
+	MedioDePago medioDePago;
 	DocumentoComercial documentoComercial;
 	Date fecha;
 	float total;

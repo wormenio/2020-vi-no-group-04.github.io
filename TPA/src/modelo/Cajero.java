@@ -1,6 +1,6 @@
 package modelo;
 
-public class Cajero implements MediosDeCobroYPago {
+public class Cajero implements MedioDePago {
 
 	@Override
 	public int pagarMonto(int monto) {

@@ -1,5 +1,5 @@
 package modelo;
 
 public interface TipoOrganizacion {
-	//String nombreFicticio;
+	public String nombreFicticio();
 }

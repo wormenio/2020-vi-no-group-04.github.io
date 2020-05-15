@@ -7,6 +7,7 @@ import java.util.HashMap;
 public class Organizacion {
 	TipoOrganizacion tipo;
 	ArrayList<Organizacion> entidades = new ArrayList<Organizacion>();
+	ArrayList<Operacion> operaciones = new ArrayList<Operacion>();
 	static ContraseniaSegura contraseniasSeguras = new ContraseniaSegura();
 	static ArrayList<Usuario> usuarios= new ArrayList<Usuario>();
 	static HashMap<String, String> contrasenias = new HashMap<String, String>();
