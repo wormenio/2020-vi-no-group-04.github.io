@@ -2,6 +2,7 @@ package modelo;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import modelo.UsuarioException;
 
 public class TestUsuario {
     private Usuario usuario;
@@ -13,8 +14,17 @@ public class TestUsuario {
         usuario = new Usuario("usuarioComun", usuarioComun);
     }
 
-    @Test
-    public void provarClaveValida() {
-        usuario.esValido("usuario","laclave");
+    @Test(expected = UsuarioException.class)
+    public void claveMenosDe8DigitosDaException() {
+        Assert.assertFalse("La clave debe contenerar mas de 8 caracteres",usuario.politicasContrasenia("laClave"));
     }
+    @Test(expected = UsuarioException.class)
+    public void seValidaQueLaClaveNoRepitaMasDe3CaracteresConsecutivos() {
+        Assert.assertFalse(usuario.politicasContrasenia("1Claaaves45"));
+    }
+    @Test(expected = UsuarioException.class)
+    public void seValidaQueLaClaveTengaAlMenosUnaLetraYUnNumero() {
+        Assert.assertFalse(usuario.politicasContrasenia("NoTieneNumeros"));
+    }
+
 }
