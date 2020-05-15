@@ -12,7 +12,7 @@ public class Organizacion {
 
 	public void registrarse(String usuario , String contrasenia, RolUsuario rol) {
 		Usuario nuevoUsuario = new Usuario(usuario,rol);
-		if( Usuario.esValido(usuario,contrasenia))
+		if( nuevoUsuario.esValido(usuario,contrasenia))
 		{
 			usuarios.add(nuevoUsuario);
 			return;
