@@ -28,8 +28,6 @@ public class Usuario{
 	 public  boolean contraseniaValida(String contrasenia) {
 		return contraseniasSeguras.esSegura(contrasenia)
 				&& politicasContrasenia(contrasenia);
-
-
 	 }
 
 	/**
@@ -52,7 +50,7 @@ public class Usuario{
 		 }
 		 
 		 if( !validarEr(contrasenia,regla2) ){
-			 System.out.println("regla2 fail");
+			 // System.out.println("regla2 fail");
 			 throw new UsuarioException("La clave: "+contrasenia+" no debe repetir tres letras de forma consecutiva, ejemplo aaa");
 		 }
 		 return true;

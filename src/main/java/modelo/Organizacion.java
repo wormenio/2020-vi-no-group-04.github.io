@@ -16,13 +16,7 @@ public class Organizacion {
 		{
 			usuarios.add(nuevoUsuario);
 			return;
-		}else {
-			System.out.println("fail");
 		}
 		
-	}
-	
-	public void iniciarSesion() {
-	
 	}
 }

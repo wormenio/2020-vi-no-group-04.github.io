@@ -2,7 +2,7 @@ package modelo;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import modelo.UsuarioException;
+//import modelo.UsuarioException;
 
 public class TestUsuario {
     private Usuario usuario;

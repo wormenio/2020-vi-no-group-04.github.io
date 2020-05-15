@@ -1,5 +1,5 @@
 package modelo;
-import org.junit.Assert;
+//import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -14,7 +14,7 @@ public class TestOrganizacion {
     }
 
     @Test
-    public void provarRegistroConUsuarioNoValido() {
+    public void probarRegistroConUsuarioNoValido() {
         organizacion.registrarse("12345622222222" , "1234", usuarioComun);
     }
 }
