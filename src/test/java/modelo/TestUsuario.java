@@ -1,5 +1,5 @@
 package modelo;
-import org.junit.Assert;
+import modelo.ValidarContrasenia.ValidarContraseniaException;
 import org.junit.Before;
 import org.junit.Test;
 //import modelo.UsuarioException;
@@ -14,17 +14,20 @@ public class TestUsuario {
         usuario = new Usuario("usuarioComun", usuarioComun);
     }
 
-    @Test(expected = UsuarioException.class)
+    @Test(expected = ValidarContraseniaException.class)
     public void claveMenosDe8DigitosDaException() {
-        Assert.assertFalse("La clave debe contenerar mas de 8 caracteres",usuario.politicasContrasenia("laClave"));
+        usuario.politicasContrasenia("laClave");
+       // Assert.assertFalse("La clave debe contenerar mas de 8 caracteres",usuario.politicasContrasenia("laClave"));
     }
-    @Test(expected = UsuarioException.class)
+    @Test(expected = ValidarContraseniaException.class)
     public void seValidaQueLaClaveNoRepitaMasDe3CaracteresConsecutivos() {
-        Assert.assertFalse(usuario.politicasContrasenia("1Claaaves45"));
+        usuario.politicasContrasenia("1Claaaves45");
+       // Assert.assertFalse(usuario.politicasContrasenia("1Claaaves45"));
     }
-    @Test(expected = UsuarioException.class)
+    @Test(expected = ValidarContraseniaException.class)
     public void seValidaQueLaClaveTengaAlMenosUnaLetraYUnNumero() {
-        Assert.assertFalse(usuario.politicasContrasenia("NoTieneNumeros"));
+        usuario.politicasContrasenia("NoTieneNumeros");
+        //Assert.assertFalse(usuario.politicasContrasenia("NoTieneNumeros"));
     }
 
 }
