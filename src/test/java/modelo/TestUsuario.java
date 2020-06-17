@@ -6,11 +6,11 @@ import org.junit.Test;
 
 public class TestUsuario {
     private Usuario usuario;
-    private UsuarioComun usuarioComun;
+    private Comun usuarioComun;
 
     @Before
     public void init() {
-        usuarioComun = new UsuarioComun();
+        usuarioComun = new Comun();
         usuario = new Usuario("usuarioComun", usuarioComun);
     }
 

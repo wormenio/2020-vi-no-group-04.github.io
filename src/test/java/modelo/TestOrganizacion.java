@@ -5,12 +5,12 @@ import org.junit.Test;
 
 public class TestOrganizacion {
     private Organizacion organizacion;
-    private UsuarioComun usuarioComun;
+    private Comun usuarioComun;
 
     @Before
     public void init() {
         organizacion = new Organizacion();
-        usuarioComun = new UsuarioComun();
+        usuarioComun = new Comun();
     }
 
     @Test
