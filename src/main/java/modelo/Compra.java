@@ -6,7 +6,7 @@ import java.util.Comparator;
 import java.util.List;
 
 public class Compra implements ReferenciaEgreso {
-	 int cantidadPresupuestosRequeridos;
+	 static final int cantidadPresupuestosRequeridos = 2;
 	 Criterio criterio;
 	 Proveedor proveedor;
 	 List<Presupuesto> presupuestos;
