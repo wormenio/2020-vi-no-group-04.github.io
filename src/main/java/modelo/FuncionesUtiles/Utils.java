@@ -3,6 +3,8 @@ package modelo.FuncionesUtiles;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import static java.util.regex.Pattern.*;
+
 /**
  * Coleccion de funciones útiles
  */
@@ -15,10 +17,12 @@ public class Utils {
      * @return
      */
     public boolean validarEr(String palabra, String expresionRegular){
-        Pattern pattern = Pattern.compile(expresionRegular);
-        Matcher matcher =
-                pattern.matcher(palabra);
-        return matcher.matches();
 
+        return Pattern.matches(expresionRegular, palabra);
+        /*
+        Pattern pattern = compile(expresionRegular);
+        Matcher matcher = pattern.matcher(palabra);
+        return matcher.matches();
+*/
     }
 }

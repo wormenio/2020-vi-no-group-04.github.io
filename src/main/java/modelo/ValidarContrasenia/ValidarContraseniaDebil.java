@@ -35,8 +35,7 @@ public class ValidarContraseniaDebil implements ValidarContrasenia {
 		}
 		catch(Exception e){
 			e.printStackTrace();
-			//System.out.println(e.getMessage());
-			throw new UsuarioException(e.getMessage());
+			throw new ValidarContraseniaException(e.getMessage());
 		}
 	}
 }

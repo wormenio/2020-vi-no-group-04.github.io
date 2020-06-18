@@ -4,7 +4,8 @@ package modelo;
 import modelo.ValidarContrasenia.*;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.rules.ExpectedException;
+
+//import modelo.ValidarContrasenia.*;
 
 import java.util.ArrayList;
 
@@ -12,43 +13,59 @@ import static org.junit.Assert.assertEquals;
 
 public class TestValidarContrasenia {
 
-    public ArrayList<ValidarContrasenia> listValidarContrasenia = new ArrayList<ValidarContrasenia>();
-    public ValidarCaracteresRepetidos validarCaracteresRepetidos = new ValidarCaracteresRepetidos();
-    public ValidarUnNumeroUnaLetra validarUnNumeroUnaLetra = new ValidarUnNumeroUnaLetra();
-    public ValidarContraseniaDebil validarContraseniaDebil = new ValidarContraseniaDebil();
-    public ValidarLongitudMinima validarLongitudMinima = new ValidarLongitudMinima();
+   // public ArrayList<ValidarContrasenia> listValidarContrasenia = new ArrayList<ValidarContrasenia>();
+    public ValidarCaracteresRepetidos validarCaracteresRepetidos;
+    public ValidarLongitudMinima validarLongitudMinima;
+    public ValidarUnNumeroUnaLetra validarUnNumeroUnaLetra;
+    public ValidarContraseniaDebil validarContraseniaDebil;
+    //  public ValidarUnNumeroUnaLetra validarUnNumeroUnaLetra = new ValidarUnNumeroUnaLetra();
+  //  public ValidarContraseniaDebil validarContraseniaDebil = new ValidarContraseniaDebil();
+  //  public ValidarLongitudMinima validarLongitudMinima = new ValidarLongitudMinima();
 
     @Before
     public void init() {
-       /* ValidarCaracteresRepetidos validarCaracteresRepetidos = new ValidarCaracteresRepetidos();
-        ValidarUnNumeroUnaLetra validarUnNumeroUnaLetra = new ValidarUnNumeroUnaLetra();
-        ValidarContraseniaDebil validarContraseniaDebil = new ValidarContraseniaDebil();
-
-        */
+        validarCaracteresRepetidos = new ValidarCaracteresRepetidos();
+        validarLongitudMinima = new ValidarLongitudMinima();
+        validarUnNumeroUnaLetra = new ValidarUnNumeroUnaLetra();
+        validarContraseniaDebil = new ValidarContraseniaDebil();
     }
-
-    @Test
-    public void validarCaracteresRepetidos() {
-        validarCaracteresRepetidos.validar("unaBuenaClave");
-
-    }
-
 
     @Test(expected = ValidarContraseniaException.class)
+    public void validarExcepcionConCaracteresRepetidos() {
+        validarCaracteresRepetidos.validar("repiiteclaveee111");
+    }
+
+    @Test(expected = ValidarContraseniaException.class)
+    public void validarExcepcionNoSeCumpleLongitudMinima() {
+        validarLongitudMinima.validar("1234567");
+    }
+
+    @Test(expected = ValidarContraseniaException.class)
+    public void validarExcepcionNoSeTieneUnCaracterUnaLetra() {
+        validarUnNumeroUnaLetra.validar("soloLetras");
+    }
+
+    @Test(expected = ValidarContraseniaException.class)
+    public void validarExcepcionContraseniaDebil() {
+        validarContraseniaDebil.validar("password");
+    }
+
+/*
+    @Test(expected = ValidarContraseniaException.class)
     public void validarNoCumpleLongitudMinima() {
-        validarLongitudMinima.validar("pepe");
+     //   validarLongitudMinima.validar("pepe");
     }
 
     @Test(expected = ValidarContraseniaException.class)
     public void validarNoCumpleUnNumeroUnaLetra() {
-        validarLongitudMinima.validar("pepe");
+        //validarLongitudMinima.validar("pepe");
     }
 
     @Test(expected = ValidarContraseniaException.class)
     public void validarUnNumeroUnaLetra() {
-        validarLongitudMinima.validar("1a");
+        // validarLongitudMinima.validar("1a");
     }
-    /*
+
     @Test(expected = ValidarContraseniaException.class)
     public void seValidaQueLaClaveNoRepitaMasDe3CaracteresConsecutivos() {
         usuario.politicasContrasenia("1Claaaves45");

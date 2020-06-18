@@ -1,7 +1,7 @@
 package modelo;
 
 import modelo.ValidarContrasenia.*;
-
+import modelo.UsuarioException;
 import java.util.ArrayList;
 
 
@@ -38,11 +38,11 @@ public class Usuario{
 		ValidarContraseniaDebil validarContraseniaDebil = new ValidarContraseniaDebil();
 
 		listValidarContrasenia.add(validarLongitudMinima);
-		listValidarContrasenia.add(validarCaracteresRepetidos);
-		listValidarContrasenia.add(validarUnNumeroUnaLetra);
+		//listValidarContrasenia.add(validarCaracteresRepetidos);
+		//listValidarContrasenia.add(validarUnNumeroUnaLetra);
 		//listValidarContrasenia.add(validarContraseniaDebil);
 
-
+		//validarLongitudMinima.validar(contrasenia);
 		listValidarContrasenia.forEach( objeto -> objeto.validar(contrasenia) );
 
 	}
@@ -50,7 +50,8 @@ public class Usuario{
 
 	private void verificarSiExisteUsuario(String usuario) {
 		 if (listaUsuarios.contains(usuario)) {
-			 throw new UsuarioException("El usuario "+usuario+" ya existe en el sistema");
+		 //	System.out.println("no se");
+		 	throw new UsuarioException("El usuario "+usuario+" ya existe en el sistema");
 		 }
 	}
 
