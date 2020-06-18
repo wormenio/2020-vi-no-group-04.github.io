@@ -1,33 +1,36 @@
 package modelo;
+
 import modelo.ValidarContrasenia.ValidarContraseniaException;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-//import modelo.UsuarioException;
+
+import static org.junit.Assert.fail;
+
 
 public class TestUsuario {
-    private Usuario usuario;
-    private Comun usuarioComun;
+    private Usuario unUsuario;
 
     @Before
     public void init() {
-        usuarioComun = new Comun();
-        usuario = new Usuario("usuarioComun", usuarioComun);
+        unUsuario = new Usuario();
     }
 
-    @Test(expected = ValidarContraseniaException.class)
-    public void claveMenosDe8DigitosDaException() {
-        usuario.politicasContrasenia("laClave");
-       // Assert.assertFalse("La clave debe contenerar mas de 8 caracteres",usuario.politicasContrasenia("laClave"));
+    @Test(expected = UsuarioException.class)
+    public void validarNuevoUsuarioCorrecto() {
+        unUsuario.registrarUsuario("unNombre",RolUsuario.ADMINISTRADOR,"1234");
+        Assert.assertEquals("unNombre",unUsuario.getNombreUsuario());
     }
-    @Test(expected = ValidarContraseniaException.class)
-    public void seValidaQueLaClaveNoRepitaMasDe3CaracteresConsecutivos() {
-        usuario.politicasContrasenia("1Claaaves45");
-       // Assert.assertFalse(usuario.politicasContrasenia("1Claaaves45"));
+
+    @Test(expected = UsuarioException.class)
+    public void contraseniaRepiteCaracterDaExcepcion() {
+        unUsuario.registrarUsuario("unNombre",RolUsuario.ADMINISTRADOR,"paaasword");
     }
-    @Test(expected = ValidarContraseniaException.class)
-    public void seValidaQueLaClaveTengaAlMenosUnaLetraYUnNumero() {
-        usuario.politicasContrasenia("NoTieneNumeros");
-        //Assert.assertFalse(usuario.politicasContrasenia("NoTieneNumeros"));
+
+    @Test(expected = UsuarioException.class)
+    public void usuarioConClavepasswordDaExcepcion() {
+        unUsuario.registrarUsuario("unNombre",RolUsuario.ADMINISTRADOR,"password");
     }
+
 
 }

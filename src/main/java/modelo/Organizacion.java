@@ -10,18 +10,10 @@ public class Organizacion {
 	static ArrayList<Usuario> usuarios= new ArrayList<Usuario>();
 
 
-	public boolean registrarse(String usuario , String contrasenia, RolUsuario rol)
+	public void registrarse(String usuario , String contrasenia, RolUsuario rol)
 	{
-		Usuario nuevoUsuario = new Usuario(usuario,rol);
-		if( nuevoUsuario.nombreValido(usuario)  &&  nuevoUsuario.contraseniaValida(contrasenia))
-		{
-			usuarios.add(nuevoUsuario);
-			System.out.println("true");
-			return true;
-		}else{
-			System.out.println("false");
-			return false;
-		}
-		
+		Usuario nuevoUsuario = new Usuario();
+
+		nuevoUsuario.registrarUsuario(usuario,rol, contrasenia);
 	}
 }

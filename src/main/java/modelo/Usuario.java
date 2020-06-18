@@ -3,60 +3,65 @@ package modelo;
 import modelo.ValidarContrasenia.*;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 
 public class Usuario{
-	 RolUsuario rol;
-	 String nombre;
-	 ArrayList<ValidarContrasenia> validarContraseniaList = new ArrayList<ValidarContrasenia>();
+    RolUsuario rolUsuario;
+	String nombreUsuario;
+	ArrayList<String> listaUsuarios = new ArrayList<String>();
 
-
-	// static ValidarContraseniaDebil contraseniasSeguras = new ValidarContraseniaDebil();
-	static HashMap<String, String> contrasenias = new HashMap<String, String>();
-	 
-	 public String nombre() {
-		 return nombre;
-	 }
-
-	 public Usuario(String nuevoNombre, RolUsuario nuevoRol){
-		 nombre = nuevoNombre;
-         rol = nuevoRol;
-     }
-
-
-
-
-	 public  void contraseniaValida(String contrasenia) {
+	public void registrarUsuario(String nombreUsuario, RolUsuario rolUsuario, String contrasenia){
 	 	try {
-			ValidarLongitudMinima validarLongitudMinima = new ValidarLongitudMinima();
-			ValidarCaracteresRepetidos validarCaracteresRepetidos = new ValidarCaracteresRepetidos();
-			ValidarUnDigitoUnaClave validarUnDigitoUnaClave = new ValidarUnDigitoUnaClave();
-			ValidarContraseniaDebil validarCntraseniaDebil = new ValidarContraseniaDebil();
-
-			ArrayList<ValidarContrasenia> listValidarContrasenia = new ArrayList<ValidarContrasenia>();
-
-			listValidarContrasenia.add(validarLongitudMinima);
-			listValidarContrasenia.add(validarCaracteresRepetidos);
-			listValidarContrasenia.add(validarUnDigitoUnaClave);
-			listValidarContrasenia.add(validarCntraseniaDebil);
-
-			listValidarContrasenia.forEach( objeto -> objeto.validar(contrasenia) );
-
+			verificarSiExisteUsuario(nombreUsuario);
+			validarContrasenia(contrasenia);
+			registrarUsuario(nombreUsuario);
+			registrarContrasenia(contrasenia);
+			this.nombreUsuario = nombreUsuario;
+			this.rolUsuario = rolUsuario;
 		}
 	 	catch (Exception e){
-			System.out.println(e.getMessage());
+			System.out.println("No se puede crear el Usuario, motivo: "+e.getMessage());
 		}
 
-	 }
+	}
+
+	public String getNombreUsuario() {
+		return nombreUsuario;
+	}
+
+	public  void validarContrasenia(String contrasenia) {
+	 	ArrayList<ValidarContrasenia> listValidarContrasenia = new ArrayList<ValidarContrasenia>();
+
+		ValidarLongitudMinima validarLongitudMinima = new ValidarLongitudMinima();
+		ValidarCaracteresRepetidos validarCaracteresRepetidos = new ValidarCaracteresRepetidos();
+		ValidarUnNumeroUnaLetra validarUnNumeroUnaLetra = new ValidarUnNumeroUnaLetra();
+		ValidarContraseniaDebil validarContraseniaDebil = new ValidarContraseniaDebil();
+
+		listValidarContrasenia.add(validarLongitudMinima);
+		listValidarContrasenia.add(validarCaracteresRepetidos);
+		listValidarContrasenia.add(validarUnNumeroUnaLetra);
+		//listValidarContrasenia.add(validarContraseniaDebil);
 
 
-	 public boolean nombreValido(String usuario) {
-		 
-		 return contrasenias.containsKey(usuario);
+		listValidarContrasenia.forEach( objeto -> objeto.validar(contrasenia) );
+
+	}
+
+
+	private void verificarSiExisteUsuario(String usuario) {
+		 if (listaUsuarios.contains(usuario)) {
+			 throw new UsuarioException("El usuario "+usuario+" ya existe en el sistema");
+		 }
+	}
+
+	private void registrarUsuario(String nombreUsuario){
+		 listaUsuarios.add(nombreUsuario);
 	 }
-	 public static void registrarContrasenia( String usuario, String contrasenia )
-	 {
-		 contrasenias.put(usuario, contrasenia);
-	 }
+
+	private void registrarContrasenia(String contrasenia){
+	 	//TODO
+	}
+
 }
+
+
