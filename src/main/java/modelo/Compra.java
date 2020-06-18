@@ -36,7 +36,7 @@ public class Compra implements ReferenciaEgreso {
 	 }
 	 
 	 public boolean validarCantidadDePresupuestos() {
-		 return this.presupuestos.size() == this.cantidadPresupuestosRequeridos;		 
+		 return this.presupuestos.size() == Compra.cantidadPresupuestosRequeridos;		 
 	 }
 	 
 	 public boolean validarPresupuestoAsignadoContenidoEnElListado() {
