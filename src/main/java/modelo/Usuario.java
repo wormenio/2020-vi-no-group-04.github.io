@@ -38,11 +38,10 @@ public class Usuario{
 		ValidarContraseniaDebil validarContraseniaDebil = new ValidarContraseniaDebil();
 
 		listValidarContrasenia.add(validarLongitudMinima);
-		//listValidarContrasenia.add(validarCaracteresRepetidos);
-		//listValidarContrasenia.add(validarUnNumeroUnaLetra);
-		//listValidarContrasenia.add(validarContraseniaDebil);
+		listValidarContrasenia.add(validarCaracteresRepetidos);
+		listValidarContrasenia.add(validarUnNumeroUnaLetra);
+		listValidarContrasenia.add(validarContraseniaDebil);
 
-		//validarLongitudMinima.validar(contrasenia);
 		listValidarContrasenia.forEach( objeto -> objeto.validar(contrasenia) );
 
 	}

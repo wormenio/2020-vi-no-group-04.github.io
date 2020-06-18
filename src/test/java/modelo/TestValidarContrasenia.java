@@ -47,6 +47,7 @@ public class TestValidarContrasenia {
 
     @Test(expected = ValidarContraseniaException.class)
     public void validarExcepcionContraseniaDebil() {
+        //password es una palabra que se encuentra en el archivo de contrasenias debiles "contrasenias.txt"
         validarContraseniaDebil.validar("password");
     }
 

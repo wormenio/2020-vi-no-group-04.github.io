@@ -1,11 +1,8 @@
 package modelo;
 
-import modelo.ValidarContrasenia.ValidarContraseniaException;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-
-import static org.junit.Assert.fail;
 
 
 public class TestUsuario {
@@ -16,22 +13,35 @@ public class TestUsuario {
         unUsuario = new Usuario();
     }
 
-    @Test(expected = UsuarioException.class)
+    @Test
     public void validarNuevoUsuarioCorrecto() {
-        unUsuario.registrarUsuario("unNombre",RolUsuario.ADMINISTRADOR,"1234");
-
-     //   Assert.assertEquals("unNombre",unUsuario.getNombreUsuario());
+        unUsuario.registrarUsuario("unNombre",RolUsuario.ADMINISTRADOR,"unaBuenaClave11");
+        Assert.assertEquals("unNombre",unUsuario.getNombreUsuario());
     }
 
-    @Test(expected = UsuarioException.class)
-    public void contraseniaRepiteCaracterDaExcepcion() {
-        unUsuario.registrarUsuario("unNombre",RolUsuario.ADMINISTRADOR,"paaasword");
+    @Test
+    public void noSeDaDeAltaUsuarioPorClaveDebil() {
+        //La password se encuentra en el archivo de claves débiles "contrasenia.txt"
+        unUsuario.registrarUsuario("unNombre",RolUsuario.ADMINISTRADOR,"1qaz2wsx");
+        Assert.assertNotEquals("unNombre",unUsuario.getNombreUsuario());
     }
 
-    @Test(expected = UsuarioException.class)
-    public void usuarioConClavepasswordDaExcepcion() {
-        unUsuario.registrarUsuario("unNombre",RolUsuario.ADMINISTRADOR,"password");
+    @Test
+    public void noSeDaDeAltaUsuarioPorClaveMenoA8Digitos() {
+        unUsuario.registrarUsuario("unNombre",RolUsuario.ADMINISTRADOR,"1234567");
+        Assert.assertNotEquals("unNombre",unUsuario.getNombreUsuario());
     }
 
+    @Test
+    public void noSeDaDeAltaUsuarioPorClaveSinUnDigitoYUnaLetra() {
+        unUsuario.registrarUsuario("unNombre",RolUsuario.ADMINISTRADOR,"malaClave.");
+        Assert.assertNotEquals("unNombre",unUsuario.getNombreUsuario());
+    }
+
+    @Test
+    public void noSeDaDeAltaUsuarioPorCaracteresRepetidos() {
+        unUsuario.registrarUsuario("unNombre",RolUsuario.ADMINISTRADOR,"malaClave.111");
+        Assert.assertNotEquals("unNombre",unUsuario.getNombreUsuario());
+    }
 
 }
