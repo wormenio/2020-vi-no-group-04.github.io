@@ -19,7 +19,7 @@ public class Compra implements ReferenciaEgreso {
 		 return true;
 	 }
 	 
-	 public void HacerRevisor(Usuario usuario) {
+	 public void hacerRevisor(Usuario usuario) {
 		 this.usuariosHabilitados.add(usuario);
 	 }
 	 
