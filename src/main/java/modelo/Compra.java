@@ -6,7 +6,7 @@ import java.util.Comparator;
 import java.util.List;
 
 public class Compra implements ReferenciaEgreso {
-	 int maximoPresupuestosRequeridos;
+	 int cantidadPresupuestosRequeridos;
 	 Criterio criterio;
 	 Proveedor proveedor;
 	 List<Presupuesto> presupuestos;
@@ -29,26 +29,21 @@ public class Compra implements ReferenciaEgreso {
 	 }
 	 
 	 public boolean validarCompra(){		 
-		 if(this.maximoPresupuestosRequeridos > 0) {			 			 
-			 return this.validoCantidadDePresupuestos()  
-					&& this.validoPresupuestoAsignadoContenidoEnElListado() 
-					&& this.validoPorCriterioDeMenorValor();
-		 }
-		 
-		 
-		 
-		 return true;
+					 			 
+			 return this.validarCantidadDePresupuestos()  
+					&& this.validarPresupuestoAsignadoContenidoEnElListado() 
+					&& this.validarPorCriterioDeMenorValor();
 	 }
 	 
-	 public boolean validoCantidadDePresupuestos() {
-		 return this.presupuestos.size() == this.maximoPresupuestosRequeridos;		 
+	 public boolean validarCantidadDePresupuestos() {
+		 return this.presupuestos.size() == this.cantidadPresupuestosRequeridos;		 
 	 }
 	 
-	 public boolean validoPresupuestoAsignadoContenidoEnElListado() {
+	 public boolean validarPresupuestoAsignadoContenidoEnElListado() {
 		 return this.presupuestos.contains(this.presupuestoAsignado);		 
 	 }
 	 
-	 public boolean validoPorCriterioDeMenorValor() {
+	 public boolean validarPorCriterioDeMenorValor() {
 		 
 		 boolean validoCriterioMinimoPresupuesto = false;
 		 
