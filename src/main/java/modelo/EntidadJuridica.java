@@ -1,12 +1,19 @@
 package modelo;
 
-public class EntidadJuridica {
+import java.util.ArrayList;
+import java.util.List;
+
+public class EntidadJuridica implements Entidad {
 	EntidadJuridica agrupacion;
-	String descripcion;
-	String nombreFicticio;
+	int cuit;
+	String razonSocial;
+	DireccionPostal direccionPostal;
+	int codigoIGJ;
+	CategoriaEntidadJuridica categoria;
+	List<EntidadBase> conformadaPor = new ArrayList<EntidadBase> ();
 	
 	public String getNombreFicticio()
 	{
-		return nombreFicticio;
+		return razonSocial;
 	}
 }

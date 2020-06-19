@@ -1,5 +1,5 @@
 package modelo;
 
 public interface Entidad {
-	public String GetNombreFicticio();
+	public String getNombreFicticio();
 }
