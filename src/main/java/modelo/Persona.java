@@ -1,6 +1,6 @@
 package modelo;
 
-public class Persona implements Proveedor {
+public class Persona {
 	String nombre;
 	String apellido;
 	String dni;

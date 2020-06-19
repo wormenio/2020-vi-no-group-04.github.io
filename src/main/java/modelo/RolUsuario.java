@@ -1,5 +1,6 @@
 package modelo;
 
-public interface RolUsuario {
-
+enum  RolUsuario {
+   ADMINISTRADOR,
+   COMUN
 }

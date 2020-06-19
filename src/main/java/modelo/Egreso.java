@@ -2,16 +2,12 @@ package modelo;
 
 import java.util.Date;
 
-public class Egreso implements Operacion {
-	ReferenciaEgreso referenciaDeEgreso;
-	MedioDePago medioDePago;
-	DocumentoComercial documentoComercial;
-	Date fecha;
-	float total;
+public interface Egreso{
+	
 	
 	@Override
-	public String verDetallesOperacion() {
-		// TODO Auto-generated method stub
+	public DocumentoComercial GetDocumentoComercial() {
+		Egreso		
 		return null;
 	}
 	

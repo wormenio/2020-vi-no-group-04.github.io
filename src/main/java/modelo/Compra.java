@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
-public class Compra implements ReferenciaEgreso {
-	 int maximoPresupuestosRequeridos;
+public abstract class Compra implements Egreso{
+	 static final int cantidadPresupuestosRequeridos = 2;
 	 Criterio criterio;
 	 Proveedor proveedor;
 	 List<Presupuesto> presupuestos;
@@ -19,7 +19,7 @@ public class Compra implements ReferenciaEgreso {
 		 return true;
 	 }
 	 
-	 public void HacerRevisor(Usuario usuario) {
+	 public void hacerRevisor(Usuario usuario) {
 		 this.usuariosHabilitados.add(usuario);
 	 }
 	 
@@ -29,26 +29,21 @@ public class Compra implements ReferenciaEgreso {
 	 }
 	 
 	 public boolean validarCompra(){		 
-		 if(this.maximoPresupuestosRequeridos > 0) {			 			 
-			 return this.validoCantidadDePresupuestos()  
-					&& this.validoPresupuestoAsignadoContenidoEnElListado() 
-					&& this.validoPorCriterioDeMenorValor();
-		 }
-		 
-		 
-		 
-		 return true;
+					 			 
+			 return this.validarCantidadDePresupuestos()  
+					&& this.validarPresupuestoAsignadoContenidoEnElListado() 
+					&& this.validarPorCriterioDeMenorValor();
 	 }
 	 
-	 public boolean validoCantidadDePresupuestos() {
-		 return this.presupuestos.size() == this.maximoPresupuestosRequeridos;		 
+	 public boolean validarCantidadDePresupuestos() {
+		 return this.presupuestos.size() == Compra.cantidadPresupuestosRequeridos;		 
 	 }
 	 
-	 public boolean validoPresupuestoAsignadoContenidoEnElListado() {
+	 public boolean validarPresupuestoAsignadoContenidoEnElListado() {
 		 return this.presupuestos.contains(this.presupuestoAsignado);		 
 	 }
 	 
-	 public boolean validoPorCriterioDeMenorValor() {
+	 public boolean validarPorCriterioDeMenorValor() {
 		 
 		 boolean validoCriterioMinimoPresupuesto = false;
 		 
@@ -59,7 +54,7 @@ public class Compra implements ReferenciaEgreso {
 			      .min(Comparator.comparing(Presupuesto::GetTotal))
 			      .orElseThrow(null);
 			 				 
-			    validoCriterioMinimoPresupuesto = minPresupuesto.detalle.total == this.presupuestoAsignado.detalle.total;
+			    validoCriterioMinimoPresupuesto = minPresupuesto.compra.total == this.presupuestoAsignado.detalle.total;
 		 }
 		 
 		 return validoCriterioMinimoPresupuesto;

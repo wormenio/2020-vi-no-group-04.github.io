@@ -1,6 +1,7 @@
 package modelo.ValidarContrasenia;
 
-public class ValidarContraseniaException extends  RuntimeException{
+public class ValidarContraseniaException extends  RuntimeException {
+
     public ValidarContraseniaException() {
         super();
     }
