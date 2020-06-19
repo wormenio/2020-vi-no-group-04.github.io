@@ -1,15 +1,16 @@
 package modelo;
 
 public class Item {
-	TipoProducto  tipoProducto;
+	double importe;
+	String detalle;
 	
-	public int precio() {
-		return 0;
-		
+	public double importe() {
+		return importe;
 	}
-	public int cantidad() {
-		return 0;
-		
+	
+	public String detalle()
+	{
+		return detalle;
 	}
 
 }
