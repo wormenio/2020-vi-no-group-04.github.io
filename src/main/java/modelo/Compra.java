@@ -33,8 +33,8 @@ public abstract class Compra implements Egreso{
 		 return medioDePago;
 	 }
 	 
-	 public Double getTotalEgreso() {
-		 return items.stream().mapToDouble( item -> item.getImporte() ).sum();
+	 public float getTotalEgreso() {
+		 return (float) items.stream().mapToDouble( item -> item.getImporte() ).sum();
 	 }
 	 
 	 public String getDetalleEgreso()

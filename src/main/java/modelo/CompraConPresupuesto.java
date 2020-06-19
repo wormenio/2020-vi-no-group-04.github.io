@@ -59,4 +59,11 @@ public class CompraConPresupuesto extends Compra {
 		 return validoCriterioMinimoPresupuesto;
 		 
 	 }
+	 
+	 public void agregarPresupuesto( float importePresupuesto, Proveedor proveedor, Moneda moneda )
+	 {
+		 Presupuesto presupuesto = new Presupuesto(this,proveedor,moneda);
+		 this.presupuestos.add(presupuesto);
+		 
+	 }
 }
