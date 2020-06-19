@@ -1,12 +1,12 @@
 package modelo;
 
-public class Pais {
+public class DatosPais {
 	private String id;
 	private String name;
 	private String locale;
 	private String currency_id;
 	
-	public Pais() {
+	public DatosPais() {
 		
 	}
 	

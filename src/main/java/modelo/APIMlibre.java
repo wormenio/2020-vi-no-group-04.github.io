@@ -26,16 +26,10 @@ public class  APIMlibre {
     	
     }
 	
-	public List<Pais> verPaises() {
-		Gson gson = new Gson();
-
-        String paises = response.getEntity(String.class);
-    	
-    	Type listType = new TypeToken<ArrayList<Pais>>(){}.getType();
-    	ArrayList<Pais> listadoPaises = gson.fromJson(paises, listType); 
-    	
-    	return listadoPaises;
+	public ClientResponse verPaisesAPI() {
+		return response;
 	}
+	
 	
 	
 	
