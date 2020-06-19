@@ -3,12 +3,15 @@ package modelo;
 import java.util.List;
 
 public class Presupuesto {
-	Egreso detalle;
-	Compra compraAsociada;
-	List<DocumentoComercial> documentosComerciales;
+	CompraConPresupuesto compra;
+	List<Item> items;
+	Proveedor proveedor;
+	Moneda moneda;
 	
 	
-	public float GetValor() {
-		return detalle.total;		
+	public float GetTotal() {
+		double importeTotal = items.stream()
+			      .mapToDouble(o -> o.GetValor())
+			      .sum();
 	}
 }

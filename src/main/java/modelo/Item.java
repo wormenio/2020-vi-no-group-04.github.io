@@ -1,15 +1,11 @@
 package modelo;
 
 public class Item {
-	TipoProducto  tipoProducto;
+	float valor;
+	String descripcion;
 	
-	public int precio() {
-		return 0;
-		
-	}
-	public int cantidad() {
-		return 0;
-		
+	public float GetValor() {
+		return valor;
 	}
 
 }

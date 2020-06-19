@@ -13,7 +13,7 @@ public class Compra implements ReferenciaEgreso {
 	 Presupuesto presupuestoAsignado;
 	 List<Usuario> usuariosHabilitados;
 	 List<Item> items = new ArrayList<Item> ();
-	 //Moneda moneda;
+	 //Moneda moneda; ESTO SE TIENE QUE TRAER DE MERCADOLIBRE
 	 
 	 public boolean esRevisor(Usuario usuario) {
 		 return true;
@@ -56,7 +56,7 @@ public class Compra implements ReferenciaEgreso {
 
 			    Presupuesto minPresupuesto = this.presupuestos
 			      .stream()
-			      .min(Comparator.comparing(Presupuesto::GetValor))
+			      .min(Comparator.comparing(Presupuesto::GetTotal))
 			      .orElseThrow(null);
 			 				 
 			    validoCriterioMinimoPresupuesto = minPresupuesto.detalle.total == this.presupuestoAsignado.detalle.total;
