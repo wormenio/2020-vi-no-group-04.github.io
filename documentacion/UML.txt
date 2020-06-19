@@ -50,7 +50,7 @@ interface Entidad{
  class EntidadJuridica implements Entidad{
    -String razonSocial
    -Int cuit
-   -DireccionPostal direccionPostal
+   -Direccion direccionPostal
    -Int codigoIGJ
    -CategoriaEntidadJuridica categoria
    -List<EntidadBase> conformadaPor
@@ -98,6 +98,8 @@ class Compra implements Egreso{
  -DocumentoComercial documentoComercial
  -MedioDePago medioDePago
  -Date fecha
+ -float importeTotal
+
  +getDocumentoComercialEgreso()
  +getFechaEgreso()
  +getMedioDePagoEgreso()
@@ -133,22 +135,12 @@ class Presupuesto{
 }
 
 class Proveedor{
- -DireccionPostal direccionPostal
+ -Direccion direccionPostal
  -String nombre
  -String documento
 }
 
-class DireccionPostal{
- -String calle
- -int altura
- -int piso
- -String cpa
- -String ciudad
- -String provincia
- -String pais
- +getPaises()
- +getProvincias()
-}
+
 
 interface DocumentoComercial{
    +Int getNumeroReferencia()
@@ -222,16 +214,34 @@ interface ValidadorPost{
  +void notificarValidadorDeCompra()
 }
 
-
-Interface APIMLibre {
- + List<Map<int, String>> getPaises()
- + List<Map<int, String>> getProvincias()
- + List<Map<int, String>> getMonedas()
+class Pais{
+    -String nombre
+    -Moneda moneda
+}
+class APIMLibre {
+ -ClientResponse response
 }
 
-Compra "1"-->"*" Item 
-Compra --> APIMLibre
-DireccionPostal --> APIMLibre
+class SeleccionadorPais{
+ -List<Pais> paises
+ +Pais seleccionar(String id)
+}
+
+class DireccionPostal{
+ -String calle
+ -int altura
+ -String piso
+ -String ciudad
+ -String provincia
+ -Pais pais
+}
+Presupuesto --> Proveedor
+Compra "1"-->"*" Item
+Presupuesto "1"-->"*" Item
+DireccionPostal-->SeleccionadorPais
+SeleccionadorPais -->APIMLibre
+SeleccionadorPais "1" --> "*" Pais
+DireccionPostal --> Pais
 Moneda --> APIMLibre
 Compra --> Moneda
 Presupuesto --> Moneda
@@ -243,7 +253,6 @@ ValidadorPost <|.. Usuario
 Compra --> MedioDePago
 Usuario -->"1" RolUsuario
 CompraConPresupuesto --> Usuario
-Presupuesto "1"-->"*" Item
 EntidadJuridica --> DireccionPostal
 EntidadBase <-- EntidadJuridica 
 Entidad "*"<--"1" Organizacion
