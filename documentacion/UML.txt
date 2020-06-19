@@ -1,0 +1,256 @@
+@startuml
+package USUARIOS{
+
+class Usuario {
+ -RolUsuario rol
+ -String nombre
+ -String contraseña
+ +notificarValidadorDeCompra()
+}
+
+enum RolUsuario{
+ADMINISTRADOR, COMUN
+}
+
+interface ValidarContrasenia{
+ +validar()
+}
+
+class ContraseniaDebil implements ValidarContrasenia{
+ +validar()
+}
+
+class LongitudMinima implements ValidarContrasenia{
+ +validar()
+}
+
+class UnDigitoUnaLetra implements ValidarContrasenia{
+ +validar()
+}
+
+class CaracteresRepetidos implements ValidarContrasenia{
+ +validar()
+}
+
+}
+
+class Organizacion{
+ -List<Entidad> entidades
+ -List<Egresos> egresos
+}
+
+interface Entidad{
+   +getNombreFicticio()
+ }
+ class EntidadBase implements Entidad{
+   -EntidadJuridica agrupacion
+   -String descripcion
+   +getNombreFicticio()
+ }
+ class EntidadJuridica implements Entidad{
+   -String razonSocial
+   -Int cuit
+   -DireccionPostal direccionPostal
+   -Int codigoIGJ
+   -CategoriaEntidadJuridica categoria
+   -List<EntidadBase> conformadaPor
+   +getNombreFicticio()
+ }
+
+interface CategoriaEntidadJuridica {
+ +getTipoDeEmpresa()
+}
+
+enum CategorizacionAFIP {
+MICRO
+PEQUENIA
+MEDIANA_TRAMO_1
+MEDIANA_TRAMO_2
+}
+
+class Empresa implements CategoriaEntidadJuridica{
+ -CategorizacionAFIP categorizacionAFIP
+ +getTipoDeEmpresa()
+}
+
+class OSC implements CategoriaEntidadJuridica{
+ +getTipoDeEmpresa()
+}
+
+interface Egreso {
+ +getDocumentoComercial()
+ +getFechaEgreso()
+ +getMedioDePagoEgreso()
+ +getTotalEgreso()
+ +getDetalleEgreso()
+}
+
+class Moneda {
+ -String simbolo
+ -String nombre
+ +getMonedas()
+}
+
+class Compra implements Egreso{
+ -List<Items> items
+ -Proveedor proveedor
+ -Moneda moneda
+ -DocumentoComercial documentoComercial
+ -MedioDePago medioDePago
+ -Date fecha
+ +getDocumentoComercialEgreso()
+ +getFechaEgreso()
+ +getMedioDePagoEgreso()
+ +getTotalEgreso()
+ +getDetalleEgreso()
+}
+
+class CompraConPresupuesto extends Compra {
+ -Criterio criterio
+ -List<Presupuesto> presupuestos
+ -Usuario revisor
+ +validar()
+ +esRevisor(Usuario usuario)
+ +hacerRevisor(Usuario usuario)
+ +notificarValidacion()
+}
+
+class Item {
+ -float importe
+ -String descripcion
+}
+
+enum Criterio{
+MENOR_VALOR
+}
+
+class Presupuesto{
+ -CompraConPresupuesto compra
+ -List<Items> items
+ -Proveedor proveedor
+ -Moneda moneda
+ +getTotal()
+}
+
+class Proveedor{
+ -DireccionPostal direccionPostal
+ -String nombre
+ -String documento
+}
+
+class DireccionPostal{
+ -String calle
+ -int altura
+ -int piso
+ -String cpa
+ -String ciudad
+ -String provincia
+ -String pais
+ +getPaises()
+ +getProvincias()
+}
+
+interface DocumentoComercial{
+   +Int getNumeroReferencia()
+  }
+
+class Factura implements DocumentoComercial{
+ +Int getNumeroReferencia()
+  }
+
+class NotaDebito implements DocumentoComercial{
+ +Int getNumeroReferencia()
+  }
+
+class NotaCredito implements DocumentoComercial{
+ +Int getNumeroReferencia()
+  }
+
+class Recibo implements DocumentoComercial{
+ +Int getNumeroReferencia()
+  }
+
+class Cheque implements DocumentoComercial{
+ +Int getNumeroReferencia()
+  }
+
+class Pagare implements DocumentoComercial{
+ +Int getNumeroReferencia()
+  }
+
+class OrdenDeCompra implements DocumentoComercial{
+ +Int getNumeroReferencia()
+  }
+
+class BoletaDepositoBancario implements DocumentoComercial{
+ +Int getNumeroReferencia()
+  }
+
+class Remito implements DocumentoComercial{
+ +Int getNumeroReferencia()
+  }
+
+interface MedioDePago{
+ +getReferenciaDePago()
+  }
+
+  class TarjetaDeCredito implements MedioDePago {
+    -Tarjeta tipoTarjeta
+    -Int numeroTarjeta
+    +getReferenciaDePago()
+  }
+
+  class TarjetaDebito implements MedioDePago{
+    -Tarjeta tipoTarjeta 
+    -Int numeroTarjeta
+    +getReferenciaDePago()
+}
+
+class Efectivo implements MedioDePago{ 
+  +getReferenciaDePago()
+}
+
+class Cajero implements MedioDePago{
+  +getReferenciaDePago()
+}
+
+class DineroEnCuenta implements MedioDePago{
+  +getReferenciaDePago()
+}
+
+interface ValidadorPost{
+ +void notificarValidadorDeCompra()
+}
+
+
+Interface APIMLibre {
+ + List<Map<int, String>> getPaises()
+ + List<Map<int, String>> getProvincias()
+ + List<Map<int, String>> getMonedas()
+}
+
+Compra "1"-->"*" Item 
+Compra --> APIMLibre
+DireccionPostal --> APIMLibre
+Moneda --> APIMLibre
+Compra --> Moneda
+Presupuesto --> Moneda
+EntidadJuridica ->"1" CategoriaEntidadJuridica
+Usuario ..> ValidarContrasenia
+Criterio <-- CompraConPresupuesto
+ValidadorPost <-- CompraConPresupuesto
+ValidadorPost <|.. Usuario
+Compra --> MedioDePago
+Usuario -->"1" RolUsuario
+CompraConPresupuesto --> Usuario
+Presupuesto "1"-->"*" Item
+EntidadJuridica --> DireccionPostal
+EntidadBase <-- EntidadJuridica 
+Entidad "*"<--"1" Organizacion
+Compra --> DocumentoComercial
+Organizacion "1"<-->"*" Egreso
+Compra --> Proveedor
+Proveedor --> DireccionPostal
+CompraConPresupuesto <--> Presupuesto
+Empresa --> CategorizacionAFIP
+@enduml
