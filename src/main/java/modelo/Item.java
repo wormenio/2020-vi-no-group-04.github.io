@@ -1,16 +1,11 @@
 package modelo;
 
 public class Item {
-	double importe;
-	String detalle;
+	float valor;
+	String descripcion;
 	
-	public double importe() {
-		return importe;
-	}
-	
-	public String detalle()
-	{
-		return detalle;
+	public float GetValor() {
+		return valor;
 	}
 
 }
