@@ -7,10 +7,12 @@ import org.junit.Test;
 
 public class TestUsuario {
     private Usuario unUsuario;
+    BuzonMensajes buzonDeMensajes;
 
     @Before
     public void init() {
-        unUsuario = new Usuario();
+        buzonDeMensajes = new BuzonMensajes();
+        unUsuario = new Usuario(buzonDeMensajes);
     }
 
     @Test
