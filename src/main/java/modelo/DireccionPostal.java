@@ -8,6 +8,7 @@ public class DireccionPostal {
 	SeleccionadorPais seleccionadorPais = new SeleccionadorPais();
 	
 	public DireccionPostal(String id, String calle, String altura, String piso) {
+		
 		datosPais = seleccionadorPais.seleccionar(id);
 
 	}
