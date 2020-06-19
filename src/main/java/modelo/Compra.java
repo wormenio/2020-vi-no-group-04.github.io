@@ -14,6 +14,9 @@ public abstract class Compra implements Egreso{
 	 Date fecha;
 	 MedioDePago medioDePago;
 	 Moneda moneda;
+	 BuzonMensajes buzonDeMensajes;
+
+	
 	 
 	 public DocumentoComercial getDocumentoComercial()
 	 {

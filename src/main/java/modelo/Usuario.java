@@ -3,12 +3,18 @@ package modelo;
 import modelo.ValidarContrasenia.*;
 import modelo.UsuarioException;
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class Usuario{
     RolUsuario rolUsuario;
 	String nombreUsuario;
 	ArrayList<String> listaUsuarios = new ArrayList<String>();
+	BuzonMensajes buzonDeMensajes;
+
+	public Usuario(BuzonMensajes buzon) {
+		buzonDeMensajes = buzon;
+	}
 
 	public void registrarUsuario(String nombreUsuario, RolUsuario rolUsuario, String contrasenia){
 	 	try {
@@ -60,6 +66,12 @@ public class Usuario{
 
 	private void registrarContrasenia(String contrasenia){
 	 	//TODO
+	}
+    
+	public List<String> verBuzonDeMensajes() {
+		
+		return	buzonDeMensajes.verMensajesDeUsuario(this);
+	
 	}
 
 }
