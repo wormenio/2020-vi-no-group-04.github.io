@@ -9,9 +9,10 @@ public class Presupuesto {
 	Moneda moneda;
 	
 	
-	public float GetTotal() {
+	public Double getTotal() {
 		double importeTotal = items.stream()
-			      .mapToDouble(o -> o.GetValor())
+			      .mapToDouble(o -> o.getImporte())
 			      .sum();
+		return importeTotal;
 	}
 }

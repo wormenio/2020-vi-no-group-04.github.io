@@ -4,15 +4,9 @@ import java.util.Date;
 
 public interface Egreso{
 	
-	
-	@Override
-	public DocumentoComercial GetDocumentoComercial() {
-		Egreso		
-		return null;
-	}
-	
-	@Override
-	public DocumentoComercial documentoComercial() {
-		return documentoComercial;
-	}
+	public DocumentoComercial getDocumentoComercial();	
+	public Date getFechaEgreso();
+	public MedioDePago getMedioDePagoEgreso();
+	public Double getTotalEgreso();
+	public String getDetalleEgreso();
 }
