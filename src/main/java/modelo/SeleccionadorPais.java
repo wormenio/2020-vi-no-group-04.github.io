@@ -18,7 +18,7 @@ public class SeleccionadorPais {
 		Gson gson = new Gson();
 
         String paises = jsonPaises.getEntity(String.class);
-    	
+    
     	Type listType = new TypeToken<ArrayList<DatosPais>>(){}.getType();
     	ArrayList<DatosPais> listadoPaises = gson.fromJson(paises, listType); 
     	return listadoPaises;
