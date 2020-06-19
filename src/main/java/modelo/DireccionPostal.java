@@ -4,7 +4,7 @@ public class DireccionPostal {
 	String calle;
 	int altura;
 	String piso;
-	DatosPais datosPais;
+	Pais datosPais;
 	SeleccionadorPais seleccionadorPais = new SeleccionadorPais();
 	
 	public DireccionPostal(String id, String calle, String altura, String piso) {
