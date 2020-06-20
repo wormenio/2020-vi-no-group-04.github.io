@@ -3,14 +3,12 @@ package modelo;
 import java.util.List;
 
 public class Presupuesto {
-	CompraConPresupuesto compra;
 	List<Item> items;
 	float importeTotal;
 	Proveedor proveedor;
 	Moneda moneda;
 	
-	Presupuesto( CompraConPresupuesto compra, Proveedor proveedor, Moneda moneda ){
-		this.compra = compra;
+	Presupuesto( Proveedor proveedor, Moneda moneda ){
 		this.proveedor = proveedor;
 		this.moneda = moneda;
 	}

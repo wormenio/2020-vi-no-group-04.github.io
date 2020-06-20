@@ -24,14 +24,15 @@ public class CompraConPresupuesto extends Compra {
 	 }
 	 public boolean validarCompra(){		 
 
-		 boolean validacion=  this.validarCantidadDePresupuestos()  
+		 return this.validarCantidadDePresupuestos()  
 				&& this.validarPresupuestoAsignadoContenidoEnElListado() 
 				&& this.validarPorCriterioDeMenorValor();
 		 
-		 buzonDeMensajes.agregarNotificacion(this, validacion);
+		 // Remover, deberia estar en el main
+		 // buzonDeMensajes.agregarNotificacion(this, validacion);
 
 		 
-		 return validacion;
+		 //	return validacion;
 	 }
 	 
 	 public boolean validarCantidadDePresupuestos() {
@@ -44,7 +45,6 @@ public class CompraConPresupuesto extends Compra {
 	 
 	 public boolean validarPorCriterioDeMenorValor() {
 		 
-		 boolean validoCriterioMinimoPresupuesto = false;
 		 
 		 if(this.criterio == Criterio.MENOR_VALOR) {			
 	
@@ -53,16 +53,16 @@ public class CompraConPresupuesto extends Compra {
 			      .min(Comparator.comparing(Presupuesto::getTotal))
 			      .orElseThrow(null);
 			 				 
-			    validoCriterioMinimoPresupuesto = minPresupuesto.compra.getTotalEgreso() == this.presupuestoAsignado.compra.getTotalEgreso();
+			    return minPresupuesto == this.presupuestoAsignado;
 		 }
 		 
-		 return validoCriterioMinimoPresupuesto;
+		 return false;
 		 
 	 }
 	 
 	 public void agregarPresupuesto( float importePresupuesto, Proveedor proveedor, Moneda moneda )
 	 {
-		 Presupuesto presupuesto = new Presupuesto(this,proveedor,moneda);
+		 Presupuesto presupuesto = new Presupuesto(proveedor,moneda);
 		 this.presupuestos.add(presupuesto);
 		 
 	 }

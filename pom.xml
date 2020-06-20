@@ -17,7 +17,7 @@
       </executions>
       <configuration>
         <descriptorRefs>
-          <descriptorRef>jar-proceso-validador-compras</descriptorRef>
+          <descriptorRef>jar-with-dependencies</descriptorRef>
         </descriptorRefs>
         <archive>
           <manifest>

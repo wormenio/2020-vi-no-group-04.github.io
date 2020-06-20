@@ -5,6 +5,7 @@ import modelo.UsuarioException;
 import java.util.ArrayList;
 import java.util.List;
 
+// Revisar todo lo que esta aca
 
 public class Usuario{
     RolUsuario rolUsuario;
@@ -35,14 +36,15 @@ public class Usuario{
 		return nombreUsuario;
 	}
 
-	public  void validarContrasenia(String contrasenia) {
+	public void validarContrasenia(String contrasenia) {
 	 	ArrayList<ValidarContrasenia> listValidarContrasenia = new ArrayList<ValidarContrasenia>();
 
 		ValidarLongitudMinima validarLongitudMinima = new ValidarLongitudMinima();
 		ValidarCaracteresRepetidos validarCaracteresRepetidos = new ValidarCaracteresRepetidos();
 		ValidarUnNumeroUnaLetra validarUnNumeroUnaLetra = new ValidarUnNumeroUnaLetra();
 		ValidarContraseniaDebil validarContraseniaDebil = new ValidarContraseniaDebil();
-
+		
+		// Usar Arrays.asList
 		listValidarContrasenia.add(validarLongitudMinima);
 		listValidarContrasenia.add(validarCaracteresRepetidos);
 		listValidarContrasenia.add(validarUnNumeroUnaLetra);
