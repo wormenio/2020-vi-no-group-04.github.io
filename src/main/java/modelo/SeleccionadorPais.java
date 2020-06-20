@@ -9,27 +9,28 @@ import com.google.gson.reflect.TypeToken;
 import com.sun.jersey.api.client.ClientResponse;
 
 public class SeleccionadorPais {
-    List<DatosPais> paises;
+    List<Pais> paises;
     APIMlibre api = new APIMlibre();
 	
 	
-	public List<DatosPais> objetizarPaises(){
+	public List<PaisJson> objetizarPaises(){
 		ClientResponse jsonPaises = api.verPaisesAPI();
 		Gson gson = new Gson();
 
         String paises = jsonPaises.getEntity(String.class);
     
-    	Type listType = new TypeToken<ArrayList<DatosPais>>(){}.getType();
-    	ArrayList<DatosPais> listadoPaises = gson.fromJson(paises, listType); 
+    	Type listType = new TypeToken<ArrayList<PaisJson>>(){}.getType();
+    	ArrayList<PaisJson> listadoPaises = gson.fromJson(paises, listType); 
     	return listadoPaises;
 	}
 	
-	public DatosPais seleccionar(String id) {
+	public Pais seleccionar(String id) {
 		
 		
 		for(int i= 0; i< this.objetizarPaises().size(); i++) {
 			if(this.objetizarPaises().get(i).verID() == id) {
-				return this.objetizarPaises().get(i);
+				 Pais pais = new Pais (this.objetizarPaises().get(i).verNombre(), this.objetizarPaises().get(i).verMoneda());
+				 return pais;
 			}
 		}
 		return null;
