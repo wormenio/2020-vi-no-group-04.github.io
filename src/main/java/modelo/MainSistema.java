@@ -2,13 +2,17 @@ package modelo;
 
 public class MainSistema {
 	public static void main(String[] args) {
-		BuzonMensajes buzonDeMensajes = new BuzonMensajes();
-		CompraConPresupuesto compraPrimera = new  CompraConPresupuesto(buzonDeMensajes);
-		Usuario usuarioPrimero = new Usuario(buzonDeMensajes);
 		
-		Boolean validacion = compraPrimera.validarCompra();
+		RepositorioCompras repositorio = new RepositorioCompras();
 		
-		usuarioPrimero.verBuzonDeMensajes();
+		CompraConPresupuesto compraPrimera = new  CompraConPresupuesto();
+
+		repositorio.agregarCompra(compraPrimera);
+		
+		BuzonMensajes buzonDeMensajes = new BuzonMensajes(repositorio);
+		
+		buzonDeMensajes.enviarNotificaciones();
+		
 	}
 
 }

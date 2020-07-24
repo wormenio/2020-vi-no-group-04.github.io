@@ -9,8 +9,9 @@ import java.util.List;
 public class Usuario{
     RolUsuario rolUsuario;
 	String nombreUsuario;
+    List<String> notificacionCompras = new ArrayList<String>();
 	//ArrayList<String> listaUsuarios = new ArrayList<String>();
-	BuzonMensajes buzonDeMensajes;
+	//BuzonMensajes buzonDeMensajes;
 
 	public Usuario(String nombreUsuario, RolUsuario rolUsuario, String contrasenia){
 		try {
@@ -26,6 +27,7 @@ public class Usuario{
 		}
 	}
 
+	
 /*
 	public Usuario(BuzonMensajes buzon) {
 		buzonDeMensajes = buzon;
@@ -68,6 +70,9 @@ public class Usuario{
 
 	}
 
+	public void agregarNotificacion(String idCompra) {
+		notificacionCompras.add(idCompra);
+	}
 /*
 	private void verificarSiExisteUsuario(String usuario) {
 		 if (listaUsuarios.contains(usuario)) {
@@ -85,11 +90,11 @@ public class Usuario{
 		//TODO
 	}
     
-	public List<String> verBuzonDeMensajes() {
+/*	public List<String> verBuzonDeMensajes() {
 		
 		return	buzonDeMensajes.verMensajesDeUsuario(this);
 	
-	}
+	}*/
 
 }
 

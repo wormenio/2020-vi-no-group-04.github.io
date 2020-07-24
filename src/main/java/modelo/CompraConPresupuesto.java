@@ -4,10 +4,10 @@ import java.util.Comparator;
 import java.util.List;
 
 public class CompraConPresupuesto extends Compra {
-	public CompraConPresupuesto(BuzonMensajes buzon) {
+	/*public CompraConPresupuesto(BuzonMensajes buzon) {
 	//	buzonDeMensajes = buzon;
 		// TODO Auto-generated constructor stub
-	}
+	}*/
 
 	static final int cantidadPresupuestosRequeridos = 2;
 	Criterio criterio;
@@ -19,6 +19,9 @@ public class CompraConPresupuesto extends Compra {
 		 return this.usuariosHabilitados.contains(usuario);
 	 }
 	 
+	public List<Usuario> usuariosHabilitados(){
+		return usuariosHabilitados;
+	}
 	 public void hacerRevisor(Usuario usuario) {
 		 this.usuariosHabilitados.add(usuario);
 	 }
