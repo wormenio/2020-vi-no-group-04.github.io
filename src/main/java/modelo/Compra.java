@@ -5,7 +5,7 @@ import modelo.MedioDePago.MedioDePago;
 
 import java.util.*;
 
-public abstract class Compra implements Egreso{
+public abstract class Compra{
 	 String idCompra;
 	 Proveedor proveedor;
 	 Map<Item, Integer> items = new HashMap<Item, Integer>();
@@ -18,7 +18,7 @@ public abstract class Compra implements Egreso{
 	 Boolean requiere_presupuesto;
 	 Entidad entidad;
 	 List<Presupuesto> presupuestos = new ArrayList<>();
-	 Map<Integer, String> etiquetas;
+	 int etiqueta;
 
 	public Proveedor getProveedor() {
 		return proveedor;
@@ -62,11 +62,13 @@ public abstract class Compra implements Egreso{
 	 	presupuestos.add(unPresupuesto);
 	 }
 
-     public void etiquetarEgreso() {
-    	 
+     public void etiquetarEgreso(int codigoEtiqueta) {
+    	 this.etiqueta = codigoEtiqueta;
      }
-	 //TODO
-	//TPA 2 - 3) Se desea verificar las siguientes condiciones en los egresos y los presupuestos:
+     
+     public int getEtiqueta(){
+         return this.etiqueta;
+     }
 
 
 }

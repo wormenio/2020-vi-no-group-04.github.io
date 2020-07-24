@@ -10,6 +10,7 @@ public class RepositorioCompras {
 	public void agregarCompra(CompraConPresupuesto compra) {
 		compras.add(compra);
 	}
+        
 	public List<CompraConPresupuesto> listadoCompras(){
 		return compras;
 	}

@@ -4,7 +4,8 @@ import java.util.ArrayList;
 
 public class Organizacion {
 	ArrayList<Organizacion> entidades = new ArrayList<Organizacion>();
-	ArrayList<Egreso> egresos = new ArrayList<Egreso>();
+	ArrayList<Compra> egresos = new ArrayList<Compra>();
+        ArrayList<CategoriaEntidad> categorias = new ArrayList<CategoriaEntidad>();
 	
 //	static ArrayList<Usuario> usuarios= new ArrayList<Usuario>();
 //

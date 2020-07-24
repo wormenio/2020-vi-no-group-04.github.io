@@ -2,6 +2,8 @@ package modelo;
 
 import java.util.Comparator;
 import java.util.List;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 public class CompraConPresupuesto extends Compra {
 	/*public CompraConPresupuesto(BuzonMensajes buzon) {
@@ -69,4 +71,20 @@ public class CompraConPresupuesto extends Compra {
 		 this.presupuestos.add(presupuesto);
 		 
 	 }
+         
+        public int getEtiqueta(){
+         return this.etiqueta;
+        }
+        
+        public int getAnio(){
+            Calendar calendar = new GregorianCalendar();
+            calendar.setTime(this.fecha_egreso);
+            return calendar.get(Calendar.YEAR);            
+        }
+        
+        public int getMes(){
+            Calendar calendar = new GregorianCalendar();
+            calendar.setTime(this.fecha_egreso);
+            return calendar.get(Calendar.MONTH);
+        }
 }

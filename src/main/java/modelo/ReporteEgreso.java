@@ -1,20 +1,19 @@
 package modelo;
 import java.util.List;
 
-public class ReporteEgreso {
-	
-	int anio;
-	int mes;
+public class ReporteEgreso {	
+    int anio;
+    int mes;
     EtiquetaEgreso etiquetaEgreso;
     float monto;
-    RepositorioCompras compras;
+    RepositorioCompras repoCompras;
     
-   List<Compra> VerReporteEgreso(this.etiquetaEgreso){
-	   
-	   return compras.listadoCompras().stream().filter()
-	   
-	   
-    	
+   public List<CompraConPresupuesto> VerReporteEgreso(int mes, int anio, int etiqueta){            
+      return (List<CompraConPresupuesto>)repoCompras.listadoCompras().stream().filter(
+              x -> x.getEtiqueta() == etiqueta 
+              && x.getAnio() == anio 
+              && x.getMes() == mes
+      );
     }
 	
 	
