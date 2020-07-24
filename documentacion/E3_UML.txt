@@ -37,6 +37,27 @@ class CaracteresRepetidos implements ValidarContrasenia{
 class Organizacion{
  -List<Entidad> entidades
  -List<compra> compras
+ -List<CategoriaEntidad> categoriaEntidad
+}
+
+class CategoriaEntidad {
+ -Map<codigo, descripcion>
+ +getCategoriasEntidad()
+ +agregarCategoria()
+ +eliminarCategoria()
+ +aplicarReglaCategoria()
+}
+
+class ReglasParaEgresos {
+ +reglasParaEgresos(Entidad)
+}
+
+class ReglasParaEntidadJuridica {
+ +reglasParaEntidadJuridica(Entidad)
+}
+
+class ReglasParaEntidadBase {
+ +reglasParaEntidadBase(Entidad)
 }
 
 interface Entidad{
@@ -243,6 +264,10 @@ class ReporteEgreso {
  +VerReporteEgreso()
 }
 
+Organizacion --> CategoriaEntidad
+CategoriaEntidad ..> ReglasParaEgresos 
+CategoriaEntidad ..> ReglasParaEntidadJuridica
+CategoriaEntidad ..> ReglasParaEntidadBase
 Organizacion "1"-->"*" ReporteEgreso
 ReporteEgreso ..> EtiquetaEgreso
 Compra --> EtiquetaEgreso
