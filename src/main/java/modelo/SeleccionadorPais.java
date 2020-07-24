@@ -24,15 +24,14 @@ public class SeleccionadorPais {
     	return listadoPaises;
 	}
 	
-	public Pais seleccionar(String id) {
+	public List<Pais> paisesSistema(String id) {
+		
+		this.objetizarPaises().forEach((paisML)->{
+									Pais pais = new Pais (paisML.verNombre(), paisML.verMoneda(),paisML.verID(), paisML.verLocale());
+									paises.add(pais);}
+		);
+	return paises;
 		
 		
-		for(int i= 0; i< this.objetizarPaises().size(); i++) {
-			if(this.objetizarPaises().get(i).verID() == id) {
-				 Pais pais = new Pais (this.objetizarPaises().get(i).verNombre(), this.objetizarPaises().get(i).verMoneda());
-				 return pais;
-			}
-		}
-		return null;
 	}
 }

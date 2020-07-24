@@ -10,6 +10,10 @@ public class PaisJson {
 		
 	}
 	
+	public String verLocale() {
+		return locale;
+		
+	}
 	public String verMoneda() {
 		return currency_id;
 	}

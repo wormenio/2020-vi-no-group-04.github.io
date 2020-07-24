@@ -6,7 +6,7 @@ import modelo.MedioDePago.MedioDePago;
 import java.util.*;
 
 public abstract class Compra implements Egreso{
-	
+	 String idCompra;
 	 Proveedor proveedor;
 	 Map<Item, Integer> items = new HashMap<Item, Integer>();
 	 DocumentoComercial documentoComercial;
@@ -22,12 +22,14 @@ public abstract class Compra implements Egreso{
 	public Proveedor getProveedor() {
 		return proveedor;
 	}
+	public String getId() {
+		return idCompra;
+	}
 
 	public void setProveedor( Proveedor unProveedor){
 		proveedor = unProveedor;
 	}
 
-	// BuzonMensajes buzonDeMensajes;
 
 	 public DocumentoComercial getDocumentoComercial()
 	 {

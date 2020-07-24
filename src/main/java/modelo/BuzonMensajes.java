@@ -1,18 +1,31 @@
 package modelo;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.*; 
-import org.javatuples.*;
+
+//import org.javatuples.*;
 
 public class BuzonMensajes {
 
 	
-    List<Pair<CompraConPresupuesto,Boolean>> listaDeCompras = new ArrayList<Pair<CompraConPresupuesto,Boolean>>();
+  //  List<Pair<CompraConPresupuesto,Boolean>> listaDeCompras = new ArrayList<Pair<CompraConPresupuesto,Boolean>>();
    
 	
     List<String> listaNotificaciones = new ArrayList<String>();
+    RepositorioCompras repositorioCompras;
     
-    
-	public void agregarNotificacion(CompraConPresupuesto compra, Boolean validacion) {
+	public BuzonMensajes(RepositorioCompras repositorio) {
+		repositorioCompras = repositorio;
+	}
+
+    public void enviarNotificaciones() {
+    	repositorioCompras.listadoCompras().forEach((compra)->{if(compra.validarCompra()) {
+    													compra.usuariosHabilitados().forEach((usuario)->usuario.agregarNotificacion(compra.getId()));
+    													}
+    	
+    													});
+    }
+
+/*	public void agregarNotificacion(CompraConPresupuesto compra, Boolean validacion) {
 		Pair<CompraConPresupuesto,Boolean> compraValidada = new Pair<CompraConPresupuesto,Boolean>(compra,validacion);
 	
 		listaDeCompras.add(compraValidada);
@@ -37,6 +50,6 @@ public class BuzonMensajes {
 		
 		return listaNotificaciones;
 			
-	}
+	}*/
 	
 }
