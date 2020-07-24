@@ -7,9 +7,11 @@ public class DireccionPostal {
 	Pais datosPais;
 	SeleccionadorPais seleccionadorPais = new SeleccionadorPais();
 	
-	public DireccionPostal(String id, String calle, String altura, String piso) {
+	public DireccionPostal(Pais pais, String calle, String altura, String piso) {
 		
-		datosPais = seleccionadorPais.seleccionar(id);
+		this.datosPais = pais;
+		this.calle= calle;
+		this.piso = piso;
 
 	}
 }

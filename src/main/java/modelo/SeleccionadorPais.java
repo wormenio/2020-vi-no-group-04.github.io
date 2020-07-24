@@ -24,7 +24,7 @@ public class SeleccionadorPais {
     	return listadoPaises;
 	}
 	
-	public List<Pais> paisesSistema(String id) {
+	public List<Pais> paisesSistema() {
 		
 		this.objetizarPaises().forEach((paisML)->{
 									Pais pais = new Pais (paisML.verNombre(), paisML.verMoneda(),paisML.verID(), paisML.verLocale());
