@@ -30,7 +30,6 @@ public abstract class Compra implements Egreso{
 		proveedor = unProveedor;
 	}
 
-	// BuzonMensajes buzonDeMensajes;
 
 	 public DocumentoComercial getDocumentoComercial()
 	 {
