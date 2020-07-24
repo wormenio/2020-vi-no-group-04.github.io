@@ -18,6 +18,7 @@ public abstract class Compra implements Egreso{
 	 Boolean requiere_presupuesto;
 	 Entidad entidad;
 	 List<Presupuesto> presupuestos = new ArrayList<>();
+	 Map<Integer, String> etiquetas;
 
 	public Proveedor getProveedor() {
 		return proveedor;
@@ -61,7 +62,9 @@ public abstract class Compra implements Egreso{
 	 	presupuestos.add(unPresupuesto);
 	 }
 
-
+     public void etiquetarEgreso() {
+    	 
+     }
 	 //TODO
 	//TPA 2 - 3) Se desea verificar las siguientes condiciones en los egresos y los presupuestos:
 
