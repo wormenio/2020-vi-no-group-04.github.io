@@ -7,8 +7,7 @@ import java.util.GregorianCalendar;
 
 public class CompraConPresupuesto extends Compra {
 	/*public CompraConPresupuesto(BuzonMensajes buzon) {
-	//	buzonDeMensajes = buzon;
-		// TODO Auto-generated constructor stub
+	
 	}*/
 
 	static final int cantidadPresupuestosRequeridos = 2;
@@ -33,11 +32,6 @@ public class CompraConPresupuesto extends Compra {
 				&& this.validarPresupuestoAsignadoContenidoEnElListado() 
 				&& this.validarPorCriterioDeMenorValor();
 		 
-		 // Remover, deberia estar en el main
-		 // buzonDeMensajes.agregarNotificacion(this, validacion);
-
-		 
-		 //	return validacion;
 	 }
 	 
 	 public boolean validarCantidadDePresupuestos() {
