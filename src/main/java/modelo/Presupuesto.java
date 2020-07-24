@@ -12,10 +12,7 @@ public class Presupuesto {
 		this.proveedor = proveedor;
 		this.moneda = moneda;
 	}
-	
-//	public float getTotal() {
-//		return importeTotal;
-//	}
+
 	
 	public Double getTotal() {
 		double importeTotal = items.stream()

@@ -1,23 +1,34 @@
 package modelo;
 
-import java.util.Date;
+import modelo.DocumentoComercial.DocumentoComercial;
+import modelo.MedioDePago.MedioDePago;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 public abstract class Compra implements Egreso{
 	
 	 Proveedor proveedor;
-	 List<Item> items = new ArrayList<Item> ();
+	 Map<Item, Integer> items = new HashMap<Item, Integer>();
 	 DocumentoComercial documentoComercial;
-	 Date fecha;
+	 Date fecha_egreso;
 	 MedioDePago medioDePago;
 	 Moneda moneda;
-	 BuzonMensajes buzonDeMensajes;
+	 float monto_total;
+	 Integer cantidad_presupuestos;
+	 Boolean requiere_presupuesto;
+	 Entidad entidad;
+	 List<Presupuesto> presupuestos = new ArrayList<>();
 
-	
-	 
+	public Proveedor getProveedor() {
+		return proveedor;
+	}
+
+	public void setProveedor( Proveedor unProveedor){
+		proveedor = unProveedor;
+	}
+
+	// BuzonMensajes buzonDeMensajes;
+
 	 public DocumentoComercial getDocumentoComercial()
 	 {
 		return documentoComercial;
@@ -25,7 +36,7 @@ public abstract class Compra implements Egreso{
 	 
 	 public Date getFechaEgreso()
 	 {
-		 return fecha;
+		 return fecha_egreso;
 	 }
 	 
 	 public MedioDePago getMedioDePagoEgreso()
@@ -34,13 +45,23 @@ public abstract class Compra implements Egreso{
 	 }
 	 
 	 public float getTotalEgreso() {
-		 return (float) items.stream().mapToDouble( item -> item.getImporte() ).sum();
+
+	 //	return (float) items.stream().mapToDouble( item -> item.getImporte() ).sum();
+		 return 0;
 	 }
 	 
 	 public String getDetalleEgreso()
 	 {
 		 return "";
 	 }
-	 
+
+	 public void altaPresupuesto(Presupuesto unPresupuesto){
+	 	presupuestos.add(unPresupuesto);
+	 }
+
+
+	 //TODO
+	//TPA 2 - 3) Se desea verificar las siguientes condiciones en los egresos y los presupuestos:
+
 
 }

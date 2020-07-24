@@ -1,4 +1,4 @@
-package modelo;
+package modelo.MedioDePago;
 
 public interface MedioDePago {
 	public int pagarMonto(int monto);

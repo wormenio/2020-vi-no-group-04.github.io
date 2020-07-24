@@ -5,7 +5,7 @@ import java.util.List;
 
 public class CompraConPresupuesto extends Compra {
 	public CompraConPresupuesto(BuzonMensajes buzon) {
-		buzonDeMensajes = buzon;
+	//	buzonDeMensajes = buzon;
 		// TODO Auto-generated constructor stub
 	}
 

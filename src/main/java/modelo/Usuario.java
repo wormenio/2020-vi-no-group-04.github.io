@@ -5,14 +5,28 @@ import modelo.UsuarioException;
 import java.util.ArrayList;
 import java.util.List;
 
-// Revisar todo lo que esta aca
 
 public class Usuario{
     RolUsuario rolUsuario;
 	String nombreUsuario;
-	ArrayList<String> listaUsuarios = new ArrayList<String>();
+	//ArrayList<String> listaUsuarios = new ArrayList<String>();
 	BuzonMensajes buzonDeMensajes;
 
+	public Usuario(String nombreUsuario, RolUsuario rolUsuario, String contrasenia){
+		try {
+			//verificarSiExisteUsuario(nombreUsuario);
+			validarContrasenia(contrasenia);
+		//	registrarUsuario(nombreUsuario);
+			registrarContrasenia(contrasenia);
+			this.nombreUsuario = nombreUsuario;
+			this.rolUsuario = rolUsuario;
+		}
+		catch (Exception e){
+			System.out.println("No se puede crear el Usuario, motivo: "+e.getMessage());
+		}
+	}
+
+/*
 	public Usuario(BuzonMensajes buzon) {
 		buzonDeMensajes = buzon;
 	}
@@ -29,8 +43,8 @@ public class Usuario{
 	 	catch (Exception e){
 			System.out.println("No se puede crear el Usuario, motivo: "+e.getMessage());
 		}
-
 	}
+*/
 
 	public String getNombreUsuario() {
 		return nombreUsuario;
@@ -54,7 +68,7 @@ public class Usuario{
 
 	}
 
-
+/*
 	private void verificarSiExisteUsuario(String usuario) {
 		 if (listaUsuarios.contains(usuario)) {
 		 //	System.out.println("no se");
@@ -66,8 +80,9 @@ public class Usuario{
 		 listaUsuarios.add(nombreUsuario);
 	 }
 
+ */
 	private void registrarContrasenia(String contrasenia){
-	 	//TODO
+		//TODO
 	}
     
 	public List<String> verBuzonDeMensajes() {

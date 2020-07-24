@@ -1,4 +1,4 @@
-package modelo;
+package modelo.DocumentoComercial;
 
 public interface DocumentoComercial {
 	int numero();

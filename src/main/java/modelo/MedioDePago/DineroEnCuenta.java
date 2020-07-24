@@ -1,6 +1,8 @@
-package modelo;
+package modelo.MedioDePago;
 
-public class Efectivo implements MedioDePago {
+import modelo.MedioDePago.MedioDePago;
+
+public class DineroEnCuenta implements MedioDePago {
 
 	@Override
 	public int pagarMonto(int monto) {

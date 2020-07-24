@@ -1,4 +1,6 @@
-package modelo;
+package modelo.DocumentoComercial;
+
+import modelo.DocumentoComercial.DocumentoComercial;
 
 public class NotaCredito implements DocumentoComercial {
 	int nroNotaCredito;
