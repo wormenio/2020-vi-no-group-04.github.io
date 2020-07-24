@@ -7,7 +7,7 @@
  *[x] Remover completamente o delegar criterio 
  *[x] Remover buzon del usuario 
  *[x] Remover buzon de la compra 
- *[ ] Implementar el pais y moneda en el código
+ *[x] Implementar el pais y moneda en el código
      
  *[x] https://github.com/dds-utn/2020-vi-no-group-04/issues/8 -Validacion de usuario #8
     *[x] Registrar usuario deberia ser llamado en el constructor 

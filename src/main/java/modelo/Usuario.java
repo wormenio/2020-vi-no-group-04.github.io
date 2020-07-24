@@ -10,14 +10,10 @@ public class Usuario{
     RolUsuario rolUsuario;
 	String nombreUsuario;
     List<String> notificacionCompras = new ArrayList<String>();
-	//ArrayList<String> listaUsuarios = new ArrayList<String>();
-	//BuzonMensajes buzonDeMensajes;
 
 	public Usuario(String nombreUsuario, RolUsuario rolUsuario, String contrasenia){
 		try {
-			//verificarSiExisteUsuario(nombreUsuario);
 			validarContrasenia(contrasenia);
-		//	registrarUsuario(nombreUsuario);
 			registrarContrasenia(contrasenia);
 			this.nombreUsuario = nombreUsuario;
 			this.rolUsuario = rolUsuario;
@@ -27,26 +23,6 @@ public class Usuario{
 		}
 	}
 
-	
-/*
-	public Usuario(BuzonMensajes buzon) {
-		buzonDeMensajes = buzon;
-	}
-
-	public void registrarUsuario(String nombreUsuario, RolUsuario rolUsuario, String contrasenia){
-	 	try {
-			verificarSiExisteUsuario(nombreUsuario);
-			validarContrasenia(contrasenia);
-			registrarUsuario(nombreUsuario);
-			registrarContrasenia(contrasenia);
-			this.nombreUsuario = nombreUsuario;
-			this.rolUsuario = rolUsuario;
-		}
-	 	catch (Exception e){
-			System.out.println("No se puede crear el Usuario, motivo: "+e.getMessage());
-		}
-	}
-*/
 
 	public String getNombreUsuario() {
 		return nombreUsuario;

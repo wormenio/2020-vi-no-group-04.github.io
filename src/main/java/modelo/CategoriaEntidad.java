@@ -32,20 +32,39 @@ public class CategoriaEntidad {
 }
 
 class ReglaAceptarNuevosEgresos {
-    boolean aplicarRegla(){
-        return false;
+    Entidad entidad;
+    public ReglaAceptarNuevosEgresos( Entidad entidad){
+       this.entidad = entidad;
+    }
+
+    boolean aplicarRegla(Integer monto_compra, Entidad entidad){
+        return entidad.getMontoMaximoEgreso() > monto_compra;
     }
 }
 
 class ReglaAgregarEntidadBaseAEntidadJuridica {
-    boolean aplicarRegla(){
-        return false;
+    Entidad entidad;
+    public ReglaAgregarEntidadBaseAEntidadJuridica( Entidad entidad){
+        this.entidad = entidad;
+    }
+    boolean aplicarRegla(Integer codigo, String descripcion){
+       if( entidad.getTipoEntidad() =="BASE"){
+           return false;
+       }
+        return true;
     }
 }
 
 class ReglaBloquearEntidadBaseEnEntidadJuridica {
+    Entidad entidad;
+    public ReglaBloquearEntidadBaseEnEntidadJuridica( Entidad entidad){
+        this.entidad = entidad;
+    }
     boolean aplicarRegla(){
-        return false;
+        if( entidad.getTipoEntidad() == "ENTIDADJURIDICA"){
+            return false;
+        }
+        return true;
     }
 }
 

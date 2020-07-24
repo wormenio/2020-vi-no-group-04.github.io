@@ -5,6 +5,7 @@ import java.util.List;
 
 public class EntidadJuridica implements Entidad {
 	EntidadJuridica agrupacion;
+	static final String tipoEntidad = "ENTIDADJURIDICA";
 	int cuit;
 	String razonSocial;
 	DireccionPostal direccionPostal;
@@ -12,6 +13,7 @@ public class EntidadJuridica implements Entidad {
 	CategoriaEntidadJuridica categoria;
 	List<EntidadBase> conformadaPor = new ArrayList<EntidadBase> ();
 	CategoriaEntidad categoriaEntidad;
+	Integer montoMaximoEgreso;
 	
 	public String getNombreFicticio()
 	{
@@ -20,5 +22,13 @@ public class EntidadJuridica implements Entidad {
 
 	public void categorizarEntidad(Integer codigoCategoria, ReglasDeNegocio reglasDeNegocio) {
 		categoriaEntidad = new CategoriaEntidad(codigoCategoria,reglasDeNegocio);
+	}
+
+	public Integer getMontoMaximoEgreso(){
+		return montoMaximoEgreso;
+	}
+
+	public String getTipoEntidad(){
+		return tipoEntidad;
 	}
 }
