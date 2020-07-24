@@ -1,5 +1,8 @@
 package modelo;
 
+import modelo.CategoriaEntidad.CategoriaEntidad;
+import modelo.CategoriaEntidad.ReglasDeNegocio;
+
 import java.util.ArrayList;
 import java.util.List;
 

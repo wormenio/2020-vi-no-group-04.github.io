@@ -1,5 +1,7 @@
 package modelo;
 
+import modelo.CategoriaEntidad.ReglasDeNegocio;
+
 public interface Entidad {
 	public String getNombreFicticio();
 

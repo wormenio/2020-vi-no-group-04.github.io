@@ -1,6 +1,7 @@
 package modelo;
 
-import com.sun.xml.internal.bind.v2.runtime.reflect.opt.Const;
+import modelo.CategoriaEntidad.CategoriaEntidad;
+import modelo.CategoriaEntidad.ReglasDeNegocio;
 
 public class EntidadBase implements Entidad {
 	EntidadJuridica agrupacion;

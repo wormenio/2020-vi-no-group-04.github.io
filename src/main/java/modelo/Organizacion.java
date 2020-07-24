@@ -1,5 +1,7 @@
 package modelo;
 
+import modelo.CategoriaEntidad.CategoriaEntidad;
+
 import java.util.ArrayList;
 
 public class Organizacion {
