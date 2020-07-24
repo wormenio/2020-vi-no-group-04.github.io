@@ -20,6 +20,7 @@ public abstract class Compra{
 	 List<Presupuesto> presupuestos = new ArrayList<>();
 	 int etiqueta;
 
+	 
 	public Proveedor getProveedor() {
 		return proveedor;
 	}
