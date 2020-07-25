@@ -34,4 +34,6 @@ public class EntidadJuridica implements Entidad {
 	public String getTipoEntidad(){
 		return tipoEntidad;
 	}
+        
+        //¿Como agrego una base aca? - Falta metodo
 }

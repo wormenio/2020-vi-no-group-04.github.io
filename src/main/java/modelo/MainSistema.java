@@ -21,7 +21,6 @@ public class MainSistema {
 		TimerTask tarea = new TimerTask(){
 	         public void run(){
 	     		buzonDeMensajes.enviarNotificaciones();
-
 	         }
 	     };
 		

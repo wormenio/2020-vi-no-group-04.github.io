@@ -25,10 +25,10 @@ public class SeleccionadorPais {
 	}
 	
 	public List<Pais> paisesSistema() {
-		
+		//FIXME:: MAP
 		this.objetizarPaises().forEach((paisML)->{
-									Pais pais = new Pais (paisML.verNombre(), paisML.verMoneda(),paisML.verID(), paisML.verLocale());
-									paises.add(pais);}
+		Pais pais = new Pais (paisML.verNombre(), paisML.verMoneda(),paisML.verID(), paisML.verLocale());
+		paises.add(pais);}
 		);
 	return paises;
 		

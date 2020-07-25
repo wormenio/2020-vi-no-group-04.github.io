@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class EtiquetaEgreso {
-		
+	//TODO: List<Etiqueta>
 	Map<Integer, String> etiquetas = new HashMap<Integer, String>();
 	
 	

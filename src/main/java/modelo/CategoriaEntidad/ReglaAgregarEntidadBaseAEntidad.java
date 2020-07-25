@@ -10,9 +10,6 @@ class ReglaAgregarEntidadBaseAEntidadJuridica {
     }
 
     boolean aplicarRegla(Integer codigo, String descripcion){
-        if( entidad.getTipoEntidad() =="BASE"){
-            return false;
-        }
-        return true;
+        return entidad.getTipoEntidad().equals("BASE");
     }
 }

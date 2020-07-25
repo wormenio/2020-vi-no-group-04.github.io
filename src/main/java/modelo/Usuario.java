@@ -19,7 +19,9 @@ public class Usuario{
 			this.rolUsuario = rolUsuario;
 		}
 		catch (Exception e){
-			System.out.println("No se puede crear el Usuario, motivo: "+e.getMessage());
+                    //TODO: Atrapar la excepción -- Borrar Try/Catch
+                    //NO TIENE SENTIDO
+			//System.out.println("No se puede crear el Usuario, motivo: "+e.getMessage());
 		}
 	}
 
