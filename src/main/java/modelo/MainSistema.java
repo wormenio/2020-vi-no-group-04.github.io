@@ -5,7 +5,8 @@ import java.util.TimerTask;
 
 public class MainSistema {
 	public static void main(String[] args) {
-		SeleccionadorPais generadorPaies = new SeleccionadorPais();
+		
+		/*SeleccionadorPais generadorPaies = new SeleccionadorPais();
 		List<Pais> paisesSistema = generadorPaies.paisesSistema();
 		
 		
@@ -29,7 +30,11 @@ public class MainSistema {
 
 	     repositorio.agregarCompra(compraSegunda);
 
-	    reloj.scheduleAtFixedRate(tarea, 0, 1000); 
+	    reloj.scheduleAtFixedRate(tarea, 0, 1000); */
+		SeleccionadorPais generadorPaies = new SeleccionadorPais();
+		List<Pais> paisesSistema = generadorPaies.paisesSistema();
+		
+	  System.out.print(paisesSistema.get(0).verNombre());	
 
 	}
 

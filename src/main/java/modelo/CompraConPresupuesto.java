@@ -2,6 +2,7 @@ package modelo;
 
 import java.util.Comparator;
 import java.util.List;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
@@ -14,7 +15,7 @@ public class CompraConPresupuesto extends Compra {
 	Criterio criterio;
 	List<Presupuesto> presupuestos;
 	Presupuesto presupuestoAsignado;
-	List<Usuario> usuariosHabilitados;
+	List<Usuario> usuariosHabilitados = new ArrayList<>();
 	
 	public boolean esRevisor(Usuario usuario) {
 		 return this.usuariosHabilitados.contains(usuario);
@@ -33,9 +34,11 @@ public class CompraConPresupuesto extends Compra {
 				&& this.validarPorCriterioDeMenorValor();
 		 
 	 }
-	 
+	 public int getCantidadPresupuestoRequeridos() {
+		 return cantidadPresupuestosRequeridos;
+	 }
 	 public boolean validarCantidadDePresupuestos() {
-		 return this.presupuestos.size() == CompraConPresupuesto.cantidadPresupuestosRequeridos;		 
+		 return this.presupuestos.size() == this.cantidadPresupuestosRequeridos;		 
 	 }
 	 
 	 public boolean validarPresupuestoAsignadoContenidoEnElListado() {

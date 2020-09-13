@@ -8,6 +8,8 @@ public class PaisJson {
 	
 	public PaisJson() {
 		
+		
+		
 	}
 	
 	public String verLocale() {
