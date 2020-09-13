@@ -11,7 +11,7 @@ public class CompraConPresupuesto extends Compra {
 	
 	}*/
 
-	static final int cantidadPresupuestosRequeridos = 2;
+	private int cantidadPresupuestosRequeridos = 2;
 	Criterio criterio;
 	List<Presupuesto> presupuestos;
 	Presupuesto presupuestoAsignado;
@@ -24,6 +24,11 @@ public class CompraConPresupuesto extends Compra {
 	public List<Usuario> usuariosHabilitados(){
 		return usuariosHabilitados;
 	}
+	
+	
+	
+	
+	
 	 public void hacerRevisor(Usuario usuario) {
 		 this.usuariosHabilitados.add(usuario);
 	 }
@@ -34,6 +39,7 @@ public class CompraConPresupuesto extends Compra {
 				&& this.validarPorCriterioDeMenorValor();
 		 
 	 }
+	 
 	 public int getCantidadPresupuestoRequeridos() {
 		 return cantidadPresupuestosRequeridos;
 	 }
