@@ -16,17 +16,17 @@ public class  APIMlibre {
 	private ClientResponse response;
 
 	
-	public APIMlibre() {
+	public APIMlibre(String path) {
         response = (Client.create()
             .resource("https://api.mercadolibre.com/")
-           .path("classified_locations/countries")
+           .path(path)
            .accept(MediaType.APPLICATION_JSON)
            .get(ClientResponse.class));
         
     	
     }
 	
-	public ClientResponse verPaisesAPI() {
+	public ClientResponse verInformacion() {
 		return response;
 	}
 	
