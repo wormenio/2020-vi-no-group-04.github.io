@@ -12,6 +12,10 @@ public class Usuario{
     List<String> notificacionCompras = new ArrayList<String>();
 
 	public Usuario(String nombreUsuario, RolUsuario rolUsuario, String contrasenia){
+		//TODO
+		// por ahora dejar que el catch burbujee
+		// propagar el error
+		// sacar el try catch
 		try {
 			validarContrasenia(contrasenia);
 			registrarContrasenia(contrasenia);

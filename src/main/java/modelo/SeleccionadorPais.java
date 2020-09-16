@@ -10,11 +10,11 @@ import com.sun.jersey.api.client.ClientResponse;
 
 public class SeleccionadorPais {
     List<Pais> paises;
-    APIMlibre api = new APIMlibre();
+    APIMlibre api = new APIMlibre("classified_locations/countries");
 	
 	
 	public List<PaisJson> objetizarPaises(){
-		ClientResponse jsonPaises = api.verPaisesAPI();
+		ClientResponse jsonPaises = api.verInformacion();
 		Gson gson = new Gson();
 
         String paises = jsonPaises.getEntity(String.class);
@@ -25,10 +25,11 @@ public class SeleccionadorPais {
 	}
 	
 	public List<Pais> paisesSistema() {
+
 		//FIXME:: MAP
 		this.objetizarPaises().forEach((paisML)->{
-		Pais pais = new Pais (paisML.verNombre(), paisML.verMoneda(),paisML.verID(), paisML.verLocale());
-		paises.add(pais);}
+									Pais pais = new Pais (paisML.verNombre(), paisML.verMoneda(),paisML.verID(), paisML.verLocale());
+									paises.add(pais);}
 		);
 	return paises;
 		

@@ -11,38 +11,38 @@ public class TestUsuario {
 
     @Before
     public void init() {
-        buzonDeMensajes = new BuzonMensajes();
-        unUsuario = new Usuario(buzonDeMensajes);
+     //   buzonDeMensajes = new BuzonMensajes();
+     //   unUsuario = new Usuario(buzonDeMensajes);
     }
 
     @Test
     public void validarNuevoUsuarioCorrecto() {
-        unUsuario.registrarUsuario("unNombre",RolUsuario.ADMINISTRADOR,"unaBuenaClave11");
+        unUsuario = new Usuario("unNombre",RolUsuario.ADMINISTRADOR,"unaBuenaClave11");
         Assert.assertEquals("unNombre",unUsuario.getNombreUsuario());
     }
 
     @Test
     public void noSeDaDeAltaUsuarioPorClaveDebil() {
         //La password se encuentra en el archivo de claves débiles "contrasenia.txt"
-        unUsuario.registrarUsuario("unNombre",RolUsuario.ADMINISTRADOR,"1qaz2wsx");
+        unUsuario = new Usuario("unNombre",RolUsuario.ADMINISTRADOR,"1qaz2wsx");
         Assert.assertNotEquals("unNombre",unUsuario.getNombreUsuario());
     }
 
     @Test
     public void noSeDaDeAltaUsuarioPorClaveMenoA8Digitos() {
-        unUsuario.registrarUsuario("unNombre",RolUsuario.ADMINISTRADOR,"1234567");
+        unUsuario = new Usuario("unNombre",RolUsuario.ADMINISTRADOR,"1234567");
         Assert.assertNotEquals("unNombre",unUsuario.getNombreUsuario());
     }
 
     @Test
     public void noSeDaDeAltaUsuarioPorClaveSinUnDigitoYUnaLetra() {
-        unUsuario.registrarUsuario("unNombre",RolUsuario.ADMINISTRADOR,"malaClave.");
+        unUsuario = new Usuario("unNombre",RolUsuario.ADMINISTRADOR,"malaClave.");
         Assert.assertNotEquals("unNombre",unUsuario.getNombreUsuario());
     }
 
     @Test
     public void noSeDaDeAltaUsuarioPorCaracteresRepetidos() {
-        unUsuario.registrarUsuario("unNombre",RolUsuario.ADMINISTRADOR,"malaClave.111");
+        unUsuario = new Usuario("unNombre",RolUsuario.ADMINISTRADOR,"malaClave.111");
         Assert.assertNotEquals("unNombre",unUsuario.getNombreUsuario());
     }
 

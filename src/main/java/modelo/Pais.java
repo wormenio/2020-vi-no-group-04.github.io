@@ -12,4 +12,7 @@ public class Pais {
 		this.locale = locale;
 		moneda = new Moneda(currency);
 	}
+	public  String verNombre() {
+		return nombre;
+	}
 }

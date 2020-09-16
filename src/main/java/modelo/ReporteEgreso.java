@@ -1,6 +1,5 @@
 package modelo;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class ReporteEgreso {	
     int anio;
@@ -8,14 +7,15 @@ public class ReporteEgreso {
     EtiquetaEgreso etiquetaEgreso;
     float monto;
     RepositorioCompras repoCompras;
-    
+
     //FIXME:: agrupado, no filtrado -- google it
-   public List<CompraConPresupuesto> VerReporteEgreso(int mes, int anio, int etiqueta){            
-      return repoCompras.listadoCompras().stream().filter(
-              x -> x.getEtiqueta() == etiqueta 
+   public List<CompraConPresupuesto> VerReporteEgreso(int mes, int anio, int etiqueta){
+     //  .COLLEc.COLLECTORS.T
+      return (List<CompraConPresupuesto>)repoCompras.listadoCompras().stream().filter(
+              x -> x.getEtiqueta() == etiqueta
               && x.getAnio() == anio 
               && x.getMes() == mes
-      ).collect(Collectors.toList()) ;
+      );
     }
 	
 	
