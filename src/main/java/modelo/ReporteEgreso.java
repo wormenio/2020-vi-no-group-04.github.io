@@ -8,7 +8,8 @@ public class ReporteEgreso {
     float monto;
     RepositorioCompras repoCompras;
     
-   public List<CompraConPresupuesto> VerReporteEgreso(int mes, int anio, int etiqueta){            
+   public List<CompraConPresupuesto> VerReporteEgreso(int mes, int anio, int etiqueta){
+     //  .COLLEc.COLLECTORS.T
       return (List<CompraConPresupuesto>)repoCompras.listadoCompras().stream().filter(
               x -> x.getEtiqueta() == etiqueta 
               && x.getAnio() == anio 

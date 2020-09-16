@@ -18,7 +18,7 @@
     
  *[ ] https://github.com/dds-utn/2020-vi-no-group-04/issues/12 -Tests de contraseñas comunes
     
-    *[ ] No veo ningún test que valide que el sistema no acepta usuarios con passwords comunes.         
+  *[ ] No veo ningún test que valide que el sistema no acepta usuarios con passwords comunes.         
          PD: Al implementarlo, piensen esto: Qué pasaría con mi test si el mes que viene publican la nueva versión del archivo y son todas passwords distintas? Cómo podría atajarme?
          
 

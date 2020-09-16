@@ -17,16 +17,17 @@ public class Moneda {
 		Gson gson = new Gson();
 
         String monedas = jsonMonedas.getEntity(String.class);
-    
-    	Type listType = new TypeToken<ArrayList<MonedaJson>>(){}.getType();
-    	ArrayList<MonedaJson> listadoMonedas = gson.fromJson(paises, listType); 
+//TODO
+//Ver pq no entiende MonedaJson
+//    	Type listType = new TypeToken<ArrayList<MonedaJson>>(){}.getType();
+//    	ArrayList<MonedaJson> listadoMonedas = gson.fromJson(paises, listType);
 	}
 	String id;
     String description;
     String symbol;
     int decimal_places;
     
-    https://api.mercadolibre.com/currencies/
+  //  https://api.mercadolibre.com/currencies/
 
     	 
 
