@@ -1,12 +1,12 @@
 package entities;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "Medios_de_pago")
 public class MediosDePago {
-    private int tipo_medio_pago;
+    @EmbeddedId
+    MediosDePagoId id;
+
     private int numero;
-    private int compra_id;
 }

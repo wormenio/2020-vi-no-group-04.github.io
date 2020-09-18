@@ -10,9 +10,10 @@
         <class>entities.Compras</class>
         <class>entities.DocumentoComercial</class>
         <class>entities.TiposDocumentoComercial</class>
+        <class>entities.ItemsDeCompra</class>
         <class>entities.Items</class>
         <class>entities.Proveedores</class>
-
+        <class>entities.entidad.TPCEntidad</class>
 
         <properties> 
 	    <property name="hibernate.archive.autodetection" value="class"/>        

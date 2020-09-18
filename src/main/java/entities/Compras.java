@@ -12,19 +12,17 @@ import java.util.List;
 public class Compras {
     @Id
     @GeneratedValue
-    private int id;
+    private Long id;
 
     private LocalDate fecha;
     private Double monto_total;
     @OneToOne
     private Proveedores proveedor;
 
-    //TODO: ARREGLAR MAPEO
-    /*
     @OneToMany
     @JoinColumn(name = "compra_id")
     @OrderColumn(name = "numero")
-    private List<MediosDePago> MediosDePago = new ArrayList<>();*/
+    private List<MediosDePago> MediosDePago = new ArrayList<>();
 
 
     private int entidad_id;
@@ -35,9 +33,8 @@ public class Compras {
     @OrderColumn(name = "numero")
     private List<DocumentoComercial> DocumentosComerciales = new ArrayList<>();
 
-    //TODO: ARREGLAR MAPEO
-    /*@OneToMany
+    @OneToMany
     @JoinColumn(name = "compra_id")
     @OrderColumn(name = "numero")
-    private List<ItemsDeCompraId> ItemsDeCompra = new ArrayList<>();*/
+    private List<ItemsDeCompra> ItemsDeCompra = new ArrayList<>();
 }

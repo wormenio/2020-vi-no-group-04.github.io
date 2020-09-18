@@ -8,7 +8,7 @@ import javax.persistence.MappedSuperclass;
 public class EntidadPersistente {
     @Id
     @GeneratedValue
-    private int id;
+    private Long id;
 
     private String nombre;
 }
