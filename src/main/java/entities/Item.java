@@ -8,7 +8,7 @@ import java.util.List;
 
 @Entity
 @Table(name="Items")
-public class Items extends EntidadPersistente {
+public class Item extends EntidadPersistente {
 
     @OneToMany
     @JoinColumn(name ="item_id")

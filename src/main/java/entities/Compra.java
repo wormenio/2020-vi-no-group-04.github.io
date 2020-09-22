@@ -1,15 +1,16 @@
 package entities;
 
-import modelo.Proveedor;
+import entities.presupuesto.Presupuesto;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 @Entity
 @Table(name="Compras")
-public class Compras {
+public class Compra {
     @Id
     @GeneratedValue
     private Long id;
@@ -17,7 +18,7 @@ public class Compras {
     private LocalDate fecha;
     private Double monto_total;
     @OneToOne
-    private Proveedores proveedor;
+    private Proveedor proveedor;
 
     @OneToMany
     @JoinColumn(name = "compra_id")
@@ -28,6 +29,12 @@ public class Compras {
     private int entidad_id;
     private int entidad_tipo;
 
+    @Column(name="cantidad_presupuesto")
+    private int cantidadPresupuestos;
+
+    @Column(name="requiere_presupuesto")
+    private Boolean requierePresupuesto;
+
     @OneToMany
     @JoinColumn(name = "compra_id")
     @OrderColumn(name = "numero")
@@ -37,4 +44,12 @@ public class Compras {
     @JoinColumn(name = "compra_id")
     @OrderColumn(name = "numero")
     private List<ItemsDeCompra> ItemsDeCompra = new ArrayList<>();
+
+    @OneToMany
+    @JoinColumn(name="compra_id")
+    private Collection<Presupuesto> presupuestos;
+
+    @ManyToOne
+    @JoinColumn(name = "moneda_id")
+    private Moneda moneda;
 }

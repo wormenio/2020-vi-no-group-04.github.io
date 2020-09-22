@@ -3,7 +3,7 @@ package entities;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "documentos_comerciales")
+@Table(name = "Documentos_comerciales")
 public class DocumentoComercial {
     @Id
     @GeneratedValue
