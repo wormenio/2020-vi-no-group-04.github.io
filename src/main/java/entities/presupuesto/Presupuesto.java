@@ -1,6 +1,8 @@
 package entities.presupuesto;
 
+import entities.DocumentoComercial;
 import entities.Item;
+import entities.Moneda;
 import entities.Proveedor;
 
 import javax.persistence.*;
@@ -24,4 +26,7 @@ public class Presupuesto {
     @JoinColumn(name="presupuesto_id")
     private Collection<ItemsDelPresupuesto> itemsDelPresupuesto;
 
+    @ManyToOne
+    @JoinColumn(name = "moneda_id")
+    private Moneda moneda;
 }

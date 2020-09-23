@@ -52,4 +52,6 @@ public class Compra {
     @ManyToOne
     @JoinColumn(name = "moneda_id")
     private Moneda moneda;
+
+
 }

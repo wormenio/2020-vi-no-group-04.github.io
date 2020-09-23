@@ -1,5 +1,6 @@
 package entities.entidad;
 
+import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -9,4 +10,5 @@ import javax.persistence.Table;
 @DiscriminatorValue(value="EntidadBase")
 public class EntidadBase extends Entidad {
     private String nombre;
+
 }

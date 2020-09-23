@@ -13,9 +13,7 @@ public class ItemsDelPresupuesto {
     @EmbeddedId
     ItemsDelPresupuestoId id;
 
-    @ManyToOne
-    @JoinColumn(name = "moneda_id")
-    private Moneda moneda;
+
 
     private Double precio;
     private int cantidad;

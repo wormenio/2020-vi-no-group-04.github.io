@@ -10,6 +10,9 @@ public class EntidadBase implements Entidad {
 	CategoriaEntidad categoriaEntidad;
 	Integer montoMaximoEgreso;
 
+	public EntidadBase(){
+
+	}
 	
 	public String getNombreFicticio() {	
 		return this.descripcion;
