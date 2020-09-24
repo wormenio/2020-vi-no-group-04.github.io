@@ -1,5 +1,8 @@
 package entities.entidad;
 
+import modelo.CategorizacionEntidadJuridica;
+import modelo.ClasificacionAFIP;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -19,15 +22,17 @@ public class EntidadJuridica extends Entidad {
     @OrderColumn(name = "id")
     private List<EntidadBase> entidadBase;
 
-    //TODO
-    //VER la abstraccion para el nombre
     @ManyToOne
-    @JoinColumn(name = "categoria_id")
-    private Categoria categoria;
+    @JoinColumn(name = "categoria_entidad_id")
+    private Categoria categoriaEntidad;
 
-    //TODO
-    //VER la abstraccion que representa el nombre del atribuo
-    @ManyToOne
-    @JoinColumn(name="clasificacion_id")
-    private ClasificacionEmpresa clasificacion;
+
+
+    @Enumerated
+    @Column(name="categoria_entidad_juridica")
+    private CategorizacionEntidadJuridica categoriaEntidadJuridica;
+
+    @Enumerated
+    @Column(name="clasificacion_afip")
+    private ClasificacionAFIP clasificacionAFIP;
 }

@@ -1,4 +1,4 @@
-package entities.usuario;
+package entities;
 
 import entities.EntidadPersistente;
 
@@ -12,8 +12,8 @@ import javax.persistence.Table;
 public class Usuario extends EntidadPersistente {
 
     private String hash;
-
+/*
     @ManyToOne
     @JoinColumn(name="rol_id")
-    private Rol rol;
+    private Rol rol;*/
 }

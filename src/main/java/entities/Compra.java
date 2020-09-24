@@ -1,6 +1,7 @@
 package entities;
 
-import modelo.Proveedor;
+import entities.entidad.Entidad;
+import entities.presupuesto.Presupuesto;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -15,30 +16,42 @@ public class Compra {
     @GeneratedValue
     private Long id;
 
-    private LocalDate fecha;
-    private Double monto_total;
     @OneToOne
     private Proveedor proveedor;
 
-    @OneToMany
-    @JoinColumn(name = "compra_id")
-    @OrderColumn(name = "numero")
-    private List<MediosDePago> MediosDePago = new ArrayList<>();
+    @ManyToOne
+    @JoinColumn(name="entidad_id")
+    private Entidad entidad;
 
+    private LocalDate fecha;
 
-    private int entidad_id;
-    private int entidad_tipo;
+    private Double monto_total;
 
-    @Column(name="cantidad_presupuesto")
-    private int cantidadPresupuestos;
+    @ManyToOne
+    @JoinColumn(name = "moneda_id")
+    private Moneda moneda;
 
     @Column(name="requiere_presupuesto")
     private Boolean requierePresupuesto;
 
+    @Column(name="cantidad_presupuesto")
+    private int cantidadPresupuestos;
+
+    private Boolean validado;
+
+    @OneToOne
+    @JoinColumn(name = "presupuesto_seleccionado_id")
+    private Presupuesto presupuestoSeleccionado;
+
     @OneToMany
     @JoinColumn(name = "compra_id")
     @OrderColumn(name = "numero")
-    private List<DocumentoComercial> DocumentosComerciales = new ArrayList<>();
+    private List<MediosDePagoCompra> MediosDePago = new ArrayList<>();
+
+    @OneToMany
+    @JoinColumn(name = "compra_id")
+    @OrderColumn(name = "numero")
+    private List<DocumentoComercialCompra> DocumentosComerciales = new ArrayList<>();
 
     @OneToMany
     @JoinColumn(name = "compra_id")
@@ -49,9 +62,9 @@ public class Compra {
     @JoinColumn(name="compra_id")
     private Collection<Presupuesto> presupuestos;
 
-    @ManyToOne
-    @JoinColumn(name = "moneda_id")
-    private Moneda moneda;
+    @ManyToMany
+    private Collection<Etiqueta> etiquetas;
 
-
+    @ManyToMany
+    private Collection<Usuario> usuario;
 }

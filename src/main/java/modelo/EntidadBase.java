@@ -1,5 +1,6 @@
 package modelo;
 
+import entities.entidad.Categoria;
 import modelo.CategoriaEntidad.CategoriaEntidad;
 import modelo.CategoriaEntidad.ReglasDeNegocio;
 
@@ -10,8 +11,9 @@ public class EntidadBase implements Entidad {
 	CategoriaEntidad categoriaEntidad;
 	Integer montoMaximoEgreso;
 
-	public EntidadBase(){
-
+	public EntidadBase(String descripcion, CategoriaEntidad categoriaEntidad){
+		this.descripcion = descripcion;
+		this.categoriaEntidad = categoriaEntidad;
 	}
 	
 	public String getNombreFicticio() {	
