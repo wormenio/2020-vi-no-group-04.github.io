@@ -1,7 +1,7 @@
 package db;
 
+import entities.UsuarioEntity;
 import org.junit.Test;
-import entities.usuario.UsuarioEntity;
 import org.uqbarproject.jpa.java8.extras.WithGlobalEntityManager;
 import org.uqbarproject.jpa.java8.extras.test.AbstractPersistenceTest;
 
