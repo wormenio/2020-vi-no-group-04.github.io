@@ -11,6 +11,7 @@ public class EmTest extends AbstractPersistenceTest implements WithGlobalEntityM
     @Test
     public void persistirUsuarioTest(){
         UsuarioEntity usuario = new UsuarioEntity();
+        usuario.setId((long) 1);
         usuario.setUsuario("wormeno");
         usuario.setNombre("walter");
         usuario.setApellido("Ormeño");

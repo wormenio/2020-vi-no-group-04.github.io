@@ -11,6 +11,7 @@ public class EtiquetaDao extends AbstractPersistenceTest implements WithGlobalEn
 
     public void create(String nombre) {
         entity.setNombre(nombre);
+
         try{
             entityManager().persist(entity);
         }

@@ -1,13 +1,14 @@
 package entities;
 
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
 @MappedSuperclass
 public class EntidadPersistente {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String nombre;
@@ -22,5 +23,9 @@ public class EntidadPersistente {
 
     public String getNombre() {
         return nombre;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }

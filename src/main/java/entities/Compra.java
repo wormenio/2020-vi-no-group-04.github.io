@@ -15,7 +15,7 @@ public class Compra {
     @GeneratedValue
     private Long id;
 
-    @OneToOne
+    @ManyToOne
     private Proveedor proveedor;
 
     @ManyToOne
