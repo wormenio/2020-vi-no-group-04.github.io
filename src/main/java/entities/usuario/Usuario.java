@@ -12,8 +12,6 @@ import javax.persistence.Table;
 public class Usuario extends EntidadPersistente {
 
     private String hash;
+    private Boolean is_admin;
 
-    @ManyToOne
-    @JoinColumn(name="rol_id")
-    private Rol rol;
 }

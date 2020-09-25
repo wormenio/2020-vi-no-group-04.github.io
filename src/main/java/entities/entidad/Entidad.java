@@ -10,4 +10,8 @@ public abstract class Entidad {
     @GeneratedValue
     private Long id;
 
+    @ManyToOne
+    @JoinColumn(name = "categoria_id")
+    private Categoria categoria;
+
 }

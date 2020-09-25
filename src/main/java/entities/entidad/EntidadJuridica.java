@@ -20,14 +20,8 @@ public class EntidadJuridica extends Entidad {
     private List<EntidadBase> entidadBase;
 
     //TODO
-    //VER la abstraccion para el nombre
-    @ManyToOne
-    @JoinColumn(name = "categoria_id")
-    private Categoria categoria;
-
-    //TODO
     //VER la abstraccion que representa el nombre del atribuo
-    @ManyToOne
-    @JoinColumn(name="clasificacion_id")
-    private ClasificacionEmpresa clasificacion;
+    //@ManyToOne
+    //@JoinColumn(name="clasificacion_id")
+    //private ClasificacionEmpresa clasificacion;
 }

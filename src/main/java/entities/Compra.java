@@ -1,5 +1,6 @@
 package entities;
 
+import entities.presupuesto.Presupuesto;
 import modelo.Proveedor;
 
 import javax.persistence.*;
