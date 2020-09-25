@@ -1,6 +1,4 @@
-package entities.usuario;
-
-import entities.EntidadPersistente;
+package entities;
 
 import javax.persistence.*;
 

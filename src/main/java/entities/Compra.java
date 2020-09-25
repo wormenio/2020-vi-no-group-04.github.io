@@ -2,7 +2,6 @@ package entities;
 
 import entities.entidad.Entidad;
 import entities.presupuesto.Presupuesto;
-import entities.usuario.UsuarioEntity;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.ArrayList;

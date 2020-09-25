@@ -38,6 +38,12 @@
     </plugins>
   </build>
   <dependencies>
+      <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-entitymanager -->
+      <dependency>
+          <groupId>org.hibernate</groupId>
+          <artifactId>hibernate-entitymanager</artifactId>
+          <version>5.4.21.Final</version>
+      </dependency>
 
       <dependency>
           <groupId>org.uqbar-project</groupId>
