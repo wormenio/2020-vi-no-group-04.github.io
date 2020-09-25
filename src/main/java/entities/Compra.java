@@ -2,7 +2,7 @@ package entities;
 
 import entities.entidad.Entidad;
 import entities.presupuesto.Presupuesto;
-
+import entities.usuario.UsuarioEntity;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -63,8 +63,8 @@ public class Compra {
     private Collection<Presupuesto> presupuestos;
 
     @ManyToMany
-    private Collection<Etiqueta> etiquetas;
+    private Collection<EtiquetaEntity> etiquetas;
 
     @ManyToMany
-    private Collection<Usuario> usuario;
+    private Collection<UsuarioEntity> usuario;
 }

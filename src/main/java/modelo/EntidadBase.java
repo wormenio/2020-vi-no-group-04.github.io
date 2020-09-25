@@ -33,7 +33,15 @@ public class EntidadBase implements Entidad {
 		return tipoEntidad;
 	}
 
+	@Override
+	public Boolean esEntidadBase() {
+		return true;
+	}
 
+	@Override
+	public Boolean esEntidadJuridica() {
+		return false;
+	}
 
 
 }

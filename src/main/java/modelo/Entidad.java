@@ -9,4 +9,6 @@ public interface Entidad {
 
 	public Integer getMontoMaximoEgreso();
 	public String getTipoEntidad();
+	public Boolean esEntidadBase();
+	public Boolean esEntidadJuridica();
 }

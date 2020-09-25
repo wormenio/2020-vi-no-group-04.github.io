@@ -13,6 +13,6 @@ public class Ciudad extends EntidadPersistente {
     @JoinColumn(name = "provincia_id")
     private Provincia provincia;
 
-    @ManyToMany
-    private Collection<Proveedor> proveedores;
+    @OneToMany
+    private Collection<CodigoPostal> codigosPostales;
 }

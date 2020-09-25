@@ -7,7 +7,7 @@ import java.util.Collection;
 
 @Entity
 @Table(name="Etiquetas")
-public class Etiqueta extends EntidadPersistente {
+public class EtiquetaEntity extends EntidadPersistente {
 
     @ManyToMany
     private Collection<Proveedor> proveedores;

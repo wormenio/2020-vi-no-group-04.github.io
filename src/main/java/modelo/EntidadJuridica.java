@@ -34,6 +34,16 @@ public class EntidadJuridica implements Entidad {
 	public String getTipoEntidad(){
 		return tipoEntidad;
 	}
-        
-        //¿Como agrego una base aca? - Falta metodo
+
+	@Override
+	public Boolean esEntidadBase() {
+		return false;
+	}
+
+	@Override
+	public Boolean esEntidadJuridica() {
+		return true;
+	}
+
+	//ï¿½Como agrego una base aca? - Falta metodo
 }

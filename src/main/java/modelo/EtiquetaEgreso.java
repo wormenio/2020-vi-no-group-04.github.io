@@ -1,23 +1,28 @@
 package modelo;
 
-import java.util.HashMap;
+import dao.EtiquetaDao;
+import entities.EtiquetaEntity;
+
+import java.util.List;
 import java.util.Map;
 
 public class EtiquetaEgreso {
-	//TODO: List<Etiqueta>
-	Map<Integer, String> etiquetas = new HashMap<Integer, String>();
-	
-	
-	public void AgregarEtiqueta(int codigo, String descripcion) {
-		etiquetas.put(codigo,descripcion);
+
+//	List<EtiquetaEntity> etiquetas ;
+	EtiquetaDao etiquetaDao = new EtiquetaDao();
+
+	public void AgregarEtiqueta( String nombre) {
+		etiquetaDao.create(nombre);
 	}
         
-	public void EliminarEtiqueta(int codigo, String descripcion) {
-		etiquetas.remove(codigo,descripcion);
+	public void EliminarEtiqueta(String nombre) {
+		etiquetaDao.delete(nombre);
 	}
-        
-	Map<Integer, String> getEtiquetas(){
-		return etiquetas;
+
+
+	public String getEtiquetas(){
+		//TODO
+		return "etiqueta";
 	}
 }
 

@@ -44,28 +44,12 @@ public class Usuario{
 	public void agregarNotificacion(String idCompra) {
 		notificacionCompras.add(idCompra);
 	}
-/*
-	private void verificarSiExisteUsuario(String usuario) {
-		 if (listaUsuarios.contains(usuario)) {
-		 //	System.out.println("no se");
-		 	throw new UsuarioException("El usuario "+usuario+" ya existe en el sistema");
-		 }
-	}
 
-	private void registrarUsuario(String nombreUsuario){
-		 listaUsuarios.add(nombreUsuario);
-	 }
-
- */
 	private void registrarContrasenia(String contrasenia){
 		//TODO
 	}
     
-/*	public List<String> verBuzonDeMensajes() {
-		
-		return	buzonDeMensajes.verMensajesDeUsuario(this);
-	
-	}*/
+
 
 }
 

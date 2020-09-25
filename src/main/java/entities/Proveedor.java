@@ -1,5 +1,6 @@
 package entities;
 
+import entities.direccionPostal.Calle;
 import entities.direccionPostal.Ciudad;
 
 import javax.persistence.*;
@@ -16,12 +17,13 @@ public class Proveedor {
     private String razon_social;
     private String dni;
     private String cuit;
-    private String calle;
-    private int altura;
-    private String piso;
 
     @ManyToOne
-    @JoinColumn(name = "ciudad_id")
-    private Ciudad ciudad;
+    @JoinColumn(name = "calle_id")
+    private Calle calle;
+
+    private int altura;
+    private String piso;
+    private String departamento;
 
 }
