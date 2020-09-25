@@ -1,7 +1,7 @@
 package modelo;
 
 public class Empresa implements CategoriaEntidadJuridica {
-	CategorizacionAFIP categorizacion;
+	ClasificacionAFIP categorizacion;
 	
 	public String getTipoDeEmpresa()
 	{

@@ -14,7 +14,6 @@ public class ItemsDelPresupuesto {
     ItemsDelPresupuestoId id;
 
 
-
     private Double precio;
     private int cantidad;
 }

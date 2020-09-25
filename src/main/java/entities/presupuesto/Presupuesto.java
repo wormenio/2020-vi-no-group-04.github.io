@@ -1,7 +1,7 @@
 package entities.presupuesto;
 
 import entities.DocumentoComercial;
-import entities.Item;
+import entities.DocumentoComercialCompra;
 import entities.Moneda;
 import entities.Proveedor;
 
@@ -17,16 +17,22 @@ public class Presupuesto {
     @GeneratedValue
     private Long id;
 
+    private LocalDate fecha;
+
     @ManyToOne
     private Proveedor proveedor;
 
-    private LocalDate fecha;
+    @ManyToOne
+    private DocumentoComercial documentoComercial;
 
     @OneToMany
     @JoinColumn(name="presupuesto_id")
     private Collection<ItemsDelPresupuesto> itemsDelPresupuesto;
 
-    @ManyToOne
-    @JoinColumn(name = "moneda_id")
-    private Moneda moneda;
+
+
+
+//    @ManyToOne
+//    @JoinColumn(name = "moneda_id")
+//    private Moneda moneda;
 }

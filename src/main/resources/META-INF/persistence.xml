@@ -8,8 +8,8 @@
     <persistence-unit name="db" transaction-type="RESOURCE_LOCAL">
     	<provider>org.hibernate.ejb.HibernatePersistence</provider>
         <class>entities.Compra</class>
+        <class>entities.DocumentoComercialCompra</class>
         <class>entities.DocumentoComercial</class>
-        <class>entities.TiposDocumentoComercial</class>
         <class>entities.ItemsDeCompra</class>
         <class>entities.Item</class>
         <class>entities.Proveedor</class>
@@ -23,11 +23,10 @@
             <property name="hibernate.connection.username" value="root" /> 
             <property name="hibernate.connection.password" value="e" /> -->
 
-<!--
             <property name="hibernate.connection.driver_class" value="org.hsqldb.jdbcDriver" />
             <property name="hibernate.connection.url" value="jdbc:hsqldb:mem:app-db" /> 
             <property name="hibernate.connection.username" value="sa" /> 
-            <property name="hibernate.connection.password" value="" /> -->
+            <property name="hibernate.connection.password" value="" />
             <property name="hibernate.dialect" value="org.hibernate.dialect.HSQLDialect" />
 
 

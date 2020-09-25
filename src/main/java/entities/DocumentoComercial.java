@@ -1,17 +1,17 @@
 package entities;
 
+
+import entities.EntidadPersistente;
+
 import javax.persistence.*;
+import java.util.Collection;
 
 @Entity
-@Table(name = "Documentos_comerciales")
-public class DocumentoComercial {
-    @Id
-    @GeneratedValue
-    private int id;
+@Table(name="Documentos_comerciales")
+public class DocumentoComercial extends EntidadPersistente {
 
-    private int numero;
+    @OneToMany
+    @JoinColumn(name = "documento_comercial_id")
+    private Collection<DocumentoComercialCompra> documentosComercialesCompra;
 
-    @ManyToOne
-    @JoinColumn(name = "tipo_documento_comercial_id")
-    private TiposDocumentoComercial tipoDocumentoComercial;
 }
