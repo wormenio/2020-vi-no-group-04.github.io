@@ -4,6 +4,8 @@ package modelo;
 import modelo.ValidarContrasenia.*;
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.Mockito;
+import static org.mockito.Mockito.mock;
 
 //import modelo.ValidarContrasenia.*;
 
@@ -47,35 +49,8 @@ public class TestValidarContrasenia {
 
     @Test(expected = ValidarContraseniaException.class)
     public void validarExcepcionContraseniaDebil() {
-    	// Mockear la validacion y ver la carpeta resources de java para implementar una solucion
-        //password es una palabra que se encuentra en el archivo de contrasenias debiles "contrasenias.txt"
-        validarContraseniaDebil.validar("password");
+        validarContraseniaDebil.validar(validarContraseniaDebil.getRandomPassword());
+        //Obtenemos cualquier elemento del archivo de contraseñas.txt y le aplicamos el Validar.
     }
 
-/*
-    @Test(expected = ValidarContraseniaException.class)
-    public void validarNoCumpleLongitudMinima() {
-     //   validarLongitudMinima.validar("pepe");
-    }
-
-    @Test(expected = ValidarContraseniaException.class)
-    public void validarNoCumpleUnNumeroUnaLetra() {
-        //validarLongitudMinima.validar("pepe");
-    }
-
-    @Test(expected = ValidarContraseniaException.class)
-    public void validarUnNumeroUnaLetra() {
-        // validarLongitudMinima.validar("1a");
-    }
-
-    @Test(expected = ValidarContraseniaException.class)
-    public void seValidaQueLaClaveNoRepitaMasDe3CaracteresConsecutivos() {
-        usuario.politicasContrasenia("1Claaaves45");
-    }
-    @Test(expected = ValidarContraseniaException.class)
-    public void seValidaQueLaClaveTengaAlMenosUnaLetraYUnNumero() {
-        usuario.politicasContrasenia("NoTieneNumeros");
-    }
-
-     */
 }

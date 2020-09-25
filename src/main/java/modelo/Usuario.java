@@ -7,26 +7,15 @@ import java.util.List;
 
 
 public class Usuario{
-    RolUsuario rolUsuario;
+    Boolean is_Admin;
 	String nombreUsuario;
     List<String> notificacionCompras = new ArrayList<String>();
 
-	public Usuario(String nombreUsuario, RolUsuario rolUsuario, String contrasenia){
-		//TODO
-		// por ahora dejar que el catch burbujee
-		// propagar el error
-		// sacar el try catch
-		try {
+	public Usuario(String nombreUsuario, Boolean isAdmin, String contrasenia){
 			validarContrasenia(contrasenia);
 			registrarContrasenia(contrasenia);
 			this.nombreUsuario = nombreUsuario;
-			this.rolUsuario = rolUsuario;
-		}
-		catch (Exception e){
-                    //TODO: Atrapar la excepción -- Borrar Try/Catch
-                    //NO TIENE SENTIDO
-			//System.out.println("No se puede crear el Usuario, motivo: "+e.getMessage());
-		}
+			this.is_Admin = isAdmin;
 	}
 
 

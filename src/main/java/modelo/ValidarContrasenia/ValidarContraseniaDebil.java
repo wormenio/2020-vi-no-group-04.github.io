@@ -1,7 +1,5 @@
 package modelo.ValidarContrasenia;
 
-import modelo.UsuarioException;
-
 import java.io.*;
 // import java.net.URL;
 
@@ -36,6 +34,25 @@ public class ValidarContraseniaDebil implements ValidarContrasenia {
 		catch(Exception e){
 			e.printStackTrace();
 			throw new ValidarContraseniaException(e.getMessage());
+		}
+	}
+
+	public String getRandomPassword(){
+		File archivo = null;
+		FileReader fr = null;
+		BufferedReader br = null;
+		try {
+			String pathClaves = System.getProperty("user.dir");
+
+			archivo = new File (pathClaves+"/claves/contrasenias.txt");
+			fr = new FileReader (archivo);
+			br = new BufferedReader(fr);
+
+			return br.readLine();
+		}
+		catch(Exception e){
+			e.printStackTrace();
+			return "";
 		}
 	}
 }
