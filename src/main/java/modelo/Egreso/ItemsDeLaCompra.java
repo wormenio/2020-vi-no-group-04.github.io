@@ -10,4 +10,8 @@ public class ItemsDeLaCompra {
         this.item = item;
         this.monto = monto;
     }
+
+    public Item getItem(){
+        return item;
+    }
 }

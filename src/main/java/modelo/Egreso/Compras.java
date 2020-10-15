@@ -15,7 +15,7 @@ public class Compras {
     Moneda moneda = null;
     Entidad entidad;
 
-    Set<ItemsDeLaCompra> items = new HashSet<>();
+    Set<ItemsDeLaCompra> itemsDeLaCompras = new HashSet<>();
     Set<MedioDePagoDeLaCompra> mediosDePagoDeLaCompra = new HashSet<>();
     String idCompra;
 
@@ -46,11 +46,31 @@ public class Compras {
         mediosDePagoDeLaCompra.add(unMedio);
     }
 
-    public void agregarItem(Item item, Double monto){
-        ItemsDeLaCompra unItem = new ItemsDeLaCompra(item,monto);
-        items.add(unItem);
+    public void agregarItem(ItemsDeLaCompra item){
+        itemsDeLaCompras.add(item);
     }
 
+    public Set<ItemsDeLaCompra> getItems(){
+        return itemsDeLaCompras;
+    }
+/*
+
+    public Set<Item> getSoloItems(){
+        Set<Item> items = new HashSet<>();
+        itemsDeLaCompras.stream().map(item-> items.add(item.getItem()));
+        return items;
+    }
+*/
+
+
+    public DocumentoComercial getDocumentoComercial()
+    {
+        return documentoComercial;
+    }
+
+    public void setDocumentoComercial(DocumentoComercial documento){
+        this.documentoComercial = documento;
+    }
 
 
     public Proveedor getProveedor() {
@@ -65,10 +85,7 @@ public class Compras {
 //    }
 
 
-    public DocumentoComercial getDocumentoComercial()
-    {
-        return documentoComercial;
-    }
+
 
     public LocalDate getFechaCompra()
     {
