@@ -24,7 +24,7 @@ public class Compra {
 
     private LocalDate fecha;
 
-    private Double monto_total;
+    private Double monto_total;//FIXME CAMEL CASE
 
     @ManyToOne
     @JoinColumn(name = "moneda_id")

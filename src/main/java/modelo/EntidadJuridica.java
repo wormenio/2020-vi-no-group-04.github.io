@@ -23,8 +23,12 @@ public class EntidadJuridica implements Entidad {
 		return razonSocial;
 	}
 
-	public void categorizarEntidad(Integer codigoCategoria, ReglasDeNegocio reglasDeNegocio) {
+	/*public void categorizarEntidad(Integer codigoCategoria, ReglasDeNegocio reglasDeNegocio) {
 		categoriaEntidad = new CategoriaEntidad(codigoCategoria,reglasDeNegocio);
+	}*/
+
+	public void categorizarEntidad(Integer codigoCategoria) {
+		categoriaEntidad = new CategoriaEntidad(codigoCategoria);
 	}
 
 	public Integer getMontoMaximoEgreso(){

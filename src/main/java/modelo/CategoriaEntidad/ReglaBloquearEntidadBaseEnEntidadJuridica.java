@@ -9,6 +9,8 @@ class ReglaBloquearEntidadBaseEnEntidadJuridica {
         this.entidad = entidad;
     }
     boolean aplicarRegla(){
+//        return  entidad.getTipoEntidad() != "ENTIDADJURIDICA"
+
         if( entidad.getTipoEntidad() == "ENTIDADJURIDICA"){
             return false;
         }

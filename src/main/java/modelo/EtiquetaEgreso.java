@@ -7,6 +7,9 @@ import java.util.List;
 import java.util.Map;
 
 public class EtiquetaEgreso {
+//FIXME
+//	Es el repositorio
+//	se debe tener el objeto etiqueta
 
 //	List<EtiquetaEntity> etiquetas ;
 	EtiquetaDao etiquetaDao = new EtiquetaDao();

@@ -16,10 +16,12 @@ public class BuzonMensajes {
     public void enviarNotificaciones() {
         //FIXME
         //IF COMRA.ESVALIDA() revisar todos los metodos boolean
+//		TODO
+		/*
     	repositorioCompras.listadoCompras().forEach((compra)->{if(compra.validarCompra()) {
     	compra.usuariosHabilitados().forEach((usuario)->usuario.agregarNotificacion(compra.getId()));
     	}
-    	});
+    	});*/
     }
 
 

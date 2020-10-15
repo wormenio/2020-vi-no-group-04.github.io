@@ -12,11 +12,14 @@ public class CategoriaEntidad {
     private Integer codigoCategoria;
     private ReglasDeNegocio reglasDeNegocio;
 
-
-    public CategoriaEntidad(Integer codigoCategoria , ReglasDeNegocio reglasDeNegocio ){
+//TODO
+    public CategoriaEntidad(Integer codigoCategoria){
+        this.codigoCategoria = codigoCategoria;
+    }
+   /* public CategoriaEntidad(Integer codigoCategoria , ReglasDeNegocio reglasDeNegocio ){
         this.codigoCategoria = codigoCategoria;
         this.reglasDeNegocio = reglasDeNegocio;
-    }
+    }*/
 
     public boolean aplicarReglasDeNegocio(Integer monto_compra, Entidad entidad) {
         return reglasDeNegocio.aplicarReglasDeNegocio(monto_compra, entidad);

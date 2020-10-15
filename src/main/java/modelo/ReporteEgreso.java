@@ -9,9 +9,11 @@ public class ReporteEgreso {
     RepositorioCompras repoCompras;
 
     //FIXME:: agrupado, no filtrado -- google it
+    // etiqueta
+    //      Todos los datos de la etiqueta
    public List<CompraConPresupuesto> VerReporteEgreso(int mes, int anio, int etiqueta){
      //  .COLLEc.COLLECTORS.T
-      return (List<CompraConPresupuesto>)repoCompras.listadoCompras().stream().filter(
+      return (List<CompraConPresupuesto>)repoCompras.listadoComprasConPresupuesto().stream().filter(
               x -> x.getEtiqueta() == etiqueta
               && x.getAnio() == anio 
               && x.getMes() == mes

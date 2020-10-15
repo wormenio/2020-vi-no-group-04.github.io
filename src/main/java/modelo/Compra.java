@@ -1,6 +1,7 @@
 package modelo;
 
 import modelo.DocumentoComercial.DocumentoComercial;
+import modelo.Egreso.Item;
 import modelo.MedioDePago.MedioDePago;
 
 import java.util.*;
@@ -18,7 +19,11 @@ public abstract class Compra{
 	 Boolean requiere_presupuesto;
 	 Entidad entidad;
 	 List<Presupuesto> presupuestos = new ArrayList<>();
+
 	 int etiqueta;
+//	FIXME
+//	Cambiar int etiqueta
+//	EtiquetaEgreso etiqueta;
 
 	 
 	public Proveedor getProveedor() {

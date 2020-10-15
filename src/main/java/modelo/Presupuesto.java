@@ -1,5 +1,7 @@
 package modelo;
 
+import modelo.Egreso.Item;
+
 import java.util.List;
 
 public class Presupuesto {
@@ -15,9 +17,11 @@ public class Presupuesto {
 
 	
 	public Double getTotal() {
-		double importeTotal = items.stream()
-			      .mapToDouble(o -> o.getImporte())
-			      .sum();
+		// TODO
+		Double importeTotal = 0.0;
+//		double importeTotal = items.stream()
+//			      .mapToDouble(o -> o.getImporte())
+//			      .sum();
 		return importeTotal;
 	}
 }

@@ -20,9 +20,14 @@ public class EntidadBase implements Entidad {
 		return this.descripcion;
 	}
 
-	@Override
+	/*@Override
 	public void categorizarEntidad(Integer codigoCategoria, ReglasDeNegocio reglasDeNegocio) {
 		categoriaEntidad = new CategoriaEntidad(codigoCategoria,reglasDeNegocio);
+	}*/
+
+	@Override
+	public void categorizarEntidad(Integer codigoCategoria) {
+		categoriaEntidad = new CategoriaEntidad(codigoCategoria);
 	}
 
 	public Integer getMontoMaximoEgreso(){
