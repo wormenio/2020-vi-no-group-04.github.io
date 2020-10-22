@@ -8,16 +8,23 @@ public class EntidadBase implements Entidad {
 	EntidadJuridica agrupacion;
 	static final String tipoEntidad = "BASE";
 	String descripcion;
+	String nombreFicticio;
 	CategoriaEntidad categoriaEntidad;
 	Integer montoMaximoEgreso;
+	EntidadJuridica entidadJuridica;
 
-	public EntidadBase(String descripcion, CategoriaEntidad categoriaEntidad){
+	public EntidadBase(String nombreFicticio,String descripcion, CategoriaEntidad categoriaEntidad){
 		this.descripcion = descripcion;
 		this.categoriaEntidad = categoriaEntidad;
+		this.nombreFicticio = nombreFicticio;
 	}
 	
 	public String getNombreFicticio() {	
 		return this.descripcion;
+	}
+
+	public String getDescripcion(){
+		return descripcion;
 	}
 
 	/*@Override
@@ -26,8 +33,8 @@ public class EntidadBase implements Entidad {
 	}*/
 
 	@Override
-	public void categorizarEntidad(Integer codigoCategoria) {
-		categoriaEntidad = new CategoriaEntidad(codigoCategoria);
+	public void setCategoriaEntidadJuridica(CategoriaEntidadJuridica categoria) {
+		throw new EntidadException("Una Entidad Base no puede tener Categorizacion de Entidad juridica");
 	}
 
 	public Integer getMontoMaximoEgreso(){
@@ -48,5 +55,11 @@ public class EntidadBase implements Entidad {
 		return false;
 	}
 
+	public void setEntidadJuridica(EntidadJuridica entidadJuridica) {
+		this.entidadJuridica = entidadJuridica;
+	}
 
+	public Boolean tieneEntidadJuridica(){
+		return this.entidadJuridica == null;
+	}
 }

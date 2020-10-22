@@ -7,8 +7,8 @@ public class Proveedor {
 	String documento = "";
 	
 	
-	public Proveedor(Pais pais, String nombreNuevo, String documentoNuevo, String calle, String altura, String piso) {
-		direccionPostal = new DireccionPostal( pais,  calle,  altura,  piso);
+	public Proveedor(String nombreNuevo, String documentoNuevo, DireccionPostal direccionPostal) {
+		direccionPostal = direccionPostal;
 		nombre = nombreNuevo;
 		documento= documentoNuevo;
 		

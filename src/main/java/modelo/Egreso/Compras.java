@@ -6,6 +6,7 @@ import modelo.MedioDePago.MedioDePago;
 
 import java.time.LocalDate;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Compras {
 
@@ -41,9 +42,8 @@ public class Compras {
 
     }
 
-    public void addMediosDePago(MedioDePago medioDePago, Double importe){
-        MedioDePagoDeLaCompra unMedio = new MedioDePagoDeLaCompra(medioDePago,importe);
-        mediosDePagoDeLaCompra.add(unMedio);
+    public void addMediosDePago(MedioDePagoDeLaCompra medioDePagoDeLaCompra){
+        mediosDePagoDeLaCompra.add(medioDePagoDeLaCompra);
     }
 
     public void agregarItem(ItemsDeLaCompra item){
@@ -52,6 +52,19 @@ public class Compras {
 
     public Set<ItemsDeLaCompra> getItems(){
         return itemsDeLaCompras;
+    }
+
+    public Set<MedioDePagoDeLaCompra> getMediosDePagoDeLaCompra() {
+        return mediosDePagoDeLaCompra;
+    }
+
+    public Set<MedioDePago> getMediosDePago(){
+        return mediosDePagoDeLaCompra.stream().map( unMedio ->
+                unMedio.getMedioDePago()).collect(Collectors.toSet());
+    }
+
+    public Entidad getEntidad(){
+        return entidad;
     }
 /*
 
@@ -92,10 +105,7 @@ public class Compras {
         return fechaCompra;
     }
 
-    public MedioDePago getMedioDePagoEgreso()
-    {
-        return medioDePago;
-    }
+
 
     public float getTotalEgreso() {
 

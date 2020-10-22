@@ -9,4 +9,8 @@ public class MedioDePagoDeLaCompra {
         this.medioDePago = medioDePago;
         this.monto = monto;
     }
+
+    public MedioDePago getMedioDePago(){
+        return medioDePago;
+    }
 }

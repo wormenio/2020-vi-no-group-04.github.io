@@ -4,6 +4,8 @@ import modelo.DocumentoComercial.Factura;
 import modelo.Egreso.Compras;
 import modelo.Egreso.Item;
 import modelo.Egreso.ItemsDeLaCompra;
+import modelo.Egreso.MedioDePagoDeLaCompra;
+import modelo.MedioDePago.MedioDePago;
 import modelo.MedioDePago.TarjetaDeCredito;
 import org.junit.Assert;
 import org.junit.Before;
@@ -19,28 +21,34 @@ public class TestCompra {
     public Factura factura;
     public Proveedor ofimatica;
     public ItemsDeLaCompra resma50Pesos;
-
+    public TarjetaDeCredito tarjetaDeCredito;
+    public MedioDePagoDeLaCompra medioDePagoDeLaCompra;
+    public Organizacion geSoc;
+    public CategoriaEntidad unaCategoria;
+    public DireccionPostal direccionPostalMozart;
+    public EntidadBase laComercial;
+    public EntidadJuridica mercadoBarrial;
 
     @Before
     public void init(){
+        geSoc = new Organizacion();
         Pais argentina = new Pais("Argentina", "Pesos", "1", "Es-ar");
         Moneda pesoArgentino = new Moneda("PesoArgentino");
-        ofimatica = new Proveedor(argentina,
-                "Ofimatica",
-                "258969696",
-                "mozart",
-                "215",
-                "1");
+        direccionPostalMozart = new DireccionPostal(argentina,"mozart","215","1");
+        ofimatica = new Proveedor("Ofimatica","25858568585",direccionPostalMozart);
 
-        TarjetaDeCredito tarjetaCredito = new TarjetaDeCredito(5875);
+        tarjetaDeCredito = new TarjetaDeCredito(5875);
         Item resma = new Item("resma papel A4");
         resma50Pesos = new ItemsDeLaCompra(resma,50.0);
 
-        CategoriaEntidad unaCategoria = new CategoriaEntidad(2585);
-        EntidadBase laComercial = new EntidadBase("Venta Ropas",unaCategoria);
-
+        unaCategoria = new CategoriaEntidad(2585);
+        laComercial = new EntidadBase("La Comercial","Venta de Ropas",unaCategoria);
+        geSoc.addEntidadBase(laComercial);
         compraSemanal = new Compras(LocalDate.now(), ofimatica,pesoArgentino,laComercial);
-        compraSemanal.addMediosDePago(tarjetaCredito,10.00);
+
+        medioDePagoDeLaCompra = new MedioDePagoDeLaCompra(tarjetaDeCredito,10.0);
+        compraSemanal.addMediosDePago(medioDePagoDeLaCompra);
+
         compraSemanal.agregarItem(resma50Pesos);
 
         repositorioCompras = new RepositorioCompras();
@@ -48,6 +56,8 @@ public class TestCompra {
 
         factura = new Factura(258,"C");
 
+        mercadoBarrial = new EntidadJuridica("SupermercadoDelBarrio",
+                "LaBarrial","20148523697",direccionPostalMozart);
     }
 
     @Test
@@ -91,6 +101,72 @@ public class TestCompra {
         Assert.assertEquals(compraSemanal.getItems(),itemsComprados);
 
     }
+
+
+    @Test
+    public void llevarRegistroMedioDePago(){
+        //5.- De los medios de pago se debe registrar el medio en sí mismo y algún dato que permita identificar el instrumento
+        // utilizado (por ejemplo, si es una tarjeta de débito, su número ; si es un cheque, su número; etc.)
+        Set<MedioDePago> medioDePago = new HashSet<>();
+        medioDePago.add(tarjetaDeCredito);
+        Assert.assertEquals(compraSemanal.getMediosDePago(),medioDePago);
+    }
+
+    @Test
+    public void organizacionManejaEntidadBase(){
+        //Req 7
+        Assert.assertTrue( geSoc.tieneEntidadBase()  );
+    }
+
+    @Test
+    public void organizacionManejaEntidadJuridica(){
+        //Req 7
+
+        EntidadJuridica mercadoBarrial = new EntidadJuridica("SupermercadoDelBarrio",
+                "LaBarrial","20148523697",direccionPostalMozart);
+        geSoc.addEntidadJuridica(mercadoBarrial);
+        Assert.assertTrue( geSoc.tieneEntidadJuridica()  );
+    }
+
+    @Test
+    public void organizacionManejaEntidadJuridicaYEntidadBase(){
+        //Req 7
+        geSoc.addEntidadJuridica(mercadoBarrial);
+        Assert.assertTrue( geSoc.tieneEntidadJuridica() && geSoc.tieneEntidadBase()  );
+    }
+
+
+    @Test(expected=EntidadException.class)
+    public void unaEntidadBasePuedePertenecerASoloUnaEntidadJuridica(){
+//       10.- Una entidad base puede pertenecer a sólo una entidad jurídica
+
+        EntidadJuridica zapatillasTigre = new EntidadJuridica("Tigre","Fabrica de zapatillas",
+                "15585855811",direccionPostalMozart);
+
+        mercadoBarrial.addEntidadBase(laComercial);
+        mercadoBarrial.addEntidadBase(laComercial);
+    }
+
+    @Test
+    public void categorizarEntidadJuridica(){
+//       13.- Las entidades jurídicas serán categorizadas en Empresas y OSC (Organizaciones del sector social).
+        CategoriaEntidadJuridicaEmpresa empresa = new CategoriaEntidadJuridicaEmpresa();
+        mercadoBarrial.setCategoriaEntidadJuridica(empresa);
+        Assert.assertEquals(mercadoBarrial.getCategorizacionEntiodadJuridica(),
+                empresa);
+    }
+
+    @Test
+    public void lasEmpresasConMenosDe5EmpleadosTienenClasificacionAFIP_MICRO(){
+//      14.-  En el caso de empresas, estas se clasifican en Micro, Pequeña, Mediana Tramo 1, Mediana Tramo 2. Dicha clasificación responderá a los criterios estipulados por la AFIP
+      //  mercadoBarrial.
+        mercadoBarrial.setCantidadEmpleados(1);
+        CategoriaEntidadJuridicaEmpresa empresa = new CategoriaEntidadJuridicaEmpresa();
+        mercadoBarrial.setCategoriaEntidadJuridica(empresa);
+
+        Assert.assertEquals(mercadoBarrial.getClasificacionAFIP(),ClasificacionAFIP.MICRO);
+    }
+
 
 /*
 

@@ -6,9 +6,10 @@ public interface Entidad {
 	public String getNombreFicticio();
 
 //	public void categorizarEntidad(Integer codigoCategoria, ReglasDeNegocio reglasDeNegocio);
-	public void categorizarEntidad(Integer codigoCategoria);
+	public void setCategoriaEntidadJuridica(CategoriaEntidadJuridica categoria);
 	public Integer getMontoMaximoEgreso();
 	public String getTipoEntidad();
 	public Boolean esEntidadBase();
 	public Boolean esEntidadJuridica();
+
 }

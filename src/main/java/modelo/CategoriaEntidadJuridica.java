@@ -1,5 +1,6 @@
 package modelo;
 
 public interface CategoriaEntidadJuridica {
-	public String getTipoDeEmpresa();
+	public CategorizacionEntidadJuridica getCategoriaEntidadJuridica();
+	public ClasificacionAFIP getClasificacionAFIP(Integer cantidadEmpleados);
 }

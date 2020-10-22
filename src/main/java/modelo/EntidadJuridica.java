@@ -1,34 +1,72 @@
 package modelo;
 
 import modelo.CategoriaEntidad.CategoriaEntidad;
-import modelo.CategoriaEntidad.ReglasDeNegocio;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
+
+import modelo.FuncionesUtiles.Utils;
 
 public class EntidadJuridica implements Entidad {
-	EntidadJuridica agrupacion;
+
 	static final String tipoEntidad = "ENTIDADJURIDICA";
-	int cuit;
+	String cuit;
 	String razonSocial;
+	String nombreFicticio;
 	DireccionPostal direccionPostal;
-	int codigoIGJ;
-	CategoriaEntidadJuridica categoria;
-	List<EntidadBase> conformadaPor = new ArrayList<EntidadBase> ();
-	CategoriaEntidad categoriaEntidad;
+	Integer codigoIGJ;
+	CategoriaEntidadJuridica categoriaEntidadJuridica;
+	Set<EntidadBase> entidadesBase = new HashSet<>();
 	Integer montoMaximoEgreso;
-	
-	public String getNombreFicticio()
-	{
-		return razonSocial;
+	Integer cantidadEmpleados;
+	EntidadJuridica agrupacion;
+	CategoriaEntidad categoriaEntidad;
+
+	public EntidadJuridica(String razonSocial,String nombreFicticio,String cuit, DireccionPostal direccionPostal){
+		validarCuit(cuit);
+		this.razonSocial = razonSocial;
+		this.nombreFicticio = nombreFicticio;
+		this.cuit = cuit;
+		this.direccionPostal = direccionPostal;
+	}
+
+	public void setCodigoIGJ(Integer codigoIGJ){
+		this.codigoIGJ = codigoIGJ;
+	}
+
+	public void setCantidadEmpleados(Integer cantidadEmpleados){
+		this.cantidadEmpleados = cantidadEmpleados;
 	}
 
 	/*public void categorizarEntidad(Integer codigoCategoria, ReglasDeNegocio reglasDeNegocio) {
 		categoriaEntidad = new CategoriaEntidad(codigoCategoria,reglasDeNegocio);
 	}*/
 
-	public void categorizarEntidad(Integer codigoCategoria) {
-		categoriaEntidad = new CategoriaEntidad(codigoCategoria);
+	@Override
+	public String getNombreFicticio() {
+		return nombreFicticio;
+	}
+
+	public String getRazonSocial(){
+		return  razonSocial;
+	}
+
+	public String getCuit(){
+		return cuit;
+	}
+
+	public DireccionPostal getDireccionPostal(){
+		return direccionPostal;
+	}
+
+	@Override
+	public void setCategoriaEntidadJuridica(CategoriaEntidadJuridica categoria) {
+		this.categoriaEntidadJuridica = categoria;
+	}
+
+
+	public CategoriaEntidadJuridica getCategorizacionEntiodadJuridica(){
+		return categoriaEntidadJuridica;
 	}
 
 	public Integer getMontoMaximoEgreso(){
@@ -49,5 +87,28 @@ public class EntidadJuridica implements Entidad {
 		return true;
 	}
 
-	//�Como agrego una base aca? - Falta metodo
+	private void validarCuit(String cuit){
+		Utils utils = new Utils();
+		if ( !utils.validarEr(cuit,"^[0-9]{11}$") ){
+			throw new EntidadException("El cuit debe ser numerico y tener 11 digitos");
+		}
+	}
+
+	public void addEntidadBase(EntidadBase entidad){
+		validarBaseTieneEntidadJuridica(entidad);
+		entidadesBase.add(entidad);
+		entidad.setEntidadJuridica(this);
+	}
+
+	private void validarBaseTieneEntidadJuridica(EntidadBase entidad){
+
+		if ( entidad.tieneEntidadJuridica() ){
+			throw new EntidadException("La Entidad "+entidad.getNombreFicticio()+ " ya pertenece a una entidad juridica");
+		}
+	}
+
+	public ClasificacionAFIP getClasificacionAFIP(){
+			return categoriaEntidadJuridica.getClasificacionAFIP(cantidadEmpleados);
+	}
+
 }
