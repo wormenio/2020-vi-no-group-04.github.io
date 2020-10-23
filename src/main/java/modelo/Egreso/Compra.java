@@ -20,12 +20,13 @@ public abstract class Compra {
 	 LocalDate fechaCompra;
 	 Set<MedioDePagoDeLaCompra> mediosDePagoDeLaCompra = new HashSet<>();
 	 Set<DocumentoComercial> documentosComerciales = new HashSet<>();
+	 List<Presupuesto> presupuestos = new ArrayList<>();
 	 Moneda moneda;
 	 float monto_total;
-	 Integer cantidad_presupuestos;
-	 Boolean requiere_presupuesto;
+//	 Integer cantidad_presupuestos;
+//	 Boolean requiere_presupuesto;
 	 Entidad entidad;
-	 List<Presupuesto> presupuestos = new ArrayList<>();
+
 
 	 int etiqueta;
 //	FIXME
@@ -102,11 +103,29 @@ public abstract class Compra {
 		return calendar.get(Calendar.MONTH);
 	}
 
+	public void setPresupuestoAsignado(Presupuesto presupuesto){ }
+
 	public  void agregarPresupuesto(Presupuesto presupuesto){}
 
 	public Set<Presupuesto> getPresupuestos(){
 		return null;
 	}
+
+	public void setCantidadPresupuestosRequeridos(Integer cantidad){}
+
+	public Boolean validarCantidadDePresupuestos(){
+		return false;
+	}
+
+	public Boolean validarPorCriterioDeMenorValor() {
+		return false;
+	}
+
+	public Boolean seCorrespondeConAlMenosUnPresupuesto(){
+		return false;
+	}
+
+	public void setCompraValidada(){ 	}
 
 	public float getTotalEgreso() {
 

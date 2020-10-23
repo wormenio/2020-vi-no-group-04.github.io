@@ -1,8 +1,6 @@
 package modelo.Egreso;
 
 import modelo.*;
-import modelo.Egreso.Compra;
-import modelo.Egreso.Presupuesto;
 
 import java.time.LocalDate;
 import java.util.*;
@@ -17,10 +15,16 @@ public class CompraConPresupuesto extends Compra {
 	Set<Presupuesto> presupuestos = new HashSet<>();
 	Presupuesto presupuestoAsignado;
 	List<Usuario> usuariosHabilitados = new ArrayList<>();
+	Boolean compraValidada;
+	LocalDate fechaValidacion;
 
 	public CompraConPresupuesto(LocalDate fechaCompra, Proveedor proveedor, Moneda moneda, Entidad entidad,Integer cantidadPresupuestos) {
 		super(fechaCompra, proveedor, moneda, entidad);
 		this.cantidadPresupuestosRequeridos = cantidadPresupuestos;
+	}
+
+	public void setPresupuestoAsignado(Presupuesto presupuesto){
+		this.presupuestoAsignado = presupuesto;
 	}
 
 	/**
@@ -42,6 +46,7 @@ public class CompraConPresupuesto extends Compra {
 	 public void hacerRevisor(Usuario usuario) {
 		 this.usuariosHabilitados.add(usuario);
 	 }
+
 	 public boolean validarCompra(){		 
 
 		 return this.validarCantidadDePresupuestos()  
@@ -54,7 +59,7 @@ public class CompraConPresupuesto extends Compra {
 		 return cantidadPresupuestosRequeridos;
 	 }
 
-	 public boolean validarCantidadDePresupuestos() {
+	 public Boolean validarCantidadDePresupuestos() {
 		 return this.presupuestos.size() == this.cantidadPresupuestosRequeridos;		 
 	 }
 	 
@@ -62,9 +67,8 @@ public class CompraConPresupuesto extends Compra {
 		 return this.presupuestos.contains(this.presupuestoAsignado);		 
 	 }
 	 
-	 public boolean validarPorCriterioDeMenorValor() {
-		 
-		 
+	 public Boolean validarPorCriterioDeMenorValor() {
+//		TODO -> tiene un "return false" al final!
 		 if(this.criterio == Criterio.MENOR_VALOR) {			
 	
 			    Presupuesto minPresupuesto = this.presupuestos
@@ -87,6 +91,16 @@ public class CompraConPresupuesto extends Compra {
 	 {
 		 this.presupuestos.add(presupuesto);
 		 
+	 }
+
+	 public Boolean seCorrespondeConAlMenosUnPresupuesto(){
+//		TODO comparar los items comprados con todos los presupuestos
+		return true;
+	 }
+
+	 public void setCompraValidada(){
+		compraValidada=true;
+		fechaValidacion= LocalDate.now();
 	 }
          
 //        public int getEtiqueta(){

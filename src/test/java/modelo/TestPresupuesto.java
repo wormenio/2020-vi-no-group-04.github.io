@@ -16,6 +16,9 @@ public class TestPresupuesto {
     public Compra unaCompraConPresupuesto;
     public Presupuesto presupuestoCompraResmaYToner;
     public RepositorioCompras repositorio;
+    public Item itemResma    ;
+    public Item itemToner   ;
+
     public Presupuesto presupuestoCompraCuadernos;
     public ItemsDelPresupuesto presupuestoResma;
     public ItemsDelPresupuesto presupuestoToner;
@@ -24,9 +27,9 @@ public class TestPresupuesto {
     @Before
     public void init(){
         testHelpers = new TestHelpers();
-        Item itemResma    = testHelpers.itemResma;
+        itemResma    = testHelpers.itemResma;
         Item itemCuaderno = testHelpers.itemCuaderno;
-        Item itemToner    = testHelpers.itemTonerImpresora;
+        itemToner    = testHelpers.itemTonerImpresora;
 
       /*  unaCompraSinPresupuesto = new BuilderCompra()
                 .setProveedor(testHelpers.proveedorOfimatica)
@@ -95,6 +98,31 @@ public class TestPresupuesto {
 
     @Test
     public void validarQueLaCompraTengaCargadoLaCantidadDePresupuestosIndicados(){
-        
+        unaCompraConPresupuesto.setCantidadPresupuestosRequeridos(1);
+        Assert.assertTrue(unaCompraConPresupuesto.validarCantidadDePresupuestos());
+    }
+
+    @Test
+    public void validarSeCorrespondeConAlMenosUnPresupuesto(){
+        Assert.assertTrue(unaCompraConPresupuesto.seCorrespondeConAlMenosUnPresupuesto());
+    }
+
+    @Test
+    public void validarPorCriterioDeMenorValor(){
+        Presupuesto otroPresupuesto = new Presupuesto(
+                testHelpers.proveedorOfimatica,
+                LocalDate.now(),
+                unaCompraConPresupuesto,
+                testHelpers.remito2,
+                testHelpers.pesoArgentino
+        );
+
+        presupuestoCompraResmaYToner.addItem(itemResma,100.0);
+        presupuestoCompraResmaYToner.addItem(itemToner,1250.0);
+
+        unaCompraConPresupuesto.agregarPresupuesto(presupuestoCompraResmaYToner);
+        unaCompraConPresupuesto.setPresupuestoAsignado(otroPresupuesto);
+        Assert.assertTrue(unaCompraConPresupuesto.validarPorCriterioDeMenorValor());
+
     }
 }
