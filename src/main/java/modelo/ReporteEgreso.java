@@ -1,4 +1,6 @@
 package modelo;
+import modelo.Egreso.CompraConPresupuesto;
+
 import java.util.List;
 
 public class ReporteEgreso {	
@@ -13,7 +15,7 @@ public class ReporteEgreso {
     //      Todos los datos de la etiqueta
    public List<CompraConPresupuesto> VerReporteEgreso(int mes, int anio, int etiqueta){
      //  .COLLEc.COLLECTORS.T
-      return (List<CompraConPresupuesto>)repoCompras.listadoComprasConPresupuesto().stream().filter(
+      return (List<CompraConPresupuesto>)repoCompras.getComprasConPresupuesto().stream().filter(
               x -> x.getEtiqueta() == etiqueta
               && x.getAnio() == anio 
               && x.getMes() == mes

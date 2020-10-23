@@ -1,12 +1,10 @@
 package modelo.Egreso;
 
-
-public class ItemsDeLaCompra {
-
+public class ItemsDelPresupuesto {
     Item item;
     Double monto;
 
-    public ItemsDeLaCompra(Item item, Double monto){
+    public ItemsDelPresupuesto(Item item, Double monto){
         this.item = item;
         this.monto = monto;
     }
@@ -14,6 +12,4 @@ public class ItemsDeLaCompra {
     public Item getItem(){
         return item;
     }
-
-    public Double getMonto(){ return monto;}
 }

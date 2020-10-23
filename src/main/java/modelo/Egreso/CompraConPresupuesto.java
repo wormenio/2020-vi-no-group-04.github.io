@@ -1,22 +1,36 @@
-package modelo;
+package modelo.Egreso;
 
-import java.util.Comparator;
-import java.util.List;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
+import modelo.*;
+import modelo.Egreso.Compra;
+import modelo.Egreso.Presupuesto;
+
+import java.time.LocalDate;
+import java.util.*;
 
 public class CompraConPresupuesto extends Compra {
 	/*public CompraConPresupuesto(BuzonMensajes buzon) {
 	
 	}*/
 
-	private int cantidadPresupuestosRequeridos = 2;
+	private Integer cantidadPresupuestosRequeridos = 2;
 	Criterio criterio;
-	List<Presupuesto> presupuestos;
+	Set<Presupuesto> presupuestos = new HashSet<>();
 	Presupuesto presupuestoAsignado;
 	List<Usuario> usuariosHabilitados = new ArrayList<>();
-	
+
+	public CompraConPresupuesto(LocalDate fechaCompra, Proveedor proveedor, Moneda moneda, Entidad entidad,Integer cantidadPresupuestos) {
+		super(fechaCompra, proveedor, moneda, entidad);
+		this.cantidadPresupuestosRequeridos = cantidadPresupuestos;
+	}
+
+	/**
+	 * Permite actualizar la cantidad de presupuestos requeridos
+	 * @param cantidad
+	 */
+	public void setCantidadPresupuestosRequeridos(Integer cantidad){
+		this.cantidadPresupuestosRequeridos = cantidad;
+	}
+
 	public boolean esRevisor(Usuario usuario) {
 		 return this.usuariosHabilitados.contains(usuario);
 	 }
@@ -24,11 +38,7 @@ public class CompraConPresupuesto extends Compra {
 	public List<Usuario> usuariosHabilitados(){
 		return usuariosHabilitados;
 	}
-	
-	
-	
-	
-	
+
 	 public void hacerRevisor(Usuario usuario) {
 		 this.usuariosHabilitados.add(usuario);
 	 }
@@ -43,6 +53,7 @@ public class CompraConPresupuesto extends Compra {
 	 public int getCantidadPresupuestoRequeridos() {
 		 return cantidadPresupuestosRequeridos;
 	 }
+
 	 public boolean validarCantidadDePresupuestos() {
 		 return this.presupuestos.size() == this.cantidadPresupuestosRequeridos;		 
 	 }
@@ -67,27 +78,30 @@ public class CompraConPresupuesto extends Compra {
 		 return false;
 		 
 	 }
+
+	 public Set<Presupuesto> getPresupuestos(){
+		return presupuestos;
+	 }
 	 
-	 public void agregarPresupuesto( float importePresupuesto, Proveedor proveedor, Moneda moneda )
+	public void agregarPresupuesto(Presupuesto presupuesto)
 	 {
-		 Presupuesto presupuesto = new Presupuesto(proveedor,moneda);
 		 this.presupuestos.add(presupuesto);
 		 
 	 }
          
-        public int getEtiqueta(){
-         return this.etiqueta;
-        }
+//        public int getEtiqueta(){
+//         return this.etiqueta;
+//        }
         
-        public int getAnio(){
+  /*      public int getAnio(){
             Calendar calendar = new GregorianCalendar();
-            calendar.setTime(this.fecha_egreso);
+            calendar.setTime(this.fechaCompra);
             return calendar.get(Calendar.YEAR);            
         }
         
         public int getMes(){
             Calendar calendar = new GregorianCalendar();
-            calendar.setTime(this.fecha_egreso);
+            calendar.setTime(this.fechaCompra);
             return calendar.get(Calendar.MONTH);
-        }
+        }*/
 }

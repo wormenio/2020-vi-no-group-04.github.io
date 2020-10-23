@@ -1,10 +1,6 @@
 package modelo;
-import modelo.CategoriaEntidad.CategoriaEntidad;
-import modelo.DocumentoComercial.Factura;
-import modelo.Egreso.Compras;
-import modelo.Egreso.Item;
-import modelo.Egreso.ItemsDeLaCompra;
-import modelo.Egreso.MedioDePagoDeLaCompra;
+import modelo.DocumentoComercial.DocumentoComercial;
+import modelo.Egreso.*;
 import modelo.MedioDePago.MedioDePago;
 import modelo.MedioDePago.TarjetaDeCredito;
 import org.junit.Assert;
@@ -14,91 +10,79 @@ import org.junit.Test;
 import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class TestCompra {
-    public Compras compraSemanal;
+    public CompraSinPresupuesto unaCompra;
     public RepositorioCompras repositorioCompras;
-    public Factura factura;
-    public Proveedor ofimatica;
-    public ItemsDeLaCompra resma50Pesos;
-    public TarjetaDeCredito tarjetaDeCredito;
-    public MedioDePagoDeLaCompra medioDePagoDeLaCompra;
-    public Organizacion geSoc;
-    public CategoriaEntidad unaCategoria;
-    public DireccionPostal direccionPostalMozart;
-    public EntidadBase laComercial;
-    public EntidadJuridica mercadoBarrial;
+    public DocumentoComercial facturaC258;
+    public Proveedor proveedorOfimatica;
+    public Item itemResma;
+    public Item itemTonerImpresora;
+
+    public MedioDePago tarjetaCredito5875;
+    public TestHelpers testHelpers;
 
     @Before
     public void init(){
-        geSoc = new Organizacion();
-        Pais argentina = new Pais("Argentina", "Pesos", "1", "Es-ar");
-        Moneda pesoArgentino = new Moneda("PesoArgentino");
-        direccionPostalMozart = new DireccionPostal(argentina,"mozart","215","1");
-        ofimatica = new Proveedor("Ofimatica","25858568585",direccionPostalMozart);
+        testHelpers = new TestHelpers();
+        facturaC258 = testHelpers.factura258;
+        proveedorOfimatica = testHelpers.proveedorOfimatica;
+        itemResma = testHelpers.itemResma;
+        itemTonerImpresora = testHelpers.itemTonerImpresora;
+        tarjetaCredito5875 = testHelpers.tarjetaCredito5875;
 
-        tarjetaDeCredito = new TarjetaDeCredito(5875);
-        Item resma = new Item("resma papel A4");
-        resma50Pesos = new ItemsDeLaCompra(resma,50.0);
-
-        unaCategoria = new CategoriaEntidad(2585);
-        laComercial = new EntidadBase("La Comercial","Venta de Ropas",unaCategoria);
-        geSoc.addEntidadBase(laComercial);
-        compraSemanal = new Compras(LocalDate.now(), ofimatica,pesoArgentino,laComercial);
-
-        medioDePagoDeLaCompra = new MedioDePagoDeLaCompra(tarjetaDeCredito,10.0);
-        compraSemanal.addMediosDePago(medioDePagoDeLaCompra);
-
-        compraSemanal.agregarItem(resma50Pesos);
+        unaCompra = testHelpers.laComercialCompraResmaYTonerAOfimatica(LocalDate.now());
+        unaCompra.addMediosDePago(tarjetaCredito5875,10.0);
 
         repositorioCompras = new RepositorioCompras();
-        repositorioCompras.agregarCompra(compraSemanal);
+        repositorioCompras.agregarCompraSinPresupuesto(unaCompra);
 
-        factura = new Factura(258,"C");
-
-        mercadoBarrial = new EntidadJuridica("SupermercadoDelBarrio",
-                "LaBarrial","20148523697",direccionPostalMozart);
     }
 
     @Test
     public void registroDeLasOperacionesDeEgresos(){
         //    Se debe llevar registro de todas las operaciones de egresos de fondos a través de diversos medios de pagos.
-        Set<Compras> variasCompras = new HashSet<>();
-        variasCompras.add(compraSemanal);
-        Assert.assertEquals(repositorioCompras.listadoDeCompras(),variasCompras);
+        Set<CompraSinPresupuesto> variasCompras = new HashSet<>();
+        variasCompras.add(unaCompra);
+        Assert.assertEquals(repositorioCompras.getComprasSinPresupuesto(),variasCompras);
     }
 
     @Test
     public void compraTieneDocumentoComercial(){
         //Requerimiento 1
-        compraSemanal.setDocumentoComercial(factura);
-        Assert.assertEquals(compraSemanal.getDocumentoComercial(),factura);
+        Set<DocumentoComercial> documentos = new HashSet<>();
+        documentos.add(facturaC258);
+        unaCompra.addDocumentoComercial(facturaC258);
+        Assert.assertEquals(unaCompra.getDocumentoComercial(), documentos);
     }
 
     @Test
-    public void compraSinDocumentoComercial(){
+    public void elDocumentoComercialEsOpcional(){
         //Requerimiento 1
-        Assert.assertEquals(compraSemanal.getDocumentoComercial(),null);
+        Assert.assertEquals(unaCompra.getDocumentoComercial(),new HashSet<>());
     }
 
     @Test
     public void conocerElProveedorDeUnaOperacionDeEgreso(){
         //Requerimiento 3
-        Assert.assertEquals(compraSemanal.getProveedor(),ofimatica);
+        Set<Proveedor> proveedores = new HashSet<>();
+        proveedores.add(proveedorOfimatica);
+        Assert.assertEquals(unaCompra.getProveedor(), proveedorOfimatica);
     }
 
     @Test
-    public void conocerDetalleDeLosItemsDelEgreso(){
+    public void seConoceElDetalleDeLosItemsDelEgreso(){
         //Requerimiento 4
-        Set<ItemsDeLaCompra> itemsComprados = new HashSet<>();
 
-        Item toner = new Item("Toner Impresora");
-        ItemsDeLaCompra toner150 = new ItemsDeLaCompra(toner,150.0);
-        itemsComprados.add(toner150);
-        itemsComprados.add(resma50Pesos);
-
-        compraSemanal.agregarItem(toner150);
-        Assert.assertEquals(compraSemanal.getItems(),itemsComprados);
+        Assert.assertTrue(unaCompra.getItems()
+                .stream()
+                .filter(item -> item.getItem().equals(itemResma)
+                            && item.getMonto()== 250.0
+                        )
+                .collect(Collectors.toSet())
+                .size()>0
+        );
 
     }
 
@@ -107,87 +91,17 @@ public class TestCompra {
     public void llevarRegistroMedioDePago(){
         //5.- De los medios de pago se debe registrar el medio en sí mismo y algún dato que permita identificar el instrumento
         // utilizado (por ejemplo, si es una tarjeta de débito, su número ; si es un cheque, su número; etc.)
-        Set<MedioDePago> medioDePago = new HashSet<>();
-        medioDePago.add(tarjetaDeCredito);
-        Assert.assertEquals(compraSemanal.getMediosDePago(),medioDePago);
-    }
 
-    @Test
-    public void organizacionManejaEntidadBase(){
-        //Req 7
-        Assert.assertTrue( geSoc.tieneEntidadBase()  );
-    }
+        // => Si agrego un medio de pago, lo puedo consultar
 
-    @Test
-    public void organizacionManejaEntidadJuridica(){
-        //Req 7
-
-        EntidadJuridica mercadoBarrial = new EntidadJuridica("SupermercadoDelBarrio",
-                "LaBarrial","20148523697",direccionPostalMozart);
-        geSoc.addEntidadJuridica(mercadoBarrial);
-        Assert.assertTrue( geSoc.tieneEntidadJuridica()  );
-    }
-
-    @Test
-    public void organizacionManejaEntidadJuridicaYEntidadBase(){
-        //Req 7
-        geSoc.addEntidadJuridica(mercadoBarrial);
-        Assert.assertTrue( geSoc.tieneEntidadJuridica() && geSoc.tieneEntidadBase()  );
+        Assert.assertTrue(unaCompra.getMediosDePago().stream()
+                    .filter( medioDePago ->
+                                    medioDePago.getMedioDePago() == tarjetaCredito5875
+                            )
+                .count() >0
+                );
     }
 
 
-    @Test(expected=EntidadException.class)
-    public void unaEntidadBasePuedePertenecerASoloUnaEntidadJuridica(){
-//       10.- Una entidad base puede pertenecer a sólo una entidad jurídica
 
-        EntidadJuridica zapatillasTigre = new EntidadJuridica("Tigre","Fabrica de zapatillas",
-                "15585855811",direccionPostalMozart);
-
-        mercadoBarrial.addEntidadBase(laComercial);
-        mercadoBarrial.addEntidadBase(laComercial);
-    }
-
-    @Test
-    public void categorizarEntidadJuridica(){
-//       13.- Las entidades jurídicas serán categorizadas en Empresas y OSC (Organizaciones del sector social).
-        CategoriaEntidadJuridicaEmpresa empresa = new CategoriaEntidadJuridicaEmpresa();
-        mercadoBarrial.setCategoriaEntidadJuridica(empresa);
-        Assert.assertEquals(mercadoBarrial.getCategorizacionEntiodadJuridica(),
-                empresa);
-    }
-
-    @Test
-    public void lasEmpresasConMenosDe5EmpleadosTienenClasificacionAFIP_MICRO(){
-//      14.-  En el caso de empresas, estas se clasifican en Micro, Pequeña, Mediana Tramo 1, Mediana Tramo 2. Dicha clasificación responderá a los criterios estipulados por la AFIP
-      //  mercadoBarrial.
-        mercadoBarrial.setCantidadEmpleados(1);
-        CategoriaEntidadJuridicaEmpresa empresa = new CategoriaEntidadJuridicaEmpresa();
-        mercadoBarrial.setCategoriaEntidadJuridica(empresa);
-
-        Assert.assertEquals(mercadoBarrial.getClasificacionAFIP(),ClasificacionAFIP.MICRO);
-    }
-
-
-/*
-
-
-    @Test
-    public void probarRegistroConUsuarioNoValido()
-    {
-    	Assert.assertFalse(organizacion.registrarse("ale" , "4h9y2male5a0k", usuarioComun));
-    }
-    
-    @Test
-    public void probarRegistroConClaveNoValida()
-    {
-    	Assert.assertFalse(organizacion.registrarse("ler9ohtw4" , "111122222", usuarioComun));
-    }
-    
-    @Test
-    public void probarRegistroConUsuarioValido()
-    {
-    	Assert.assertTrue(organizacion.registrarse("user0528", "ole8712mo", usuarioComun));
-    }
-
- */
 }

@@ -1,10 +1,10 @@
 package modelo;
 
 import modelo.CategoriaEntidad.CategoriaEntidad;
+import modelo.Egreso.Compra;
 
 import java.util.HashSet;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 public class Organizacion {
 	Set<Entidad> entidades = new HashSet<>();
@@ -12,7 +12,11 @@ public class Organizacion {
 	Set<EntidadJuridica> entidadesJuridicas = new HashSet<>();
 	Set<Compra> egresos = new HashSet<>();
 	Set<CategoriaEntidad> categorias = new HashSet<>();
+	String nombre;
 
+	public  Organizacion(String nombre){
+		this.nombre = nombre;
+	}
 
 	public void addEntidadBase(EntidadBase entidad){
 		entidadesBase.add(entidad);

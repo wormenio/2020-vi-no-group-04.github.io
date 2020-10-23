@@ -10,12 +10,13 @@ public class Usuario{
     Boolean is_Admin;
 	String nombreUsuario;
     List<String> notificacionCompras = new ArrayList<String>();
+    RolUsuario rolUsuario;
 
-	public Usuario(String nombreUsuario, Boolean isAdmin, String contrasenia){
+	public Usuario(String nombreUsuario, RolUsuario rolUsuario, String contrasenia){
 			validarContrasenia(contrasenia);
 			registrarContrasenia(contrasenia);
 			this.nombreUsuario = nombreUsuario;
-			this.is_Admin = isAdmin;
+			this.rolUsuario = rolUsuario;
 	}
 
 

@@ -1,31 +1,40 @@
 package modelo;
 
-import modelo.Egreso.Compras;
+import modelo.Egreso.Compra;
+import modelo.Egreso.CompraConPresupuesto;
+import modelo.Egreso.CompraSinPresupuesto;
 
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 public class RepositorioCompras {
+
+	Set<Compra> comprasConPresupuesto = new HashSet<>();
+	Set<Compra> comprasSinPresupuesto = new HashSet<>();
+	Set<Compra> compras = new HashSet<>();//TODO Ver si se puede usar un solo Set
 	
-	List<CompraConPresupuesto> comprasConPresupuesto = new ArrayList<CompraConPresupuesto>();
-	Set<Compras> compras = new HashSet<>();
-	
-	public void agregarCompraConPresupuesto(CompraConPresupuesto compra) {
+	public void agregarCompraConPresupuesto(Compra compra) {
 		comprasConPresupuesto.add(compra);
 	}
 
-	public void agregarCompra(Compras compra) {
-		compras.add(compra);
+	public void agregarCompraSinPresupuesto(CompraSinPresupuesto compra) {
+		comprasSinPresupuesto.add(compra);
 	}
         
-	public List<CompraConPresupuesto> listadoComprasConPresupuesto(){
-		return  comprasConPresupuesto;
+//	public Set<CompraConPresupuesto> listadoComprasConPresupuesto(){
+//		return  comprasConPresupuesto;
+//	}
+
+	public Set<Compra> getComprasSinPresupuesto(){
+		return comprasSinPresupuesto;
 	}
 
-	public Set<Compras> listadoDeCompras(){
-		return compras;
+	public Set<Compra> getComprasConPresupuesto(){
+		return comprasConPresupuesto;
+//		return compras.stream().filter(
+//					compra->compra.getRequierePresupuesto()
+//				)
+//				.collect(Collectors.toSet());
 	}
 
 }

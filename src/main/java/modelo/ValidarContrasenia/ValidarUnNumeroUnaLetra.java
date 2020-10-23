@@ -12,8 +12,8 @@ public class ValidarUnNumeroUnaLetra implements ValidarContrasenia {
     public void validar(String contrasenia) {
         Utils utils = new Utils();
 
-        if( !utils.validarEr(contrasenia,"^(?:[0-9]+[a-zA-Z0-9]|[a-zA-Z]+[0-9])[a-zA-Z0-9]*$") ){
-            throw new ValidarContraseniaException("La clave debe tener al menos un número y una letra");
+        if( !utils.validarEr(contrasenia,"^([0-9]+[a-zA-Z0-9\\.]|[a-zA-Z\\.]+[0-9])[a-zA-Z0-9\\.]*$") ){
+            throw new ValidarContraseniaException("La clave "+contrasenia+" debe tener al menos un número y una letra");
         }
 
     }
