@@ -22,6 +22,7 @@ public class TestCompra {
 
     public MedioDePago tarjetaCredito5875;
     public TestHelpers testHelpers;
+    public Organizacion gesoc = testHelpers.geSoc;
 
     @Before
     public void init(){
@@ -100,6 +101,29 @@ public class TestCompra {
                             )
                 .count() >0
                 );
+    }
+
+    @Test
+    public void validarQueLaCompraTengaCargadoLaCantidadDePresupuestosIndicados(){
+        Compra unaCompraConPresupuesto = new BuilderCompra()
+                .setConPresupuesto(true)
+                .setProveedor(testHelpers.proveedorOfimatica)
+                .setEntidad(testHelpers.entidadBaseLaComercial)
+                .setMoneda(testHelpers.pesoArgentino)
+                .crearCompra();
+
+        Presupuesto presupuestoCompraResmaYToner = new Presupuesto(
+                testHelpers.proveedorOfimatica,
+                LocalDate.now(),
+                unaCompraConPresupuesto,
+                testHelpers.remito2,
+                testHelpers.pesoArgentino
+        );
+
+        unaCompraConPresupuesto.agregarPresupuesto(presupuestoCompraResmaYToner);
+        gesoc.setCantidadPresupuestosRequeridos(1);
+        Assert.assertTrue(unaCompraConPresupuesto.validarCantidadDePresupuestos());
+
     }
 
 

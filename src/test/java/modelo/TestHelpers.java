@@ -12,6 +12,7 @@ import java.time.LocalDate;
 
 public class TestHelpers {
     public Organizacion geSoc = new Organizacion("Gesoc");
+
     public Moneda pesoArgentino = new Moneda("Peso Argentino");
     public Factura factura258 =  new Factura(258,"C");
     public Remito remito2     =  new Remito(2);
@@ -23,17 +24,25 @@ public class TestHelpers {
     public Proveedor proveedorOfimatica = proveedorOfimatica();
 
     private EntidadBase entidadBaseLaComercial(){
-        return new EntidadBase("La Comercial","Venta de Ropas",new CategoriaEntidad(2585));
+        return new EntidadBase("La Comercial","Venta de Ropas",
+                new CategoriaEntidad(2585),geSoc);
     }
+
+
 
     public EntidadJuridica entidadJuridicaMercadoBarrial(){
         return new EntidadJuridica("SupermercadoDelBarrio",
-                "LaBarrial","20148523697",direccionPostalMozart());
+                "LaBarrial","20148523697",
+                direccionPostalMozart(),
+                new CategoriaEntidadJuridicaOSC(),
+                geSoc);
     }
 
     public EntidadJuridica entidadJuridicaZapatillasTigre(){
         return new EntidadJuridica("Tigre","Fabrica de zapatillas",
-                "15585855811",direccionPostalMozart());
+                "15585855811",direccionPostalMozart(),
+                new CategoriaEntidadJuridicaEmpresa(),
+                geSoc);
     }
 
 
@@ -63,7 +72,8 @@ public class TestHelpers {
                 fecha,
                 proveedorOfimatica,
                 pesoArgentino,
-                entidadBaseLaComercial
+                entidadBaseLaComercial,
+                new EtiquetaEgreso("Utiles")
         );
         return unaCompra;
     }

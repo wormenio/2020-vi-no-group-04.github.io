@@ -21,13 +21,18 @@ public class EntidadJuridica implements Entidad {
 	Integer cantidadEmpleados;
 	EntidadJuridica agrupacion;
 	CategoriaEntidad categoriaEntidad;
+	Organizacion organizacion;
 
-	public EntidadJuridica(String razonSocial,String nombreFicticio,String cuit, DireccionPostal direccionPostal){
+	public EntidadJuridica(String razonSocial,String nombreFicticio,String cuit, DireccionPostal direccionPostal,
+						CategoriaEntidadJuridica categoria,Organizacion organizacion){
+
+		this.categoriaEntidadJuridica = categoria;
 		validarCuit(cuit);
 		this.razonSocial = razonSocial;
 		this.nombreFicticio = nombreFicticio;
 		this.cuit = cuit;
 		this.direccionPostal = direccionPostal;
+		organizacion.aregarEntidad(this);
 	}
 
 	public void setCodigoIGJ(Integer codigoIGJ){
@@ -59,10 +64,10 @@ public class EntidadJuridica implements Entidad {
 		return direccionPostal;
 	}
 
-	@Override
+/*	@Override
 	public void setCategoriaEntidadJuridica(CategoriaEntidadJuridica categoria) {
 		this.categoriaEntidadJuridica = categoria;
-	}
+	}*/
 
 
 	public CategoriaEntidadJuridica getCategorizacionEntiodadJuridica(){
@@ -109,6 +114,10 @@ public class EntidadJuridica implements Entidad {
 
 	public ClasificacionAFIP getClasificacionAFIP(){
 			return categoriaEntidadJuridica.getClasificacionAFIP(cantidadEmpleados);
+	}
+
+	public Organizacion getOrganizacion(){
+		return organizacion;
 	}
 
 }

@@ -13,6 +13,7 @@ public class BuilderCompra {
     private Moneda moneda;
     private Boolean conPresupuesto = false;
     private Integer cantidadPresupuesto;
+    private EtiquetaEgreso etiquetaEgreso = new EtiquetaEgreso("Etiqueta 1");
 
 
     public BuilderCompra setProveedor(Proveedor proveedor){
@@ -45,7 +46,7 @@ public class BuilderCompra {
                     proveedor,
                     moneda,
                     entidad,
-                    cantidadPresupuesto
+                    etiquetaEgreso
             ) ;
         }
         else{
@@ -53,7 +54,8 @@ public class BuilderCompra {
                     LocalDate.now(),
                     proveedor,
                     moneda,
-                    entidad
+                    entidad,
+                    etiquetaEgreso
             ) ;
         }
 

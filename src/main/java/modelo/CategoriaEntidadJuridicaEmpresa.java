@@ -1,7 +1,7 @@
 package modelo;
 
 public class CategoriaEntidadJuridicaEmpresa implements CategoriaEntidadJuridica {
-	ClasificacionAFIP categorizacion;
+//	ClasificacionAFIP categorizacion;
 
 
 	public CategorizacionEntidadJuridica getCategoriaEntidadJuridica()

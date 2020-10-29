@@ -5,8 +5,8 @@ import java.time.LocalDate;
 
 public class CompraSinPresupuesto extends Compra {
 
-    public CompraSinPresupuesto(LocalDate fechaCompra, Proveedor proveedor, Moneda moneda, Entidad entidad) {
-        super(fechaCompra, proveedor, moneda, entidad);
+    public CompraSinPresupuesto(LocalDate fechaCompra, Proveedor proveedor, Moneda moneda, Entidad entidad, EtiquetaEgreso etiquetaEgreso) {
+        super(fechaCompra, proveedor, moneda, entidad,etiquetaEgreso);
     }
 
 /*

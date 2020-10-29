@@ -6,6 +6,7 @@ import modelo.Egreso.ItemsDeLaCompra;
 import modelo.Egreso.MedioDePagoDeLaCompra;
 import modelo.Egreso.Presupuesto;
 import modelo.Entidad;
+import modelo.EtiquetaEgreso;
 import modelo.MedioDePago.MedioDePago;
 import modelo.Moneda;
 import modelo.Proveedor;
@@ -26,6 +27,7 @@ public abstract class Compra {
 //	 Integer cantidad_presupuestos;
 //	 Boolean requiere_presupuesto;
 	 Entidad entidad;
+	 EtiquetaEgreso etiquetaEgreso;
 
 
 	 int etiqueta;
@@ -34,7 +36,7 @@ public abstract class Compra {
 //	EtiquetaEgreso etiqueta;
 
 	public Compra(LocalDate fechaCompra, Proveedor proveedor, Moneda moneda,
-								Entidad entidad){
+				  Entidad entidad, EtiquetaEgreso etiquetaEgreso){
 		if( proveedor == null) throw new ComprasException("Debe indicar el Proveedor");
 		if( moneda == null )  throw new ComprasException("Debe indicar la Moneda");
 		if( entidad == null ) throw new ComprasException("Debe indicar la Entidad");
@@ -42,8 +44,8 @@ public abstract class Compra {
 		this.proveedor = proveedor;
 		this.moneda = moneda;
 		this.entidad = entidad;
+		this.etiquetaEgreso = etiquetaEgreso;
 	}
-
 
 	public void addMediosDePago(MedioDePago medioDePago, Double monto){
 		mediosDePagoDeLaCompra.add(new MedioDePagoDeLaCompra(medioDePago, monto)  );

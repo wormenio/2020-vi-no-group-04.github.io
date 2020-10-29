@@ -21,9 +21,7 @@ public class RepositorioCompras {
 		comprasSinPresupuesto.add(compra);
 	}
         
-//	public Set<CompraConPresupuesto> listadoComprasConPresupuesto(){
-//		return  comprasConPresupuesto;
-//	}
+
 
 	public Set<Compra> getComprasSinPresupuesto(){
 		return comprasSinPresupuesto;

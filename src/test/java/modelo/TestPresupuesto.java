@@ -97,12 +97,6 @@ public class TestPresupuesto {
     }
 
     @Test
-    public void validarQueLaCompraTengaCargadoLaCantidadDePresupuestosIndicados(){
-        unaCompraConPresupuesto.setCantidadPresupuestosRequeridos(1);
-        Assert.assertTrue(unaCompraConPresupuesto.validarCantidadDePresupuestos());
-    }
-
-    @Test
     public void validarSeCorrespondeConAlMenosUnPresupuesto(){
         Assert.assertTrue(unaCompraConPresupuesto.seCorrespondeConAlMenosUnPresupuesto());
     }

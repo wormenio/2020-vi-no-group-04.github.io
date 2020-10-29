@@ -7,26 +7,19 @@ import java.util.List;
 import java.util.Map;
 
 public class EtiquetaEgreso {
-//FIXME
-//	Es el repositorio
-//	se debe tener el objeto etiqueta
 
-//	List<EtiquetaEntity> etiquetas ;
+	private String nombre;
+
+	public  EtiquetaEgreso( String nombre){
+		this.nombre = nombre;
+	}
+
 	EtiquetaDao etiquetaDao = new EtiquetaDao();
 
-	public void AgregarEtiqueta( String nombre) {
-		etiquetaDao.create(nombre);
-	}
-        
-	public void EliminarEtiqueta(String nombre) {
-		etiquetaDao.delete(nombre);
+	public String getNombre(){
+		return nombre;
 	}
 
-
-	public String getEtiquetas(){
-		//TODO
-		return "etiqueta";
-	}
 }
 
 

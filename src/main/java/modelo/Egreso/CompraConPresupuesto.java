@@ -6,11 +6,7 @@ import java.time.LocalDate;
 import java.util.*;
 
 public class CompraConPresupuesto extends Compra {
-	/*public CompraConPresupuesto(BuzonMensajes buzon) {
-	
-	}*/
 
-	private Integer cantidadPresupuestosRequeridos = 2;
 	Criterio criterio;
 	Set<Presupuesto> presupuestos = new HashSet<>();
 	Presupuesto presupuestoAsignado;
@@ -18,21 +14,16 @@ public class CompraConPresupuesto extends Compra {
 	Boolean compraValidada;
 	LocalDate fechaValidacion;
 
-	public CompraConPresupuesto(LocalDate fechaCompra, Proveedor proveedor, Moneda moneda, Entidad entidad,Integer cantidadPresupuestos) {
-		super(fechaCompra, proveedor, moneda, entidad);
-		this.cantidadPresupuestosRequeridos = cantidadPresupuestos;
+	public CompraConPresupuesto(LocalDate fechaCompra, Proveedor proveedor, Moneda moneda,
+								Entidad entidad,  EtiquetaEgreso etiquetaEgreso) {
+		super(fechaCompra, proveedor, moneda, entidad,etiquetaEgreso);
 	}
 
 	public void setPresupuestoAsignado(Presupuesto presupuesto){
-		this.presupuestoAsignado = presupuesto;
-	}
+		if( !presupuestos.contains(presupuesto) )
+			throw  new ComprasException("El presupuesto no se encuentra en la lista de presupuestos");
 
-	/**
-	 * Permite actualizar la cantidad de presupuestos requeridos
-	 * @param cantidad
-	 */
-	public void setCantidadPresupuestosRequeridos(Integer cantidad){
-		this.cantidadPresupuestosRequeridos = cantidad;
+		this.presupuestoAsignado = presupuesto;
 	}
 
 	public boolean esRevisor(Usuario usuario) {
@@ -54,13 +45,9 @@ public class CompraConPresupuesto extends Compra {
 				&& this.validarPorCriterioDeMenorValor();
 		 
 	 }
-	 
-	 public int getCantidadPresupuestoRequeridos() {
-		 return cantidadPresupuestosRequeridos;
-	 }
 
 	 public Boolean validarCantidadDePresupuestos() {
-		 return this.presupuestos.size() == this.cantidadPresupuestosRequeridos;		 
+		 return this.presupuestos.size() == entidad.getOrganizacion().getCantidadPresupuestosRequeridos();
 	 }
 	 
 	 public boolean validarPresupuestoAsignadoContenidoEnElListado() {
@@ -80,7 +67,6 @@ public class CompraConPresupuesto extends Compra {
 		 }
 		 
 		 return false;
-		 
 	 }
 
 	 public Set<Presupuesto> getPresupuestos(){
@@ -94,28 +80,13 @@ public class CompraConPresupuesto extends Compra {
 	 }
 
 	 public Boolean seCorrespondeConAlMenosUnPresupuesto(){
-//		TODO comparar los items comprados con todos los presupuestos
-		return true;
+		return presupuestos.contains(presupuestoAsignado);
 	 }
 
 	 public void setCompraValidada(){
 		compraValidada=true;
 		fechaValidacion= LocalDate.now();
 	 }
-         
-//        public int getEtiqueta(){
-//         return this.etiqueta;
-//        }
-        
-  /*      public int getAnio(){
-            Calendar calendar = new GregorianCalendar();
-            calendar.setTime(this.fechaCompra);
-            return calendar.get(Calendar.YEAR);            
-        }
-        
-        public int getMes(){
-            Calendar calendar = new GregorianCalendar();
-            calendar.setTime(this.fechaCompra);
-            return calendar.get(Calendar.MONTH);
-        }*/
+
+
 }

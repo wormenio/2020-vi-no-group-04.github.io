@@ -1,6 +1,7 @@
 package modelo;
 import modelo.CategoriaEntidad.CategoriaEntidad;
 import modelo.Egreso.*;
+import org.scalactic.Or;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -10,6 +11,7 @@ import java.util.TimerTask;
 public class MainSistema {
 	private Moneda pesoArgentino = new Moneda("PesoArgentino");
 	Pais argentina = new Pais("Argentina", "Pesos", "1", "Es-ar");
+	private Organizacion geSoc = new Organizacion("Gesoc");
 
 	public  void main(String[] args) {
 
@@ -46,7 +48,7 @@ public class MainSistema {
 				proveedorOfimatica(),
 				pesoArgentino,
 				unaEntidadBase(),
-				2
+				new EtiquetaEgreso("Utiles")
 		);
 	}
 
@@ -63,12 +65,16 @@ public class MainSistema {
 	}
 
 	Entidad unaEntidadBase(){
-		return new EntidadBase("La Comercial","Venta de Ropas",new CategoriaEntidad(2585));
+		return new EntidadBase("La Comercial","Venta de Ropas",
+				new CategoriaEntidad(2585),
+				geSoc);
 	}
 
 	Item unItem(String nombre){
 		return new Item(nombre );
 	}
+
+
 
 
 }
