@@ -10,6 +10,7 @@ import modelo.EtiquetaEgreso;
 import modelo.MedioDePago.MedioDePago;
 import modelo.Moneda;
 import modelo.Proveedor;
+import modelo.Usuario;
 
 import java.time.LocalDate;
 import java.util.*;
@@ -28,6 +29,10 @@ public abstract class Compra {
 //	 Boolean requiere_presupuesto;
 	 Entidad entidad;
 	 EtiquetaEgreso etiquetaEgreso;
+	 Boolean compraValidada;
+	LocalDate fechaValidacion;
+	List<Usuario> usuariosHabilitados = new ArrayList<>();
+	String idCompra;
 
 
 	 int etiqueta;
@@ -47,6 +52,13 @@ public abstract class Compra {
 		this.etiquetaEgreso = etiquetaEgreso;
 	}
 
+	public boolean validarCompra() {
+		return false;
+		
+	}
+	public String estadoValidacion() {
+		return Boolean.toString(compraValidada);
+	}
 	public void addMediosDePago(MedioDePago medioDePago, Double monto){
 		mediosDePagoDeLaCompra.add(new MedioDePagoDeLaCompra(medioDePago, monto)  );
 	}
@@ -127,11 +139,27 @@ public abstract class Compra {
 		return false;
 	}
 
-	public void setCompraValidada(){ 	}
-
+	public void setCompraValidada(){ 	
+		compraValidada= this.validarCompra();
+		fechaValidacion= LocalDate.now();
+	}
 	public float getTotalEgreso() {
 
 		//	return (float) items.stream().mapToDouble( item -> item.getImporte() ).sum();
 		return 0;
 	}
+
+	public Iterable<Usuario> usuariosHabilitados() {
+		return usuariosHabilitados;
+	}
+
+	public String getId() {
+		return idCompra;
+	}
+
+	
+
+	
+
+	
 }

@@ -24,21 +24,26 @@ public class MainSistema {
 		CompraConPresupuesto compraPrimera = compraConPresupuesto(LocalDate.now());
 		repositorio.agregarCompraConPresupuesto(compraPrimera);
 
+		
 		BuzonMensajes buzonDeMensajes = new BuzonMensajes(repositorio);
 
-		Timer reloj = new Timer();
+		this.correrValidacionDeCompras(repositorio, buzonDeMensajes);
+		this.tareaProgramadaEgresos(this, repositorio, buzonDeMensajes);
+		/*Timer reloj = new Timer();
 		TimerTask tarea = new TimerTask(){
 			 public void run(){
-				buzonDeMensajes.enviarNotificaciones();
+				 correrValidacionDeCompras(repositorio,buzonDeMensajes);
+				
 
 			 }
-		 };
+
+		 };*/
 
 		 CompraConPresupuesto compraSegunda = compraConPresupuesto(LocalDate.now());
 
 		 repositorio.agregarCompraConPresupuesto(compraSegunda);
 
-		reloj.scheduleAtFixedRate(tarea, 0, 1000);
+		//reloj.scheduleAtFixedRate(tarea, 0, 1000);
 
 	}
 
@@ -50,6 +55,23 @@ public class MainSistema {
 				unaEntidadBase(),
 				new EtiquetaEgreso("Utiles")
 		);
+	}
+	public void tareaProgramadaEgresos(MainSistema mainSistema,RepositorioCompras repositorio, BuzonMensajes buzonDeMensajes) {
+		 Timer reloj = new Timer();
+		 TimerTask tarea = new TimerTask(){
+			 public void run(){
+				 mainSistema.correrValidacionDeCompras(repositorio,buzonDeMensajes);
+				
+
+			 }
+
+		 };
+		reloj.scheduleAtFixedRate(tarea, 0, 1000);
+
+	}
+	public void correrValidacionDeCompras( RepositorioCompras repositorio, BuzonMensajes buzonDeMensajes){
+		repositorio.validarCompras();
+		buzonDeMensajes.enviarNotificaciones();
 	}
 
 	Proveedor proveedorOfimatica(){

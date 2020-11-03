@@ -9,7 +9,7 @@ import java.util.List;
 public class Usuario{
     Boolean is_Admin;
 	String nombreUsuario;
-    List<String> notificacionCompras = new ArrayList<String>();
+    List<String> buzonMensajeCompras = new ArrayList<String>();
     RolUsuario rolUsuario;
 
 	public Usuario(String nombreUsuario, RolUsuario rolUsuario, String contrasenia){
@@ -42,8 +42,8 @@ public class Usuario{
 
 	}
 
-	public void agregarNotificacion(String idCompra) {
-		notificacionCompras.add(idCompra);
+	public void agregarNotificacion(String estadoCompra) {
+		buzonMensajeCompras.add(estadoCompra);
 	}
 
 	private void registrarContrasenia(String contrasenia){

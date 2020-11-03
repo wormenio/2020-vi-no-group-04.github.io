@@ -10,9 +10,7 @@ public class CompraConPresupuesto extends Compra {
 	Criterio criterio;
 	Set<Presupuesto> presupuestos = new HashSet<>();
 	Presupuesto presupuestoAsignado;
-	List<Usuario> usuariosHabilitados = new ArrayList<>();
-	Boolean compraValidada;
-	LocalDate fechaValidacion;
+	
 
 	public CompraConPresupuesto(LocalDate fechaCompra, Proveedor proveedor, Moneda moneda,
 								Entidad entidad,  EtiquetaEgreso etiquetaEgreso) {
@@ -38,6 +36,7 @@ public class CompraConPresupuesto extends Compra {
 		 this.usuariosHabilitados.add(usuario);
 	 }
 
+	 @Override
 	 public boolean validarCompra(){		 
 
 		 return this.validarCantidadDePresupuestos()  
@@ -83,10 +82,7 @@ public class CompraConPresupuesto extends Compra {
 		return presupuestos.contains(presupuestoAsignado);
 	 }
 
-	 public void setCompraValidada(){
-		compraValidada=true;
-		fechaValidacion= LocalDate.now();
-	 }
+	 
 
 
 }

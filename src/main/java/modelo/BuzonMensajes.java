@@ -2,6 +2,8 @@ package modelo;
 import java.util.ArrayList;
 import java.util.List;
 
+import modelo.Egreso.Compra;
+
 //Nomenclatura revisar - BuzonMensajes
 public class BuzonMensajes {
 
@@ -14,16 +16,13 @@ public class BuzonMensajes {
 	}
 
     public void enviarNotificaciones() {
-        //FIXME
-        //IF COMRA.ESVALIDA() revisar todos los metodos boolean
-//		TODO
-		/*
-    	repositorioCompras.listadoCompras().forEach((compra)->{if(compra.validarCompra()) {
-    	compra.usuariosHabilitados().forEach((usuario)->usuario.agregarNotificacion(compra.getId()));
-    	}
-    	});*/
+       
+    	repositorioCompras.getComprasConPresupuesto().forEach((compra)->{this.notificarUsuarios(compra);});
     }
 
+    public void notificarUsuarios(Compra compra) {
+    	compra.usuariosHabilitados().forEach((usuario)->{usuario.agregarNotificacion(compra.getId() + compra.estadoValidacion());});
+    }
 
 	
 }

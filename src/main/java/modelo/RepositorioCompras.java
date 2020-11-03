@@ -35,4 +35,8 @@ public class RepositorioCompras {
 //				.collect(Collectors.toSet());
 	}
 
+	public void validarCompras() {
+		comprasConPresupuesto.forEach((compra)->{ compra.setCompraValidada();});
+	}
+
 }
