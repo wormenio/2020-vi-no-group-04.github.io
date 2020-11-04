@@ -1,5 +1,7 @@
 package modelo;
 
+import java.util.List;
+
 public class Pais {
 	String nombre;
 	String id;
@@ -14,5 +16,12 @@ public class Pais {
 	}
 	public  String verNombre() {
 		return nombre;
+	}
+	public  String verID() {
+		return id;
+	}
+	public void agregarEstados(List<Estado> estadosSistema) {
+		// TODO Auto-generated method stub
+		
 	}
 }
