@@ -37,12 +37,10 @@ public class CompraConPresupuesto extends Compra {
 	 }
 
 	 @Override
-	 public boolean validarCompra(){		 
-
-		 return this.validarCantidadDePresupuestos()  
-				&& this.validarPresupuestoAsignadoContenidoEnElListado() 
-				&& this.validarPorCriterioDeMenorValor();
-		 
+	 public boolean validarCompra(){
+		 return this.validarCantidadDePresupuestos()
+				 && this.validarPresupuestoAsignadoContenidoEnElListado()
+				 && (this.criterio == Criterio.MENOR_VALOR) ? this.validarPorCriterioDeMenorValor() : true;
 	 }
 
 	 public Boolean validarCantidadDePresupuestos() {
@@ -52,21 +50,15 @@ public class CompraConPresupuesto extends Compra {
 	 public boolean validarPresupuestoAsignadoContenidoEnElListado() {
 		 return this.presupuestos.contains(this.presupuestoAsignado);		 
 	 }
-	 
-	 public Boolean validarPorCriterioDeMenorValor() {
-//		TODO -> tiene un "return false" al final!
-		 if(this.criterio == Criterio.MENOR_VALOR) {			
-	
-			    Presupuesto minPresupuesto = this.presupuestos
-			      .stream()
-			      .min(Comparator.comparing(Presupuesto::getTotal))
-			      .orElseThrow(null);
-			 				 
-			    return minPresupuesto == this.presupuestoAsignado;
-		 }
-		 
-		 return false;
-	 }
+
+	public Boolean validarPorCriterioDeMenorValor() {
+		Presupuesto minPresupuesto = this.presupuestos
+				.stream()
+				.min(Comparator.comparing(Presupuesto::getTotal))
+				.orElseThrow(null);
+
+		return minPresupuesto == this.presupuestoAsignado;
+	}
 
 	 public Set<Presupuesto> getPresupuestos(){
 		return presupuestos;
@@ -75,14 +67,11 @@ public class CompraConPresupuesto extends Compra {
 	public void agregarPresupuesto(Presupuesto presupuesto)
 	 {
 		 this.presupuestos.add(presupuesto);
-		 
 	 }
 
 	 public Boolean seCorrespondeConAlMenosUnPresupuesto(){
 		return presupuestos.contains(presupuestoAsignado);
 	 }
-
-	 
 
 
 }
