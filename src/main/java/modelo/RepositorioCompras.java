@@ -21,7 +21,7 @@ public class RepositorioCompras {
 		comprasSinPresupuesto.add(compra);
 	}
         
-
+	public Set<Compra> getCompras(){return  compras;}
 
 	public Set<Compra> getComprasSinPresupuesto(){
 		return comprasSinPresupuesto;

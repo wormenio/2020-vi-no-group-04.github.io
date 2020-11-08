@@ -5,6 +5,7 @@ import modelo.Egreso.CompraConPresupuesto;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import static java.util.stream.Collectors.groupingBy;
 
@@ -16,8 +17,9 @@ public class ReporteEgreso {
     //etiqueta
     //Todos los datos de la etiqueta
    public Map<EtiquetaEgreso, List<Compra>> VerReporteEgreso(EtiquetaEgreso etiqueta){
-
        List<Compra> compras = Arrays.asList();
+       compras.addAll(repoCompras.getCompras());
+
        Map<EtiquetaEgreso, List<Compra>> reporteCompras = compras.stream()
                .collect(groupingBy(Compra::getEtiqueta));
 
