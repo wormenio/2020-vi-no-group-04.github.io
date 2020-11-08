@@ -26,6 +26,11 @@ public class EntidadBase implements Entidad {
 		return this.descripcion;
 	}
 
+	@Override
+	public void setCategoriaEntidad(CategoriaEntidad categoria) {
+		this.categoriaEntidad = categoria;
+	}
+
 	public String getDescripcion(){
 		return descripcion;
 	}

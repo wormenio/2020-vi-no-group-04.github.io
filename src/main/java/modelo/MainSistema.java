@@ -10,7 +10,9 @@ import java.util.TimerTask;
 
 public class MainSistema {
 	private Moneda pesoArgentino = new Moneda("PesoArgentino");
-	Pais argentina = new Pais("Argentina", "Pesos", "1", "Es-ar");
+	Pais argentina = new Pais("Argentina", "ARS", "AR", "es_AR");
+	Provincia capital_federal = new Provincia("Capital Federal","TUxBQ0NBUGZlZG1sYQ");
+	Ciudad villa_luro = new Ciudad("Villa Luro", "TUxBQlZJTDI3MDJa");
 	private Organizacion geSoc = new Organizacion("Gesoc");
 
 	public  void main(String[] args) {
@@ -75,20 +77,18 @@ public class MainSistema {
 	}
 
 	Proveedor proveedorOfimatica(){
-		DireccionPostal direccionPostalMozart = new DireccionPostal(argentina,"mozart","215","1");
+		DireccionPostal direccionPostalMozart = new DireccionPostal(argentina, capital_federal, villa_luro, "mozart",215,"1", "D");
 		return new Proveedor("Juan",
 				"Perez",
 				"Ofimatica",
 				"25858685",
 				"25858568585",
-				direccionPostalMozart,
-				"1",
-				"1");
+				direccionPostalMozart);
 	}
 
 	Entidad unaEntidadBase(){
 		return new EntidadBase("La Comercial","Venta de Ropas",
-				new CategoriaEntidad(2585),
+				new CategoriaEntidad("La Comercial"),
 				geSoc);
 	}
 

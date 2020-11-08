@@ -52,6 +52,11 @@ public class EntidadJuridica implements Entidad {
 		return nombreFicticio;
 	}
 
+	@Override
+	public void setCategoriaEntidad(CategoriaEntidad categoria) {
+		this.categoriaEntidad = categoria;
+	}
+
 	public String getRazonSocial(){
 		return  razonSocial;
 	}

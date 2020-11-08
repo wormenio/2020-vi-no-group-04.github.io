@@ -14,7 +14,7 @@ public class CompraConPresupuesto extends Compra {
 
 	public CompraConPresupuesto(LocalDate fechaCompra, Proveedor proveedor, Moneda moneda,
 								Entidad entidad,  EtiquetaEgreso etiquetaEgreso) {
-		super(fechaCompra, proveedor, moneda, entidad,etiquetaEgreso);
+		super(fechaCompra, proveedor, moneda, entidad, etiquetaEgreso);
 	}
 
 	public void setPresupuestoAsignado(Presupuesto presupuesto){

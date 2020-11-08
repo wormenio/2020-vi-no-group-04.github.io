@@ -34,7 +34,7 @@ public class TestCompra {
         tarjetaCredito5875 = testHelpers.tarjetaCredito5875;
 
         unaCompra = testHelpers.laComercialCompraResmaYTonerAOfimatica(LocalDate.now());
-        unaCompra.addMediosDePago(tarjetaCredito5875,10.0);
+        unaCompra.addMediosDePago(tarjetaCredito5875, 10.0);
 
         repositorioCompras = new RepositorioCompras();
         repositorioCompras.agregarCompraSinPresupuesto(unaCompra);

@@ -4,14 +4,22 @@ public class DireccionPostal {
 	String calle;
 	int altura;
 	String piso;
+	String departamento;
 	Pais datosPais;
+	Provincia datosProvincia;
+	Ciudad datosCiudad;
+
 	SeleccionadorPais seleccionadorPais = new SeleccionadorPais();
 	
-	public DireccionPostal(Pais pais, String calle, String altura, String piso) {
+	public DireccionPostal(Pais pais, Provincia provincia, Ciudad ciudad, String calle, int altura, String piso, String departamento) {
 		
 		this.datosPais = pais;
-		this.calle= calle;
+		this.datosProvincia = provincia;
+		this.datosCiudad = ciudad;
+		this.calle = calle;
+		this.altura = altura;
 		this.piso = piso;
+		this.departamento = departamento;
 
 	}
 }

@@ -14,11 +14,10 @@ public class EtiquetaEgreso {
 		this.nombre = nombre;
 	}
 
-	EtiquetaDao etiquetaDao = new EtiquetaDao();
-
 	public String getNombre(){
 		return nombre;
 	}
+
 
 }
 

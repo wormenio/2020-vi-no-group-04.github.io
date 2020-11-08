@@ -32,7 +32,7 @@ public class TestEntidad {
         entidadBaseLaComercial = new BuilderEntidad()
                 .setNombreFicticio("La comercial")
                 .setDescripcion("Venta de insumos varios")
-                .setCategoriaEntidad( new CategoriaEntidad(152))
+                .setCategoriaEntidad( new CategoriaEntidad("La Comercial"))
                 .crearEntidadBase();
     }
 

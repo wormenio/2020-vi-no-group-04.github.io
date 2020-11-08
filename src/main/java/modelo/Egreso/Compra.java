@@ -30,9 +30,9 @@ public abstract class Compra {
 	 Entidad entidad;
 	 EtiquetaEgreso etiquetaEgreso;
 	 Boolean compraValidada;
-	LocalDate fechaValidacion;
-	List<Usuario> usuariosHabilitados = new ArrayList<>();
-	String idCompra;
+	 LocalDate fechaValidacion;
+	 List<Usuario> usuariosHabilitados = new ArrayList<>();
+	 String idCompra;
 
 
 	 int etiqueta;
@@ -59,8 +59,8 @@ public abstract class Compra {
 	public String estadoValidacion() {
 		return Boolean.toString(compraValidada);
 	}
-	public void addMediosDePago(MedioDePago medioDePago, Double monto){
-		mediosDePagoDeLaCompra.add(new MedioDePagoDeLaCompra(medioDePago, monto)  );
+	public void addMediosDePago(MedioDePago medioDePago, double monto){
+		mediosDePagoDeLaCompra.add(new MedioDePagoDeLaCompra(medioDePago, monto));
 	}
 
 	public Set<MedioDePagoDeLaCompra> getMediosDePago() {
@@ -101,8 +101,8 @@ public abstract class Compra {
     	 this.etiqueta = codigoEtiqueta;
      }
 
-    public int getEtiqueta(){
-         return this.etiqueta;
+    public EtiquetaEgreso getEtiqueta(){
+         return this.etiquetaEgreso;
      }
 
 	public Integer getAnio(){
