@@ -15,14 +15,14 @@ public class SeleccionadorPais {
     APIMlibre api = new APIMlibre("classified_locations/countries");
 	
 	
-	public List<PaisJson> objetizarPaises(){
+	public List<RestPais> objetizarPaises(){
 		ClientResponse jsonPaises = api.verInformacion();
 		Gson gson = new Gson();
 
         String paises = jsonPaises.getEntity(String.class);
     
-    	Type listType = new TypeToken<ArrayList<PaisJson>>(){}.getType();
-    	ArrayList<PaisJson> listadoPaises = gson.fromJson(paises, listType); 
+    	Type listType = new TypeToken<ArrayList<RestPais>>(){}.getType();
+    	ArrayList<RestPais> listadoPaises = gson.fromJson(paises, listType); 
     	return listadoPaises;
 	}
 	
