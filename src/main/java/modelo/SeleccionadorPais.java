@@ -26,8 +26,8 @@ public class SeleccionadorPais {
     	return listadoPaises;
 	}
 	
-	public List<Estado> estadosSistema(Pais pais){
-		List<Estado> estados = null;
+	public List<Estado> agregarEstados(Pais pais){
+		List<Estado> estados =  new ArrayList<>();
 		APIMlibre apiEstados = new APIMlibre("classified_locations/countries"+pais.verID());
 		ClientResponse jsonEstados = apiEstados.verInformacion();
         String estadosJson = jsonEstados.getEntity(String.class);
@@ -43,24 +43,85 @@ public class SeleccionadorPais {
         
         listadoEstado.forEach((estadoML)->{
         								Estado estado = new Estado(estadoML.verID(),estadoML.verNombre());
+        								estado.agregarCiudades(this.agregarCiudades(estado));
         								estados.add(estado);
         								
         });	
+        
+       
+        
+        							
         return estados; 
 
         
 		
+	
 	}
+	
+	private List<Ciudad> agregarCiudades(Estado estado) {
+		List<Ciudad> ciudades =  new ArrayList<>();
+		APIMlibre api3 = new APIMlibre("classified_locations/states/"+estado.verID());
+    	ClientResponse jsonCity = api3.verInformacion();
+        String city = jsonCity.getEntity(String.class);
+
+        JsonParser parser2 = new JsonParser();
+        
+       
+
+        JsonObject gsonObj2 = parser2.parse(city).getAsJsonObject();
+        
+		Gson gson3 = new Gson();
+
+
+        Type listType3 = new TypeToken<ArrayList<RestCiudad>>(){}.getType();
+        ArrayList<RestCiudad> listadoCity = gson3.fromJson(gsonObj2.get("cities"), listType3); 
+		
+        listadoCity.forEach((ciudadML)->{
+			Ciudad ciudad = new Ciudad(ciudadML.verID(),ciudadML.verNombre());
+			ciudad.agregarBarrios(this.agregarBarrios(ciudad));
+			ciudades.add(ciudad);
+			
+}		);
+		return ciudades;
+		
+	}
+	private List<Barrio> agregarBarrios(Ciudad ciudad) {
+		List<Barrio> barrios =  new ArrayList<>();
+		APIMlibre api3 = new APIMlibre("classified_locations/cities/"+ciudad.verID());
+    	ClientResponse jsonCity = api3.verInformacion();
+        String city = jsonCity.getEntity(String.class);
+
+        JsonParser parser2 = new JsonParser();
+        
+       
+
+        JsonObject gsonObj2 = parser2.parse(city).getAsJsonObject();
+        
+		Gson gson3 = new Gson();
+
+
+        Type listType3 = new TypeToken<ArrayList<RestBarrio>>(){}.getType();
+        ArrayList<RestBarrio> listadoNeighbor = gson3.fromJson(gsonObj2.get("neighborhoods"), listType3); 
+		
+        listadoNeighbor.forEach((barrioML)->{
+			Barrio barrio = new Barrio(barrioML.verID(),barrioML.verNombre());
+			barrios.add(barrio);
+			
+}		);
+        return barrios;
+	}
+
 	public List<Pais> paisesSistema() {
 
 		//FIXME:: MAP
 		this.objetizarPaises().forEach((paisML)->{
 									Pais pais = new Pais (paisML.verNombre(), paisML.verMoneda(),paisML.verID(), paisML.verLocale());
-									pais.agregarEstados(this.estadosSistema(pais));
+									pais.agregarEstados(this.agregarEstados(pais));
 									
 									paises.add(pais);}
 		);
-	return paises;
+		
+		return paises;
 		
 		
 	}
