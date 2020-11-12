@@ -1,4 +1,4 @@
-package modelo;
+package modelo.CategoriaJuridica;
 
 public class CategoriaEntidadJuridicaOSC implements CategoriaEntidadJuridica {
 

@@ -1,19 +1,26 @@
 package modelo.CategoriaEntidad;
 
-import modelo.Entidad;
+import modelo.Entidades.Entidad;
 
+import javax.persistence.*;
 
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.*;
-
+@Entity
+@Table(name = "categorias_entidades")
 public class CategoriaEntidad {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     private String nombre;
+
+    @Transient
     private ReglasDeNegocio reglasDeNegocio;
 
-//TODO
-    public CategoriaEntidad(String nombreCategoria){ this.nombre = nombreCategoria; }
 
+//    public CategoriaEntidad(String nombreCategoria){ this.nombre = nombreCategoria; }
+
+    //TODO -->Aplicar reglas
     public boolean aplicarReglasDeNegocio(Integer monto_compra, Entidad entidad) {
         return reglasDeNegocio.aplicarReglasDeNegocio(monto_compra, entidad);
     }

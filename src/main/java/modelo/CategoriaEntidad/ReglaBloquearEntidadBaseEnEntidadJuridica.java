@@ -1,7 +1,7 @@
 package modelo.CategoriaEntidad;
 
 
-import modelo.Entidad;
+import modelo.Entidades.Entidad;
 
 class ReglaBloquearEntidadBaseEnEntidadJuridica {
     Entidad entidad;
@@ -10,10 +10,10 @@ class ReglaBloquearEntidadBaseEnEntidadJuridica {
     }
     boolean aplicarRegla(){
 //        return  entidad.getTipoEntidad() != "ENTIDADJURIDICA"
-
+/*
         if( entidad.getTipoEntidad() == "ENTIDADJURIDICA"){
             return false;
-        }
+        }*/
         return true;
     }
 }

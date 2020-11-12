@@ -1,7 +1,7 @@
 package modelo.CategoriaEntidad;
 
 
-import modelo.Entidad;
+import modelo.Entidades.Entidad;
 
 class ReglaAceptarNuevosEgresos {
     Entidad entidad;

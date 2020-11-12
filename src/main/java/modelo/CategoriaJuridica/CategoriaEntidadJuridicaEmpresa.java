@@ -1,4 +1,5 @@
-package modelo;
+package modelo.CategoriaJuridica;
+
 
 public class CategoriaEntidadJuridicaEmpresa implements CategoriaEntidadJuridica {
 //	ClasificacionAFIP categorizacion;

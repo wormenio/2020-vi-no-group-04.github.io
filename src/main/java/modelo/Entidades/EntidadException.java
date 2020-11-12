@@ -1,4 +1,4 @@
-package modelo;
+package modelo.Entidades;
 
 public class EntidadException extends  RuntimeException {
 

@@ -9,6 +9,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.google.gson.reflect.TypeToken;
 import com.sun.jersey.api.client.ClientResponse;
+import modelo.DireccionPostal.Pais;
 
 public class SeleccionadorPais {
     List<Pais> paises;
@@ -28,7 +29,7 @@ public class SeleccionadorPais {
 	
 	public List<Estado> estadosSistema(Pais pais){
 		List<Estado> estados = null;
-		APIMlibre apiEstados = new APIMlibre("classified_locations/countries"+pais.verID());
+		APIMlibre apiEstados = new APIMlibre("classified_locations/countries"+pais.getID());
 		ClientResponse jsonEstados = apiEstados.verInformacion();
         String estadosJson = jsonEstados.getEntity(String.class);
         JsonParser parser = new JsonParser();
@@ -51,11 +52,17 @@ public class SeleccionadorPais {
         
 		
 	}
+
+	/**
+	 * retorna una lista de paises
+	 * @return
+	 */
 	public List<Pais> paisesSistema() {
 
-		//FIXME:: MAP
+		//FIXME:: MAP qué es objetizar países????
+
 		this.objetizarPaises().forEach((paisML)->{
-									Pais pais = new Pais (paisML.verNombre(), paisML.verMoneda(),paisML.verID(), paisML.verLocale());
+									Pais pais = new Pais(paisML.verNombre(), paisML.verMoneda(),paisML.verID(), paisML.verLocale());
 									pais.agregarEstados(this.estadosSistema(pais));
 									
 									paises.add(pais);}

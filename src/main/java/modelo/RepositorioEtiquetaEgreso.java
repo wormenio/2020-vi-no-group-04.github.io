@@ -1,5 +1,7 @@
 package modelo;
 
+import modelo.Egreso.EtiquetaEgreso;
+
 import java.util.HashSet;
 import java.util.Set;
 

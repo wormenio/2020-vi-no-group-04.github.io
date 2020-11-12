@@ -1,165 +1,141 @@
 package modelo.Egreso;
 
-import modelo.DocumentoComercial.DocumentoComercial;
-import modelo.Egreso.Item;
-import modelo.Egreso.ItemsDeLaCompra;
-import modelo.Egreso.MedioDePagoDeLaCompra;
-import modelo.Egreso.Presupuesto;
-import modelo.Entidad;
-import modelo.EtiquetaEgreso;
-import modelo.MedioDePago.MedioDePago;
-import modelo.Moneda;
-import modelo.Proveedor;
-import modelo.Usuario;
+import modelo.*;
+import modelo.Presupuesto.Presupuesto;
 
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.*;
 
-public abstract class Compra {
+@Entity
+@DiscriminatorValue("Compra")
+public class Compra extends Egreso {
 
-	 Proveedor proveedor;
-	 Set<ItemsDeLaCompra> itemsDeLaCompras = new HashSet<>();
-	 LocalDate fechaCompra;
-	 Set<MedioDePagoDeLaCompra> mediosDePagoDeLaCompra = new HashSet<>();
-	 Set<DocumentoComercial> documentosComerciales = new HashSet<>();
-	 List<Presupuesto> presupuestos = new ArrayList<>();
-	 Moneda moneda;
-	 float monto_total;
-//	 Integer cantidad_presupuestos;
-//	 Boolean requiere_presupuesto;
-	 Entidad entidad;
-	 EtiquetaEgreso etiquetaEgreso;
-	 Boolean compraValidada;
-	 LocalDate fechaValidacion;
-	 List<Usuario> usuariosHabilitados = new ArrayList<>();
-	 String idCompra;
+	@ManyToOne
+	@JoinColumn(name = "proveedor_id")
+	private Proveedor proveedor;
 
+	@Column(name="requiere_presupuesto")
+	private Boolean requierePresupuesto;
 
-	 int etiqueta;
-//	FIXME
-//	Cambiar int etiqueta
-//	EtiquetaEgreso etiqueta;
+	@Column(name="cantidad_presupuesto")
+	private int cantidadPresupuestos;
 
-	public Compra(LocalDate fechaCompra, Proveedor proveedor, Moneda moneda,
-				  Entidad entidad, EtiquetaEgreso etiquetaEgreso){
-		if( proveedor == null) throw new ComprasException("Debe indicar el Proveedor");
-		if( moneda == null )  throw new ComprasException("Debe indicar la Moneda");
-		if( entidad == null ) throw new ComprasException("Debe indicar la Entidad");
-		this.fechaCompra = fechaCompra;
-		this.proveedor = proveedor;
-		this.moneda = moneda;
-		this.entidad = entidad;
-		this.etiquetaEgreso = etiquetaEgreso;
+	Boolean compraValidada;
+	LocalDate fechaValidacion;
+
+	@OneToOne
+	@JoinColumn(name = "presupuesto_asignado_id")
+	private Presupuesto presupuestoAsignado;
+
+	@OneToMany
+	@JoinColumn(name="compra_id")
+	private Collection<Presupuesto> presupuestos = new HashSet<>();
+
+	@ManyToMany
+	@JoinTable(name = "usuario_revisor_compras")
+	private Collection<Usuario> revisores = new ArrayList<>();
+
+	@Enumerated(EnumType.ORDINAL)
+	Criterio criterio;
+
+	public void setPresupuestoAsignado(Presupuesto presupuesto){
+		if( !presupuestos.contains(presupuesto) )
+			throw  new ComprasException("El presupuesto no se encuentra en la lista de presupuestos");
+
+		this.presupuestoAsignado = presupuesto;
 	}
 
-	public boolean validarCompra() {
-		return false;
-		
+	public boolean esRevisor(Usuario usuario) {
+		 return this.revisores.contains(usuario);
+	 }
+	 
+	public Collection<Usuario> usuariosRevisores(){
+		return revisores;
 	}
+
+	 public void hacerRevisor(Usuario usuario) {
+		 this.revisores.add(usuario);
+	 }
+
+
+	 public boolean validarCompra(){
+		 return this.validarCantidadDePresupuestos()
+				 && this.validarPresupuestoAsignadoContenidoEnElListado()
+				 && (this.criterio == Criterio.MENOR_VALOR) ? this.validarPorCriterioDeMenorValor() : true;
+	 }
+
+	 public Boolean validarCantidadDePresupuestos() {
+		 return this.presupuestos.size() == super.getEntidad().getOrganizacion().getCantidadPresupuestosRequeridos();
+	 }
+	 
+	 public boolean validarPresupuestoAsignadoContenidoEnElListado() {
+		 return this.presupuestos.contains(this.presupuestoAsignado);		 
+	 }
+
+	public Boolean validarPorCriterioDeMenorValor() {
+		Presupuesto minPresupuesto = this.presupuestos
+				.stream()
+				.min(Comparator.comparing(Presupuesto::getTotal))
+				.orElseThrow(null);
+
+		return minPresupuesto == this.presupuestoAsignado;
+	}
+
+	 public Collection<Presupuesto> getPresupuestos(){
+		return presupuestos;
+	 }
+	 
+	public void agregarPresupuesto(Presupuesto presupuesto)
+	 {
+		 this.presupuestos.add(presupuesto);
+	 }
+
+	 public Boolean seCorrespondeConAlMenosUnPresupuesto(){
+		return presupuestos.contains(presupuestoAsignado);
+	 }
+
 	public String estadoValidacion() {
 		return Boolean.toString(compraValidada);
 	}
-	public void addMediosDePago(MedioDePago medioDePago, double monto){
-		mediosDePagoDeLaCompra.add(new MedioDePagoDeLaCompra(medioDePago, monto));
+
+	public void setCompraValidada(){
+		compraValidada= this.validarCompra();
+		fechaValidacion= LocalDate.now();
 	}
 
-	public Set<MedioDePagoDeLaCompra> getMediosDePago() {
-		return mediosDePagoDeLaCompra;
+	public Boolean getRequierePresupuesto(){
+		return requierePresupuesto;
 	}
 
-	public void agregarItem(Item item,Double precio){
-		itemsDeLaCompras.add(new ItemsDeLaCompra(item,precio));
+	public void setRequierePresupuesto(Boolean requierePresupuesto) {
+		this.requierePresupuesto = requierePresupuesto;
 	}
-
-	public Set<ItemsDeLaCompra> getItems(){
-		return itemsDeLaCompras;
-	}
-
-	public Entidad getEntidad(){
-		return entidad;
-	}
-
-	public void addDocumentoComercial(DocumentoComercial documento){
-		documentosComerciales.add(documento);
-	}
-
-	public Set<DocumentoComercial> getDocumentoComercial()
-	{
-		return documentosComerciales;
-	}
-
-	public LocalDate getFechaCompra()
-	{
-		return fechaCompra;
-	}
-
-	public Proveedor getProveedor() {
-		return proveedor;
-	}
-
-	public void etiquetarEgreso(int codigoEtiqueta) {
-    	 this.etiqueta = codigoEtiqueta;
-     }
-
-    public EtiquetaEgreso getEtiqueta(){
-         return this.etiquetaEgreso;
-     }
 
 	public Integer getAnio(){
 		Calendar calendar = new GregorianCalendar();
-		calendar.setTime(java.sql.Timestamp.valueOf(fechaCompra.toString()));
+		calendar.setTime(java.sql.Timestamp.valueOf(super.getFechaCompra().toString()));
 		return calendar.get(Calendar.YEAR);
 	}
 
 	public Integer getMes(){
 		Calendar calendar = new GregorianCalendar();
-		calendar.setTime(java.sql.Timestamp.valueOf(fechaCompra.toString()));
+		calendar.setTime(java.sql.Timestamp.valueOf(super.getFechaCompra().toString()));
 		return calendar.get(Calendar.MONTH);
 	}
 
-	public void setPresupuestoAsignado(Presupuesto presupuesto){ }
-
-	public  void agregarPresupuesto(Presupuesto presupuesto){}
-
-	public Set<Presupuesto> getPresupuestos(){
-		return null;
-	}
-
-	public void setCantidadPresupuestosRequeridos(Integer cantidad){}
-
-	public Boolean validarCantidadDePresupuestos(){
-		return false;
-	}
-
-	public Boolean validarPorCriterioDeMenorValor() {
-		return false;
-	}
-
-	public Boolean seCorrespondeConAlMenosUnPresupuesto(){
-		return false;
-	}
-
-	public void setCompraValidada(){ 	
-		compraValidada= this.validarCompra();
-		fechaValidacion= LocalDate.now();
-	}
 	public float getTotalEgreso() {
 
 		//	return (float) items.stream().mapToDouble( item -> item.getImporte() ).sum();
 		return 0;
 	}
 
-	public Iterable<Usuario> usuariosHabilitados() {
-		return usuariosHabilitados;
+/*
+
+	public Compra(LocalDate fechaCompra, Proveedor proveedor, Moneda moneda,
+				  Entidad entidad, EtiquetaEgreso etiquetaEgreso) {
+		super(fechaCompra, proveedor, moneda, entidad, etiquetaEgreso);
 	}
+*/
 
-	public String getId() {
-		return idCompra;
-	}
-
-	
-
-	
-
-	
 }

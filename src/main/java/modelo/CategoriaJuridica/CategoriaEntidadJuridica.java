@@ -1,4 +1,5 @@
-package modelo;
+package modelo.CategoriaJuridica;
+
 
 public interface CategoriaEntidadJuridica {
 	public CategorizacionEntidadJuridica getCategoriaEntidadJuridica();

@@ -1,7 +1,10 @@
 package modelo;
 
-import modelo.Egreso.Presupuesto;
+import modelo.DocumentoComercial.DocumentoComercial;
+import modelo.Egreso.Egreso;
+import modelo.Presupuesto.Presupuesto;
 
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -14,6 +17,17 @@ public class RepositorioPresupuestos {
 
     public Set<Presupuesto> getPresupuestos(){
         return presupuestos;
+    }
+
+    public void nuevoPresupuesto(Proveedor proveedor, LocalDate fechaPresupuesto, Egreso compra,
+                       DocumentoComercial documentoComercial, Moneda moneda){
+     /*   if( compra == null ) throw new ComprasException("Debe indicar la compra");
+        this.proveedor = proveedor;
+        this.fechaPresupuesto = fechaPresupuesto;
+        this.compra = compra;
+        this.documentoComercial = documentoComercial;
+        compra.agregarPresupuesto(this);
+        this.moneda = moneda;*/
     }
 
 }

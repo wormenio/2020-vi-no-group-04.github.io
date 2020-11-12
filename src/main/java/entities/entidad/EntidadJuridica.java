@@ -1,7 +1,7 @@
 package entities.entidad;
 
-import modelo.CategorizacionEntidadJuridica;
-import modelo.ClasificacionAFIP;
+import modelo.CategoriaJuridica.CategorizacionEntidadJuridica;
+import modelo.CategoriaJuridica.ClasificacionAFIP;
 
 import javax.persistence.*;
 import java.util.List;
@@ -28,11 +28,11 @@ public class EntidadJuridica extends Entidad {
 
 
 
-    @Enumerated
+    @Enumerated(EnumType.ORDINAL)
     @Column(name="categoria_entidad_juridica")
     private CategorizacionEntidadJuridica categoriaEntidadJuridica;
 
-    @Enumerated
+    @Enumerated(EnumType.ORDINAL)
     @Column(name="clasificacion_afip")
     private ClasificacionAFIP clasificacionAFIP;
 }

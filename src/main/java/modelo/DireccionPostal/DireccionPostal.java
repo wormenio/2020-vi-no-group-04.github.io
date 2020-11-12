@@ -1,7 +1,24 @@
-package modelo;
+package modelo.DireccionPostal;
 
-public class DireccionPostal {
-	String calle;
+//import entities.entidad.Entidad;
+import modelo.EntidadPersistente;
+//import modelo.SeleccionadorPais;
+
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="Direcciones_Postales")
+public class DireccionPostal extends EntidadPersistente {
+
+	@ManyToOne
+	@JoinColumn(name = "id_ciudad")
+	private Ciudad ciudad;
+
+	/*
+	Private String calle;
 	int altura;
 	String piso;
 	String departamento;
@@ -22,4 +39,7 @@ public class DireccionPostal {
 		this.departamento = departamento;
 
 	}
+
+	 */
+
 }

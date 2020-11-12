@@ -1,4 +1,4 @@
-package modelo;
+package modelo.CategoriaJuridica;
 
 public enum ClasificacionAFIP {
 	MICRO,PEQUENIA,MEDIANA_TRAMO_1,MEDIANA_TRAMO_2;

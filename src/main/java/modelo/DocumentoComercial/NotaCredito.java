@@ -2,10 +2,14 @@ package modelo.DocumentoComercial;
 
 import modelo.DocumentoComercial.DocumentoComercial;
 
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
 import java.time.LocalDate;
 
-public class NotaCredito implements DocumentoComercial {
-	Integer numero;
+@Entity
+@DiscriminatorValue("NC")
+public class NotaCredito extends DocumentoComercial {
+/*	Integer numero;
 
 	public NotaCredito(Integer numero){
 		this.numero = numero;
@@ -14,5 +18,5 @@ public class NotaCredito implements DocumentoComercial {
 	@Override
 	public Integer getNumero() {
 		return this.numero;
-	}
+	}*/
 }
