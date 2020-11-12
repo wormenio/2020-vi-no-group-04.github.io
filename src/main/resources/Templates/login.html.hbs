@@ -1,7 +1,7 @@
 <html>
 
 <head>
-    <link rel="stylesheet" type="text/css" href="/main.css">
+    <link rel="stylesheet" type="text/css" href="../GeSoc/main.css">
 </head>
 
 <body style="text-align: center;">
@@ -9,22 +9,22 @@
     <h1>GeSoc</h1>
     <h3>Gestión de Proyectos Sociales</h3>
 
-    <div style="display: flex; justify-content: center; align-items: center;">
-        <div style="border: 1px solid silver; padding: 5%;">
+    <div class="container">
+        <form style="border: 1px solid silver; padding: 5%;">
             <h3>Iniciar Sesión</h3>
-            <div style="padding:3%">
+            <div class="separated_inputs">
                 <input placeholder="Usuario" id="userName" type="text">
             </div>
-            <div style="padding:3%">
+            <div class="separated_inputs">
                 <input placeholder="Contrase&#241a" id="password" type="password">
             </div>
             <div>
-                <button>Ingresar</button>
+                <button class="btn_action" style="margin-top:36%; width:100%; padding:5%">Ingresar</button>
             </div>
-        </div>
+        </form>
     </div>
 </main>
-<footer>
+<footer id="footer">
     &copy; Copyright 2020 DDS-Grupo 4
 </footer>
 </body>
