@@ -1,12 +1,12 @@
 package modelo;
 
-public class PaisJson {
+public class RestPais {
 	private String id;
 	private String name;
 	private String locale;
 	private String currency_id;
 	
-	public PaisJson() {
+	public RestPais() {
 		
 		
 		
