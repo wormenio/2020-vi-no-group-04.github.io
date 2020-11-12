@@ -1,0 +1,89 @@
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="../GeSoc/main.css">
+</head>
+
+<body style="text-align: center;">
+<main>
+    <h1>Nuevo Egreso</h1>
+
+    <form style="display: inline; justify-content: center; align-items: center;">
+        <div class="container">
+            <select>
+                <option disabled selected>Seleccione Entidad...</option>
+                <option value="Entidad 1">Entidad 1</option>
+                <option value="Entidad 2">Entidad 2</option>
+                <option value="Entidad 3">Entidad 3</option>
+            </select>
+
+            <select>
+                <option disabled selected>Usuarios Revisores...</option>
+                <option value="Usuario 1">Usuario 1</option>
+                <option value="Usuario 2">Usuario 2</option>
+                <option value="Usuario 3">Usuario 3</option>
+            </select>
+        </div>
+
+        <div class="container">
+            <fieldset style="text-align: left;"><legend style="text-align: left;">Documento Comercial</legend>
+                <label for="TipoDocCom">Tipo:</label>
+                <input placeholder="Tipo Documento Comercial" id="TipoDocCom" type="text"><br><br>
+                <label for="TipoDocCom">Fecha:</label>
+                <input placeholder="Fecha" id="FechaDocCom" type="date"><br><br>
+                <label for="TipoDocCom">Numero:</label>
+                <input placeholder="Numero Documento Comercial" id="nroDocCom" type="number">
+            </fieldset>
+        </div>
+
+        <div class="container">
+            <fieldset style="text-align: left;"><legend style="text-align: left;">Items</legend>
+                <label for="DescItem">Descripcion:</label>
+                <input placeholder="Descripcion" id="DescItem" type="text"><br><br>
+                <label for="CantItem">Cantidad:</label>
+                <input placeholder="Cantidad" id="CantItem" type="number" step="1"><br><br>
+                <label for="PUItem">Precio unitario:</label>
+                <input placeholder="Precio Unitario" id="PUItem" type="number" min="1" step="any">
+                <button class="btn_action" style="padding:2%;  background-color: silver;">Nuevo Item</button>
+            </fieldset>
+        </div>
+
+        <div>
+            <select>
+                <option disabled selected>Seleccione Presupuesto...</option>
+                <option value="Presupuesto 1">Presupuesto 1</option>
+                <option value="Presupuesto 2">Presupuesto 2</option>
+                <option value="Presupuesto 3">Presupuesto 3</option>
+            </select>
+            <button class="btn_action" style="padding:0.8%;  background-color: silver;">Nuevo Presupuesto</button>
+        </div><br>
+
+        <div>
+            <select>
+                <option disabled selected>Seleccione Proveedor...</option>
+                <option value="Proveedor 1">Proveedor 1</option>
+                <option value="Proveedor 2">Proveedor 2</option>
+                <option value="Proveedor 3">Proveedor 3</option>
+            </select>
+            <button class="btn_action" style="padding:0.8%;  background-color: silver;">Nuevo Presupuesto</button>
+        </div><br>
+
+        <div>
+            <select>
+                <option disabled selected>Seleccione Etiqueta...</option>
+                <option value="Etiqueta 1">Etiqueta 1</option>
+                <option value="Etiqueta 2">Etiqueta 2</option>
+                <option value="Etiqueta 3">Etiqueta 3</option>
+            </select>
+            <button class="btn_action" style="padding:0.8%;  background-color: silver;">Nueva Etiqueta</button>
+        </div><br>
+    </form>
+    <button class="btn_action" style="padding:0.8%; background-color: #D45252;">Cancelar</button>
+    <button class="btn_action" style="padding:0.8%;">Guardar</button>
+</main>
+<footer id="footer">
+    <!--&copy; Copyright 2020 DDS-Grupo 4-->
+</footer>
+</body>
+
+</html>
