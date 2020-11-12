@@ -1,32 +1,26 @@
 package modelo;
 import modelo.Egreso.Compra;
-import modelo.Egreso.CompraConPresupuesto;
+import modelo.Egreso.Egreso;
+import modelo.Egreso.EtiquetaEgreso;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.groupingBy;
 
 public class ReporteEgreso {
     EtiquetaEgreso etiquetaEgreso;
-    RepositorioCompras repoCompras; //Esto que hace aca??
+    RepositorioCompras repoCompras;
 
-    //FIXME:: agrupado, no filtrado -- google it
-    //etiqueta
-    //Todos los datos de la etiqueta
-   public Map<EtiquetaEgreso, List<Compra>> VerReporteEgreso(EtiquetaEgreso etiqueta){
-       List<Compra> compras = Arrays.asList();
-       compras.addAll(repoCompras.getCompras());
+    public Map<EtiquetaEgreso, List<Compra>> VerReporteEgreso(EtiquetaEgreso etiqueta){
 
-       Map<EtiquetaEgreso, List<Compra>> reporteCompras = compras.stream()
-               .collect(groupingBy(Compra::getEtiqueta));
-
-       return reporteCompras;
+        Map<EtiquetaEgreso, List<Compra>> reporteCompras = repoCompras.getCompras()
+                .stream()
+                .collect(groupingBy(Compra::getEtiquetaEgreso));
+        return reporteCompras;
     }
-	
-	
-	
-	
+
 }

@@ -1,5 +1,7 @@
 package modelo;
 
+import modelo.DireccionPostal.Barrio;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,6 +21,6 @@ public class Ciudad {
     }
 	public void agregarBarrios(List<Barrio> barriosImportados) {
 		barrios.addAll(barriosImportados);
-		
+
 	}
 }

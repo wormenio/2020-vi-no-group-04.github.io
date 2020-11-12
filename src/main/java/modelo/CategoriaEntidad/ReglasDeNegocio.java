@@ -1,6 +1,6 @@
 package modelo.CategoriaEntidad;
 
-import modelo.Entidad;
+import modelo.Entidades.Entidad;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;

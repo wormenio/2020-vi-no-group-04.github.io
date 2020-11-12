@@ -1,6 +1,7 @@
 package db;
 
-import entities.UsuarioEntity;
+import modelo.RolUsuario;
+import modelo.Usuario;
 import org.junit.Test;
 import org.uqbarproject.jpa.java8.extras.WithGlobalEntityManager;
 import org.uqbarproject.jpa.java8.extras.test.AbstractPersistenceTest;
@@ -10,14 +11,10 @@ public class EmTest extends AbstractPersistenceTest implements WithGlobalEntityM
 
     @Test
     public void persistirUsuarioTest(){
-        UsuarioEntity usuario = new UsuarioEntity();
-        usuario.setId((long) 1);
-        usuario.setUsuario("wormeno");
-        usuario.setNombre("walter");
-        usuario.setApellido("Ormeño");
-        usuario.setHash("44889966abs");
-        usuario.setIsAdmin(true);
+        Usuario usuario = new Usuario();
 
+        usuario.setNombreUsuario("wormeno");
+        usuario.setRolUsuario(RolUsuario.ADMINISTRADOR);
         entityManager().persist(usuario);
 
     }

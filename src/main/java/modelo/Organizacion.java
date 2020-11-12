@@ -1,25 +1,35 @@
 package modelo;
 
 import modelo.CategoriaEntidad.CategoriaEntidad;
-import modelo.Egreso.Compra;
-import scala.Int;
+import modelo.Egreso.Egreso;
+import modelo.Entidades.Entidad;
+import modelo.Entidades.EntidadBase;
+import modelo.Entidades.EntidadJuridica;
 
 import java.util.HashSet;
 import java.util.Set;
 
 public class Organizacion {
+
+	private static Organizacion instance = new Organizacion();
+	public static Organizacion instance(){
+		return instance;
+	}
+
 	Set<Entidad> entidades = new HashSet<>();
 	Set<EntidadBase> entidadesBase = new HashSet<>();
 	Set<EntidadJuridica> entidadesJuridicas = new HashSet<>();
-	Set<Compra> egresos = new HashSet<>();
+	Set<Egreso> egresos = new HashSet<>();
 	Set<CategoriaEntidad> categorias = new HashSet<>();
-	String nombre;
+
+	private String nombre = "geSoc";
+
 	private Integer cantidadPresupuestosRequeridos ;
 
-	public Organizacion(String nombre){
-		this.nombre = nombre;
-	}
-
+//	public Organizacion(String nombre){
+//		this.nombre = nombre;
+//	}
+//
 	public void aregarEntidad(Entidad entidad){
 		entidades.add(entidad);
 	}

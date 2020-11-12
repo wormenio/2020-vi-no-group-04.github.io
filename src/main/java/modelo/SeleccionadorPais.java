@@ -9,6 +9,8 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.google.gson.reflect.TypeToken;
 import com.sun.jersey.api.client.ClientResponse;
+import modelo.DireccionPostal.Barrio;
+import modelo.DireccionPostal.Pais;
 
 public class SeleccionadorPais {
     List<Pais> paises;
@@ -28,7 +30,7 @@ public class SeleccionadorPais {
 	
 	public List<Estado> agregarEstados(Pais pais){
 		List<Estado> estados =  new ArrayList<>();
-		APIMlibre apiEstados = new APIMlibre("classified_locations/countries"+pais.verID());
+		APIMlibre apiEstados = new APIMlibre("classified_locations/countries"+pais.getId());
 		ClientResponse jsonEstados = apiEstados.verInformacion();
         String estadosJson = jsonEstados.getEntity(String.class);
         JsonParser parser = new JsonParser();
@@ -115,8 +117,16 @@ public class SeleccionadorPais {
 
 		//FIXME:: MAP
 		this.objetizarPaises().forEach((paisML)->{
-									Pais pais = new Pais (paisML.verNombre(), paisML.verMoneda(),paisML.verID(), paisML.verLocale());
-									pais.agregarEstados(this.agregarEstados(pais));
+
+			Moneda moneda = new Moneda();
+			moneda.setNombre(paisML.verNombre());
+			Pais pais = new Pais();
+			pais.setNombre(paisML.verNombre());
+			pais.setMoneda(moneda);
+			pais.setLocale(paisML.verLocale());
+			
+//					Pais pais = new Pais (paisML.verNombre(), paisML.verMoneda(),paisML.verID(), paisML.verLocale());
+//					pais.agregarEstados(this.agregarEstados(pais));
 									
 									paises.add(pais);}
 		);

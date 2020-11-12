@@ -1,9 +1,13 @@
 package modelo.DocumentoComercial;
 
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
 import java.time.LocalDate;
 
-public class Remito implements DocumentoComercial {
-    Integer numero;
+@Entity
+@DiscriminatorValue("Remito")
+public class Remito extends DocumentoComercial {
+ /*   Integer numero;
 
     public Remito(Integer nroTicket){
         this.numero = numero;
@@ -13,5 +17,5 @@ public class Remito implements DocumentoComercial {
     public Integer getNumero() {
         return this.numero;
     }
-
+*/
 }

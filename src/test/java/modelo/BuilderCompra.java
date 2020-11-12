@@ -1,8 +1,9 @@
 package modelo;
 
 import modelo.Egreso.Compra;
-import modelo.Egreso.CompraConPresupuesto;
-import modelo.Egreso.CompraSinPresupuesto;
+
+import modelo.Egreso.EtiquetaEgreso;
+import modelo.Entidades.Entidad;
 
 import java.time.LocalDate;
 
@@ -11,9 +12,9 @@ public class BuilderCompra {
     private Compra compra;
     private Entidad entidad;
     private Moneda moneda;
-    private Boolean conPresupuesto = false;
+    private Boolean requierePresupuesto = false;
     private Integer cantidadPresupuesto;
-    private EtiquetaEgreso etiquetaEgreso = new EtiquetaEgreso("Etiqueta 1");
+    private EtiquetaEgreso etiquetaEgreso = new EtiquetaEgreso();
 
 
     public BuilderCompra setProveedor(Proveedor proveedor){
@@ -29,8 +30,8 @@ public class BuilderCompra {
         this.moneda = moneda;
         return this;
     }
-    public BuilderCompra setConPresupuesto(Boolean conPresupuesto){
-        this.conPresupuesto = conPresupuesto;
+    public BuilderCompra setRequierePresupuesto(Boolean requierePresupuesto){
+        this.requierePresupuesto = requierePresupuesto;
         return this;
     }
     
@@ -40,24 +41,15 @@ public class BuilderCompra {
     }
 
     public Compra crearCompra(){
-        if(conPresupuesto){
-            return new CompraConPresupuesto(
-                    LocalDate.now(),
-                    proveedor,
-                    moneda,
-                    entidad,
-                    etiquetaEgreso
-            ) ;
-        }
-        else{
-            return new CompraSinPresupuesto(
-                    LocalDate.now(),
-                    proveedor,
-                    moneda,
-                    entidad,
-                    etiquetaEgreso
-            ) ;
-        }
+        Compra compra = new Compra();
+        compra.setRequierePresupuesto(requierePresupuesto);
+        compra.setProveedor(proveedor);
+        compra.setMoneda(moneda);
+        compra.setEntidad(entidad);
+        compra.setCantidadPresupuestos(cantidadPresupuesto);
+
+        return compra;
 
     }
+
 }

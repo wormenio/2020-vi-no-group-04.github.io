@@ -11,24 +11,25 @@ import modelo.MedioDePago.TarjetaDeCredito;
 import java.time.LocalDate;
 
 public class TestHelpers {
-    public Organizacion geSoc = new Organizacion("Gesoc");
-
-    public Moneda pesoArgentino = new Moneda("Peso Argentino");
+    public Organizacion geSoc = new Organizacion();
+/*
+    public Moneda pesoArgentino = new Moneda();
     public Factura factura258 =  new Factura(258,"C");
     public Remito remito2     =  new Remito(2);
     public Item itemResma = new Item("resma papel A4");
-    public Item itemTonerImpresora = new Item("Toner Impresora Laser HP");
-    public Item itemCuaderno = new Item("Cuaderno Rayado 80 hojas");
-    public MedioDePago tarjetaCredito5875 = new TarjetaDeCredito(5875);
-    public EntidadBase entidadBaseLaComercial = entidadBaseLaComercial();
-    public Proveedor proveedorOfimatica = proveedorOfimatica();
+    public Item itemTonerImpresora = new Item();
+    public Item itemCuaderno = new Item();
+    public MedioDePago tarjetaCredito5875 = new TarjetaDeCredito();*/
+//    public Entidad entidadBaseLaComercial = entidadBaseLaComercial();
+//    public Proveedor proveedorOfimatica = Proveedor();
+//
+//    private EntidadBase entidadBaseLaComercial(){
+//        return new EntidadBase("La Comercial","Venta de Ropas",
+//                new CategoriaEntidad("La Comercial"),geSoc);
+//    }
 
-    private EntidadBase entidadBaseLaComercial(){
-        return new EntidadBase("La Comercial","Venta de Ropas",
-                new CategoriaEntidad("La Comercial"),geSoc);
-    }
 
-
+/*
 
     public EntidadJuridica entidadJuridicaMercadoBarrial(){
         return new EntidadJuridica("SupermercadoDelBarrio",
@@ -52,11 +53,13 @@ public class TestHelpers {
         Ciudad villa_luro = new Ciudad("Villa Luro", "TUxBQlZJTDI3MDJa");
         return new DireccionPostal(argentina, capital_federal, villa_luro, "mozart",215,"1", "D");
     }
+*/
 
 
     public DocumentoComercial remitoNro1(){
-        return new Remito(1);
+        return new Remito();
     }
+/*
 
     private Proveedor proveedorOfimatica(){
         return  new Proveedor("Juan",
@@ -91,6 +94,7 @@ public class TestHelpers {
         compra.agregarItem(itemCuaderno,150.00);
         return compra;
     }
+*/
 
 
 }

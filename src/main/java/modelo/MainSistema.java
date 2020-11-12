@@ -1,20 +1,31 @@
 package modelo;
 import modelo.CategoriaEntidad.CategoriaEntidad;
+import modelo.DireccionPostal.Ciudad;
+import modelo.DireccionPostal.DireccionPostal;
+import modelo.DireccionPostal.Pais;
+import modelo.DireccionPostal.Provincia;
 import modelo.Egreso.*;
-import org.scalactic.Or;
 
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
+import modelo.Entidades.Entidad;
+import modelo.Entidades.EntidadBase;
+
 
 public class MainSistema {
-	private Moneda pesoArgentino = new Moneda("PesoArgentino");
+
+	private Moneda pesoArgentino;
+	public Organizacion gesoc = new Organizacion();
+
+	/*
+
 	Pais argentina = new Pais("Argentina", "ARS", "AR", "es_AR");
 	Provincia capital_federal = new Provincia("Capital Federal","TUxBQ0NBUGZlZG1sYQ");
 	Ciudad villa_luro = new Ciudad("Villa Luro", "TUxBQlZJTDI3MDJa");
 	private Organizacion geSoc = new Organizacion("Gesoc");
-
+*/
 	public  void main(String[] args) {
 
 
@@ -23,10 +34,10 @@ public class MainSistema {
 
 
 		RepositorioCompras repositorio = new RepositorioCompras();
-		CompraConPresupuesto compraPrimera = compraConPresupuesto(LocalDate.now());
-		repositorio.agregarCompraConPresupuesto(compraPrimera);
+		Compra compraPrimera = compraConPresupuesto(LocalDate.now());
+		repositorio.agregarCompra(compraPrimera);
 
-		
+
 		BuzonMensajes buzonDeMensajes = new BuzonMensajes(repositorio);
 
 		this.correrValidacionDeCompras(repositorio, buzonDeMensajes);
@@ -35,28 +46,34 @@ public class MainSistema {
 		TimerTask tarea = new TimerTask(){
 			 public void run(){
 				 correrValidacionDeCompras(repositorio,buzonDeMensajes);
-				
+
 
 			 }
 
 		 };*/
 
-		 CompraConPresupuesto compraSegunda = compraConPresupuesto(LocalDate.now());
+		 Compra compraSegunda = compraConPresupuesto(LocalDate.now());
 
-		 repositorio.agregarCompraConPresupuesto(compraSegunda);
+		 repositorio.agregarCompra(compraSegunda);
 
 		//reloj.scheduleAtFixedRate(tarea, 0, 1000);
 
 	}
 
-	private CompraConPresupuesto compraConPresupuesto (LocalDate fecha){
-		return  new CompraConPresupuesto(
-				fecha,
-				proveedorOfimatica(),
-				pesoArgentino,
-				unaEntidadBase(),
-				new EtiquetaEgreso("Utiles")
-		);
+
+
+	private Moneda pesoArgentino(){
+		Moneda pesoArgentino = new Moneda();
+		pesoArgentino.setNombre("Peso Argentino");
+		return pesoArgentino;
+	}
+
+	private Compra compraConPresupuesto (LocalDate fecha){
+//		Moneda pesoArgentino = pesoArgentino();
+//		EtiquetaEgreso etiqueta = new EtiquetaEgreso();
+		Compra compra = new Compra();
+		compra.setRequierePresupuesto(true);
+		return compra;
 	}
 	public void tareaProgramadaEgresos(MainSistema mainSistema,RepositorioCompras repositorio, BuzonMensajes buzonDeMensajes) {
 		 Timer reloj = new Timer();
@@ -77,23 +94,19 @@ public class MainSistema {
 	}
 
 	Proveedor proveedorOfimatica(){
-		DireccionPostal direccionPostalMozart = new DireccionPostal(argentina, capital_federal, villa_luro, "mozart",215,"1", "D");
-		return new Proveedor("Juan",
-				"Perez",
-				"Ofimatica",
-				"25858685",
-				"25858568585",
-				direccionPostalMozart);
+		DireccionPostal direccionPostalMozart = new DireccionPostal();
+		return new Proveedor();
 	}
 
 	Entidad unaEntidadBase(){
-		return new EntidadBase("La Comercial","Venta de Ropas",
+		return new EntidadBase();
+	/*	return new EntidadBase("La Comercial","Venta de Ropas",
 				new CategoriaEntidad("La Comercial"),
-				geSoc);
+				geSoc);*/
 	}
 
-	Item unItem(String nombre){
-		return new Item(nombre );
+	Item unItem(){
+		return new Item( );
 	}
 
 

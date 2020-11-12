@@ -2,7 +2,13 @@ package modelo.MedioDePago;
 
 import modelo.MedioDePago.MedioDePago;
 
-public class TarjetaDeCredito implements MedioDePago {
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+
+@Entity
+@DiscriminatorValue("TC")
+public class TarjetaDeCredito extends MedioDePago {
+/*
 
 	int numeroReferencia;
 
@@ -13,5 +19,6 @@ public class TarjetaDeCredito implements MedioDePago {
 	public int GetNumeroReferencia(){
 		return numeroReferencia;
 	}
+*/
 
 }

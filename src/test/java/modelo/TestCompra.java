@@ -1,8 +1,11 @@
 package modelo;
 import modelo.DocumentoComercial.DocumentoComercial;
+import modelo.DocumentoComercial.Factura;
 import modelo.Egreso.*;
+import modelo.Entidades.EntidadBase;
 import modelo.MedioDePago.MedioDePago;
 import modelo.MedioDePago.TarjetaDeCredito;
+import modelo.Presupuesto.Presupuesto;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -13,7 +16,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 public class TestCompra {
-    public CompraSinPresupuesto unaCompra;
+    public Compra unaCompraSinPresupuesto;
     public RepositorioCompras repositorioCompras;
     public DocumentoComercial facturaC258;
     public Proveedor proveedorOfimatica;
@@ -21,32 +24,42 @@ public class TestCompra {
     public Item itemTonerImpresora;
 
     public MedioDePago tarjetaCredito5875;
-    public TestHelpers testHelpers;
-    public Organizacion gesoc = testHelpers.geSoc;
+//    public TestHelpers testHelpers;
+    public Organizacion gesoc = new Organizacion();
 
     @Before
     public void init(){
-        testHelpers = new TestHelpers();
-        facturaC258 = testHelpers.factura258;
-        proveedorOfimatica = testHelpers.proveedorOfimatica;
-        itemResma = testHelpers.itemResma;
-        itemTonerImpresora = testHelpers.itemTonerImpresora;
-        tarjetaCredito5875 = testHelpers.tarjetaCredito5875;
 
-        unaCompra = testHelpers.laComercialCompraResmaYTonerAOfimatica(LocalDate.now());
-        unaCompra.addMediosDePago(tarjetaCredito5875, 10.0);
-
+        unaCompraSinPresupuesto = new Compra();
         repositorioCompras = new RepositorioCompras();
-        repositorioCompras.agregarCompraSinPresupuesto(unaCompra);
 
+        repositorioCompras.agregarCompra(unaCompraSinPresupuesto);
+
+
+//        testHelpers = new TestHelpers();
+        facturaC258 = new Factura();
+//        proveedorOfimatica = testHelpers.proveedorOfimatica;
+        itemResma = new Item();
+        itemTonerImpresora = new Item();
+        tarjetaCredito5875 = new TarjetaDeCredito();
+
+
+    /*
+
+        unaCompraSinPresupuesto = testHelpers.laComercialCompraResmaYTonerAOfimatica(LocalDate.now());
+        unaCompraSinPresupuesto.addMediosDePago(tarjetaCredito5875, 10.0);
+
+
+        repositorioCompras.agregarCompraSinPresupuesto(unaCompraSinPresupuesto);
+*/
     }
 
     @Test
     public void registroDeLasOperacionesDeEgresos(){
         //    Se debe llevar registro de todas las operaciones de egresos de fondos a través de diversos medios de pagos.
-        Set<CompraSinPresupuesto> variasCompras = new HashSet<>();
-        variasCompras.add(unaCompra);
-        Assert.assertEquals(repositorioCompras.getComprasSinPresupuesto(),variasCompras);
+        Set<Compra> variasCompras = new HashSet<>();
+        variasCompras.add(unaCompraSinPresupuesto);
+        Assert.assertEquals(repositorioCompras.getCompras(),variasCompras);
     }
 
     @Test
@@ -54,14 +67,14 @@ public class TestCompra {
         //Requerimiento 1
         Set<DocumentoComercial> documentos = new HashSet<>();
         documentos.add(facturaC258);
-        unaCompra.addDocumentoComercial(facturaC258);
-        Assert.assertEquals(unaCompra.getDocumentoComercial(), documentos);
+        unaCompraSinPresupuesto.agregarDocumentoComercial(facturaC258, 252, LocalDate.now());
+        Assert.assertEquals(unaCompraSinPresupuesto.getDocumentoComercial(), documentos);
     }
 
     @Test
     public void elDocumentoComercialEsOpcional(){
         //Requerimiento 1
-        Assert.assertEquals(unaCompra.getDocumentoComercial(),new HashSet<>());
+        Assert.assertEquals(unaCompraSinPresupuesto.getDocumentoComercial(),new HashSet<>());
     }
 
     @Test
@@ -69,17 +82,17 @@ public class TestCompra {
         //Requerimiento 3
         Set<Proveedor> proveedores = new HashSet<>();
         proveedores.add(proveedorOfimatica);
-        Assert.assertEquals(unaCompra.getProveedor(), proveedorOfimatica);
+        Assert.assertEquals(unaCompraSinPresupuesto.getProveedor(), proveedorOfimatica);
     }
 
     @Test
     public void seConoceElDetalleDeLosItemsDelEgreso(){
         //Requerimiento 4
 
-        Assert.assertTrue(unaCompra.getItems()
+        Assert.assertTrue(unaCompraSinPresupuesto.getItems()
                 .stream()
                 .filter(item -> item.getItem().equals(itemResma)
-                            && item.getMonto()== 250.0
+                            && item.getPrecioUnitario()== 250.0
                         )
                 .collect(Collectors.toSet())
                 .size()>0
@@ -95,7 +108,7 @@ public class TestCompra {
 
         // => Si agrego un medio de pago, lo puedo consultar
 
-        Assert.assertTrue(unaCompra.getMediosDePago().stream()
+        Assert.assertTrue(unaCompraSinPresupuesto.getMediosDePago().stream()
                     .filter( medioDePago ->
                                     medioDePago.getMedioDePago() == tarjetaCredito5875
                             )
@@ -106,19 +119,13 @@ public class TestCompra {
     @Test
     public void validarQueLaCompraTengaCargadoLaCantidadDePresupuestosIndicados(){
         Compra unaCompraConPresupuesto = new BuilderCompra()
-                .setConPresupuesto(true)
-                .setProveedor(testHelpers.proveedorOfimatica)
-                .setEntidad(testHelpers.entidadBaseLaComercial)
-                .setMoneda(testHelpers.pesoArgentino)
+                .setRequierePresupuesto(true)
+                .setProveedor(new Proveedor())
+                .setEntidad(new EntidadBase())
+                .setMoneda(new Moneda())
                 .crearCompra();
 
-        Presupuesto presupuestoCompraResmaYToner = new Presupuesto(
-                testHelpers.proveedorOfimatica,
-                LocalDate.now(),
-                unaCompraConPresupuesto,
-                testHelpers.remito2,
-                testHelpers.pesoArgentino
-        );
+        Presupuesto presupuestoCompraResmaYToner = new Presupuesto();
 
         unaCompraConPresupuesto.agregarPresupuesto(presupuestoCompraResmaYToner);
         gesoc.setCantidadPresupuestosRequeridos(1);

@@ -1,7 +1,11 @@
 package modelo;
 
-import com.mysql.jdbc.AssertionFailedException;
+/*import com.mysql.jdbc.AssertionFailedException;
+import com.mysql.jdbc.PreparedStatement;*/
 import modelo.Egreso.*;
+import modelo.Entidades.EntidadBase;
+import modelo.Presupuesto.ItemsDelPresupuesto;
+import modelo.Presupuesto.Presupuesto;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -27,9 +31,9 @@ public class TestPresupuesto {
     @Before
     public void init(){
         testHelpers = new TestHelpers();
-        itemResma    = testHelpers.itemResma;
-        Item itemCuaderno = testHelpers.itemCuaderno;
-        itemToner    = testHelpers.itemTonerImpresora;
+//        itemResma    = testHelpers.itemResma;
+//        Item itemCuaderno = ;
+        itemToner    = new Item();
 
       /*  unaCompraSinPresupuesto = new BuilderCompra()
                 .setProveedor(testHelpers.proveedorOfimatica)
@@ -37,31 +41,25 @@ public class TestPresupuesto {
                 .crearCompra();
 */
         unaCompraConPresupuesto = new BuilderCompra()
-                .setConPresupuesto(true)
-                .setProveedor(testHelpers.proveedorOfimatica)
+                .setRequierePresupuesto(true)
+                .setProveedor(new Proveedor())
                 .setCantidadPresupuesto(2)
-                .setEntidad(testHelpers.entidadBaseLaComercial)
-                .setMoneda(testHelpers.pesoArgentino)
+                .setEntidad(new EntidadBase())
+                .setMoneda(new Moneda())
                 .crearCompra();
 
         unaCompraConPresupuesto.agregarItem(itemResma,150.0);
         unaCompraConPresupuesto.agregarItem(itemToner,1250.0);
 
-        presupuestoCompraResmaYToner = new Presupuesto(
-                testHelpers.proveedorOfimatica,
-                LocalDate.now(),
-                unaCompraConPresupuesto,
-                testHelpers.remito2,
-                testHelpers.pesoArgentino
-        );
+        presupuestoCompraResmaYToner = new Presupuesto();
 
         unaCompraConPresupuesto.agregarPresupuesto(presupuestoCompraResmaYToner);
 
-        presupuestoCompraResmaYToner.addItem(itemResma,150.0);
-        presupuestoCompraResmaYToner.addItem(itemToner,1250.0);
+        presupuestoCompraResmaYToner.agregarItem(itemResma,150.0);
+        presupuestoCompraResmaYToner.agregarItem(itemToner,1250.0);
 
         repositorio = new RepositorioCompras();
-        repositorio.agregarCompraConPresupuesto(unaCompraConPresupuesto);
+        repositorio.agregarCompra(unaCompraConPresupuesto);
 
     }
 
@@ -72,7 +70,7 @@ public class TestPresupuesto {
 
         // Si registro un presupuesto => puedo consultarlo
 
-        Assert.assertTrue( repositorio.comprasConPresupuesto.stream()
+        Assert.assertTrue( repositorio.compras.stream()
                 .filter( compra -> compra.getPresupuestos().contains(presupuestoCompraResmaYToner)
                 )
                 .count() >0
@@ -83,13 +81,7 @@ public class TestPresupuesto {
     @Test
     public void noSePuedeCargarPresupuestoSinCompra(){
         try {
-            Presupuesto otroPresupuesto = new Presupuesto(
-                    testHelpers.proveedorOfimatica,
-                    LocalDate.now(),
-                    null,
-                    testHelpers.remito2,
-                    testHelpers.pesoArgentino
-            );
+            Presupuesto otroPresupuesto = new Presupuesto();
         } catch (Exception e) {
             assertEquals("Debe indicar la compra", e.getMessage());
         }
@@ -103,16 +95,10 @@ public class TestPresupuesto {
 
     @Test
     public void validarPorCriterioDeMenorValor(){
-        Presupuesto otroPresupuesto = new Presupuesto(
-                testHelpers.proveedorOfimatica,
-                LocalDate.now(),
-                unaCompraConPresupuesto,
-                testHelpers.remito2,
-                testHelpers.pesoArgentino
-        );
+        Presupuesto otroPresupuesto = new Presupuesto();
 
-        presupuestoCompraResmaYToner.addItem(itemResma,100.0);
-        presupuestoCompraResmaYToner.addItem(itemToner,1250.0);
+        presupuestoCompraResmaYToner.agregarItem(itemResma,100.0);
+        presupuestoCompraResmaYToner.agregarItem(itemToner,1250.0);
 
         unaCompraConPresupuesto.agregarPresupuesto(presupuestoCompraResmaYToner);
         unaCompraConPresupuesto.setPresupuestoAsignado(otroPresupuesto);

@@ -1,13 +1,11 @@
 package modelo;
-import java.util.ArrayList;
-import java.util.List;
 
 import modelo.Egreso.Compra;
+import modelo.Egreso.Egreso;
 
 //Nomenclatura revisar - BuzonMensajes
 public class BuzonMensajes {
 
-	
  	
     RepositorioCompras repositorioCompras;
     
@@ -21,7 +19,7 @@ public class BuzonMensajes {
     }
 
     public void notificarUsuarios(Compra compra) {
-    	compra.usuariosHabilitados().forEach((usuario)->{usuario.agregarNotificacion(compra.getId() + compra.estadoValidacion());});
+    	compra.usuariosRevisores().forEach((usuario)->{usuario.agregarNotificacion(compra.getId() + compra.estadoValidacion());});
     }
 
 	

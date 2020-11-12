@@ -1,15 +1,20 @@
 package modelo;
 
 import modelo.CategoriaEntidad.CategoriaEntidad;
+import modelo.CategoriaJuridica.CategoriaEntidadJuridicaEmpresa;
+import modelo.CategoriaJuridica.ClasificacionAFIP;
+import modelo.DireccionPostal.DireccionPostal;
+import modelo.Entidades.EntidadBase;
+import modelo.Entidades.EntidadException;
+import modelo.Entidades.EntidadJuridica;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
 public class TestEntidad {
     public TestHelpers testHelpers;
-    public EntidadJuridica entidadJuridicaMercadoBarrial;
-    public EntidadJuridica entidadJuridicarZapatillasTigre;
-    public EntidadBase  entidadBaseLaComercial;
+    public EntidadJuridica entidadJuridica;
+    public EntidadBase entidadBase;
     public Organizacion geSoc;
     public CategoriaEntidadJuridicaEmpresa empresa;
 
@@ -19,20 +24,21 @@ public class TestEntidad {
         geSoc = testHelpers.geSoc;
         empresa = new CategoriaEntidadJuridicaEmpresa();
 
-        entidadJuridicarZapatillasTigre = testHelpers.entidadJuridicaZapatillasTigre();
+//        entidadJuridicarZapatillasTigre = testHelpers.entidadJuridicaZapatillasTigre();
 
-        entidadJuridicaMercadoBarrial = new BuilderEntidad()
+        entidadJuridica = new BuilderEntidad()
                 .setRazonSocial("Mercado Barrial SRL")
                 .setNombreFicticio("Mercadito del barrio")
                 .setCuit("25858568585")
-                .setDireccionPostal(testHelpers.direccionPostalMozart())
+                .setDireccionPostal(new DireccionPostal())
                 .setCategoriaEntidadJuridica(empresa)
                 .crearEntidadJuridica();
 
-        entidadBaseLaComercial = new BuilderEntidad()
+
+        entidadBase = new BuilderEntidad()
                 .setNombreFicticio("La comercial")
                 .setDescripcion("Venta de insumos varios")
-                .setCategoriaEntidad( new CategoriaEntidad("La Comercial"))
+                .setCategoriaEntidad( new CategoriaEntidad())
                 .crearEntidadBase();
     }
 
@@ -55,19 +61,27 @@ public class TestEntidad {
     }
 
 
-    @Test(expected=EntidadException.class)
+    @Test(expected= EntidadException.class)
     public void unaEntidadBasePuedePertenecerASoloUnaEntidadJuridica(){
 //       10.- Una entidad base puede pertenecer a sólo una entidad jurídica
 
-        entidadJuridicaMercadoBarrial.addEntidadBase(entidadBaseLaComercial);
-        entidadJuridicarZapatillasTigre.addEntidadBase(entidadBaseLaComercial);
+        entidadJuridica.agregarEntidadBase(entidadBase);
+        EntidadJuridica otraEntidadJuridica = new BuilderEntidad()
+                .setRazonSocial("Ferreteria industrial SRL")
+                .setNombreFicticio("La industrial")
+                .setCuit("25854875585")
+                .setDireccionPostal(new DireccionPostal())
+                .setCategoriaEntidadJuridica(empresa)
+                .crearEntidadJuridica();
+
+        otraEntidadJuridica.agregarEntidadBase(entidadBase);
     }
 
     @Test
     public void categorizarEntidadJuridica(){
 //       13.- Las entidades jurídicas serán categorizadas en Empresas y OSC (Organizaciones del sector social).
 
-        Assert.assertEquals(entidadJuridicaMercadoBarrial.getCategorizacionEntiodadJuridica(),
+        Assert.assertEquals(entidadJuridica.getCategorizacionEntiodadJuridica(),
                 empresa);
     }
 
@@ -76,8 +90,8 @@ public class TestEntidad {
 //      14.-  En el caso de empresas, estas se clasifican en Micro, Pequeña, Mediana Tramo 1, Mediana Tramo 2. Dicha clasificación responderá a los criterios estipulados por la AFIP
         //  mercadoBarrial.
 
-        entidadJuridicaMercadoBarrial.setCantidadEmpleados(1);
+        entidadJuridica.setCantidadEmpleados(1);
 
-        Assert.assertEquals(entidadJuridicaMercadoBarrial.getClasificacionAFIP(),ClasificacionAFIP.MICRO);
+        Assert.assertEquals(entidadJuridica.getClasificacionAFIP(), ClasificacionAFIP.MICRO);
     }
 }

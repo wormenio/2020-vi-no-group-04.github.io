@@ -2,10 +2,14 @@ package modelo.DocumentoComercial;
 
 import modelo.DocumentoComercial.DocumentoComercial;
 
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
 import java.time.LocalDate;
 
-public class Ticket implements DocumentoComercial {
-	Integer nroTicket;
+@Entity
+@DiscriminatorValue("Ticket")
+public class Ticket extends DocumentoComercial {
+/*	Integer nroTicket;
 
 	public Ticket(Integer nroTicket,LocalDate fecha){
 		this.nroTicket = nroTicket;
@@ -14,5 +18,5 @@ public class Ticket implements DocumentoComercial {
 	@Override
 	public Integer getNumero() {
 		return this.nroTicket;
-	}
+	}*/
 }

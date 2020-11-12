@@ -1,12 +1,16 @@
 package modelo;
 
 import modelo.CategoriaEntidad.CategoriaEntidad;
+import modelo.CategoriaJuridica.CategoriaEntidadJuridica;
+import modelo.DireccionPostal.DireccionPostal;
+import modelo.Entidades.EntidadBase;
+import modelo.Entidades.EntidadJuridica;
 
 public class BuilderEntidad {
     private String nombreFicticio;
     private String descripcion;
     private CategoriaEntidad categoriaEntidad;
-    private Organizacion geSoc = new Organizacion("Gesoc");
+    private Organizacion geSoc = new Organizacion();
     private String razonSocial;
     private DireccionPostal direccionPostal;
     private CategoriaEntidadJuridica categoriaEntidadJuridica;
@@ -48,11 +52,18 @@ public class BuilderEntidad {
     }
     
     public EntidadBase crearEntidadBase(){
-        return new EntidadBase(nombreFicticio,descripcion,categoriaEntidad,geSoc);
+        EntidadBase entidadBase = new EntidadBase();
+        entidadBase.setNombreFicticio(nombreFicticio);
+        entidadBase.setCategoriaEntidad(categoriaEntidad);
+        return entidadBase;
     }
     
     public EntidadJuridica crearEntidadJuridica(){
- 
-        return  new EntidadJuridica(razonSocial,nombreFicticio,cuit,direccionPostal,categoriaEntidadJuridica,geSoc);
+        EntidadJuridica entidadJuridica = new EntidadJuridica();
+        entidadJuridica.setNombreFicticio(nombreFicticio);
+        entidadJuridica.setRazonSocial(razonSocial);
+        entidadJuridica.setDireccionPostal(direccionPostal);
+        entidadJuridica.setCategoriaJuridica(categoriaEntidadJuridica);
+        return entidadJuridica;
     }
 }
