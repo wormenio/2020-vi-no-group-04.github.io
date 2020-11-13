@@ -5,8 +5,9 @@ import modelo.Egreso.Compra;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
+import org.uqbarproject.jpa.java8.extras.WithGlobalEntityManager;
 
-public class RepositorioCompras {
+public class RepositorioCompras implements WithGlobalEntityManager{
 
 /*	Set<Compra> comprasConPresupuesto = new HashSet<>();
 	Set<Compra> comprasSinPresupuesto = new HashSet<>();
@@ -39,5 +40,8 @@ public class RepositorioCompras {
 		getComprasConPresupuesto().stream().map( compra -> compra.validarCompra());
 
 	}
+	public void agregar(Compra consultora)  {
+	    entityManager().persist(consultora);
+	  }
 
 }
