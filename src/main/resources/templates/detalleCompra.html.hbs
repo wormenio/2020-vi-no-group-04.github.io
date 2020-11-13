@@ -1,0 +1,25 @@
+{{# partial "titulo" }}
+    <title>Detalle de la Compra</title>
+{{/partial}}
+{{# partial "contenido" }}
+        <div>
+            <span><strong>Fecha compra:</strong></span><span>{{fechaCompra}}</span>
+        </div>
+        <div>
+            <span><strong>Moneda:</strong></span><span>{{moneda.nombre}} ({{moneda.symbol}})</span>
+        </div>
+        <div>
+            <span><strong>Entidad:</strong></span><span>{{entidad.nombreFicticio}}</span>
+        </div>
+        <div>
+            <span><strong>Proveedor:</strong></span><span>{{proveedor.razonSocial}}</span>
+        </div>
+        <div>
+            <span><strong>Etiqueta:</strong></span><span>{{etiquetaEgreso.nombre}}</span>
+        </div>
+
+    </div>
+
+{{/partial}}
+
+{{> layout.html.hbs }}

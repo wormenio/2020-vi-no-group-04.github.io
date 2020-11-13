@@ -128,7 +128,7 @@ public class SeleccionadorPais {
 //					Pais pais = new Pais (paisML.verNombre(), paisML.verMoneda(),paisML.verID(), paisML.verLocale());
 //					pais.agregarEstados(this.agregarEstados(pais));
 									
-									paises.add(pais);}
+					paises.add(pais);}
 		);
 		
 		return paises;

@@ -17,7 +17,7 @@ import modelo.Organizacion;
 import javax.persistence.*;
 
 @Entity
-@DiscriminatorValue(value="EntidadJuridica")
+@DiscriminatorValue(value="Juridica")
 public class EntidadJuridica extends Entidad {
 
 	private String cuit;

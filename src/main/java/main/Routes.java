@@ -1,5 +1,6 @@
 package main;
 
+import controllers.ComprasController;
 import controllers.EgresosController;
 import controllers.HomeController;
 import spark.ModelAndView;
@@ -16,19 +17,18 @@ public class Routes {
         //new Bootstrap().run();
 
         HandlebarsTemplateEngine engine = new HandlebarsTemplateEngine();
-        EgresosController egresosController = new EgresosController();
+        ComprasController comprasController = new ComprasController();
         HomeController homeController = new HomeController();
 //        UsuariosController usuariosController = new UsuariosController();
 
         Spark.get("/", (request, response) -> homeController.getHome(), engine);
 
-        Spark.get("/consultoras",(request, response) ->egresosController.getEgresos(), engine);
-
-//
         Spark.get("/home", (request, response) -> homeController.getHome(), engine);
-        Spark.get("/", (request,response) -> { return new ModelAndView(null,"login.html.hbs");} , engine);
-        Spark.get("/egresos/nuevo",  egresosController::getFormularioCreacion, engine);
-        Spark.post("/egresos", (request, response) -> egresosController.crearEgreso(request, response));
+        Spark.get("/login", (request,response) -> { return new ModelAndView(null,"login.html.hbs");} , engine);
+        Spark.get("/compras", comprasController::getCompras, engine);
+        Spark.get("/compras/nuevo",  comprasController::getFormularioCreacion, engine);
+        Spark.get("/compras/:id", (request, response) -> comprasController.getDetalleCompra(request, response, engine));
+        Spark.post("/compras", (request, response) -> comprasController.crearEgreso(request, response));
 
 
 //

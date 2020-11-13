@@ -1,4 +1,15 @@
  ## Isues
+*[x] - EtiquetaEgreso es Repositorio de etiquetas
+*[x] - Eliminar paquete de entities que replica las clases de dominio y poner las annotations en las clases de dominio
+*[x] - Modelar etiquetas como objetos (entidades) y tener relación Compra -> Etiqueta
+*[x] - Hacer la agrupación (no filter) por etiqueta (no pasar etiqueta x parámetro al método que genera el reporte) (googlear el Collectors.groupingBy)
+*[] - Hacer un test y terminar de implementar categorías 
+*[x] - Ojo con comparar strings por ==
+*[x] - Ojo con ifs q
+*[x] - Ojo con ifs que devuelven true/false
+*[] - Tabla usuario_compra es Revisores
+
+ 
  *[ ] https://github.com/dds-utn/2020-vi-no-group-04/issues/13
  
  *[x] Sacar la lista de usuarios del usuario 

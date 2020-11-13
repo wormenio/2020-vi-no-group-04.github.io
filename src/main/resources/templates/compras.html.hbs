@@ -1,0 +1,22 @@
+{{# partial "titulo" }}
+    <title>Listado de compras realizadas</title>
+{{/partial}}
+{{# partial "contenido" }}
+        <h3>Compras realizadas</h3>
+
+        <!--<form action="/consultoras" method="GET">
+            Buscar por username
+            <input type="text" name="filtro" placeholder="Ingrese el username de la consultora a buscar">
+
+            <input type="submit" value="Buscar">
+        </form>-->
+
+        <ul>
+            {{#compras}}
+                <li><a href="compras/{{id}}">{{fechaCompra}}</a> <strong>Entidad:</strong> {{entidad.nombreFicticio}} - <strong>etiquetaEgreso:</strong> {{etiquetaEgreso.nombre}}</li>
+            {{/compras}}
+        </ul>
+
+{{/partial}}
+
+{{> layout.html.hbs }}

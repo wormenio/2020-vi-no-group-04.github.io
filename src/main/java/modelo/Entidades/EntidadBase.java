@@ -7,7 +7,7 @@ import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
 @Entity
-@DiscriminatorValue(value="EntidadBase")
+@DiscriminatorValue(value="Base")
 public class EntidadBase extends Entidad {
 
 	private String descripcion;
