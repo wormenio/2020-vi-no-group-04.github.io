@@ -1,6 +1,6 @@
 package main;
 
-import controllers.EgresosController;
+import controllers.ComprasController;
 import controllers.HomeController;
 import spark.ModelAndView;
 import spark.Spark;
@@ -13,16 +13,19 @@ public class Routes {
         Spark.port(8080);
         Spark.staticFileLocation("/public");
 
-        new Bootstrap().run();
+//        new Bootstrap().run();
 
         HandlebarsTemplateEngine engine = new HandlebarsTemplateEngine();
-        EgresosController egresosController = new EgresosController();
+        ComprasController egresosController = new ComprasController();
         HomeController homeController = new HomeController();
 //        UsuariosController usuariosController = new UsuariosController();
 
 //
-//        Spark.get("/", (request, response) -> homeController.getHome(), engine);
+        Spark.get("/home", (request, response) -> homeController.getHome(), engine);
         Spark.get("/", (request,response) -> { return new ModelAndView(null,"login.html.hbs");} , engine);
+        Spark.get("/egresos/nuevo",  egresosController::getFormularioCreacion, engine);
+        Spark.post("/egresos", (request, response) -> egresosController.crearEgreso(request, response));
+
 
 //
 //        Spark.get("/consultoras", consultorasController::getConsultoras, engine);

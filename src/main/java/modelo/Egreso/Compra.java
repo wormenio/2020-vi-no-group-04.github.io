@@ -1,6 +1,7 @@
 package modelo.Egreso;
 
 import modelo.*;
+import modelo.Entidades.Entidad;
 import modelo.Presupuesto.Presupuesto;
 
 import javax.persistence.*;
@@ -48,6 +49,16 @@ public class Compra extends Egreso {
 
 	@Enumerated(EnumType.ORDINAL)
 	Criterio criterio;
+
+	public Compra() {
+	}
+
+	public Compra(LocalDate fechaCompra, Proveedor proveedor, Moneda moneda,
+				  Entidad entidad, EtiquetaEgreso etiquetaEgreso) {
+		super(fechaCompra, moneda, entidad, etiquetaEgreso);
+		if( proveedor == null) throw new ComprasException("Debe indicar el Proveedor");
+		this.proveedor = proveedor;
+	}
 
 	public void setProveedor(Proveedor proveedor) {
 		this.proveedor = proveedor;
@@ -171,12 +182,7 @@ public class Compra extends Egreso {
 		return 0;
 	}
 
-/*
 
-	public Compra(LocalDate fechaCompra, Proveedor proveedor, Moneda moneda,
-				  Entidad entidad, EtiquetaEgreso etiquetaEgreso) {
-		super(fechaCompra, proveedor, moneda, entidad, etiquetaEgreso);
-	}
-*/
+
 
 }

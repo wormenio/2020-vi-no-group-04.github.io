@@ -8,7 +8,7 @@
 <main>
     <h1>Nuevo Egreso</h1>
 
-    <form style="display: inline; justify-content: center; align-items: center;">
+    <form style="display: inline; justify-content: center; align-items: center;" action="/egresos" method="POST">
         <div class="container">
             <select>
                 <option disabled selected>Seleccione Entidad...</option>
@@ -30,7 +30,7 @@
                 <label for="TipoDocCom">Tipo:</label>
                 <input placeholder="Tipo Documento Comercial" id="TipoDocCom" type="text"><br><br>
                 <label for="TipoDocCom">Fecha:</label>
-                <input placeholder="Fecha" id="FechaDocCom" type="date"><br><br>
+                <input placeholder="Fecha" name="fechaCompra" id="FechaDocCom" type="date"><br><br>
                 <label for="TipoDocCom">Numero:</label>
                 <input placeholder="Numero Documento Comercial" id="nroDocCom" type="number">
             </fieldset>
@@ -59,7 +59,7 @@
         </div><br>
 
         <div>
-            <select>
+            <select name="proveedor" >
                 <option disabled selected>Seleccione Proveedor...</option>
                 <option value="Proveedor 1">Proveedor 1</option>
                 <option value="Proveedor 2">Proveedor 2</option>

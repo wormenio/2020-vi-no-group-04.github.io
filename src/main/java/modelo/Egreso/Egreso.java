@@ -48,7 +48,20 @@ public abstract class Egreso {
 	@JoinColumn(name = "etiqueta_id")
 	private EtiquetaEgreso etiquetaEgreso;
 
+	public Egreso(LocalDate fechaCompra, Moneda moneda,
+				  Entidad entidad, EtiquetaEgreso etiquetaEgreso){
 
+		if( moneda == null )  throw new ComprasException("Debe indicar la Moneda");
+		if( entidad == null ) throw new ComprasException("Debe indicar la Entidad");
+		this.fechaCompra = fechaCompra;
+		this.moneda = moneda;
+		this.entidad = entidad;
+		this.etiquetaEgreso = etiquetaEgreso;
+	}
+
+	public Egreso() {
+
+	}
 
 	public Long getId() {
 		return id;
@@ -118,18 +131,7 @@ public abstract class Egreso {
 
 	//	private Collection<EtiquetaEgreso> etiquetasEgresos = new ArrayList<>();
 
-/*
-	public Egreso(LocalDate fechaCompra, Proveedor proveedor, Moneda moneda,
-				  Entidad entidad, EtiquetaEgreso etiquetaEgreso){
-		if( proveedor == null) throw new ComprasException("Debe indicar el Proveedor");
-		if( moneda == null )  throw new ComprasException("Debe indicar la Moneda");
-		if( entidad == null ) throw new ComprasException("Debe indicar la Entidad");
-		this.fechaCompra = fechaCompra;
-		this.proveedor = proveedor;
-		this.moneda = moneda;
-		this.entidad = entidad;
-		this.etiquetaEgreso = etiquetaEgreso;
-	}*/
+
 
 /*
 	public Proveedor getProveedor() {

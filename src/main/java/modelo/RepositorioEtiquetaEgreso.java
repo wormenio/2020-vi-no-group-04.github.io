@@ -1,11 +1,12 @@
 package modelo;
 
 import modelo.Egreso.EtiquetaEgreso;
+import org.uqbarproject.jpa.java8.extras.WithGlobalEntityManager;
 
 import java.util.HashSet;
 import java.util.Set;
 
-public class RepositorioEtiquetaEgreso {
+public class RepositorioEtiquetaEgreso implements WithGlobalEntityManager {
 
     Set<EtiquetaEgreso> etiquetas = new HashSet<>();
 
@@ -19,5 +20,10 @@ public class RepositorioEtiquetaEgreso {
 
     public Set<EtiquetaEgreso> getEtiquetas(){
         return etiquetas;
+    }
+
+    public EtiquetaEgreso getById(Long id){
+        return entityManager().find(EtiquetaEgreso.class, id);
+
     }
 }
