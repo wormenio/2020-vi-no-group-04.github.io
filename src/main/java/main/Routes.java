@@ -1,6 +1,6 @@
 package main;
 
-import controllers.ComprasController;
+import controllers.EgresosController;
 import controllers.HomeController;
 import spark.ModelAndView;
 import spark.Spark;
@@ -13,12 +13,16 @@ public class Routes {
         Spark.port(8080);
         Spark.staticFileLocation("/public");
 
-//        new Bootstrap().run();
+        //new Bootstrap().run();
 
         HandlebarsTemplateEngine engine = new HandlebarsTemplateEngine();
-        ComprasController egresosController = new ComprasController();
+        EgresosController egresosController = new EgresosController();
         HomeController homeController = new HomeController();
 //        UsuariosController usuariosController = new UsuariosController();
+
+        Spark.get("/", (request, response) -> homeController.getHome(), engine);
+
+        Spark.get("/consultoras",(request, response) ->egresosController.getEgresos(), engine);
 
 //
         Spark.get("/home", (request, response) -> homeController.getHome(), engine);
