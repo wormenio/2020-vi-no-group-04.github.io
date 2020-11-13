@@ -12,10 +12,10 @@ public class DocumentoComercialEgreso {
     @EmbeddedId
     private DocumentoComercialEgresoId id;
 
-    @ManyToOne
+ /*   @ManyToOne
     @JoinColumn(name = "documento_comercial_id")
     private DocumentoComercial documentoComercial;
-
+*/
     @Column(name = "numero")
     private Integer numeroDocumento;
 
@@ -31,12 +31,12 @@ public class DocumentoComercialEgreso {
     }
 
     public void setDocumentoComercial(DocumentoComercial documentoComercial) {
-        this.documentoComercial = documentoComercial;
-//        id.setDocumentoComercialId(documentoComercial.getId());
+//        this.documentoComercial = documentoComercial;
+        id.setDocumentoComercial(documentoComercial);
     }
 
     public DocumentoComercial getDocumentoComercial() {
-        return documentoComercial;
+        return id.getDocumentoComercial();
     }
 
     public void setNumeroDocumento(Integer numeroDocumento) {

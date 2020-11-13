@@ -15,7 +15,7 @@ public class ItemsDeCompraId implements Serializable {
     @ManyToOne
     @JoinColumn(name = "item_id")
     private Item item;
-/*
+
     public void setItem(Item item){
         this.item = item;
     }
@@ -23,7 +23,7 @@ public class ItemsDeCompraId implements Serializable {
     public Item getItem(){
         return item;
     }
-
+/*
     public void setCompraId(Long compraId) {
         this.compraId = compraId;
     }*/

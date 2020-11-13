@@ -1,7 +1,6 @@
 package modelo.Presupuesto;
 
 import modelo.Egreso.Item;
-import modelo.Egreso.MediosDePagoDelEgresoId;
 
 import javax.persistence.*;
 
@@ -11,10 +10,12 @@ public class ItemsDelPresupuesto {
 
     @EmbeddedId
     ItemsDelPresupuestoId id;
+/*
 
     @ManyToOne
     @JoinColumn(name = "item_id")
     private Item item;
+*/
 
     @Column(name = "monto")
     private Double precioUnitario;
@@ -25,11 +26,11 @@ public class ItemsDelPresupuesto {
 //    }
 
     public void setItem(Item item) {
-        this.item = item;
+        id.setItem(item);
     }
 
     public Item getItem(){
-        return item;
+        return id.getItem();
     }
 
     public void setMonto(Double monto) {

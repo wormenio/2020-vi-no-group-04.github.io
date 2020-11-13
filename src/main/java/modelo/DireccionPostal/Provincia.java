@@ -10,8 +10,6 @@ import javax.persistence.Table;
 @Entity
 @Table(name="Provincias")
 public class Provincia extends EntidadPersistente {
-    String id;
-    String nombre;
 
     @ManyToOne
     @JoinColumn(name="pais_id")

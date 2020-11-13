@@ -10,19 +10,18 @@ public class Routes {
     public static void main(String[] args) {
         System.out.println("Iniciando servidor");
 
-        Spark.port(8081);
+        Spark.port(8080);
         Spark.staticFileLocation("/public");
 
-//        new Bootstrap().run();
-
         new Bootstrap().run();
+
         HandlebarsTemplateEngine engine = new HandlebarsTemplateEngine();
         EgresosController egresosController = new EgresosController();
         HomeController homeController = new HomeController();
 //        UsuariosController usuariosController = new UsuariosController();
 
 //
-        Spark.get("/", (request, response) -> homeController.getHome(), engine);
+//        Spark.get("/", (request, response) -> homeController.getHome(), engine);
         Spark.get("/", (request,response) -> { return new ModelAndView(null,"login.html.hbs");} , engine);
 
 //

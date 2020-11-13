@@ -11,15 +11,15 @@ public class MedioDePagoDelEgreso {
     @EmbeddedId
     MediosDePagoDelEgresoId id;
 
-    @ManyToOne
+/*    @ManyToOne
     @JoinColumn(name = "medio_de_pago_id")
-    private MedioDePago medioDePago;
+    private MedioDePago medioDePago;*/
 
     @Column(name = "monto")
     Double montoEgreso;
 
     public void setMedioDePago(MedioDePago medioDePago){
-        this.medioDePago = medioDePago;
+        this.id.setMedioDePago(medioDePago);
     }
 
     public void setMonto(Double monto){
@@ -28,7 +28,7 @@ public class MedioDePagoDelEgreso {
 
 
     public MedioDePago getMedioDePago(){
-        return medioDePago;
+        return id.getMedioDePago();
     }
 
     public Double getMonto(){

@@ -20,9 +20,9 @@ public class ItemsDeLaCompra  {
     @EmbeddedId
     ItemsDeCompraId id;
 
-    @ManyToOne
+/*    @ManyToOne
     @JoinColumn(name = "item_id")
-    private Item item;
+    private Item item;*/
 
     private Integer cantidad;
 
@@ -48,17 +48,14 @@ public class ItemsDeLaCompra  {
         return precioUnitario;
     }
 
-//    public void setItem(Item item){
-//        id.setItem(item);
-//    }
-
-    public Item getItem(){
-        return item;
+    public void setItem(Item item){
+        id.setItem(item);
     }
 
-//    public void setCompraId(Long compraId){
-//        id.setCompraId(compraId);
-//    }
+    public Item getItem(){
+        return id.getItem();
+    }
+
 
 //    public void setMoneda(Moneda moneda){
 //        this.moneda = moneda;

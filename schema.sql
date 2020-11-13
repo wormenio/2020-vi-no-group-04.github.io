@@ -39,10 +39,10 @@
     )
 
     create table Documentos_comerciales_de_egresos (
-        documento_comercial_id bigint not null,
         egreso_id integer not null,
         fecha_documento tinyblob,
         numero integer,
+        documento_comercial_id bigint,
         primary key (documento_comercial_id, egreso_id)
     )
 
