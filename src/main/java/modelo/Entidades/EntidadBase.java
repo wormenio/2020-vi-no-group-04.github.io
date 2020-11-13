@@ -1,8 +1,5 @@
 package modelo.Entidades;
 
-import modelo.CategoriaEntidad.CategoriaEntidad;
-import modelo.Organizacion;
-
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 

@@ -59,6 +59,18 @@ public class RepositorioCompras implements WithGlobalEntityManager{
 				.getResultList();
 	}
 
+    public Double getTotalComprasEntidad(Entidad entidad) {
+		Long idEntidad = entidad.getId();
+		List<Compra> compras = entityManager() //
+				.createQuery("from Compra c where c.entidad.id = :idEntidad ", Compra.class) //
+				.setParameter("idEntidad", idEntidad) //
+				.getResultList();
+//		compras.stream().map(compra -> sum)
+
+		return 0.0;
+    }
+
+
 /*	Set<Compra> comprasConPresupuesto = new HashSet<>();
 	Set<Compra> comprasSinPresupuesto = new HashSet<>();
 	*/

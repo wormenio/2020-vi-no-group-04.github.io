@@ -1,4 +1,4 @@
-package modelo.CategoriaEntidad;
+package modelo.CategorizacionEntidad;
 
 import modelo.Entidades.Entidad;
 
@@ -35,15 +35,15 @@ public class ReglasDeNegocio {
     }
 
     void agregarReglaAgregarEntidadBaseAEntidadJuridica(Entidad entidad){
-        listaReglasDeNegocio.add( new ReglaAgregarEntidadBaseAEntidadJuridica(entidad) );
+//        listaReglasDeNegocio.add( new ReglaAgregarEntidadBaseAEntidadJuridica(entidad) );
     }
 
     void agregarReglaBloquearEntidadBaseEnEntidadJuridica(Entidad entidad){
-        listaReglasDeNegocio.add(new ReglaBloquearEntidadBaseEnEntidadJuridica(entidad));
+//        listaReglasDeNegocio.add(new ReglaBloquearEntidadBaseEnEntidadJuridica(entidad));
     }
 
     void agregarReglaAceptarNuevosEgresos(Entidad entidad){
-        listaReglasDeNegocio.add(new ReglaAceptarNuevosEgresos(entidad));
+//        listaReglasDeNegocio.add(new ReglaAceptarNuevosEgresos(entidad));
     }
 
 }

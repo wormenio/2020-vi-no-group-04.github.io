@@ -1,14 +1,7 @@
 package modelo;
 
-import modelo.CategoriaEntidad.CategoriaEntidad;
 import modelo.DocumentoComercial.DocumentoComercial;
-import modelo.DocumentoComercial.Factura;
 import modelo.DocumentoComercial.Remito;
-import modelo.Egreso.*;
-import modelo.MedioDePago.MedioDePago;
-import modelo.MedioDePago.TarjetaDeCredito;
-
-import java.time.LocalDate;
 
 public class TestHelpers {
     public Organizacion geSoc = new Organizacion();

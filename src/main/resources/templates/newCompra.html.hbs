@@ -5,6 +5,7 @@
 
     <form style="display: inline; justify-content: center; align-items: center;" action="/compras" method="POST">
         <div class="container">
+            <fieldset style="text-align: left;"><legend style="text-align: left;">Datos centrales de la compra</legend>
             <span>
                 <label for="fechaCompra">Fecha:</label>
                 <input type="date" placeholder="Fecha" name="fechaCompra" value="{{fechaCompra}}" ><br><br>
@@ -31,15 +32,7 @@
                 </select>
             </span>
             <br><br>
-            <span>
-                <label for="proveedor">Proveedor</label>
-                    <select name="usuarioRevisor">
-                    <option disabled selected>Usuarios Revisores...</option>
-                    <option value="1">Usuario 1</option>
-                    <option value="2">Usuario 2</option>
-                    <option value="3">Usuario 3</option>
-                </select>
-            </span>
+
             <span>
                 <label for="etiqueta">Etiqueta</label>
                 <select name="etiqueta">
@@ -58,6 +51,7 @@
                 <option value="3">Moneda 3</option>
             </select>
             </span>
+            </fieldset>
         </div>
 
         <div class="container">
@@ -92,14 +86,21 @@
             </select>
             <button class="btn_action" style="padding:0.8%;  background-color: silver;">Nuevo Presupuesto</button>
         </div><br>
-
-
-
         <div>
-
+            <span>
+                <label for="usuarioRevisor">Usuario Revisor</label>
+                    <select name="usuarioRevisor">
+                    <option disabled selected>Usuarios Revisores...</option>
+                    <option value="1">Usuario 1</option>
+                    <option value="2">Usuario 2</option>
+                    <option value="3">Usuario 3</option>
+                </select>
+            </span>
+        </div>
+        <div>
             <button class="btn_action" style="padding:0.8%;  background-color: silver;">Nueva Etiqueta</button>
         </div><br>
-        <input type="submit" value="Crear consultora">
+        <input type="submit" value="Crear compra">
     </form>
 {{/partial}}
 

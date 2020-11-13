@@ -1,6 +1,6 @@
 package modelo;
 
-import modelo.CategoriaEntidad.CategoriaEntidad;
+import modelo.CategorizacionEntidad.CategoriaEntidad;
 import modelo.CategoriaJuridica.CategoriaEntidadJuridica;
 import modelo.DireccionPostal.DireccionPostal;
 import modelo.Entidades.EntidadBase;

@@ -1,18 +1,12 @@
 package modelo.Entidades;
 
-import modelo.CategoriaEntidad.CategoriaEntidad;
-
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
 
 import modelo.CategoriaJuridica.CategoriaEntidadJuridica;
-import modelo.CategoriaJuridica.CategoriaJuridica;
 import modelo.CategoriaJuridica.ClasificacionAFIP;
 import modelo.DireccionPostal.DireccionPostal;
 import modelo.FuncionesUtiles.Utils;
-import modelo.Organizacion;
 
 import javax.persistence.*;
 

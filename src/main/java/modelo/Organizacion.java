@@ -1,6 +1,6 @@
 package modelo;
 
-import modelo.CategoriaEntidad.CategoriaEntidad;
+import modelo.CategorizacionEntidad.CategoriaEntidad;
 import modelo.Egreso.Egreso;
 import modelo.Entidades.Entidad;
 import modelo.Entidades.EntidadBase;

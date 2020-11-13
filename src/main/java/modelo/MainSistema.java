@@ -1,9 +1,6 @@
 package modelo;
-import modelo.CategoriaEntidad.CategoriaEntidad;
-import modelo.DireccionPostal.Ciudad;
 import modelo.DireccionPostal.DireccionPostal;
 import modelo.DireccionPostal.Pais;
-import modelo.DireccionPostal.Provincia;
 import modelo.Egreso.*;
 
 import java.time.LocalDate;

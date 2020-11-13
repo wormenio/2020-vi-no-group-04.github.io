@@ -1,6 +1,6 @@
 package modelo.Entidades;
 
-import modelo.CategoriaEntidad.CategoriaEntidad;
+import modelo.CategorizacionEntidad.CategoriaEntidad;
 import modelo.Organizacion;
 
 import javax.persistence.*;
@@ -28,6 +28,11 @@ public abstract class Entidad {
 
 	@Transient
 	Organizacion organizacion = new Organizacion();
+
+
+	public Long getId() {
+		return id;
+	}
 
 	public abstract Boolean esEntidadBase();
 	public abstract Boolean esEntidadJuridica();
@@ -60,5 +65,8 @@ public abstract class Entidad {
 		return categoriaEntidad;
 	}
 
+	public void aplicarReglaDeNegocio(){
+		this.categoriaEntidad.aplicarReglasDeNegocio(this);
+	}
 
 }
