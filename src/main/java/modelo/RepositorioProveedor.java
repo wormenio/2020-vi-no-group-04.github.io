@@ -9,8 +9,8 @@ public class RepositorioProveedor implements WithGlobalEntityManager {
         return instance;
     }
 
-    public Proveedor getById(Long id){
-        return entityManager().find(Proveedor.class, id);
+    public Moneda getById(Long id){
+        return entityManager().find(Moneda.class, id);
 
     }
 }
