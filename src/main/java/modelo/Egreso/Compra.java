@@ -45,8 +45,6 @@ public class Compra extends Egreso {
 	@JoinColumn(name = "compra_id")
 	private Collection<ItemsDeLaCompra> itemsDeCompra = new ArrayList<>();
 
-
-
 	@Enumerated(EnumType.ORDINAL)
 	Criterio criterio;
 
@@ -58,6 +56,7 @@ public class Compra extends Egreso {
 		super(fechaCompra, moneda, entidad, etiquetaEgreso);
 		if( proveedor == null) throw new ComprasException("Debe indicar el Proveedor");
 		this.proveedor = proveedor;
+		entidad.validarReglasDeNegocioDelEgreso();
 	}
 
 	public void setProveedor(Proveedor proveedor) {
@@ -85,10 +84,7 @@ public class Compra extends Egreso {
 
 	public void agregarItem(Item item,Double monto){
 		ItemsDeLaCompra itemDeLaCompra = new ItemsDeLaCompra();
-//		itemDeLaCompra.setItem(item);
 		itemDeLaCompra.setPrecioUnitario(monto);
-//		itemDeLaCompra.id.setCompraId(getId());
-
 		itemsDeCompra.add(itemDeLaCompra);
 	}
 
@@ -106,15 +102,13 @@ public class Compra extends Egreso {
 
 	public void hacerRevisor(Usuario usuario) {
 		 this.revisores.add(usuario);
-	 }
+	}
 
-
-
-	 public boolean validarCompra(){
+	public boolean validarCompra(){
 		 return this.validarCantidadDePresupuestos()
 				 && this.validarPresupuestoAsignadoContenidoEnElListado()
 				 && (this.criterio == Criterio.MENOR_VALOR) ? this.validarPorCriterioDeMenorValor() : true;
-	 }
+	}
 
 	 public Boolean validarCantidadDePresupuestos() {
 		 return this.presupuestos.size() == super.getEntidad().getOrganizacion().getCantidadPresupuestosRequeridos();
@@ -133,17 +127,15 @@ public class Compra extends Egreso {
 		return minPresupuesto == this.presupuestoAsignado;
 	}
 
-	 public Collection<Presupuesto> getPresupuestos(){
+	public Collection<Presupuesto> getPresupuestos(){
 		return presupuestos;
 	 }
 
-
-	public void agregarPresupuesto(Presupuesto presupuesto)
-	 {
+	public void agregarPresupuesto(Presupuesto presupuesto){
 		 this.presupuestos.add(presupuesto);
-	 }
+	}
 
-	 public Boolean seCorrespondeConAlMenosUnPresupuesto(){
+	public Boolean seCorrespondeConAlMenosUnPresupuesto(){
 		return presupuestos.contains(presupuestoAsignado);
 	 }
 
@@ -181,8 +173,5 @@ public class Compra extends Egreso {
 		//	return (float) items.stream().mapToDouble( item -> item.getImporte() ).sum();
 		return 0;
 	}
-
-
-
 
 }

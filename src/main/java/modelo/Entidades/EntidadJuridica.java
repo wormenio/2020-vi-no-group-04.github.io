@@ -93,7 +93,7 @@ public class EntidadJuridica extends Entidad {
 	public void agregarEntidadBase(EntidadBase entidad){
 		validarBaseTieneEntidadJuridica(entidad);
 		entidadesBase.add(entidad);
-//		entidad.setEntidadJuridica(this);
+		super.validarReglasDeNegocioDeEntidad(entidad);
 	}
 
 	public Collection<EntidadBase> getEntidadesBase() {

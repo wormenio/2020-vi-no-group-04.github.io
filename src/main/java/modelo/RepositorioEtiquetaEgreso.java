@@ -8,6 +8,11 @@ import java.util.Set;
 
 public class RepositorioEtiquetaEgreso implements WithGlobalEntityManager {
 
+    private static RepositorioEtiquetaEgreso instance = new RepositorioEtiquetaEgreso();
+    public static RepositorioEtiquetaEgreso instance(){
+        return instance;
+    }
+
     Set<EtiquetaEgreso> etiquetas = new HashSet<>();
 
     public void agregarEtiqueta( EtiquetaEgreso etiqueta){

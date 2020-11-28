@@ -41,8 +41,11 @@
                     <option value="2">Etiqueta 2</option>
                     <option value="3">Etiqueta 3</option>
                 </select>
+<!--                <button class="btn_action" style="padding:0.8%;  background-color: silver;">Nueva Etiqueta</button>-->
             </span>
+                <br><br>
             <span>
+
                 <label for="moneda">Moneda</label>
                 <select name="moneda">
                 <option disabled selected>Seleccione Moneda...</option>
@@ -76,8 +79,7 @@
                 <button class="btn_action" style="padding:2%;  background-color: silver;">Nuevo Item</button>
             </fieldset>
         </div>
-
-        <div>
+        <div class="container">
             <select>
                 <option disabled selected>Seleccione Presupuesto...</option>
                 <option value="Presupuesto 1">Presupuesto 1</option>
@@ -85,8 +87,6 @@
                 <option value="Presupuesto 3">Presupuesto 3</option>
             </select>
             <button class="btn_action" style="padding:0.8%;  background-color: silver;">Nuevo Presupuesto</button>
-        </div><br>
-        <div>
             <span>
                 <label for="usuarioRevisor">Usuario Revisor</label>
                     <select name="usuarioRevisor">
@@ -97,10 +97,13 @@
                 </select>
             </span>
         </div>
-        <div>
-            <button class="btn_action" style="padding:0.8%;  background-color: silver;">Nueva Etiqueta</button>
-        </div><br>
-        <input type="submit" value="Crear compra">
+        <div class="container">
+
+            <button class="btn_action" style="padding:0.8%;"  type="submit" >Guardar
+            </button>
+        </div>
+
+
     </form>
 {{/partial}}
 

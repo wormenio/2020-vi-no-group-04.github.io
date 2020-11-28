@@ -55,17 +55,15 @@ public class ComprasController implements WithGlobalEntityManager, Transactional
         }
 */
 
-        RepositorioProveedor repositorioProveedores = new RepositorioProveedor();
-        Proveedor proveedor = repositorioProveedores.getById(Long.valueOf(request.queryParams("proveedor")));
 
-        RepositorioEtiquetaEgreso repositorioEtiquetaEgreso = new RepositorioEtiquetaEgreso();
-        EtiquetaEgreso etiquetaEgreso = repositorioEtiquetaEgreso.getById(Long.valueOf(request.queryParams("etiqueta")));
 
-        RepositorioMonedas repositorioMonedas = new RepositorioMonedas();
-        Moneda moneda = repositorioMonedas.getById(Long.valueOf(request.queryParams("moneda")));
+        Proveedor proveedor = RepositorioProveedor.instance().getById(Long.valueOf(request.queryParams("proveedor")));
 
-        RepositorioEntidades repositorioEntidades = new RepositorioEntidades();
-        Entidad entidad = repositorioEntidades.getById(Long.parseLong(request.queryParams("moneda")));
+        EtiquetaEgreso etiquetaEgreso = RepositorioEtiquetaEgreso.instance().getById(Long.valueOf(request.queryParams("etiqueta")));
+
+        Moneda moneda = RepositorioMonedas.instance().getById(Long.valueOf(request.queryParams("moneda")));
+
+        Entidad entidad = RepositorioEntidades.instance().getById(Long.parseLong(request.queryParams("moneda")));
 
         LocalDate fechaCompra = LocalDate.parse(request.queryParams("fechaCompra"),
                 DateTimeFormatter.ofPattern("yyyy-MM-d"));

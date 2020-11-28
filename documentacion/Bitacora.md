@@ -1,4 +1,25 @@
- ## Isues
+## Issues entrega 4
+
+*[ ] Equals de EtiquetaEgreso
+*[ ] Terminar de implementar categorías haciendo tests de cada una de las reglas posibles y combinaciones entre al menos 2 de ellas
+ 
+*[ ] Nuevo item es n Nuevo producto
+*[ ] Description en items es producto y es un select
+*[ ] Nuevo item debería ir al lado del select de producto
+*[ ] Arreglar alineación y espacios
+*[ ] Agregar login
+
+*[ ] Agregar paginas faltantes
+*[ ] Reporte de avisos
+
+*[x] Repositorios instanciarlos una sola vez o usarlos como singletons
+*[ ] No use styles inline
+*[ ] No usen BR para hacer espacios
+*[ ] No usar ids en css
+ 
+ 
+
+ ## Issues entrega 3
 *[x] - EtiquetaEgreso es Repositorio de etiquetas
 *[x] - Eliminar paquete de entities que replica las clases de dominio y poner las annotations en las clases de dominio
 *[x] - Modelar etiquetas como objetos (entidades) y tener relación Compra -> Etiqueta
@@ -7,7 +28,7 @@
 *[x] - Ojo con comparar strings por ==
 *[x] - Ojo con ifs q
 *[x] - Ojo con ifs que devuelven true/false
-*[] - Tabla usuario_compra es Revisores
+*[x] - Tabla usuario_compra es Revisores
 
  
  *[ ] https://github.com/dds-utn/2020-vi-no-group-04/issues/13

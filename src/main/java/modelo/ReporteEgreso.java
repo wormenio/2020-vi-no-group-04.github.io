@@ -20,6 +20,7 @@ public class ReporteEgreso {
         Map<EtiquetaEgreso, List<Compra>> reporteCompras = repoCompras.getCompras()
                 .stream()
                 .collect(groupingBy(Compra::getEtiquetaEgreso));
+//        TODO -> implementar el hash y el equals en Etiqueta egreso
         return reporteCompras;
     }
 

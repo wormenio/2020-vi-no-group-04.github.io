@@ -1,14 +1,37 @@
-package modelo.CategorizacionEntidad;
+package modelo.ReglasDeNegocio;
 
-import modelo.Entidades.Entidad;
+import modelo.EntidadPersistente;
 
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
-public class ReglasDeNegocio {
+//@Entity
+//@Table(name = "Reglas_de_negocio")
+public class ReglassDeNegocio extends EntidadPersistente {
+
+    @Column(name = "regla_de_negocio",unique = true)
+    private String reglaDeNegocio;
+
+    @Column(name = "clase",unique = true)
+    private String clase;
+
+    @Transient
+    private Set<ReglaDeNegocio> comportamientoReglaDeNegocios = new HashSet<>();
+
+    public void setReglaDeNegocio(ReglaDeNegocio reglaDeNegocio) {
+        this.reglaDeNegocio = reglaDeNegocio.getNombre();
+        reglaDeNegocio.getClass();
+    }
+
+    public String getReglaDeNegocio() {
+        return reglaDeNegocio;
+    }
+
+
+
+/*
+
     private List<Object> listaReglasDeNegocio  = new ArrayList<>();
 
     boolean aplicarReglasDeNegocio(Integer monto_compra, Entidad entidad) {
@@ -45,5 +68,7 @@ public class ReglasDeNegocio {
     void agregarReglaAceptarNuevosEgresos(Entidad entidad){
 //        listaReglasDeNegocio.add(new ReglaAceptarNuevosEgresos(entidad));
     }
+
+*/
 
 }

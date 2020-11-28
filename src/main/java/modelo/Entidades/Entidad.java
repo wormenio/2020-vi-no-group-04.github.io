@@ -25,18 +25,12 @@ public abstract class Entidad {
 	@Column(name = "nombre_ficticio")
 	private String nombreFicticio;
 
-
 	@Transient
 	Organizacion organizacion = new Organizacion();
-
 
 	public Long getId() {
 		return id;
 	}
-
-	public abstract Boolean esEntidadBase();
-	public abstract Boolean esEntidadJuridica();
-
 
 	public String getNombreFicticio(){
 		return nombreFicticio;
@@ -57,16 +51,27 @@ public abstract class Entidad {
 		return organizacion;
 	}
 
-	public void setCategoriaEntidad(CategoriaEntidad categoria){
-		this.categoriaEntidad = categoria;
+	public void setCategoriaEntidad(CategoriaEntidad categoriaEntidad){
+		this.categoriaEntidad = categoriaEntidad;
 	}
 
 	public CategoriaEntidad getCategoriaEntidad() {
 		return categoriaEntidad;
 	}
 
-	public void aplicarReglaDeNegocio(){
-		this.categoriaEntidad.aplicarReglasDeNegocio(this);
+	public void validarReglasDeNegocioDelEgreso(){
+		categoriaEntidad.validarReglasDeNegocioDelEgreso(this, null);
 	}
+
+	public void validarReglasDeNegocioDeEntidad(Entidad entidadDestino){
+		categoriaEntidad.validarReglasDeNegocioDeLaEntidad(this, entidadDestino);
+	}
+
+	public void validarReglasDeNegocio(){
+//		return categoriaEntidad.aplicarReglasDeNegocio();
+	}
+
+	public abstract Boolean esEntidadBase();
+	public abstract Boolean esEntidadJuridica();
 
 }
