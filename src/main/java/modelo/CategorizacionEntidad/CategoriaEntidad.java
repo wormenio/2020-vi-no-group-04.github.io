@@ -3,12 +3,10 @@ package modelo.CategorizacionEntidad;
 import modelo.EntidadPersistente;
 import modelo.Entidades.Entidad;
 import modelo.ReglasDeNegocio.ReglaDeNegocio;
-import modelo.ReglasDeNegocio.ReglassDeNegocio;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.stream.Collectors;
 
 @Entity
 @Table(name = "categorias_entidades")
@@ -27,16 +25,6 @@ public class CategoriaEntidad extends EntidadPersistente {
     public Long getId() {
         return id;
     }
-/*
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-*/
 
     public void agregarReglaDeNegocio(ReglaDeNegocio reglaDeNegocio){
         reglasDeNegocios.add(reglaDeNegocio);

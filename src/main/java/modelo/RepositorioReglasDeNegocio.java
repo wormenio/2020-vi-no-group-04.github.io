@@ -1,14 +1,14 @@
 package modelo;
 
-import modelo.ReglasDeNegocio.ReglassDeNegocio;
+import modelo.ReglasDeNegocio.ReglaDeNegocio;
 
 import java.util.HashSet;
 import java.util.Set;
 
 public class RepositorioReglasDeNegocio {
-    Set<ReglassDeNegocio> reglasDeNegocios = new HashSet<>();
+    Set<ReglaDeNegocio> reglasDeNegocios = new HashSet<>();
 
-    public Set<ReglassDeNegocio> getReglasDeNegocios() {
+    public Set<ReglaDeNegocio> getReglasDeNegocios() {
         return reglasDeNegocios;
     }
 }

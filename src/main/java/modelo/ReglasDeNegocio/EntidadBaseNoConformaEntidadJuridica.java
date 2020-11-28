@@ -21,10 +21,6 @@ class EntidadBaseNoConformaEntidadJuridica extends ReglaDeNegocio {
         return true;
     }
 
-//    @Override
-//    public String getNombre(){
-//        return "Entidad Base No Forma Parte De Entidades Jurídicas";
-//    }
 
     @Override
     /**

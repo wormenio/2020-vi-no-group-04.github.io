@@ -17,5 +17,4 @@ public abstract class ReglaDeNegocio extends EntidadPersistente {
 
     public abstract Boolean reglaEsTipoEntidad();
 
-//    public abstract String getNombre();
 }

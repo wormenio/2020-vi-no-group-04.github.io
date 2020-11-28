@@ -23,9 +23,6 @@ class BloquearAceptarNuevosEgresos extends ReglaDeNegocio {
         return false;
     }
 
-//    public String getNombre(){
-//        return "Bloquear aceptar Nuevos Egresos";
-//    }
 
     @Override
     /**

@@ -21,10 +21,6 @@ class EntidadJuridicaNoAceptaEntidadBase extends ReglaDeNegocio {
         return true;
     }
 
-//    @Override
-//    public String getNombre(){
-//        return "Entidad Jurídica no acepta Entidades Base";
-//    }
 
     @Override
     /**
