@@ -22,6 +22,8 @@ public class Routes {
 //        UsuariosController usuariosController = new UsuariosController();
 
         Spark.get("/", (request, response) -> homeController.getHome(), engine);
+        Spark.get("/inicio", (request,response) -> { return new ModelAndView(null,"inicio.html.hbs");} , engine);
+
 
         Spark.get("/home", (request, response) -> homeController.getHome(), engine);
         Spark.get("/login", (request,response) -> { return new ModelAndView(null,"login.html.hbs");} , engine);
