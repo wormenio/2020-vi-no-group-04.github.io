@@ -2,109 +2,128 @@
     <title>Ingresar Nueva Compra</title>
 {{/partial}}
 {{# partial "contenido" }}
-
-    <form style="display: inline; justify-content: center; align-items: center;" action="/compras" method="POST">
+<form style="display: inline; justify-content: center; align-items: center;" action="/compras" method="POST">
         <div class="container">
-            <fieldset style="text-align: left;"><legend style="text-align: left;">Datos centrales de la compra</legend>
-            <span>
-                <label for="fechaCompra">Fecha:</label>
-                <input type="date" placeholder="Fecha" name="fechaCompra" value="{{fechaCompra}}" ><br><br>
-            </span>
-            <br><br>
-            <span>
-                <label for="entidad">Entidad</label>
-                <select id="entidad" name="entidad">
-                    <option value="0" disabled selected>Seleccione Entidad...</option>
-                    <option value="1">Entidad 1</option>
-                    <option value="2">Entidad 2</option>
-                    <option value="3">Entidad 3</option>
-                </select>
+           <table align="center">
+				<tr>
+					<td>
+						<fieldset style="text-align: left;"><legend style="text-align: left;">Datos centrales de la compra</legend>
+						 <span>
+							<label for="fechaCompra">Fecha:</label>
+							<input type="date" placeholder="Fecha" name="fechaCompra" value="{{fechaCompra}}" ><br><br>
+						 </span>
+				
+                       <span>
+                           <label for="entidad">Entidad</label>
+                           <select id="entidad" name="entidad">
+                                  <option value="0" disabled selected>Seleccione Entidad...</option>
+                                  <option value="1">Entidad 1</option>
+								  <option value="2">Entidad 2</option>
+                                  <option value="3">Entidad 3</option>
+                           </select>
 
-            </span>
-            <br><br>
-            <span>
-                <label for="proveedor">Proveedor</label>
-                <select name="proveedor" id="proveedor" >
-                    <option disabled selected>Seleccione Proveedor...</option>
-                    <option value="1">Proveedor 1</option>
-                    <option value="2">Proveedor 2</option>
-                    <option value="3">Proveedor 3</option>
-                </select>
-            </span>
-            <br><br>
-
-            <span>
-                <label for="etiqueta">Etiqueta</label>
-                <select name="etiqueta">
-                    <option disabled selected>Seleccione Etiqueta...</option>
-                    <option value="1">Etiqueta 1</option>
-                    <option value="2">Etiqueta 2</option>
-                    <option value="3">Etiqueta 3</option>
-                </select>
+                       </span>
+                       <br><br>
+                       <span>
+                           <label for="proveedor">Proveedor</label>
+						   <select name="proveedor" id="proveedor" >
+								  <option disabled selected>Seleccione Proveedor...</option>
+                                  <option value="1">Proveedor 1</option>
+                                  <option value="2">Proveedor 2</option>
+                                  <option value="3">Proveedor 3</option>
+                           </select>
+                       </span>
+                       <br><br>
+                       <span>
+                          <label for="etiqueta">Etiqueta</label>
+						  <select name="etiqueta">
+                                 <option disabled selected>Seleccione Etiqueta...</option>
+                                 <option value="1">Etiqueta 1</option>
+                                 <option value="2">Etiqueta 2</option>
+                                 <option value="3">Etiqueta 3</option>
+                          </select>
 <!--                <button class="btn_action" style="padding:0.8%;  background-color: silver;">Nueva Etiqueta</button>-->
-            </span>
-                <br><br>
-            <span>
-
-                <label for="moneda">Moneda</label>
-                <select name="moneda">
-                <option disabled selected>Seleccione Moneda...</option>
-                <option value="1">Moneda 1</option>
-                <option value="2">Moneda 2</option>
-                <option value="3">Moneda 3</option>
-            </select>
-            </span>
-            </fieldset>
-        </div>
-
-        <div class="container">
-            <fieldset style="text-align: left;"><legend style="text-align: left;">Documento Comercial</legend>
-                <label for="TipoDocCom">Tipo:</label>
-                <input placeholder="Tipo Documento Comercial" id="TipoDocCom" type="text"><br><br>
-                <label for="TipoDocCom">Fecha:</label>
-                <input placeholder="Fecha" name="fechaDocumentoComercial" id="FechaDocCom" type="date"><br><br>
-                <label for="TipoDocCom">Numero:</label>
-                <input placeholder="Numero Documento Comercial" id="nroDocCom" type="number">
-            </fieldset>
-        </div>
-
-        <div class="container">
-            <fieldset style="text-align: left;"><legend style="text-align: left;">Items</legend>
-                <label for="DescItem">Descripcion:</label>
-                <input placeholder="Descripcion" id="DescItem" type="text"><br><br>
-                <label for="CantItem">Cantidad:</label>
-                <input placeholder="Cantidad" id="CantItem" type="number" step="1"><br><br>
-                <label for="PUItem">Precio unitario:</label>
-                <input placeholder="Precio Unitario" id="PUItem" type="number" min="1" step="any">
-                <button class="btn_action" style="padding:2%;  background-color: silver;">Nuevo Item</button>
-            </fieldset>
-        </div>
-        <div class="container">
-            <select>
-                <option disabled selected>Seleccione Presupuesto...</option>
-                <option value="Presupuesto 1">Presupuesto 1</option>
-                <option value="Presupuesto 2">Presupuesto 2</option>
-                <option value="Presupuesto 3">Presupuesto 3</option>
-            </select>
-            <button class="btn_action" style="padding:0.8%;  background-color: silver;">Nuevo Presupuesto</button>
-            <span>
-                <label for="usuarioRevisor">Usuario Revisor</label>
-                    <select name="usuarioRevisor">
-                    <option disabled selected>Usuarios Revisores...</option>
-                    <option value="1">Usuario 1</option>
-                    <option value="2">Usuario 2</option>
-                    <option value="3">Usuario 3</option>
-                </select>
-            </span>
-        </div>
-        <div class="container">
-
-            <button class="btn_action" style="padding:0.8%;"  type="submit" >Guardar
-            </button>
-        </div>
+                     </span>
+                     <br><br>
+                     <span>
+						  <label for="moneda">Moneda</label>
+						  <select name="moneda">
+								<option disabled selected>Seleccione Moneda...</option>
+								<option value="1">Moneda 1</option>
+								<option value="2">Moneda 2</option>
+								<option value="3">Moneda 3</option>
+						  </select>
+					 </span>
+                  </fieldset>
+               </div>
+		     </td>
+			  <td>
+					<div class="container">
+						<fieldset style="text-align: left;"><legend style="text-align: left;">Documento Comercial</legend>
+							<label for="TipoDocCom">Tipo:</label>
+							<input placeholder="Tipo Documento Comercial" id="TipoDocCom" type="text"><br><br>
+							<label for="TipoDocCom">Fecha:</label>
+							<input placeholder="Fecha" name="fechaDocumentoComercial" id="FechaDocCom" type="date"><br><br>
+							<label for="TipoDocCom">Numero:</label>
+							<input placeholder="Numero Documento Comercial" id="nroDocCom" type="number">
+						</fieldset>
+					</div>
+			 </td>
+		   </tr>
+		   <tr>
+				<td>
+					<div class="container">
+						<fieldset style="text-align: left;"><legend style="text-align: left;">Items</legend>
+							<label for="DescItem">Descripcion:</label>
+							<input placeholder="Descripcion" id="DescItem" type="text"><br><br>
+							<label for="CantItem">Cantidad:</label>
+							<input placeholder="Cantidad" id="CantItem" type="number" step="1"><br><br>
+							<label for="PUItem">Precio unitario:</label>
+							<input placeholder="Precio Unitario" id="PUItem" type="number" min="1" step="any">
+							<button class="btn_action" style="padding:2%;  background-color: silver;">Nuevo Item</button>
+						</fieldset>
+					</div>
+				</td>
+				<td>
+				<div class="container">
+					<select>
+						<option disabled selected>Seleccione Presupuesto...</option>
+						<option value="Presupuesto 1">Presupuesto 1</option>
+						<option value="Presupuesto 2">Presupuesto 2</option>
+						<option value="Presupuesto 3">Presupuesto 3</option>
+					</select>
+					<button class="btn_action" style="padding:0.8%;  background-color: silver;">Nuevo Presupuesto</button>
+				</div>	
+				</td>
+				</tr>
+				
+				<tr>
+			    <td>
+					<span>
+						<label for="usuarioRevisor">Usuario Revisor</label>
+						<select name="usuarioRevisor">
+							<option disabled selected>Usuarios Revisores...</option>
+							<option value="1">Usuario 1</option>
+							<option value="2">Usuario 2</option>
+							<option value="3">Usuario 3</option>
+						</select>
+					</span>
+				</td>
+				<td>
+				      <div class="container">
+						<button class="btn_action" style="padding:0.8%;"  type="submit" >Guardar</button>
+                      </div>
+				</td>
+				</tr>	
+					
+		</div>
+		</table>
+		
+      
 
 
     </form>
+   
 {{/partial}}
 
 {{> layout.html.hbs }}
