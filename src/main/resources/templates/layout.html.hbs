@@ -1,27 +1,42 @@
 <html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="/main.css">
+    </head>
+    <header>
+        <div class="headerContainer">
+            <div class="logo">
+                <h1>GeSoc</h1>
+            </div>
+            <div class="nameSite">
+                <h3>Gestión de Proyectos Sociales</h3>
+            </div>
+        </div>
+    </header>
+    <body>
+    <nav>
+        <menu>
+            <a href="/">Home</a>
+            <a href="/compras">Listado de compras</a>
+            <a href="/compras/nuevo">Nueva compra</a>
+            <a href="/login">Cerrar Sesión</a>
+        </menu>
 
-<head>
-    <link rel="stylesheet" type="text/css" href="/main.css">
-    {{# block "titulo" }}
-    {{/block}}
-</head>
+        <userLogin>
+            <a href="/login">Usuario Logueado</a>
+        </userLogin>
+    </nav>
+    <main>
 
-<body>
-<nav>
-    <a href="/">Home</a>
-    <a href="/compras">Listado de compras</a>
-    <a href="/compras/nuevo">Nueva compra</a>
-    <a href="/login">Cerrar Sesión</a>
-</nav>
-<main>
-    <h1>GeSoc</h1>
-    {{# block "contenido" }}
-    {{/block}}
-</main>
-<br>
-<footer id="footer" class="fondo-gris">
-    &copy; Copyright 2020 DDS-Grupo 4
-</footer>
-</body>
+        <h1>GeSoc</h1>
+        {{# block "contenido" }}
+        {{/block}}
+    </main>
+
+
+    </body>
+
+    <footer id="footer" class="fondo-gris">
+        &copy; Copyright 2020 DDS-Grupo 4
+    </footer>
 
 </html>

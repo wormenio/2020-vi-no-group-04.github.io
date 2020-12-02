@@ -1,20 +1,29 @@
 ## Issues entrega 4
 
 *[ ] Equals de EtiquetaEgreso
-*[ ] Terminar de implementar categorías haciendo tests de cada una de las reglas posibles y combinaciones entre al menos 2 de ellas
+
+*[x] Terminar de implementar categorías haciendo tests de cada una de las reglas posibles y combinaciones entre al menos 2 de ellas
  
 *[ ] Nuevo item es n Nuevo producto
+
 *[ ] Description en items es producto y es un select
+
 *[ ] Nuevo item debería ir al lado del select de producto
+
 *[ ] Arreglar alineación y espacios
+
 *[ ] Agregar login
 
 *[ ] Agregar paginas faltantes
+
 *[ ] Reporte de avisos
 
 *[x] Repositorios instanciarlos una sola vez o usarlos como singletons
+
 *[ ] No use styles inline
+
 *[ ] No usen BR para hacer espacios
+
 *[ ] No usar ids en css
  
  
