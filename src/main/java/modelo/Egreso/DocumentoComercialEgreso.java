@@ -10,7 +10,7 @@ import java.time.LocalDate;
 public class DocumentoComercialEgreso {
 
     @EmbeddedId
-    private DocumentoComercialEgresoId id;
+    private DocumentoComercialEgresoId id= new DocumentoComercialEgresoId();
 
  /*   @ManyToOne
     @JoinColumn(name = "documento_comercial_id")

@@ -38,7 +38,7 @@ public class Compra extends Egreso {
 	private Collection<Presupuesto> presupuestos = new HashSet<>();
 
 	@ManyToMany
-	@JoinTable(name = "usuario_revisor_compras")
+	@JoinTable(name = "Usuario_revisor_compras")
 	private Collection<Usuario> revisores = new ArrayList<>();
 
 	@OneToMany
@@ -111,7 +111,8 @@ public class Compra extends Egreso {
 	}
 
 	 public Boolean validarCantidadDePresupuestos() {
-		 return this.presupuestos.size() == super.getEntidad().getOrganizacion().getCantidadPresupuestosRequeridos();
+		 super.getCantidadPresupuestosRequeridosDeLaEntidad();
+		 return this.presupuestos.size() == super.getCantidadPresupuestosRequeridosDeLaEntidad();
 	 }
 	 
 	 public boolean validarPresupuestoAsignadoContenidoEnElListado() {

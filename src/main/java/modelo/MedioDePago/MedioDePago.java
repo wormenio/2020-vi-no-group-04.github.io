@@ -5,7 +5,7 @@ import modelo.EntidadPersistente;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "medios_de_pago")
+@Table(name = "Medios_de_pago")
 @DiscriminatorColumn(name = "tipo_medio",length = 15)
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public abstract class  MedioDePago {

@@ -26,7 +26,7 @@ public abstract class Entidad {
 	private String nombreFicticio;
 
 	@Transient
-	Organizacion organizacion = new Organizacion();
+	Organizacion organizacion = Organizacion.instance();
 
 	public Long getId() {
 		return id;
@@ -66,6 +66,12 @@ public abstract class Entidad {
 	public void validarReglasDeNegocioDeEntidad(Entidad entidadDestino){
 		categoriaEntidad.validarReglasDeNegocioDeLaEntidad(this, entidadDestino);
 	}
+
+	public Integer getCantidadPresupuestosRequeridos(){
+		return organizacion.getCantidadPresupuestosRequeridos();
+	}
+
+
 /*
 
 	public void validarReglasDeNegocio(){

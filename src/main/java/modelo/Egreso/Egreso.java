@@ -129,6 +129,11 @@ public abstract class Egreso {
 		return moneda;
 	}
 
+	public Integer getCantidadPresupuestosRequeridosDeLaEntidad(){
+		return entidad.getCantidadPresupuestosRequeridos();
+	}
+
+
 	//	private Collection<EtiquetaEgreso> etiquetasEgresos = new ArrayList<>();
 
 

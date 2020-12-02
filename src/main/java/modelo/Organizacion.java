@@ -24,7 +24,7 @@ public class Organizacion {
 
 	private String nombre = "geSoc";
 
-	private Integer cantidadPresupuestosRequeridos ;
+	private Integer cantidadPresupuestosRequeridos =0;
 
 //	public Organizacion(String nombre){
 //		this.nombre = nombre;

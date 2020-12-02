@@ -11,6 +11,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.time.LocalDate;
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -65,7 +66,7 @@ public class TestCompra {
     @Test
     public void compraTieneDocumentoComercial(){
         //Requerimiento 1
-        Set<DocumentoComercial> documentos = new HashSet<>();
+        Collection<DocumentoComercial> documentos = new HashSet<>();
         documentos.add(facturaC258);
         unaCompraSinPresupuesto.agregarDocumentoComercial(facturaC258, 252, LocalDate.now());
         Assert.assertEquals(unaCompraSinPresupuesto.getDocumentoComercial(), documentos);
@@ -123,12 +124,14 @@ public class TestCompra {
                 .setProveedor(new Proveedor())
                 .setEntidad(new EntidadBase())
                 .setMoneda(new Moneda())
+                .setCantidadPresupuesto(5)
                 .crearCompra();
 
         Presupuesto presupuestoCompraResmaYToner = new Presupuesto();
 
         unaCompraConPresupuesto.agregarPresupuesto(presupuestoCompraResmaYToner);
         gesoc.setCantidadPresupuestosRequeridos(1);
+        unaCompraConPresupuesto.validarCantidadDePresupuestos();
         Assert.assertTrue(unaCompraConPresupuesto.validarCantidadDePresupuestos());
 
     }

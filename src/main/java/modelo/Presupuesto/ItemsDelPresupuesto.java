@@ -4,7 +4,7 @@ import modelo.Egreso.Item;
 
 import javax.persistence.*;
 
-@Entity(name = "items_del_presupuesto")
+@Entity(name = "Items_del_presupuesto")
 public class ItemsDelPresupuesto {
 
 
