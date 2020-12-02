@@ -41,8 +41,9 @@ public class Compra extends Egreso {
 	@JoinTable(name = "Usuario_revisor_compras")
 	private Collection<Usuario> revisores = new ArrayList<>();
 
-	@OneToMany
-	@JoinColumn(name = "compra_id")
+	/*@OneToMany
+	@JoinColumn(name = "compra_id")*/
+	@Transient
 	private Collection<ItemsDeLaCompra> itemsDeCompra = new ArrayList<>();
 
 	@Enumerated(EnumType.ORDINAL)

@@ -34,15 +34,15 @@ public abstract class Egreso {
 	@JoinColumn(name = "moneda_id")
 	private Moneda moneda;
 
-	@OneToMany
-	@JoinColumn(name = "egreso_id")
+/*	@OneToMany
+	@JoinColumn(name = "egreso_id")*/
+	@Transient
 	private Collection<MedioDePagoDelEgreso> mediosDePago = new ArrayList<>();
 
-	@OneToMany
-	@JoinColumn(name="egreso_id")
+	/*@OneToMany
+	@JoinColumn(name="egreso_id")*/
+	@Transient
 	private Collection<DocumentoComercialEgreso> documentosComerciales = new ArrayList<>();
-
-
 
 	@ManyToOne
 	@JoinColumn(name = "etiqueta_id")

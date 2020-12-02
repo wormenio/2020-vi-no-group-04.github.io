@@ -14,20 +14,12 @@ public class Ciudad  extends EntidadPersistente  {
     @ManyToOne
     @JoinColumn(name = "provincia_id")
     private Provincia provincia;
+/*
 
     @OneToMany
-    @JoinColumn(name = "Ciudad_id")
+    @JoinColumn(name = "ciudad_id")
     private Collection<DireccionPostal> direccionesPostales;
+*/
 
-  /*
-    public Ciudad(String name, String id) {
-        this.id = id;
-        this.nombre = name;
-    }
-    public  String verNombre() {
-        return nombre;
-    }
-    public  String verID() {
-        return id;
-    }*/
+
 }

@@ -14,7 +14,7 @@ import javax.persistence.Table;
 public class DireccionPostal extends EntidadPersistente {
 
 	@ManyToOne
-	@JoinColumn(name = "id_ciudad")
+	@JoinColumn(name = "ciudad_id")
 	private Ciudad ciudad;
 
 	/*

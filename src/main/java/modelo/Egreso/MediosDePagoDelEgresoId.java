@@ -7,11 +7,11 @@ import java.io.Serializable;
 
 @Embeddable
 public class MediosDePagoDelEgresoId implements Serializable {
-    @Column(name = "egreso_id")
+
+    @ManyToOne
+    @JoinColumn(name = "egreso_id")
     private Long egresoId;
 
-   /* @Column(name = "medio_de_pago_id")
-    private Long medioDePagoId;*/
 
     @ManyToOne
     @JoinColumn(name = "medio_de_pago_id")

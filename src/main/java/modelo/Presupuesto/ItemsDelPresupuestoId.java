@@ -11,7 +11,8 @@ import java.io.Serializable;
 @Embeddable
 public class ItemsDelPresupuestoId implements Serializable {
 
-    @Column(name = "presupuesto_id")
+    @ManyToOne
+    @JoinColumn(name = "presupuesto_id")
     private Long presupuestoId;
 
     @ManyToOne

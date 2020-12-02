@@ -44,8 +44,10 @@ public class ComprasController implements WithGlobalEntityManager, Transactional
         Map<String, Object> modelo = new HashMap<>();
 
         List<Proveedor> proveedores = RepositorioProveedor.instance().listadoDeProveedores();
+        List<EtiquetaEgreso> etiquetasEgresos = RepositorioEtiquetaEgreso.instance().listadoRegistros();
 
         modelo.put("proveedores", proveedores);
+        modelo.put("etiquetasEgresos", etiquetasEgresos);
 
         return new ModelAndView(modelo, "nuevaCompra.html.hbs");
     }

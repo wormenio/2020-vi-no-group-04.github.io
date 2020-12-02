@@ -1,9 +1,11 @@
 {{# partial "titulo" }}
     <title>Ingresar Nueva Compra</title>
 {{/partial}}
+    <div class="container">
 {{# partial "contenido" }}
-    <form class="form">
-        <div class="container">
+
+        <form class="form">
+
             <fieldset >
                 <legend >Datos centrales de la compra</legend>
                 <div>
@@ -35,19 +37,12 @@
                         <label for="proveedor">Proveedor</label>
                     </span>
                     <span>
-                        <select>
-                            {{#each proveedores}}
-                                <option value="{{@key}}" {{{isSelected ../setProveedores @key}}}>
-                                    {{this}}
-                                </option>
-                            {{/each}}
-                        </select>
-                    <!--    <select name="proveedor" id="proveedor" >
+                        <select name="proveedor" id="proveedor" >
                         <option disabled selected>Seleccione Proveedor...</option>
-                        <option value="1">Proveedor 1</option>
-                        <option value="2">Proveedor 2</option>
-                        <option value="3">Proveedor 3</option>
-                    </select>-->
+                            {{#each proveedores}}
+                                <option value="{{id}}" > {{nombre}}</option>
+                            {{/each}}
+                    </select>
                     </span>
 
                 </div>
@@ -58,9 +53,9 @@
                     <span>
                         <select name="etiqueta">
                         <option disabled selected>Seleccione Etiqueta...</option>
-                        <option value="1">Etiqueta 1</option>
-                        <option value="2">Etiqueta 2</option>
-                        <option value="3">Etiqueta 3</option>
+                            {{#each etiquetasEgresos}}
+                                <option value="{{id}}" > {{nombre}}</option>
+                            {{/each}}
                     </select>
                     </span>
 
@@ -80,9 +75,23 @@
                 </div>
 
             </fieldset>
+            <fieldset>
+                <legend>Documento comercial</legend>
+                    <span>
 
-    </form>
+                    </span>
+
+
+                    <label for="TipoDocCom">Tipo:</label>
+                    <input placeholder="Tipo Documento Comercial" id="TipoDocCom" type="text"><br><br>
+                    <label for="TipoDocCom">Fecha:</label>
+                    <input placeholder="Fecha" name="fechaDocumentoComercial" id="FechaDocCom" type="date"><br><br>
+                    <label for="TipoDocCom">Numero:</label>
+                    <input placeholder="Numero Documento Comercial" id="nroDocCom" type="number">
+            </fieldset>
+
+        </form>
 
 {{/partial}}
-
+    </div>
 {{> layout.html.hbs }}

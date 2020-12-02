@@ -29,8 +29,9 @@ public class Presupuesto {
 	@JoinColumn(name = "documento_comercial_id")
 	private DocumentoComercial documentoComercial;
 
-	@OneToMany
-	@JoinColumn(name="presupuesto_id")
+	/*@OneToMany
+	@JoinColumn(name="presupuesto_id")*/
+	@Transient
 	private Collection<ItemsDelPresupuesto> itemsDelPresupuesto = new ArrayList<>();
 
 	@ManyToOne

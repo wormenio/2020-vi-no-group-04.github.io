@@ -9,7 +9,8 @@ import java.io.Serializable;
 @Embeddable
 public class ItemsDeCompraId implements Serializable {
 
-    @Column(name = "compra_id")
+    @ManyToOne
+    @JoinColumn(name = "compra_id")
     private Long compraId;
 
     @ManyToOne
@@ -23,8 +24,5 @@ public class ItemsDeCompraId implements Serializable {
     public Item getItem(){
         return item;
     }
-/*
-    public void setCompraId(Long compraId) {
-        this.compraId = compraId;
-    }*/
+
 }

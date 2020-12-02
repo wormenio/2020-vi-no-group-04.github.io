@@ -4,12 +4,12 @@ import modelo.Egreso.Item;
 
 import javax.persistence.*;
 
-@Entity(name = "Items_del_presupuesto")
+//@Entity(name = "Items_del_presupuesto")
 public class ItemsDelPresupuesto {
 
 
     @EmbeddedId
-    ItemsDelPresupuestoId id;
+    ItemsDelPresupuestoId id = new ItemsDelPresupuestoId();
 /*
 
     @ManyToOne

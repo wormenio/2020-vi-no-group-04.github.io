@@ -5,7 +5,7 @@ import modelo.DocumentoComercial.DocumentoComercial;
 import javax.persistence.*;
 import java.time.LocalDate;
 
-@Entity
+//@Entity
 @Table(name = "Documentos_comerciales_de_egresos")
 public class DocumentoComercialEgreso {
 

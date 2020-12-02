@@ -4,16 +4,14 @@ import modelo.MedioDePago.MedioDePago;
 
 import javax.persistence.*;
 
-@Entity
+//@Entity
 @Table(name = "Medios_de_pago_del_egreso")
 public class MedioDePagoDelEgreso {
 
     @EmbeddedId
-    MediosDePagoDelEgresoId id;
+    private MediosDePagoDelEgresoId id = new MediosDePagoDelEgresoId();
 
-/*    @ManyToOne
-    @JoinColumn(name = "medio_de_pago_id")
-    private MedioDePago medioDePago;*/
+
 
     @Column(name = "monto")
     Double montoEgreso;

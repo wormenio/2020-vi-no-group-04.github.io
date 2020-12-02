@@ -1,9 +1,11 @@
 package modelo;
 
+import modelo.Egreso.Compra;
 import modelo.Egreso.EtiquetaEgreso;
 import org.uqbarproject.jpa.java8.extras.WithGlobalEntityManager;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class RepositorioEtiquetaEgreso implements WithGlobalEntityManager {
@@ -30,5 +32,11 @@ public class RepositorioEtiquetaEgreso implements WithGlobalEntityManager {
     public EtiquetaEgreso getById(Long id){
         return entityManager().find(EtiquetaEgreso.class, id);
 
+    }
+
+    public List<EtiquetaEgreso> listadoRegistros(){
+        return entityManager()//
+                .createQuery("from EtiquetaEgreso ", EtiquetaEgreso.class) //
+                .getResultList();
     }
 }

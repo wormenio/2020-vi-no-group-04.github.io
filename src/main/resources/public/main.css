@@ -47,15 +47,13 @@ footer{
     height: 100px;
 }
 
-/**                              **/
-
 .container{
     display: flex;
     justify-content: center;
     align-items: center;
     padding-top: 20px;
-   /* width: 90%;
-    margin: auto;*/
+    /* width: 90%;
+     margin: auto;*/
 
 }
 
@@ -63,6 +61,7 @@ footer{
     display: flex;
     width: 100%;
     justify-content: center;
+    align-items: center;
 }
 
 .form span {
@@ -76,6 +75,15 @@ fieldset{
     min-width: 100%;
     max-width: 100%;
 }
+
+form span label {
+    display: flex;
+    min-width: 50px;
+}
+
+/**                              **/
+
+
 
 .headerContainer{
     display: flex;

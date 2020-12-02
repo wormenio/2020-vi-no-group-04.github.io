@@ -10,7 +10,7 @@ import modelo.Moneda;
 
 import javax.persistence.*;
 
-@Entity(name = "Items_de_compra")
+//@Entity(name = "Items_de_compra")
 public class ItemsDeLaCompra  {
 
 /*    @Id

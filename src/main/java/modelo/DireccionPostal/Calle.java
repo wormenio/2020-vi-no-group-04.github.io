@@ -10,7 +10,7 @@ import javax.persistence.*;
 public class Calle extends EntidadPersistente {
 
     @ManyToOne
-    @JoinColumn(name ="codigo_postal_id" )
+    @JoinColumn(name ="direccion_postal_id" )
     private DireccionPostal direccionPostal;
 
     @Column(name = "altura_desde")
