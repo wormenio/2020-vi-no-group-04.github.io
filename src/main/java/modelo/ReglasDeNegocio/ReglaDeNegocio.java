@@ -7,7 +7,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "Reglas_de_negocio")
-@DiscriminatorColumn(name = "tipo_regla")
+@DiscriminatorColumn(name = "tipo_regla",discriminatorType = DiscriminatorType.STRING)
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public abstract class ReglaDeNegocio extends EntidadPersistente {
 

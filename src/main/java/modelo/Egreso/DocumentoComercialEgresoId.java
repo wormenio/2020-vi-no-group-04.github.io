@@ -12,7 +12,9 @@ import java.io.Serializable;
 @Embeddable
 public class DocumentoComercialEgresoId implements Serializable {
 
-    @Column(name="egreso_id")
+
+    @ManyToOne
+    @JoinColumn(name = "egreso_id")
     private Integer egresoId;
 
 

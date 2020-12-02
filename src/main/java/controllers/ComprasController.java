@@ -41,7 +41,13 @@ public class ComprasController implements WithGlobalEntityManager, Transactional
             response.redirect("/login");
         }
 */
-        return new ModelAndView(null, "newCompra.html.hbs");
+        Map<String, Object> modelo = new HashMap<>();
+
+        List<Proveedor> proveedores = RepositorioProveedor.instance().listadoDeProveedores();
+
+        modelo.put("proveedores", proveedores);
+
+        return new ModelAndView(modelo, "nuevaCompra.html.hbs");
     }
 
     public Void crearEgreso(Request request, Response response) {
@@ -54,7 +60,6 @@ public class ComprasController implements WithGlobalEntityManager, Transactional
             response.redirect("/login");
         }
 */
-
 
 
         Proveedor proveedor = RepositorioProveedor.instance().getById(Long.valueOf(request.queryParams("proveedor")));

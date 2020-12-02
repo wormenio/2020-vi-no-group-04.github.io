@@ -8,7 +8,7 @@ import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
 @Entity
-@DiscriminatorValue("Entidad")
+@DiscriminatorValue("Entidades")
 class EntidadBaseNoConformaEntidadJuridica extends ReglaDeNegocio {
 
     @Override

@@ -10,7 +10,6 @@ import javax.persistence.*;
 @Entity
 @Table(name="Proveedores")
 public class Proveedor extends EntidadPersistente{
-//	String nombre ;
 
 	private String apellido;
 
@@ -29,7 +28,8 @@ public class Proveedor extends EntidadPersistente{
 
 //	DireccionPostal direccionPostal;
 
-/*
+	public Proveedor(){}
+
 	public Proveedor(String nombre, String apellido, String razonSocial,String dni, String cuit,
 					 DireccionPostal direccionPostal) {
 		setNombre(nombre);
@@ -37,6 +37,6 @@ public class Proveedor extends EntidadPersistente{
 		this.razonSocial = razonSocial;
 		this.dni = dni;
 		this.cuit = cuit;
-	}*/
+	}
 
 }

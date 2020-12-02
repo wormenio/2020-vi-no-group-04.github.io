@@ -20,7 +20,7 @@ public abstract class Entidad {
 	private CategoriaEntidad categoriaEntidad;
 
 	@Column(name = "monto_maximo_egreso")
-	private Double MontoMaximoEgreso;
+	private Double montoMaximoEgreso;
 
 	@Column(name = "nombre_ficticio")
 	private String nombreFicticio;
@@ -41,10 +41,10 @@ public abstract class Entidad {
 	}
 
 	public void setMontoMaximoEgreso(Double montoMaximoEgreso) {
-		MontoMaximoEgreso = montoMaximoEgreso;
+		this.montoMaximoEgreso = montoMaximoEgreso;
 	}
 	public Double getMontoMaximoEgreso() {
-		return MontoMaximoEgreso;
+		return montoMaximoEgreso;
 	}
 
 	public Organizacion getOrganizacion(){
@@ -66,10 +66,12 @@ public abstract class Entidad {
 	public void validarReglasDeNegocioDeEntidad(Entidad entidadDestino){
 		categoriaEntidad.validarReglasDeNegocioDeLaEntidad(this, entidadDestino);
 	}
+/*
 
 	public void validarReglasDeNegocio(){
 //		return categoriaEntidad.aplicarReglasDeNegocio();
 	}
+*/
 
 	public abstract Boolean esEntidadBase();
 	public abstract Boolean esEntidadJuridica();
