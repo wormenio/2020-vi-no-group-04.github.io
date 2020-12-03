@@ -20,15 +20,25 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.swing.JOptionPane;
+
 public class LoginController implements WithGlobalEntityManager, TransactionalOps {
 	
 	public ModelAndView validarUsuario(Request request, Response response) {
+		String boton = request.queryParams("button");
 		String usuario = request.queryParams("userName");
 		String password = request.queryParams("password");
-
-		 RepositorioUsuarios.instance().validarUsuario(usuario,password);
-		return null;
 		
-	}
+		if (boton!=null){
+			Usuario usuarioLogueado = RepositorioUsuarios.instance().validarUsuario(usuario,password);
+			
+			if(usuarioLogueado==null) {
+				JOptionPane.showMessageDialog(null, "Hello World");
+				return new ModelAndView(null, "login.html.hbs");
+			}
+			return new ModelAndView(null,"inicio.html.hbs");
+		}
+		return new ModelAndView(null, "login.html.hbs");
 
+	}
 }

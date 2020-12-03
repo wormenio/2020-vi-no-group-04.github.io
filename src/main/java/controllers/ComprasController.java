@@ -34,6 +34,7 @@ public class ComprasController implements WithGlobalEntityManager, Transactional
         modelo.put("compras", compras);
 
         return new ModelAndView(modelo, "compras.html.hbs");
+        
     }
 
     public ModelAndView getFormularioCreacion(Request request, Response response) {
