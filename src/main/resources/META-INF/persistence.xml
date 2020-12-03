@@ -34,7 +34,7 @@
             <property name="use_sql_comments" value="true" />
 
             <!--  Para crear/actualizar el schema-->
-<!--
+            <!--
             <property name="hibernate.hbm2ddl.auto" value="create-drop" />
             <property name="hibernate.hbm2ddl.import_files" value="schema.sql" />
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect" />

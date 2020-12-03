@@ -3,6 +3,7 @@ package main;
 import controllers.ComprasController;
 import controllers.EgresosController;
 import controllers.HomeController;
+import controllers.LoginController;
 import spark.ModelAndView;
 import spark.Spark;
 import spark.template.handlebars.HandlebarsTemplateEngine;
@@ -19,9 +20,12 @@ public class Routes {
         HandlebarsTemplateEngine engine = new HandlebarsTemplateEngine();
         ComprasController comprasController = new ComprasController();
         HomeController homeController = new HomeController();
+        LoginController loginController = new LoginController();
 //        UsuariosController usuariosController = new UsuariosController();
 
-        Spark.get("/", (request, response) -> homeController.getHome(), engine);
+        Spark.get("/", (request, response) -> { return new ModelAndView(null,"login.html.hbs");}, engine);
+        Spark.get("/", (request, response) -> loginController.validarUsuario(request, response), engine);
+
         Spark.get("/inicio", (request,response) -> { return new ModelAndView(null,"inicio.html.hbs");} , engine);
 
 
