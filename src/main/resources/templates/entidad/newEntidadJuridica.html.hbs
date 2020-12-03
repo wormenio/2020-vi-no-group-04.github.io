@@ -1,0 +1,101 @@
+{{# partial "titulo" }}
+    <title>Detalle de la Compra</title>
+{{/partial}}
+{{# partial "contenido" }}
+
+    <form  action="/entidades/entidadesJuridicas" method="POST">
+        <fieldset class="containerOneColumn">
+            <legend>Información de la Entidad Jurídica</legend>
+            <div class="control-group">
+                <span class="label-form">
+                    <label for="razonSocial">Razón Social</label>
+                </span>
+                <span class="input-form">
+                    <input type="text" name="razonSocial" value="{{razonSocial}}" placeholder="Razon Social" required >
+                </span>
+            </div>
+            <div class="control-group">
+                <span class="label-form">
+                    <label for="nombre">Nombre Ficticio</label>
+                </span>
+                <span class="input-form">
+                    <input type="text" name="nombreFicticio" value="{{nombreFicticio}}" placeholder="Nombre Ficticio" required>
+                </span>
+            </div>
+            <div class="control-group">
+                <span class="label-form">
+                    <label for="cuit">Cuit</label>
+                </span>
+                <span class="input-form">
+                    <input type="text" name="cuit" value="{{cuit}}" placeholder="Cuit" required>
+                </span>
+            </div>
+            <div class="control-group">
+                <span class="label-form">
+                    <label for="codigoIgj">Código IGJ</label>
+                </span>
+                <span class="input-form">
+                    <input type="text" name="codigoIgj" value="{{codigoIgj}}" placeholder="Código de inscripción IGJ" >
+                </span>
+            </div>
+            <div class="control-group">
+                <span class="label-form">
+                    <label for="cantidadEmpleados">Cantidad de empleados</label>
+                </span>
+                <span class="input-form">
+                    <input type="number" name="cantidadEmpleados" value="{{cantidadEmpleados}}" placeholder="Cantidad de empleados" min="1" required>
+                </span>
+            </div>
+            <div class="control-group">
+                <span class="label-form">
+                    <label for="categoriaJuridica">Categoría Jurídica</label>
+                </span>
+                <span class="input-form">
+                   <select   name="categoriaJuridica">
+                              <option value="0" disabled selected>Seleccione Categoría Jurídica...</option>
+                       {{#each categoriasJuridicas}}
+                           <option value="{{id}}" > {{nombre}}</option>
+                       {{/each}}
+                   </select>
+                </span>
+            </div>
+            <div class="control-group">
+                <span class="label-form">
+                    <label for="categoriaEntidad">Categoría Entidad</label>
+                </span>
+                <span class="input-form">
+                   <select   name="categoriaEntidad">
+                              <option value="0" disabled selected>Seleccione Categoría Entidad...</option>
+                       {{#each categoriasEntidades}}
+                           <option value="{{id}}" >
+                               {{nombre}}
+                           </option>
+                       {{/each}}
+                   </select>
+                </span>
+            </div>
+            <div class="control-group">
+                <span class="label-form">
+                    <label for="direccionPostal">Dirección Postal </label>
+                </span>
+                <span class="input-form">
+
+                   <select   name="direccionPostal">
+                              <option value="0" disabled selected>Seleccione Dirección postal...</option>
+                       {{#each direccionesPostales}}
+                           <option value="{{id}}"  > {{nombre}}</option>
+                       {{/each}}
+                   </select>
+                </span>
+            </div>
+        </fieldset>
+        <div class="footerForm">
+
+            <button class="btn_action"  type="submit" > Guardar</button>
+
+        </div>
+    </form>
+
+{{/partial}}
+
+{{> layout.html.hbs }}

@@ -34,7 +34,7 @@ public class ComprasController implements WithGlobalEntityManager, Transactional
 
         modelo.put("compras", compras);
 
-        return new ModelAndView(modelo, "compras.html.hbs");
+        return new ModelAndView(modelo, "egreso/compras.html.hbs");
         
     }
 
@@ -42,14 +42,18 @@ public class ComprasController implements WithGlobalEntityManager, Transactional
         String id = request.params(":id");
         Map<String, Object> modelo = new HashMap<>();
         Compra compra = RepositorioCompras.instance().getById(Long.parseLong(id));
-        return new ModelAndView(compra, "egreso/newDocumentoEgreso.html.hbs");
+
+        modelo.put("compra", compra);
+        return new ModelAndView(modelo, "egreso/newDocumentoEgreso.html.hbs");
     }
 
     public ModelAndView getFormularioProducto(Request request, Response response ){
         String id = request.params(":id");
         Map<String, Object> modelo = new HashMap<>();
         Compra compra = RepositorioCompras.instance().getById(Long.parseLong(id));
-        return new ModelAndView(compra, "egreso/newProductoEgreso.html.hbs");
+
+        modelo.put("compra", compra);
+        return new ModelAndView(modelo, "egreso/newProductoEgreso.html.hbs");
     }
 
     public ModelAndView getFormularioPresupuesto(Request request, Response response ){
@@ -68,6 +72,15 @@ public class ComprasController implements WithGlobalEntityManager, Transactional
         modelo.put("documentosComerciales", documentosComerciales);
 
         return new ModelAndView(modelo, "egreso/newPresupuestoCompra.html.hbs");
+    }
+
+    public ModelAndView getFormularioUsuario(Request request, Response response) {
+        String id = request.params(":id");
+        Map<String, Object> modelo = new HashMap<>();
+
+        Compra compra = RepositorioCompras.instance().getById(Long.parseLong(id));
+        modelo.put("compra", compra);
+        return new ModelAndView(modelo, "egreso/newUsuarioRevisorCompra.html.hbs");
     }
 
     public ModelAndView getFormularioCreacion(Request request, Response response) {
@@ -89,8 +102,6 @@ public class ComprasController implements WithGlobalEntityManager, Transactional
 
         return new ModelAndView(modelo, "egreso/newCompra.html.hbs");
     }
-
-
 
 
     public Object getDetalleCompra(Request request, Response response, TemplateEngine engine) {
@@ -121,13 +132,9 @@ public class ComprasController implements WithGlobalEntityManager, Transactional
 
 
         Proveedor proveedor = RepositorioProveedor.instance().getById(Long.valueOf(request.queryParams("proveedor")));
-
         EtiquetaEgreso etiquetaEgreso = RepositorioEtiquetaEgreso.instance().getById(Long.valueOf(request.queryParams("etiqueta")));
-
-        Moneda moneda = RepositorioMonedas.instance().getById(Long.valueOf(request.queryParams("moneda")));
-
+        Moneda moneda   = RepositorioMonedas.instance().getById(Long.valueOf(request.queryParams("moneda")));
         Entidad entidad = RepositorioEntidades.instance().getById(Long.parseLong(request.queryParams("moneda")));
-
         LocalDate fechaCompra = LocalDate.parse(request.queryParams("fechaCompra"),
                 DateTimeFormatter.ofPattern("yyyy-MM-d"));
 
@@ -176,6 +183,11 @@ public class ComprasController implements WithGlobalEntityManager, Transactional
             RepositorioCompras.instance().agregar(compra);
         });
   */
+        response.redirect("/compras/" + request.queryParams("idCompra"));
+        return null;
+    }
+    public Void crearUsuarioRevisorDelEgreso(Request request, Response response) {
+//        TODO
         response.redirect("/compras/" + request.queryParams("idCompra"));
         return null;
     }

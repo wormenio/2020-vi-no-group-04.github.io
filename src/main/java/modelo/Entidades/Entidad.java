@@ -28,6 +28,7 @@ public abstract class Entidad {
 	@Transient
 	Organizacion organizacion = Organizacion.instance();
 
+
 	public Long getId() {
 		return id;
 	}

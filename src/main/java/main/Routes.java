@@ -1,9 +1,6 @@
 package main;
 
-import controllers.ComprasController;
-import controllers.EgresosController;
-import controllers.HomeController;
-import controllers.LoginController;
+import controllers.*;
 import spark.ModelAndView;
 import spark.Spark;
 import spark.template.handlebars.HandlebarsTemplateEngine;
@@ -21,6 +18,8 @@ public class Routes {
         ComprasController comprasController = new ComprasController();
         HomeController homeController = new HomeController();
         LoginController loginController = new LoginController();
+        EntidadesController entidadesController = new EntidadesController();
+
 //        UsuariosController usuariosController = new UsuariosController();
 
         Spark.get("/", (request, response) -> { return new ModelAndView(null,"login.html.hbs");}, engine);
@@ -31,31 +30,38 @@ public class Routes {
 
         Spark.get("/home", (request, response) -> homeController.getHome(), engine);
         Spark.get("/login", (request,response) -> { return new ModelAndView(null,"login.html.hbs");} , engine);
+
         Spark.get("/compras", comprasController::getCompras, engine);
         Spark.get("/compras/nuevo",  comprasController::getFormularioCreacion, engine);
         Spark.get("/compras/:id", (request, response) -> comprasController.getDetalleCompra(request, response, engine));
         Spark.get("/compras/:id/documentoComercial/nuevo", comprasController::getFormularioDocumentoComercial, engine);
         Spark.get("/compras/:id/producto/nuevo", comprasController::getFormularioProducto, engine);
         Spark.get("/compras/:id/presupuesto/nuevo", comprasController::getFormularioPresupuesto, engine);
+        Spark.get("/compras/:id/usuarioRevisor/nuevo", comprasController::getFormularioUsuario, engine);
 
-        Spark.post("/compras/:id/presupuesto", (request, response) -> comprasController.crearPresupuesoDelEgreso(request, response));
-        Spark.post("/compras/:id/producto", (request, response) -> comprasController.crearProductoDelEgreso(request, response));
-        Spark.post("/compras/:id/producto", (request, response) -> comprasController.crearDocumentoDelEgreso(request, response));
         Spark.post("/compras", (request, response) -> comprasController.crearEgreso(request, response));
+        Spark.post("/compras/:id/documentoComercial", (request, response) -> comprasController.crearDocumentoDelEgreso(request, response));
+        Spark.post("/compras/:id/producto", (request, response) -> comprasController.crearProductoDelEgreso(request, response));
+        Spark.post("/compras/:id/presupuesto", (request, response) -> comprasController.crearPresupuesoDelEgreso(request, response));
+        Spark.post("/compras/:id/usuarioRevisor", (request, response) -> comprasController.crearUsuarioRevisorDelEgreso(request, response));
+
+        /************       ENTIDADES    ************/
+
+//        Nuevas entidades
+        Spark.get("entidades/entidadesBase/nuevo",  entidadesController::getFormularioCreacionEntidadBase, engine);
+        Spark.get("entidades/entidadesJuridicas/nuevo",  entidadesController::getFormularioCreacionEntidadJuridica, engine);
 
 
-//
-//        Spark.get("/consultoras", consultorasController::getConsultoras, engine);
-//
-//        Spark.get("/consultoras/nueva", consultorasController::getFormularioCreacion,engine);
-//
-//        Spark.get("/consultoras/:id", (request, response) -> consultorasController.getDetalleConsultora(request, response, engine));
-//
-//        Spark.post("/consultoras", (request, response) -> consultorasController.crearConsultora(request, response));
-//
-//        Spark.get("/login", (request, response) -> usuariosController.getFormularioLogin(request, response), engine);
-//
-//        Spark.post("/login", (request, response) -> usuariosController.iniciarSesion(request, response));
+//        Listado entidades
+        Spark.get("/entidades", entidadesController::getEntidades, engine);
+
+//        Detalle entidades
+        Spark.get("/entidades/entidadesBase/:id", (request, response) -> entidadesController.getDetalleEntidadBase(request, response, engine));
+        Spark.get("/entidades/entidadesJuridicas/:id", (request, response) -> entidadesController.getDetalleEntidadJuridica(request, response, engine));
+
+//        Nuevas entidades
+        Spark.post("entidades/entidadesBase", (request, response) -> entidadesController.crearEntidadBase(request, response));
+        Spark.post("entidades/entidadesJuridicas", (request, response) -> entidadesController.crearEntidadJuridica(request, response));
 
     }
 }

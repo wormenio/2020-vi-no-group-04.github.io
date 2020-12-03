@@ -15,7 +15,7 @@
         <properties>
             <property name="hibernate.archive.autodetection" value="class"/>
             <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver" />
-            <property name="hibernate.connection.url" value="jdbc:mysql://192.168.56.102:3306/dds_gesoc" />
+            <property name="hibernate.connection.url" value="jdbc:mysql://127.0.0.1:3306/dds_gesoc" />
 
             <property name="hibernate.connection.username" value="ap_gesoc" />
             <property name="hibernate.connection.password" value="Codeo.Como.Mi.Abu" />

@@ -8,3 +8,5 @@ INSERT INTO `Calles` (`id`, `nombre`, `altura_desde`, `altura_hasta`, `paridad_p
 INSERT INTO `Proveedores` (`id`, `nombre`, `altura`, `apellido`, `cuit`, `departamento`, `dni`, `piso`, `razon_social`, `calle_id`) VALUES (NULL, 'Proveedor 1', '255', 'Perez', '20358585852', '3', '35858585', '2', 'Ofimatica', '1');
 INSERT INTO `Etiquetas_Egresos` (`id`, `nombre`) VALUES (NULL, 'Amoblamiento'), (NULL, 'Indumentaria');
 INSERT INTO `Documentos_comerciales` (`tipo_documento`, `id`, `nombre`) VALUES ('Factura', NULL, 'Factura'), ('Ticket', NULL, 'Ticket');
+INSERT INTO `Categorias_juridicas` (`tipo_categoria`, `id`, `nombre`) VALUES ('Empresa', NULL, 'Empresa'), ('Osc', NULL, 'Osc');
+INSERT INTO `Categorias_entidades` (`id`, `nombre`) VALUES (NULL, 'Ong'), (NULL, 'Judicial'), (NULL, 'Industria Agropecuaria');

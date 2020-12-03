@@ -1,5 +1,7 @@
 package modelo.Entidades;
 
+import modelo.CategorizacionEntidad.CategoriaEntidad;
+
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
@@ -8,6 +10,18 @@ import javax.persistence.Entity;
 public class EntidadBase extends Entidad {
 
 	private String descripcion;
+
+
+	public EntidadBase(String nombreFicticio,String descripcion, CategoriaEntidad categoriaEntidad){
+		this.descripcion = descripcion;
+		super.setCategoriaEntidad(categoriaEntidad);
+		super.setNombreFicticio(nombreFicticio);
+	}
+
+	public EntidadBase() {
+
+	}
+
 
 	public String getDescripcion() {
 		return this.descripcion;
@@ -23,6 +37,7 @@ public class EntidadBase extends Entidad {
 	public Boolean esEntidadJuridica(){
 		return false;
 	}
+
 
 	/*
 
@@ -74,13 +89,7 @@ public class EntidadBase extends Entidad {
         EntidadJuridica entidadJuridica;
         Organizacion organizacion;
 
-        public EntidadBase(String nombreFicticio,String descripcion, CategoriaEntidad categoriaEntidad,
-                           Organizacion organizacion){
-            this.descripcion = descripcion;
-            this.categoriaEntidad = categoriaEntidad;
-            this.nombreFicticio = nombreFicticio;
-            organizacion.aregarEntidad(this);
-        }
+
     */
 
 		/*@Override

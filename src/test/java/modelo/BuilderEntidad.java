@@ -52,7 +52,8 @@ public class BuilderEntidad {
     }
     
     public EntidadBase crearEntidadBase(){
-        EntidadBase entidadBase = new EntidadBase();
+        EntidadBase entidadBase = new EntidadBase("La Comercial","Venta de Ropas",
+                new CategoriaEntidad() );
         entidadBase.setNombreFicticio(nombreFicticio);
         entidadBase.setCategoriaEntidad(categoriaEntidad);
         return entidadBase;

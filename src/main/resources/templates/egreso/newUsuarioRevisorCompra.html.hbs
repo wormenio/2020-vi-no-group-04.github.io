@@ -2,10 +2,18 @@
     <title>Detalle de la Compra</title>
 {{/partial}}
 {{# partial "contenido" }}
-    <!--    TODO: LAYOUT MINI DETALLE DE LA COMPRA -->
+    {{> egreso/layoutInfoCompra.html.hbs }}
 
-    <form  action="/compras/{{compra.id}}/usuario" method="POST">
+    <form  action="/compras/{{compra.id}}/usuarioRevisor" method="POST">
 <!--        TODO: FORMULARIO DE USUARIO REVISOR-->
+        <fieldset>
+
+        </fieldset>
+        <div class="footerForm">
+            <input type="hidden" name="idCompra" value="{{compra.id}}" >
+            <button class="btn_reset"  onclick="location.href='/compras/{{compra.id}}'" >Cancelar</button>
+            <button class="btn_action"  type="submit" >Guardar</button>
+        </div>
     </form>
 {{/partial}}
 

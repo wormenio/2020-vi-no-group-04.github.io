@@ -5,6 +5,7 @@ import java.util.Collection;
 
 import modelo.CategoriaJuridica.CategoriaEntidadJuridica;
 import modelo.CategoriaJuridica.ClasificacionAFIP;
+import modelo.CategorizacionEntidad.CategoriaEntidad;
 import modelo.DireccionPostal.DireccionPostal;
 import modelo.FuncionesUtiles.Utils;
 
@@ -23,7 +24,7 @@ public class EntidadJuridica extends Entidad {
 	private DireccionPostal direccionPostal;
 
 	@Column(name = "codigo_igj")
-	private Integer codigoIGJ;
+	private Long codigoIGJ;
 
 	@Column(name="cantidad_empleados")
 	private Integer cantidadEmpleados;
@@ -40,6 +41,28 @@ public class EntidadJuridica extends Entidad {
 	@Column(name = "clasificacion_afip")
 	private ClasificacionAFIP clasificacionAFIP;
 
+	public EntidadJuridica(String razonSocial,String nombreFicticio,String cuit,Long codigoIGJ, Integer cantidadEmpleados,
+						   CategoriaEntidadJuridica categoriaJuridica, CategoriaEntidad categoriaEntidad,
+						   DireccionPostal direccionPostal    ){
+		if( razonSocial.isEmpty()) throw new EntidadException("Debe indicar la razón social");
+		validarCuit(cuit);
+		this.razonSocial       = razonSocial;
+		super.setNombreFicticio(nombreFicticio);
+		this.cuit              = cuit;
+
+		this.categoriaJuridica = categoriaJuridica;
+		this.direccionPostal   = direccionPostal;
+		if( codigoIGJ != null){
+			this.codigoIGJ   = codigoIGJ;
+		}
+		if( cantidadEmpleados != null){
+			this.cantidadEmpleados   = cantidadEmpleados;
+		}
+	}
+
+	public EntidadJuridica() {
+
+	}
 
 	@Override
 	public Boolean esEntidadBase() {
@@ -74,11 +97,11 @@ public class EntidadJuridica extends Entidad {
 		this.direccionPostal = direccionPostal;
 	}
 
-	public Integer getCodigoIGJ() {
+	public Long getCodigoIGJ() {
 		return codigoIGJ;
 	}
 
-	public void setCodigoIGJ(Integer codigoIGJ){
+	public void setCodigoIGJ(Long codigoIGJ){
 		this.codigoIGJ = codigoIGJ;
 	}
 
@@ -153,16 +176,6 @@ public class EntidadJuridica extends Entidad {
 
 
 	/*
-	public EntidadJuridica(String razonSocial,String nombreFicticio,String cuit, DireccionPostal direccionPostal,
-						CategoriaEntidadJuridica categoria,Organizacion organizacion){
-
-		this.categoriaEntidadJuridica = categoria;
-		validarCuit(cuit);
-		this.razonSocial = razonSocial;
-		this.nombreFicticio = nombreFicticio;
-		this.cuit = cuit;
-		this.direccionPostal = direccionPostal;
-		organizacion.aregarEntidad(this);
-	}*/
+	*/
 
 }

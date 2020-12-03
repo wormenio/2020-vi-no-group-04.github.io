@@ -1,5 +1,7 @@
 package modelo;
 
+import modelo.CategorizacionEntidad.CategoriaEntidad;
+import modelo.Egreso.Compra;
 import modelo.Entidades.Entidad;
 import org.uqbarproject.jpa.java8.extras.WithGlobalEntityManager;
 
@@ -12,14 +14,36 @@ public class RepositorioEntidades  implements WithGlobalEntityManager {
         return instance;
     }
 
+    public void agregar(Entidad entidad)  {
+        entityManager().persist(entidad);
+    }
+
     public Entidad getById(Long id){
         return entityManager().find(Entidad.class, id);
 
     }
 
     public List<Entidad> listadoDeRegistros(){
-        return entityManager()//
-                .createQuery("from Entidad ", Entidad.class) //
+        return entityManager()
+                .createQuery("from Entidad ", Entidad.class)
                 .getResultList();
+    }
+
+    public List<Entidad> buscarPorNombre(String  nombreEntidad) {
+
+         List<Entidad> entidades = entityManager()
+                .createQuery("from Entidad e where e.id = :idEntidad ", Entidad.class)
+                .setParameter("idEntidad", nombreEntidad)
+                .getResultList();
+         return entidades;
+    }
+
+    public List<Entidad> buscarPorCategoria(Long idCategoria) {
+
+        List<Entidad> entidades = entityManager()
+                .createQuery("from Entidad e where categoriaEntidad.id = :idCategoria ", Entidad.class)
+                .setParameter("idCategoria", idCategoria)
+                .getResultList();
+        return entidades;
     }
 }
