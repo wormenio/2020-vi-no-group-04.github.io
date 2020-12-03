@@ -1,6 +1,9 @@
 package modelo;
 
+import modelo.Egreso.Compra;
 import org.uqbarproject.jpa.java8.extras.WithGlobalEntityManager;
+
+import java.util.List;
 
 
 public class RepositorioMonedas implements WithGlobalEntityManager {
@@ -13,4 +16,11 @@ public class RepositorioMonedas implements WithGlobalEntityManager {
         return entityManager().find(Moneda.class, id);
 
     }
+
+	public List<Moneda> listadoDeRegistros(){
+		return entityManager()//
+				.createQuery("from Moneda ", Moneda.class) //
+				.getResultList();
+	}
+
 }

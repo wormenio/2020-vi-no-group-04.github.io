@@ -1,0 +1,88 @@
+{{# partial "titulo" }}
+    <title>Ingresar Nueva Compra</title>
+{{/partial}}
+
+{{# partial "contenido" }}
+
+        <form class="form" action="/compras" method="POST" >
+
+            <fieldset class="fieldsetUnaColumna">
+                <legend >Datos centrales de la compra</legend>
+                <div class="control-group">
+                    <span lass="label-form">
+                        <label class="label-form" for="fechaCompra">Fecha:</label>
+                    </span>
+                    <span>
+                        <input class="input-form" type="date" placeholder="Fecha" name="fechaCompra" value="{{fechaCompra}}"
+                    </span>
+
+                </div>
+
+                <div class="control-group">
+                    <span class="label-form" >
+                        <label  for="entidad">Entidad</label>
+                    </span>
+                    <span class="input-form">
+                       <select   name="entidad">
+                                  <option value="0" disabled selected>Seleccione Entidad...</option>
+                                   {{#each entidades}}
+                                       <option value="{{id}}" > {{nombreFicticio}}</option>
+                                   {{/each}}
+                       </select>
+                    </span>
+                </div>
+
+                <div class="control-group">
+                    <span lass="label-form">
+                        <label for="proveedor">Proveedor</label>
+                    </span>
+                    <span class="input-form">
+                        <select name="proveedor"  >
+                        <option disabled selected>Seleccione Proveedor...</option>
+                            {{#each proveedores}}
+                                <option value="{{id}}" > {{nombre}}</option>
+                            {{/each}}
+                    </select>
+                    </span>
+
+                </div>
+                <div class="control-group">
+                    <span lass="label-form">
+                        <label for="etiqueta">Etiqueta</label>
+                    </span>
+                    <span class="input-form">
+                        <select name="etiqueta" >
+                        <option disabled selected>Seleccione Etiqueta...</option>
+                            {{#each etiquetasEgresos}}
+                                <option value="{{id}}" > {{nombre}}</option>
+                            {{/each}}
+                    </select>
+                    </span>
+
+                </div>
+                <div class="control-group">
+                    <span lass="label-form">
+                        <label for="moneda">Moneda</label>
+                    </span>
+                    <span class="input-form">
+                        <select name="moneda" >
+                            <option disabled selected>Seleccione Moneda...</option>
+                            {{#each monedas}}
+                                <option value="{{id}}" > {{nombre}}</option>
+                            {{/each}}
+
+						  </select>
+                    </span>
+                </div>
+
+            </fieldset>
+            <div class="footerForm">
+                <button class="btn_action"  type="submit" >Guardar</button>
+            </div>
+
+
+        </form>
+
+{{/partial}}
+
+{{> layout.html.hbs }}

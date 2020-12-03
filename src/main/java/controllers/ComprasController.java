@@ -36,6 +36,27 @@ public class ComprasController implements WithGlobalEntityManager, Transactional
         return new ModelAndView(modelo, "compras.html.hbs");
     }
 
+    public ModelAndView getFormularioDocumentoComercial(Request request, Response response ){
+        String id = request.params(":id");
+        Map<String, Object> modelo = new HashMap<>();
+        Compra compra = RepositorioCompras.instance().getById(Long.parseLong(id));
+        return new ModelAndView(compra, "egreso/newDocumentoEgreso.html.hbs");
+    }
+
+    public ModelAndView getFormularioProducto(Request request, Response response ){
+        String id = request.params(":id");
+        Map<String, Object> modelo = new HashMap<>();
+        Compra compra = RepositorioCompras.instance().getById(Long.parseLong(id));
+        return new ModelAndView(compra, "egreso/newProductoEgreso.html.hbs");
+    }
+
+    public ModelAndView getFormularioPresupuesto(Request request, Response response ){
+        String id = request.params(":id");
+        Map<String, Object> modelo = new HashMap<>();
+        Compra compra = RepositorioCompras.instance().getById(Long.parseLong(id));
+        return new ModelAndView(compra, "egreso/newDocumentoEgreso.html.hbs");
+    }
+
     public ModelAndView getFormularioCreacion(Request request, Response response) {
       /*  if(!estaLogueado(request, response)){
             response.redirect("/login");
@@ -45,11 +66,15 @@ public class ComprasController implements WithGlobalEntityManager, Transactional
 
         List<Proveedor> proveedores = RepositorioProveedor.instance().listadoDeProveedores();
         List<EtiquetaEgreso> etiquetasEgresos = RepositorioEtiquetaEgreso.instance().listadoRegistros();
+        List<Moneda> monedas        = RepositorioMonedas.instance().listadoDeRegistros();
+        List<Entidad> entidades     = RepositorioEntidades.instance().listadoDeRegistros();
 
         modelo.put("proveedores", proveedores);
         modelo.put("etiquetasEgresos", etiquetasEgresos);
+        modelo.put("monedas", monedas);
+        modelo.put("entidades", entidades);
 
-        return new ModelAndView(modelo, "nuevaCompra.html.hbs");
+        return new ModelAndView(modelo, "egreso/newCompra.html.hbs");
     }
 
     public Void crearEgreso(Request request, Response response) {
@@ -92,7 +117,7 @@ public class ComprasController implements WithGlobalEntityManager, Transactional
         try{
             Compra compra = RepositorioCompras.instance().getById(Long.parseLong(id));
             return compra != null ?
-                    engine.render(new ModelAndView(compra, "detalleCompra.html.hbs"))
+                    engine.render(new ModelAndView(compra, "egreso/detalleCompra.html.hbs"))
                     : null;
         } catch(NumberFormatException e){
             response.status(400);
@@ -100,5 +125,7 @@ public class ComprasController implements WithGlobalEntityManager, Transactional
             return "Bad Request";
         }
     }
+
+
 
 }

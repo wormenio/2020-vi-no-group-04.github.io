@@ -1,0 +1,38 @@
+{{# partial "titulo" }}
+    <title>Detalle de la Compra</title>
+{{/partial}}
+{{# partial "contenido" }}
+<div class="control-group">
+    <span lass="label-form">
+        <label class="label-form" for="fechaCompra">Fecha de Compra:</label>
+    </span>
+    <span>
+        <input class="input-form" type="date" placeholder="Fecha" name="fechaCompra" value="{{fechaCompra}}" disabled>
+    </span>
+</div>
+
+        <div>
+            <span><strong>Moneda:</strong></span><span>{{moneda.nombre}} ({{moneda.symbol}})</span>
+        </div>
+        <div>
+            <span><strong>Entidad:</strong></span><span>{{entidad.nombreFicticio}}</span>
+        </div>
+        <div>
+            <span><strong>Proveedor:</strong></span><span>{{proveedor.nombre}}</span>
+        </div>
+        <div>
+            <span><strong>Etiqueta:</strong></span><span>{{etiquetaEgreso.nombre}}</span>
+        </div>
+
+    </div>
+<div class="footerForm">
+    <button class="btn_action"  onclick="location.href='/compras/{{id}}/documentoComercial/nuevo'" >Agregar Documento Comercial</button>
+    <button class="btn_action"  onclick="location.href='/compras/{{id}}/producto/nuevo'" >Agregar Productos</button>
+
+    <button class="btn_action"  onclick="location.href='/compras/{{id}}/presupuesto/nuevo'" >Agregar Presupuestos</button>
+
+
+</div>
+{{/partial}}
+
+{{> layout.html.hbs }}

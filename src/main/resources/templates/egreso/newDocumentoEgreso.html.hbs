@@ -1,0 +1,30 @@
+{{# partial "titulo" }}
+    <title>Detalle de la Compra</title>
+{{/partial}}
+{{# partial "contenido" }}
+    <form style="display: inline; justify-content: center; align-items: center;" action="/compras" method="POST">
+        <fieldset>
+            <legend>Documento comercial</legend>
+            <span>
+                            <label for="documentoComercial">Documento</label>
+                            <select name="documentoComercial">
+                                <option disabled selected>Seleccione Documento...</option>
+                                {{#each documentosComerciales}}
+                                    <option value="{{id}}" > {{nombre}}</option>
+                                {{/each}}
+                              </select>
+                        </span>
+            <span>
+                            <label for="fechaDocumento">Fecha:</label>
+                            <input placeholder="Fecha" name="fechaDocumento"  type="date">
+                        </span>
+            <span>
+                            <label for="nroDocumento">Numero:</label>
+                            <input placeholder="Número " name="nroDocumento" type="number">
+                        </span>
+        </fieldset>
+
+    </form>
+{{/partial}}
+
+{{> layout.html.hbs }}

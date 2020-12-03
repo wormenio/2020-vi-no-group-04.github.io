@@ -16,10 +16,9 @@
             <property name="hibernate.archive.autodetection" value="class"/>
             <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver" />
             <property name="hibernate.connection.url" value="jdbc:mysql://192.168.56.102:3306/dds_gesoc" />
-            <property name="hibernate.connection.username" value="wormeno" />
-            <property name="hibernate.connection.password" value="ysik" />
-     <!--       <property name="hibernate.connection.username" value="ap_gesoc" />
-            <property name="hibernate.connection.password" value="Codeo.Como.Mi.Abu" />-->
+
+            <property name="hibernate.connection.username" value="ap_gesoc" />
+            <property name="hibernate.connection.password" value="Codeo.Como.Mi.Abu" />
 
 <!--
 
@@ -35,7 +34,7 @@
             <property name="use_sql_comments" value="true" />
 
             <!--  Para crear/actualizar el schema-->
-            <!--
+<!--
             <property name="hibernate.hbm2ddl.auto" value="create-drop" />
             <property name="hibernate.hbm2ddl.import_files" value="schema.sql" />
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect" />

@@ -3,6 +3,8 @@ package modelo;
 import modelo.Entidades.Entidad;
 import org.uqbarproject.jpa.java8.extras.WithGlobalEntityManager;
 
+import java.util.List;
+
 public class RepositorioEntidades  implements WithGlobalEntityManager {
 
     private static RepositorioEntidades instance = new RepositorioEntidades();
@@ -15,4 +17,9 @@ public class RepositorioEntidades  implements WithGlobalEntityManager {
 
     }
 
+    public List<Entidad> listadoDeRegistros(){
+        return entityManager()//
+                .createQuery("from Entidad ", Entidad.class) //
+                .getResultList();
+    }
 }

@@ -30,6 +30,9 @@ public class Routes {
         Spark.get("/compras", comprasController::getCompras, engine);
         Spark.get("/compras/nuevo",  comprasController::getFormularioCreacion, engine);
         Spark.get("/compras/:id", (request, response) -> comprasController.getDetalleCompra(request, response, engine));
+        Spark.get("/compras/:id/documentoComercial/nuevo", comprasController::getFormularioDocumentoComercial, engine);
+        Spark.get("/compras/:id/producto/nuevo", comprasController::getFormularioProducto, engine);
+        Spark.get("/compras/:id/presupuesto/nuevo", comprasController::getFormularioPresupuesto, engine);
         Spark.post("/compras", (request, response) -> comprasController.crearEgreso(request, response));
 
 

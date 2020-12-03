@@ -57,7 +57,7 @@ public class Compra extends Egreso {
 		super(fechaCompra, moneda, entidad, etiquetaEgreso);
 		if( proveedor == null) throw new ComprasException("Debe indicar el Proveedor");
 		this.proveedor = proveedor;
-		entidad.validarReglasDeNegocioDelEgreso();
+//		entidad.validarReglasDeNegocioDelEgreso();
 	}
 
 	public void setProveedor(Proveedor proveedor) {

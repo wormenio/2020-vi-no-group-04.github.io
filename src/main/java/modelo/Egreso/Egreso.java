@@ -39,9 +39,9 @@ public abstract class Egreso {
 	@Transient
 	private Collection<MedioDePagoDelEgreso> mediosDePago = new ArrayList<>();
 
-	/*@OneToMany
-	@JoinColumn(name="egreso_id")*/
-	@Transient
+	@OneToMany
+	@JoinColumn(name="egreso_id")
+//	@Transient
 	private Collection<DocumentoComercialEgreso> documentosComerciales = new ArrayList<>();
 
 	@ManyToOne
@@ -92,9 +92,11 @@ public abstract class Egreso {
 
 	public void agregarDocumentoComercial(DocumentoComercial documento, Integer numeroDocumento, LocalDate fecha ){
 		DocumentoComercialEgreso documentoComercialCompra = new DocumentoComercialEgreso();
+		documentoComercialCompra.setEgresoId(getId());
 		documentoComercialCompra.setDocumentoComercial(documento);
 		documentoComercialCompra.setNumeroDocumento(numeroDocumento);
 		documentoComercialCompra.setFechaDocumento(fecha);
+
 
 		documentosComerciales.add(documentoComercialCompra);
 	}
