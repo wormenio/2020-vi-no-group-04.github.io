@@ -2,6 +2,7 @@ package modelo;
 
 /*import com.mysql.jdbc.AssertionFailedException;
 import com.mysql.jdbc.PreparedStatement;*/
+import modelo.CategorizacionEntidad.CategoriaEntidad;
 import modelo.Egreso.*;
 import modelo.Entidades.EntidadBase;
 import modelo.Presupuesto.ItemsDelPresupuesto;
@@ -44,7 +45,8 @@ public class TestPresupuesto {
                 .setRequierePresupuesto(true)
                 .setProveedor(new Proveedor())
                 .setCantidadPresupuesto(2)
-                .setEntidad(new EntidadBase())
+                .setEntidad(new EntidadBase("La Comercial","Venta de Ropas",
+                        new CategoriaEntidad() ))
                 .setMoneda(new Moneda())
                 .crearCompra();
 

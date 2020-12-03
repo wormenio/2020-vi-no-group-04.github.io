@@ -2,11 +2,11 @@
     <title>Detalle de la Compra</title>
 {{/partial}}
 {{# partial "contenido" }}
-    <!--    TODO: LAYOUT MINI DETALLE DE LA COMPRA -->
+    {{> egreso/layoutInfoCompra.html.hbs }}
 
     <form  action="/compras/{{compra.id}}/producto" method="POST">
 
-        <fieldset class="fieldsetUnaColumna" >
+        <fieldset class="containerOneColumn" >
             <legend>Productos de la compra</legend>
             <div class="control-group">
                 <span lass="label-form">
@@ -40,7 +40,7 @@
         </fieldset>
         <div class="footerForm">
             <input type="hidden" name="idCompra" value="{{compra.id}}" >
-            <button class="btn_reset"  onclick="location.href='/compras/'" >Cancelar</button>
+            <button class="btn_reset"  onclick="location.href='/compras/{{compra.id}}'" >Cancelar</button>
             <button class="btn_action"  type="submit" >Guardar</button>
         </div>
     </form>

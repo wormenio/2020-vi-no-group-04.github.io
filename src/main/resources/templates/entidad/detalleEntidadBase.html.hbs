@@ -1,0 +1,22 @@
+{{# partial "titulo" }}
+    <title>Detalle de la Entidad Base</title>
+{{/partial}}
+{{# partial "contenido" }}
+    <h3>Información de la Entidad Base</h3>
+    <div class="containerOneColumn">
+        <dl class="detalle_form">
+            <dt>Nombre ficticio</dt>
+            <dd> {{nombreFicticio}} </dd>
+            <dt>Descripcion</dt>
+            <dd> {{descripcion}} </dd>
+        </dl>
+
+        <dl  class="detalle_form">
+            <dt>Categoría Entidad</dt>
+            <dd>{{categoriaEntidad.nombre}}</dd>
+        </dl>
+    </div>
+
+{{/partial}}
+
+{{> layout.html.hbs }}

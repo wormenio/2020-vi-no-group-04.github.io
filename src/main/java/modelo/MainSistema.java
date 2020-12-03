@@ -1,4 +1,5 @@
 package modelo;
+import modelo.CategorizacionEntidad.CategoriaEntidad;
 import modelo.DireccionPostal.DireccionPostal;
 import modelo.DireccionPostal.Pais;
 import modelo.Egreso.*;
@@ -96,10 +97,8 @@ public class MainSistema {
 	}
 
 	Entidad unaEntidadBase(){
-		return new EntidadBase();
-	/*	return new EntidadBase("La Comercial","Venta de Ropas",
-				new CategoriaEntidad("La Comercial"),
-				geSoc);*/
+		return new EntidadBase("La Comercial","Venta de Ropas",
+				new CategoriaEntidad() );
 	}
 
 	Item unItem(){

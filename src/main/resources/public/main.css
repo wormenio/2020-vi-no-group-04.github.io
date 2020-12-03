@@ -5,7 +5,7 @@ body{
     font-weight: 300;
 }
 main{
-    width: 90%;
+    width: 80%;
     margin: auto;
     min-height: 400px;
 }
@@ -81,14 +81,11 @@ fieldset{
     margin-top: 15px;
 }
 
-.fieldsetUnaColumna{
+.containerOneColumn{
     display: flex;
     flex-direction: column;
-}/*
-form span label {
-    display: flex;
-    min-width: 50px;
-}*/
+}
+
 
 .btn_action{
     background-color: #006DCC;
@@ -134,14 +131,42 @@ form span label {
     padding-left: 25px;
 }
 select {
-    width: 400px;
+    width: 350px;
     background-color: #ffffff;
     border: 1px solid #cccccc;
     height: 30px;
     margin-top: 5px;
 }
-.input-xlarge {
-    width: 400px;
+.input-medium {
+    width: 350px;
+}
+
+dl.detalle_form {
+    display: flex;
+    /*float: left;*/
+    /*width: 520px;*/
+    /*  margin: 1em 0;
+      padding: 0;*/
+    border-bottom: 1px solid #999;
+    margin:0px;
+}
+
+.detalle_form dt {
+    /*clear: left;*/
+    /*float: left;*/
+    width: 200px;
+    margin: 0;
+    padding: 5px;
+    border-top: 1px solid #999;
+    font-weight: bold;
+}
+
+.detalle_form dd {
+    /*float: left;*/
+    width: 300px;
+    margin: 0;
+    padding: 5px;
+    border-top: 1px solid #999;
 }
 /*
 .label-form{
@@ -155,7 +180,11 @@ select {
 
 }*/
 /**     fin form                          **/
-
+/*
+form span label {
+    display: flex;
+    min-width: 50px;
+}*/
 
 
 

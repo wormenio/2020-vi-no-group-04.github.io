@@ -1,4 +1,5 @@
 package modelo;
+import modelo.CategorizacionEntidad.CategoriaEntidad;
 import modelo.DocumentoComercial.DocumentoComercial;
 import modelo.DocumentoComercial.Factura;
 import modelo.Egreso.*;
@@ -122,7 +123,8 @@ public class TestCompra {
         Compra unaCompraConPresupuesto = new BuilderCompra()
                 .setRequierePresupuesto(true)
                 .setProveedor(new Proveedor())
-                .setEntidad(new EntidadBase())
+                .setEntidad(new EntidadBase("La Comercial","Venta de Ropas",
+                        new CategoriaEntidad() ))
                 .setMoneda(new Moneda())
                 .setCantidadPresupuesto(5)
                 .crearCompra();

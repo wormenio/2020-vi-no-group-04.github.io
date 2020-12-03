@@ -1,0 +1,47 @@
+{{# partial "titulo" }}
+    <title>Detalle de la Compra</title>
+{{/partial}}
+{{# partial "contenido" }}
+
+    <form  action="/entidades/entidadesBase" method="POST">
+        <fieldset class="containerOneColumn">
+            <legend>Información de la Entidad Base</legend>
+            <div class="control-group">
+                <span class="label-form">
+                    <label for="nombreFicticio">Nombre Ficticio</label>
+                </span>
+                <span class="input-form">
+                    <input type="text" name="nombreFicticio" value="" class="input-medium" placeholder="Nombre Ficticio" required>
+                </span>
+            </div>
+            <div class="control-group">
+                <span class="label-form">
+                    <label for="descripcion">Descripción</label>
+                </span>
+                <textarea name="descripcion" class="input-medium" required > </textarea>
+            </div>
+            <div class="control-group">
+                <span class="label-form">
+                    <label for="categoriaEntidad">Categoría Entidad</label>
+                </span>
+                <span class="input-form">
+                   <select   name="categoriaEntidad">
+                              <option value="0" disabled selected>Seleccione Categoría Entidad...</option>
+                       {{#each categoriasEntidades}}
+                           <option value="{{id}}" >
+                               {{nombre}}
+                           </option>
+                       {{/each}}
+                   </select>
+                </span>
+            </div>
+        </fieldset>
+        <div class="footerForm">
+            <button class="btn_action"  type="submit" >Guardar</button>
+        </div>
+
+    </form>
+
+{{/partial}}
+
+{{> layout.html.hbs }}

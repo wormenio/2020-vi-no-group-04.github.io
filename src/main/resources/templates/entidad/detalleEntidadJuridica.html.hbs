@@ -1,0 +1,41 @@
+{{# partial "titulo" }}
+    <title>Detalle de la EntidadJuridica</title>
+{{/partial}}
+{{# partial "contenido" }}
+    <h3>Información de la Entidad Jurídica</h3>
+    <div class="containerOneColumn">
+        <dl class="detalle_form">
+            <dt>Razón social</dt>
+            <dd> {{razonSocial}} </dd>
+            <dt>Nombre ficticio</dt>
+            <dd> {{nombreFicticio}} </dd>
+        </dl>
+        <dl class="detalle_form">
+            <dt>Cuit</dt>
+            <dd>{{cuit}}</dd>
+            <dt>Código IGJ</dt>
+            <dd>{{codigoIgj}}</dd>
+        </dl>
+        <dl  class="detalle_form">
+            <dt>Cantidad empleados</dt>
+            <dd>{{cantidadEmpleados}}</dd>
+            <dt>Categoría Jurídica</dt>
+            <dd>{{categoriaJuridica.nombre}}</dd>
+        </dl>
+        <dl  class="detalle_form">
+            <dt>Categoría Entidad</dt>
+            <dd>{{categoriaEntidad.nombre}}</dd>
+            <dt>Direccion Postal</dt>
+            <dd>{{direccionPostal.nombre}}</dd>
+        </dl>
+    </div>
+
+        <div class="footerForm">
+
+            <button class="btn_action"  type="submit" > Agregar Entidad Base</button>
+
+        </div>
+
+{{/partial}}
+
+{{> layout.html.hbs }}

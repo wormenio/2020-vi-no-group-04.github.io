@@ -2,8 +2,10 @@
     <title>Detalle de la Compra</title>
 {{/partial}}
 {{# partial "contenido" }}
+    {{> egreso/layoutInfoCompra.html.hbs }}
+
     <form  action="/compras/{{compra.id}}/documentoComercial" method="POST">
-        <fieldset class="fieldsetUnaColumna" >
+        <fieldset class="containerOneColumn" >
             <legend>Documento comercial de la compra</legend>
             <div class="control-group">
                 <span class="label-form">
@@ -38,7 +40,7 @@
         </fieldset>
         <div class="footerForm">
             <input type="hidden" name="idCompra" value="{{compra.id}}" >
-            <button class="btn_reset"  onclick="location.href='/compras/'" >Cancelar</button>
+            <button class="btn_reset"  onclick="location.href='/compras/{{compra.id}}'" >Cancelar</button>
             <button class="btn_action"  type="submit" >Guardar</button>
         </div>
     </form>
