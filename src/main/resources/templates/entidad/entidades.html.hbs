@@ -1,0 +1,57 @@
+{{# partial "titulo" }}
+    <title>Detalle de la Compra</title>
+{{/partial}}
+{{# partial "contenido" }}
+
+    <form  action="/entidades" method="GET" >
+        <fieldset class="containerOneColumn">
+            <legend>Buscar entidades por categoría</legend>
+            <div class="control-group">
+                <span class="label-form">
+                    <label for="categoriaEntidad">Categoría Entidad</label>
+                </span>
+                <span class="input-form">
+                   <select   name="categoriaEntidad">
+                              <option value="0" disabled selected>Seleccione Categoría Entidad...</option>
+                       {{#each categoriasEntidades}}
+                           <option value="{{id}}" >
+                               {{nombre}}
+                           </option>
+                       {{/each}}
+                   </select>
+                </span>
+            </div>
+        </fieldset>
+        <div class="footerForm">
+            <button class="btn_action"  type="submit" >Buscar</button>
+        </div>
+    </form>
+    <div>
+<!--        Listado de entidades  -->
+        {{#if entidades }}
+
+            <dl class="header_list">
+                <dt>Nombre Ficticio</dt>
+                <dt>Razón Social</dt>
+                <dt>Categoría</dt>
+                <dt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</dt>
+            </dl>
+                {{#each entidades}}
+                <dl class="detalle_form">
+                    <dd>{{nombreFicticio}}</dd>
+                    <dd>{{razonSocial}} </dd>
+                    <dd>{{categoriaEntidad.nombre}} </dd>
+                    <dd><button type="button" class="btn_info" onclick="location.href='/compras/{{id}}/producto/nuevo'">
+                        Ver Entidad
+                        </button>
+                    </dd>
+                </dl>
+    <!--                <li><a href="compras/{{id}}">{{fechaCompra}}</a> <strong>Entidad:</strong> {{entidad.nombreFicticio}} - <strong>etiquetaEgreso:</strong> {{etiquetaEgreso.nombre}}</li>-->
+                {{/each}}
+        {{/if}}
+
+    </div>
+
+{{/partial}}
+
+{{> layout.html.hbs }}

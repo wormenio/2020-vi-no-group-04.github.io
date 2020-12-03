@@ -113,6 +113,19 @@ fieldset{
     font-size: 14px;
 
 }
+.btn_info{
+    background-color: #17A2B8;
+    color:white;
+    border: 0px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    width: auto;
+    padding: 4px 12px;
+    font-size: 14px;
+}
+
 .footerForm{
     display: flex;
     justify-content: center;
@@ -140,20 +153,27 @@ select {
 .input-medium {
     width: 350px;
 }
+dl.header_list {
+    display: flex;
+    margin:0px;
+}
+
+
+.header_list dt {
+    width: 200px;
+    margin: 0;
+    padding: 5px;
+    /*border-top: 1px solid #999;*/
+    font-weight: bold;
+}
 
 dl.detalle_form {
     display: flex;
-    /*float: left;*/
-    /*width: 520px;*/
-    /*  margin: 1em 0;
-      padding: 0;*/
     border-bottom: 1px solid #999;
     margin:0px;
 }
 
 .detalle_form dt {
-    /*clear: left;*/
-    /*float: left;*/
     width: 200px;
     margin: 0;
     padding: 5px;
@@ -162,7 +182,6 @@ dl.detalle_form {
 }
 
 .detalle_form dd {
-    /*float: left;*/
     width: 300px;
     margin: 0;
     padding: 5px;

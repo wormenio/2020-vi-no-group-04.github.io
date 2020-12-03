@@ -32,16 +32,20 @@ public class EntidadesController implements WithGlobalEntityManager, Transaction
     private Entidad entidadBase;
 
     public ModelAndView getEntidades(Request request, Response response) {
-        String nombreBuscado = request.queryParams("filtro");
+        String categoriaBuscada = request.queryParams("categoriaEntidad");
 
         Map<String, Object> modelo = new HashMap<>();
+        List<CategoriaEntidad> categoriasEntidades = RepositorioCategoriasEntidades
+                .instance()
+                .listadoDeRegistros();
 
         List<Entidad> entidades =
-                nombreBuscado != null ?
-                        RepositorioEntidades.instance().buscarPorNombre(nombreBuscado) :
+                categoriaBuscada != null ?
+                        RepositorioEntidades.instance().buscarPorCategoria(Long.parseLong(categoriaBuscada)) :
                         RepositorioEntidades.instance().listadoDeRegistros();
 
-        modelo.put("compras", entidades);
+        modelo.put("entidades", entidades);
+        modelo.put("categoriasEntidades",categoriasEntidades);
 
         return new ModelAndView(modelo, "entidad/entidades.html.hbs");
 
