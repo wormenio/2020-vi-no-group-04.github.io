@@ -103,6 +103,19 @@ form span label {
     font-size: 14px;
 
 }
+.btn_reset{
+    background-color: #DA4F49;
+    color:white;
+    border: 0px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    width: auto;
+    padding: 4px 12px;
+    font-size: 14px;
+
+}
 .footerForm{
     display: flex;
     justify-content: center;

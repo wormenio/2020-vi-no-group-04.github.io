@@ -2,29 +2,47 @@
     <title>Detalle de la Compra</title>
 {{/partial}}
 {{# partial "contenido" }}
-    <form style="display: inline; justify-content: center; align-items: center;" action="/compras" method="POST">
-        <fieldset>
-            <legend>Producto</legend>
-            <span>
-                            <label for="producto">Producto</label>
-                            <select name="producto">
-                                <option disabled selected>Seleccione Producto...</option>
-                                {{#each productos}}
-                                    <option value="{{id}}" > {{nombre}}</option>
-                                {{/each}}
-                              </select>
-                        </span>
-            <span>
-                            <label for="precioUnitario">Precio unitario:</label>
-                            <input placeholder="Precio unitario " name="precioUnitario" type="number">
-                        </span>
-            <span>
+    <!--    TODO: LAYOUT MINI DETALLE DE LA COMPRA -->
+
+    <form  action="/compras/{{compra.id}}/producto" method="POST">
+
+        <fieldset class="fieldsetUnaColumna" >
+            <legend>Productos de la compra</legend>
+            <div class="control-group">
+                <span lass="label-form">
+                    <label for="producto">Producto</label>
+                </span>
+                <span class="input-form">
+                    <select name="producto">
+                        <option disabled selected>Seleccione Producto...</option>
+                        {{#each productos}}
+                            <option value="{{id}}" > {{nombre}}</option>
+                        {{/each}}
+                      </select>
+                </span>
+            </div>
+            <div class="control-group">
+                <span lass="label-form">
+                    <label for="precioUnitario">Precio unitario:</label>
+                </span>
+                <span class="input-form">
+                     <input placeholder="Precio unitario " name="precioUnitario" type="number">
+                </span>
+            </div>
+            <div class="control-group">
+                <span lass="label-form">
                             <label for="cantidad">Cantidad:</label>
+                </span>
+                <span class="input-form">
                             <input placeholder="Cantidad" name="cantidad" type="number">
-                        </span>
-
+                </span>
+            </div>
         </fieldset>
-
+        <div class="footerForm">
+            <input type="hidden" name="idCompra" value="{{compra.id}}" >
+            <button class="btn_reset"  onclick="location.href='/compras/'" >Cancelar</button>
+            <button class="btn_action"  type="submit" >Guardar</button>
+        </div>
     </form>
 {{/partial}}
 

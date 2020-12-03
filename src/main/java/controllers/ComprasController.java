@@ -1,6 +1,7 @@
 package controllers;
 
 import modelo.*;
+import modelo.DocumentoComercial.DocumentoComercial;
 import modelo.Egreso.Compra;
 import modelo.Egreso.EtiquetaEgreso;
 import modelo.Entidades.Entidad;
@@ -55,7 +56,18 @@ public class ComprasController implements WithGlobalEntityManager, Transactional
         String id = request.params(":id");
         Map<String, Object> modelo = new HashMap<>();
         Compra compra = RepositorioCompras.instance().getById(Long.parseLong(id));
-        return new ModelAndView(compra, "egreso/newDocumentoEgreso.html.hbs");
+
+        List<Proveedor> proveedores = RepositorioProveedor.instance().listadoDeProveedores();
+        List<Moneda> monedas        = RepositorioMonedas.instance().listadoDeRegistros();
+        List<DocumentoComercial> documentosComerciales     = RepositorioDocumentosComerciales
+                .instance().listadoDeRegistros();
+
+        modelo.put("compra", compra);
+        modelo.put("proveedores", proveedores);
+        modelo.put("monedas", monedas);
+        modelo.put("documentosComerciales", documentosComerciales);
+
+        return new ModelAndView(modelo, "egreso/newPresupuestoCompra.html.hbs");
     }
 
     public ModelAndView getFormularioCreacion(Request request, Response response) {
@@ -76,6 +88,24 @@ public class ComprasController implements WithGlobalEntityManager, Transactional
         modelo.put("entidades", entidades);
 
         return new ModelAndView(modelo, "egreso/newCompra.html.hbs");
+    }
+
+
+
+
+    public Object getDetalleCompra(Request request, Response response, TemplateEngine engine) {
+
+        String id = request.params(":id");
+        try{
+            Compra compra = RepositorioCompras.instance().getById(Long.parseLong(id));
+            return compra != null ?
+                    engine.render(new ModelAndView(compra, "egreso/detalleCompra.html.hbs"))
+                    : null;
+        } catch(NumberFormatException e){
+            response.status(400);
+            System.out.println("El id ingresado (" + id +") no es un número");
+            return "Bad Request";
+        }
     }
 
     public Void crearEgreso(Request request, Response response) {
@@ -105,28 +135,50 @@ public class ComprasController implements WithGlobalEntityManager, Transactional
 
         withTransaction(() ->{
             RepositorioCompras.instance().agregar(compra);
-//            usuario.agregarConsultora(nueva);
         });
 
         response.redirect("/compras/" + compra.getId());
         return null;
     }
 
-    public Object getDetalleCompra(Request request, Response response, TemplateEngine engine) {
+    public Void crearPresupuesoDelEgreso(Request request, Response response) {
+//        TODO
+/*
+        Compra compra = new Compra(fechaCompra,proveedor,moneda,entidad,etiquetaEgreso);
 
-        String id = request.params(":id");
-        try{
-            Compra compra = RepositorioCompras.instance().getById(Long.parseLong(id));
-            return compra != null ?
-                    engine.render(new ModelAndView(compra, "egreso/detalleCompra.html.hbs"))
-                    : null;
-        } catch(NumberFormatException e){
-            response.status(400);
-            System.out.println("El id ingresado (" + id +") no es un número");
-            return "Bad Request";
-        }
+        withTransaction(() ->{
+            RepositorioCompras.instance().agregar(compra);
+        });
+  */
+        response.redirect("/compras/" + request.queryParams("idCompra"));
+        return null;
     }
 
+    public Void crearProductoDelEgreso(Request request, Response response) {
+//        TODO
+/*
+        Compra compra = new Compra(fechaCompra,proveedor,moneda,entidad,etiquetaEgreso);
+
+        withTransaction(() ->{
+            RepositorioCompras.instance().agregar(compra);
+        });
+  */
+        response.redirect("/compras/" + request.queryParams("idCompra"));
+        return null;
+    }
+
+    public Void crearDocumentoDelEgreso(Request request, Response response) {
+//        TODO
+/*
+        Compra compra = new Compra(fechaCompra,proveedor,moneda,entidad,etiquetaEgreso);
+
+        withTransaction(() ->{
+            RepositorioCompras.instance().agregar(compra);
+        });
+  */
+        response.redirect("/compras/" + request.queryParams("idCompra"));
+        return null;
+    }
 
 
 }

@@ -2,28 +2,45 @@
     <title>Detalle de la Compra</title>
 {{/partial}}
 {{# partial "contenido" }}
-    <form style="display: inline; justify-content: center; align-items: center;" action="/compras" method="POST">
-        <fieldset>
-            <legend>Documento comercial</legend>
-            <span>
-                            <label for="documentoComercial">Documento</label>
-                            <select name="documentoComercial">
-                                <option disabled selected>Seleccione Documento...</option>
-                                {{#each documentosComerciales}}
-                                    <option value="{{id}}" > {{nombre}}</option>
-                                {{/each}}
-                              </select>
-                        </span>
-            <span>
-                            <label for="fechaDocumento">Fecha:</label>
-                            <input placeholder="Fecha" name="fechaDocumento"  type="date">
-                        </span>
-            <span>
-                            <label for="nroDocumento">Numero:</label>
-                            <input placeholder="Número " name="nroDocumento" type="number">
-                        </span>
-        </fieldset>
+    <form  action="/compras/{{compra.id}}/documentoComercial" method="POST">
+        <fieldset class="fieldsetUnaColumna" >
+            <legend>Documento comercial de la compra</legend>
+            <div class="control-group">
+                <span class="label-form">
+                    <label for="documentoComercial">Documento</label>
+                </span>
+                <span class="input-form">
+                    <select name="documentoComercial">
+                        <option disabled selected>Seleccione Documento...</option>
+                        {{#each documentosComerciales}}
+                            <option value="{{id}}" > {{nombre}}</option>
+                        {{/each}}
+                    </select>
+                </span>
+            </div>
+            <div class="control-group">
+                <span class="label-form">
+                    <label for="fechaDocumento">Fecha:</label>
+                </span>
+                <span class="input-form" >
+                    <input placeholder="Fecha" name="fechaDocumento"  type="date">
+                </span>
+            </div>
+            <div class="control-group">
+                <span class="label-form">
+                    <label for="nroDocumento">Numero:</label>
+                </span>
+                <span class="input-form" >
+                    <input placeholder="Número " name="nroDocumento" type="number">
+                </span>
+            </div>
 
+        </fieldset>
+        <div class="footerForm">
+            <input type="hidden" name="idCompra" value="{{compra.id}}" >
+            <button class="btn_reset"  onclick="location.href='/compras/'" >Cancelar</button>
+            <button class="btn_action"  type="submit" >Guardar</button>
+        </div>
     </form>
 {{/partial}}
 

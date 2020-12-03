@@ -2,10 +2,67 @@
     <title>Detalle de la Compra</title>
 {{/partial}}
 {{# partial "contenido" }}
-    <form style="display: inline; justify-content: center; align-items: center;" action="/compras" method="POST">
-        <fieldset>
-            <legend>Presupuesto</legend>
+
+<!--    TODO: LAYOUT MINI DETALLE DE LA COMPRA -->
+
+    <form  action="/compras/{{compra.id}}/presupuesto" method="POST">
+        <fieldset class="fieldsetUnaColumna" >
+            <legend>Presupuesto de la compra</legend>
+            <div class="control-group">
+                <span class="label-form">
+                    <label  for="fecha">Fecha:</label>
+                </span>
+                <span class="input-form">
+                    <input  type="date" placeholder="Fecha" name="fecha" >
+                </span>
+            </div>
+            <div class="control-group">
+                <span class="label-form">
+                    <label for="documentoComercial">Documento</label>
+                </span>
+                <span class="input-form">
+                    <select name="documentoComercial">
+                        <option disabled selected>Seleccione Documento...</option>
+                        {{#each documentosComerciales}}
+                            <option value="{{id}}" > {{nombre}}</option>
+                        {{/each}}
+                      </select>
+                </span>
+            </div>
+            <div class="control-group">
+                <span lass="label-form">
+                    <label for="moneda">Moneda</label>
+                </span>
+                <span class="input-form">
+                        <select name="moneda" >
+                            <option disabled selected>Seleccione Moneda...</option>
+                            {{#each monedas}}
+                                <option value="{{id}}" > {{nombre}}</option>
+                            {{/each}}
+
+						  </select>
+                    </span>
+            </div>
+            <div class="control-group">
+                <span lass="label-form">
+                    <label for="proveedor">Proveedor</label>
+                </span>
+                <span class="input-form">
+                        <select name="proveedor"  >
+                        <option disabled selected>Seleccione Proveedor...</option>
+                            {{#each proveedores}}
+                                <option value="{{id}}" > {{nombre}}</option>
+                            {{/each}}
+                    </select>
+                </span>
+
+            </div>
         </fieldset>
+        <div class="footerForm">
+            <input type="hidden" name="idCompra" value="{{compra.id}}" >
+            <button class="btn_reset"  onclick="location.href='/compras/'" >Cancelar</button>
+            <button class="btn_action"  type="submit" >Guardar</button>
+        </div>
     </form>
 {{/partial}}
 
