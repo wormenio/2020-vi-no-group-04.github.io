@@ -51,7 +51,9 @@ nav userLogin{
 }
 footer{
     background: #333;
-    height: 100px;
+    height: 70px;
+    color:white;
+    text-align: center;
 }
 
 .container{
@@ -186,6 +188,19 @@ dl.detalle_form {
     margin: 0;
     padding: 5px;
     border-top: 1px solid #999;
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border-bottom: 1px solid #dddddd;
+    border-top: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
 }
 /*
 .label-form{

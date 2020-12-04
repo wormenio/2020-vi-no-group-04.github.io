@@ -10,12 +10,27 @@
 
             <input type="submit" value="Buscar">
         </form>-->
-
-        <ul>
-            {{#compras}}
-                <li><a href="compras/{{id}}">{{fechaCompra}}</a> <strong>Entidad:</strong> {{entidad.nombreFicticio}} - <strong>etiquetaEgreso:</strong> {{etiquetaEgreso.nombre}}</li>
-            {{/compras}}
-        </ul>
+        {{# if compras}}
+            <table>
+                <tr>
+                    <th>Fecha</th>
+                    <th>Entidad</th>
+                    <th>Etiqueta</th>
+                    <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                </tr>
+            {{#each compras}}
+                    <tr>
+                        <td>{{fechaCompra}}</td>
+                        <td>{{entidad.nombreFicticio}} </td>
+                        <td>{{etiquetaEgreso.nombre}} </td>
+                        <td><button type="button" class="btn_info" onclick="location.href='/compras/{{id}}'">
+                            Ver Compra
+                        </button>
+                        </td>
+                    </tr>
+            {{/each}}
+            </table>
+        {{/if}}
 
 {{/partial}}
 
