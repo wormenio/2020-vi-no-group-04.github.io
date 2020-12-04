@@ -3,4 +3,5 @@
 /.idea/misc.xml
 schema.sql
 target
-proyecto.iml	
+proyecto.iml
+/src/main/resources/META-INF/persistence.xml

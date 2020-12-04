@@ -3,7 +3,25 @@
 {{/partial}}
 {{# partial "contenido" }}
 <!--    TODO: Estilo -->
-<div class="control-group">
+<table>
+    <tr>
+        <th>Fecha de Compra</th>
+        <th>Moneda</th>
+        <th>Entidad</th>
+        <th>Proveedor</th>
+        <th>Etiqueta</th>
+        <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+    </tr>
+        <tr>
+            <td><input class="input-form" type="date" placeholder="Fecha" name="fechaCompra" value="{{fechaCompra}}" disabled></td>
+            <td>{{moneda.nombre}} ({{moneda.symbol}})</td>
+            <td>{{entidad.nombreFicticio}}</td>
+            <td>{{proveedor.nombre}}</td>
+            <td>{{etiquetaEgreso.nombre}}</td>
+        </tr>
+</table>
+
+<!--<div class="control-group">
     <span lass="label-form">
         <label class="label-form" for="fechaCompra">Fecha de Compra:</label>
     </span>
@@ -25,7 +43,7 @@
             <span><strong>Etiqueta:</strong></span><span>{{etiquetaEgreso.nombre}}</span>
         </div>
 
-    </div>
+    </div>-->
 <div class="footerForm">
     <button class="btn_action"  onclick="location.href='/compras/{{id}}/documentoComercial/nuevo'" >Agregar Documento Comercial</button>
     <button class="btn_action"  onclick="location.href='/compras/{{id}}/producto/nuevo'" >Agregar Productos</button>

@@ -1,5 +1,5 @@
 {{# partial "titulo" }}
-    <title>Detalle de la Compra</title>
+    <title>Listado de Entidades</title>
 {{/partial}}
 {{# partial "contenido" }}
 
@@ -21,33 +21,33 @@
                    </select>
                 </span>
             </div>
+            <div class="footerForm">
+                <button class="btn_action"  type="submit" >Buscar</button>
+            </div>
         </fieldset>
-        <div class="footerForm">
-            <button class="btn_action"  type="submit" >Buscar</button>
-        </div>
     </form>
     <div>
 <!--        Listado de entidades  -->
         {{#if entidades }}
-
-            <dl class="header_list">
-                <dt>Nombre Ficticio</dt>
-                <dt>Razón Social</dt>
-                <dt>Categoría</dt>
-                <dt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</dt>
-            </dl>
+        <table>
+            <tr>
+                <th>Nombre Ficticio</th>
+                <th>Razón Social</th>
+                <th>Categoría</th>
+                <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+            </tr>
                 {{#each entidades}}
-                <dl class="detalle_form">
-                    <dd>{{nombreFicticio}}</dd>
-                    <dd>{{razonSocial}} </dd>
-                    <dd>{{categoriaEntidad.nombre}} </dd>
-                    <dd><button type="button" class="btn_info" onclick="location.href='/compras/{{id}}/producto/nuevo'">
-                        Ver Entidad
+                    <tr>
+                        <td>{{nombreFicticio}}</td>
+                        <td>{{razonSocial}} </td>
+                        <td>{{categoriaEntidad.nombre}} </td>
+                        <td><button type="button" class="btn_info" onclick="location.href='/entidad/{{id}}'">
+                            Ver Entidad
                         </button>
-                    </dd>
-                </dl>
-    <!--                <li><a href="compras/{{id}}">{{fechaCompra}}</a> <strong>Entidad:</strong> {{entidad.nombreFicticio}} - <strong>etiquetaEgreso:</strong> {{etiquetaEgreso.nombre}}</li>-->
+                        </td>
+                    </tr>
                 {{/each}}
+        </table>
         {{/if}}
 
     </div>
