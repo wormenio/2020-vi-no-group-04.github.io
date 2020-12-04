@@ -21,10 +21,10 @@
                    </select>
                 </span>
             </div>
+            <div class="footerForm">
+                <button class="btn_action"  type="submit" >Buscar</button>
+            </div>
         </fieldset>
-        <div class="footerForm">
-            <button class="btn_action"  type="submit" >Buscar</button>
-        </div>
     </form>
     <div>
 <!--        Listado de entidades  -->
@@ -41,7 +41,7 @@
                         <td>{{nombreFicticio}}</td>
                         <td>{{razonSocial}} </td>
                         <td>{{categoriaEntidad.nombre}} </td>
-                        <td><button type="button" class="btn_info" onclick="location.href='/compras/{{id}}/producto/nuevo'">
+                        <td><button type="button" class="btn_info" onclick="location.href='/entidad/{{id}}'">
                             Ver Entidad
                         </button>
                         </td>
